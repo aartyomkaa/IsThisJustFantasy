@@ -15,6 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/ArtjomScene/ArtjomScene.unity
     guid: 3086321b49e54452faadf2e9efba3096
   - enabled: 1
-    path: Assets/Scenes/DmitriysScenes/Level2.unity
+    path: Assets/Scenes/DmitriysScenes/Level1.unity
     guid: 6fc706393a0d9e54c98ced5e9d93a7ca
   m_configObjects: {}

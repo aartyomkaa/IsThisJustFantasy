@@ -19,5 +19,6 @@ namespace Assets.Scripts.Constants
 
         public static string SwordAttackString = "Sword Attack";
         public static string BowAttackString = "Bow Attack";
+        public static string IsPlayerNear = "IsPlayerNear";
     }
 }
