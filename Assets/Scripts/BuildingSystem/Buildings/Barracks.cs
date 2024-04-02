@@ -1,8 +1,5 @@
 using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.PlayerUnits;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,9 +9,6 @@ namespace Assets.Scripts.BuildingSystem.Buildings
     {
         [SerializeField] private UnitsFactory _unitsFactory;
         [SerializeField] private Button _barracksButton;
-
-        public override bool IsPlayerObject { get => throw new System.NotImplementedException(); }
-
 
         private void OnEnable()
         {

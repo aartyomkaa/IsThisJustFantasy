@@ -2,30 +2,26 @@
 using Assets.Scripts.GameLogic.Damageable;
 using Assets.Scripts.PlayerUnits.UnitFiniteStateMachine;
 using UnityEngine.AI;
+using Assets.Scripts.GameLogic;
 
 namespace Assets.Scripts.PlayerUnits
 {
-    [RequireComponent(typeof(UnitAnimator))]
+    [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(NavMeshAgent))]
-    internal class Unit : Selectable, IDamageable
+    internal class Unit : Selectable, IDamageable, IFSMControllable
     {
         private UnitData _unitData;
         private float _health;
-        private bool _isDead;
 
         private FiniteStateMachine _fsm;
-        private UnitAnimator _animator;
+        private Animator _animator;
         private NavMeshAgent _agent;
-
-        public bool IsDead => _isDead;
-
-        public bool IsPlayerObject => true;
 
         public Transform Transform => transform;
 
         private void Start()
         {
-            _animator = GetComponent<UnitAnimator>();
+            _animator = GetComponent<Animator>();
             _agent = GetComponent<NavMeshAgent>();
 
             _fsm = new FiniteStateMachine(_animator, _agent, this, _unitData);

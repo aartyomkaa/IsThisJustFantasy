@@ -11,10 +11,10 @@ namespace Assets.Scripts.BuildingSystem
     internal abstract class Building : MonoBehaviour, IDamageable
     {
         public int IndexOfBuilding;
+
         public float Strength;
+
         public Transform Transform => transform;
-        public abstract bool IsPlayerObject { get; }
-        public bool IsDead => false;
 
         public static Action<Transform> Destroyed;
 

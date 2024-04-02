@@ -1,53 +1,73 @@
 using Assets.Scripts.BuildingSystem.Buildings;
+using Assets.Scripts.Constants;
+using Assets.Scripts.GameLogic;
 using Assets.Scripts.GameLogic.Damageable;
-using Assets.Scripts.UnitStateMachine;
+using Assets.Scripts.PlayerUnits.UnitFiniteStateMachine;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace Assets.Scripts.EnemyNamespace
+namespace Assets.Scripts.EnemyComponents
 {
-    [RequireComponent(typeof(Rigidbody))]
-    [RequireComponent(typeof(StateMachine))]
-
-    internal abstract class Enemy : MonoBehaviour, IDamageable, IEnemy
+    [RequireComponent(typeof(Animator))]
+    [RequireComponent(typeof(NavMeshAgent))]
+    internal class Enemy : MonoBehaviour, IDamageable, IFSMControllable
     {
-        [SerializeField] private float _health;
-        [SerializeField] private float _damage;
-        [SerializeField] private NavMeshAgent NavMeshAgent;
+        private float _health;
 
-        private bool _isDead;
-        private float _currentSpeed;
+        private EnemyData _data;
+        private FiniteStateMachine _fsm;
+        private Animator _animator;
+        private NavMeshAgent _agent;
 
-        internal float CurrentSpeed => _currentSpeed;
-
-        public bool IsPlayerObject => false;
-
-        public bool IsDead => _isDead;
+        private MainBuilding _building;
 
         public Transform Transform => transform;
 
-        float IEnemy.Health => _health;
+        private void Start()
+        {
+            _animator = GetComponent<Animator>();
+            _agent = GetComponent<NavMeshAgent>();
 
-        float IEnemy.Damage => _damage;
+            _fsm = new FiniteStateMachine(_animator, _agent, this, _data);
 
-        void IDamageable.TakeDamage(float damage)
+            _fsm.SetState<FSMStateIdle>();
+        }
+
+        private void Update()
+        {
+            _fsm.Update();
+
+            if (_fsm.Target == null)
+            {
+                _agent.SetDestination(_building.transform.position);
+                _animator.SetBool(AnimatorHash.Moving, true);
+            }
+        }
+
+        public void TakeDamage(float damage)
         {
             _health -= damage;
 
             if (_health <= 0)
             {
-                _isDead = true;
-                gameObject.SetActive(false);
+                Die();
             }
         }
 
-        internal abstract void SetPosition(Vector3 position);
-
-        internal abstract void SetRotationToTarget(Vector3 targetPosition);
-
-        private void Awake()
+        public void Init(EnemyData data)
         {
-            _currentSpeed = NavMeshAgent.speed;
+            _data = data;
+            _health = data.Health;
+        }
+
+        public void InitMainBuilding(MainBuilding target)
+        {
+            _building = target;
+        }
+
+        private void Die()
+        {
+            gameObject.SetActive(false);
         }
     }
 }
