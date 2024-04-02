@@ -16,11 +16,12 @@ namespace Assets.Scripts.BuildingSystem
        
 
         public int IndexOfBuilding;
+
         public float Strength;
+        
         public AudioSource _audiosourseOfCreation;
+        
         public Transform Transform => transform;
-        public abstract bool IsPlayerObject { get; }
-        public bool IsDead => false;
 
         public static Action<Transform> Destroyed;
 

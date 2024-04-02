@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a4cc0a1c13b2094fa304cdafefeb53d, type: 3}
+  m_Name: MeleeEnemy
+  m_EditorClassIdentifier: 
+  Name: Enemy Melee
+  EnemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 2048
+  Health: 100
+  Speed: 3
+  Damage: 5
+  AttackSpeed: 2
+  AttackRange: 2
+  AggroRange: 7
+  Prefab: {fileID: 5491809458953836122, guid: 27d6b7249ada844a99a360ebf69cff0b, type: 3}

@@ -1,16 +1,18 @@
-﻿using UnityEngine.AI;
+﻿using Assets.Scripts.GameLogic;
+using UnityEngine;
+using UnityEngine.AI;
 
 namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
 {
     internal abstract class FSMState
     {
         protected FiniteStateMachine FSM;
-        protected Unit Unit;
-        protected UnitData Data;
+        protected IFSMControllable Unit;
+        protected Data Data;
         protected NavMeshAgent UnitNavMesh;
-        protected UnitAnimator Animator;
+        protected Animator Animator;
 
-        public FSMState(FiniteStateMachine fsm, Unit unit, NavMeshAgent navMesh, UnitAnimator animator, UnitData data)
+        public FSMState(FiniteStateMachine fsm, IFSMControllable unit, NavMeshAgent navMesh, Animator animator, Data data)
         {
             FSM = fsm;
             Unit = unit;

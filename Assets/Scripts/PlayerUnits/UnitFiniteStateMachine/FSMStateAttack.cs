@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Constants;
+using Assets.Scripts.GameLogic;
+using UnityEngine;
 using UnityEngine.AI;
 
 namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
@@ -8,19 +10,26 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
         private float _distance;
         private float _timePast;
 
-        public FSMStateAttack(FiniteStateMachine fsm, Unit unit, NavMeshAgent navMesh, UnitAnimator animator, UnitData data)
+        public FSMStateAttack(FiniteStateMachine fsm, IFSMControllable unit, NavMeshAgent navMesh, Animator animator, Data data)
             : base(fsm, unit, navMesh, animator, data)
         {
         }
 
         public override void Update()
         {
-            if (NeedChaseEnemy())
-                FSM.SetState<FSMStateChaseEnemy>();
-
-            if (FSM.Target.Transform.gameObject.activeSelf)
+            if (FSM.Target != null)
             {
-                Attack();
+                Debug.Log(FSM.Target);
+
+                if (NeedChaseEnemy())
+                {
+                    FSM.SetState<FSMStateChaseEnemy>();
+                }
+                else
+                {
+                    Attack();
+                }
+
             }
             else
             {
@@ -30,7 +39,10 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
 
         private bool NeedChaseEnemy()
         {
-            _distance = Vector3.Distance(Unit.transform.position, FSM.Target.Transform.position);
+            if (FSM.Target == null)
+                return false;
+
+            _distance = Vector3.Distance(Unit.Transform.position, FSM.Target.Transform.position);
 
             if (_distance > Data.AttackRange)
                 return true;
@@ -45,7 +57,7 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
             if (_timePast >= Data.AttackSpeed)
             {
                 FSM.Target.TakeDamage(Data.Damage);
-                Animator.SetTriggerAttack();
+                Animator.SetTrigger(AnimatorHash.Attack);
                 _timePast = 0;
             }
         }

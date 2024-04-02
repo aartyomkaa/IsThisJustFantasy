@@ -1,10 +1,13 @@
-﻿using UnityEngine.AI;
+﻿using Assets.Scripts.Constants;
+using Assets.Scripts.GameLogic;
+using UnityEngine;
+using UnityEngine.AI;
 
 namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
 {
     internal class FSMStateChaseEnemy : FSMState
     {
-        public FSMStateChaseEnemy(FiniteStateMachine fsm, Unit unit, NavMeshAgent navMesh, UnitAnimator animator, UnitData data)
+        public FSMStateChaseEnemy(FiniteStateMachine fsm, IFSMControllable unit, NavMeshAgent navMesh, Animator animator, Data data)
             : base(fsm, unit, navMesh, animator, data)
         {
         }
@@ -12,17 +15,20 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
         public override void Enter()
         {
             UnitNavMesh.SetDestination(FSM.Target.Transform.position);
-            Animator.SetMovingBool(true);
+            Animator.SetBool(AnimatorHash.Moving, true);
         }
 
         public override void Exit()
         {
             UnitNavMesh.ResetPath();
-            Animator.SetMovingBool(false);
+            Animator.SetBool(AnimatorHash.Moving, false);
         }
 
         public override void Update()
         {
+            if (UnitNavMesh.remainingDistance > Data.AggroRange)
+                FSM.SetState<FSMStateIdle>();
+
             if (UnitNavMesh.remainingDistance <= Data.AttackRange)
             {
                 FSM.SetState<FSMStateAttack>();

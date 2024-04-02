@@ -26,8 +26,6 @@ namespace Assets.Scripts.BuildingSystem.Buildings
             Created?.Invoke();
         }
 
-        public override bool IsPlayerObject { get => throw new System.NotImplementedException(); }
-
         private void OnEnable()
         {
             BuildingUI.SpawnChestButtonClicked += SpawnChest; 
