@@ -7,16 +7,32 @@ namespace Assets.Scripts.BuildingSystem
 {
     [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(Animator))]
+    [RequireComponent(typeof(AudioSource))]
 
     internal abstract class Building : MonoBehaviour, IDamageable
     {
+        [SerializeField] private ParticleSystem _particleOfDestroy;
+
+       
+
         public int IndexOfBuilding;
         public float Strength;
+        public AudioSource _audiosourseOfCreation;
         public Transform Transform => transform;
         public abstract bool IsPlayerObject { get; }
         public bool IsDead => false;
 
         public static Action<Transform> Destroyed;
+
+        private void Awake()
+        {
+            _audiosourseOfCreation = GetComponent<AudioSource>();
+        }
+
+        private void Start()
+        {
+            _audiosourseOfCreation.Play();
+        }
 
         public void TakeDamage(float damage)
         {
@@ -36,6 +52,7 @@ namespace Assets.Scripts.BuildingSystem
             //Instantiate(EffectOfDestroying, transform.position, Quaternion.identity);
             Destroyed?.Invoke(this.transform);
             DestroyImmediate(gameObject);
+            _particleOfDestroy.Play();
         }
     }
 }
