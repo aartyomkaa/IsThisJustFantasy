@@ -1,3 +1,4 @@
+using Assets.Scripts.Constants;
 using Assets.Scripts.GameLogic.Damageable;
 using Assets.Scripts.PlayerComponents;
 using System.Collections;
@@ -7,20 +8,20 @@ using UnityEngine;
 namespace Assets.Scripts.Props.Chest
 {
     [RequireComponent(typeof(Animator))]
+   // [RequireComponent(typeof(ParticleSystem))]
     [RequireComponent(typeof(AudioSource))]
     internal class Chest : MonoBehaviour
     {
-        private const string _isOpen = "IsOpen";
-
         [SerializeField] private int _coins;
+        [SerializeField] ParticleSystem _particleOfGiveCoins;
         
-        private Animator animator;
+        private Animator _animator;
         private AudioSource _audiosourse;
         private bool _isEmpty = false;
 
         private void Awake()
         {
-            animator = GetComponent<Animator>();
+            _animator = GetComponent<Animator>();
             _audiosourse = GetComponent<AudioSource>();
         }
 
@@ -28,6 +29,9 @@ namespace Assets.Scripts.Props.Chest
         {
             if (other.gameObject.TryGetComponent(out Player player) && _isEmpty == false)
             {
+                _animator.SetBool(AnimatorHash.IsPlayerNear, true);
+               // _particleOfGiveCoins.Play();
+                _audiosourse.Play();    
                 GiveCoins(player);
             }
         }
@@ -37,6 +41,7 @@ namespace Assets.Scripts.Props.Chest
         {
             // вызвать метод взятия монет у игрока
             _isEmpty = true;
+            player.Wallet.AddCoins(_coins);
         }
 
         public void SetCountOfCoins(int coins)
