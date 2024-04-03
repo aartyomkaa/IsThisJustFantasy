@@ -1,4 +1,4 @@
-using Assets.Scripts.EnemyNamespace;
+using Assets.Scripts.EnemyComponents;
 using UnityEngine;
 using Zenject;
 

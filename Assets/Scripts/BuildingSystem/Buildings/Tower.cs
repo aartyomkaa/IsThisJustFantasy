@@ -9,8 +9,6 @@ namespace Assets.Scripts.BuildingSystem.Buildings
     {
 
        // [SerializeField] private Bow _bow;
-        
-        public override bool IsPlayerObject => gameObject;
 
         //public void Attack()
         //{

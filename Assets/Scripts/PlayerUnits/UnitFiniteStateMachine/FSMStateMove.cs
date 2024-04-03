@@ -1,10 +1,13 @@
-﻿using UnityEngine.AI;
+﻿using Assets.Scripts.Constants;
+using Assets.Scripts.GameLogic;
+using UnityEngine;
+using UnityEngine.AI;
 
 namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
 {
     internal class FSMStateMove : FSMState
     {
-        public FSMStateMove(FiniteStateMachine fsm, Unit unit, NavMeshAgent navMesh, UnitAnimator animator, UnitData data)
+        public FSMStateMove(FiniteStateMachine fsm, IFSMControllable unit, NavMeshAgent navMesh, Animator animator, Data data)
             : base(fsm, unit, navMesh, animator, data)
         {
         }
@@ -13,17 +16,17 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
         {
             UnitNavMesh.speed = Data.Speed;
             UnitNavMesh.SetDestination(FSM.MovePosition);
-            Animator.SetMovingBool(true);
+            Animator.SetBool(AnimatorHash.Moving, true);
         }
 
         public override void Exit()
         {
-            Animator.SetMovingBool(false);
+            Animator.SetBool(AnimatorHash.Moving, false);
         }
 
         public override void Update()
         {
-            if (UnitNavMesh.pathEndPosition == Unit.transform.position)
+            if (UnitNavMesh.pathEndPosition == Unit.Transform.position)
             {
                 FSM.SetState<FSMStateIdle>();
             }

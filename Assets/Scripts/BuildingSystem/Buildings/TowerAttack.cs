@@ -1,5 +1,5 @@
 using Assets.Scripts.BuildingSystem.Buildings;
-using Assets.Scripts.EnemyNamespace;
+using Assets.Scripts.EnemyComponents;
 using Assets.Scripts.GameLogic.Damageable;
 using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.PlayerComponents.Weapons;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using Assets.Scripts.GameLogic.Damageable;
+using Assets.Scripts.GameLogic;
 
 namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
 {
@@ -14,7 +15,7 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
         public Vector3 MovePosition { get; private set; }
         public IDamageable Target { get; private set; }
 
-        public FiniteStateMachine(UnitAnimator animator, NavMeshAgent agent, Unit unit, UnitData data)
+        public FiniteStateMachine(Animator animator, NavMeshAgent agent, IFSMControllable unit, Data data)
         {
             AddState(new FSMStateIdle(this, unit, agent, animator, data));
             AddState(new FSMStateMove(this, unit, agent, animator, data));

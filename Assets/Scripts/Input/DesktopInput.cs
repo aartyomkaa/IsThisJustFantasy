@@ -21,9 +21,6 @@ namespace Assets.Scripts.PlayerInput
 
         private void OnEnable()
         {
-            if (Device.IsMobile)
-                gameObject.SetActive(false);
-
             _inputActions = new InputActions();
             _inputActions.Enable();
 
