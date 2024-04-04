@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Constants;
+using Assets.Scripts.EnemyComponents;
 using Assets.Scripts.GameLogic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -19,8 +20,6 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
         {
             if (FSM.Target != null)
             {
-                Debug.Log(FSM.Target);
-
                 if (NeedChaseEnemy())
                 {
                     FSM.SetState<FSMStateChaseEnemy>();
@@ -29,7 +28,6 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
                 {
                     Attack();
                 }
-
             }
             else
             {
@@ -56,8 +54,13 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
 
             if (_timePast >= Data.AttackSpeed)
             {
-                FSM.Target.TakeDamage(Data.Damage);
+                if (Unit.GetType() == typeof(EnemyRange))
+                    Unit.Attack(FSM.Target);
+                else
+                    FSM.Target.TakeDamage(Data.Damage);
+
                 Animator.SetTrigger(AnimatorHash.Attack);
+
                 _timePast = 0;
             }
         }

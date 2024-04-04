@@ -29,7 +29,7 @@ namespace Assets.Scripts.BuildingSystem
 
         private void Awake()
         {
-            _poolOfArrows = new ArrowsPool(_arrowPrefab, _damage, _targetlayerMask);
+            _poolOfArrows = new ArrowsPool(_arrowPrefab, _damage, _targetlayerMask, transform);
         }
 
         private void Update()

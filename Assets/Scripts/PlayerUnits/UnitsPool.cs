@@ -36,7 +36,7 @@ namespace Assets.Scripts.PlayerUnits
 
             for (int i = 0; i < _capacity; i++)
             {
-                Unit unit = GameObject.Instantiate(data.Prefab);
+                Unit unit = GameObject.Instantiate(data.Prefab, new Vector3(19, 1, -47), Quaternion.identity);
                 unit.Init(data);
                 unit.gameObject.SetActive(false);
                 pool[i] = unit;

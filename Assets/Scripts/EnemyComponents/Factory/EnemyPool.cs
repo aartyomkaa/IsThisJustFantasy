@@ -37,7 +37,7 @@ namespace Assets.Scripts.EnemyComponents
 
             for (int i = 0; i < _capacity; i++)
             {
-                Enemy unit = GameObject.Instantiate(data.Prefab);
+                Enemy unit = GameObject.Instantiate(data.Prefab, new Vector3(19, 0, -47), Quaternion.identity);
                 unit.Init(data);
                 unit.InitMainBuilding(building);
                 unit.gameObject.SetActive(false);

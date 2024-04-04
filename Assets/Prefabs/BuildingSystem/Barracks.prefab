@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2441336510995569309}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SpotOfSpawnUnits
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1890652662302031731}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -16.5, y: 1.3, z: -13.56}
+  m_LocalPosition: {x: -3.04, y: 0.81, z: -4.67}
   m_LocalScale: {x: 1.4285713, y: 2, z: 1.4285715}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -46,7 +46,8 @@ GameObject:
   - component: {fileID: -7654623828991408927}
   - component: {fileID: -1236911932528218677}
   - component: {fileID: 1054973193750157762}
-  m_Layer: 3
+  - component: {fileID: 7945495570110303869}
+  m_Layer: 11
   m_Name: Barracks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,8 +183,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72a49dd66e6141a4198b9974ec842ece, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _particleOfDestroy: {fileID: 0}
   IndexOfBuilding: 2
   Strength: 100
+  _audiosourseOfCreation: {fileID: 0}
   _unitsFactory: {fileID: 6468344224010567201}
 --- !u!95 &1054973193750157762
 Animator:
@@ -206,6 +209,102 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!82 &7945495570110303869
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4692487842577338964}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &5098329011409132469
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,7 +319,7 @@ GameObject:
   - component: {fileID: 7603827074308717270}
   - component: {fileID: 6468344224010567201}
   - component: {fileID: 6091333048121056531}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: UnitFactory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -353,7 +452,7 @@ GameObject:
   - component: {fileID: 8866630065777950599}
   - component: {fileID: 8265422935027000637}
   - component: {fileID: 1728662253555672662}
-  m_Layer: 3
+  m_Layer: 11
   m_Name: SM_Bld_Preset_House_Archway_02_Glass_Optimized
   m_TagString: Untagged
   m_Icon: {fileID: 0}

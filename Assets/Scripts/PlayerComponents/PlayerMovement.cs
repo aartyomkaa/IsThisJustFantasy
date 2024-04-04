@@ -5,8 +5,7 @@ namespace Assets.Scripts.PlayerComponents
 {
     internal class PlayerMovement : MonoBehaviour
     {
-        [SerializeField] private float _moveSpeed;
-        [SerializeField] private float _attackMoveSpeed;
+        [SerializeField] private PlayerData _data;
 
         private PlayerAnimator _animator;
         private NavMeshAgent _navMeshAgent;
@@ -24,10 +23,10 @@ namespace Assets.Scripts.PlayerComponents
             Vector3 movementDIrection = new Vector3(direction.x, 0, direction.y);
             Vector3 movePosition = transform.position + movementDIrection;
 
-            _navMeshAgent.speed = _isAttacking ? _attackMoveSpeed : _moveSpeed;
+            _navMeshAgent.speed = _isAttacking ? _data.AttackMoveSpeed : _data.Speed;
             _navMeshAgent.SetDestination(movePosition);
 
-            _animator.SetAnimatorSpeed(movementDIrection, _moveSpeed);
+            _animator.SetAnimatorSpeed(movementDIrection, _data.Speed);
         }
 
         public void StopMove()

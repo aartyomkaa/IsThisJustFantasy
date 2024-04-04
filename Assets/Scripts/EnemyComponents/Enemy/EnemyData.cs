@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.GameLogic;
+using Assets.Scripts.PlayerComponents.Weapons;
 using UnityEngine;
 
 namespace Assets.Scripts.EnemyComponents
@@ -7,5 +8,6 @@ namespace Assets.Scripts.EnemyComponents
     internal class EnemyData : Data
     {
         public Enemy Prefab;
+        public Weapon Weapon;
     }
 }

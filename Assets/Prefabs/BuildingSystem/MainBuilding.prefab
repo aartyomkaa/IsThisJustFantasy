@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4410137073265644184}
   - component: {fileID: 8396222894461700731}
   - component: {fileID: 7302410075181044262}
-  m_Layer: 3
+  m_Layer: 11
   m_Name: SM_Bld_Preset_House_10_Base_Optimized
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,8 @@ GameObject:
   - component: {fileID: 1327219704511746936}
   - component: {fileID: 7855970553960401613}
   - component: {fileID: 2308016168629507532}
-  m_Layer: 3
+  - component: {fileID: 5685056031755718311}
+  m_Layer: 11
   m_Name: MainBuilding
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -234,8 +235,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba17c1020db7bd646a054359acdce012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _particleOfDestroy: {fileID: 0}
   IndexOfBuilding: 0
   Strength: 500
+  _audiosourseOfCreation: {fileID: 0}
 --- !u!95 &2308016168629507532
 Animator:
   serializedVersion: 5
@@ -257,6 +260,102 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!82 &5685056031755718311
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4475065055934021614}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &6358333314762270872
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,7 +367,7 @@ GameObject:
   - component: {fileID: 7105885320236737563}
   - component: {fileID: 7341947528151714156}
   - component: {fileID: 3239466698581078837}
-  m_Layer: 3
+  m_Layer: 11
   m_Name: SM_Bld_Preset_House_10_Glass_Optimized
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -351,7 +450,7 @@ GameObject:
   - component: {fileID: 247501085501964270}
   - component: {fileID: 2652834857415341708}
   - component: {fileID: 2734478569385798618}
-  m_Layer: 3
+  m_Layer: 11
   m_Name: SM_Bld_Preset_House_10_Stairs_Optimized
   m_TagString: Untagged
   m_Icon: {fileID: 0}
