@@ -14,6 +14,8 @@ namespace Assets.Scripts.BuildingSystem
 
         private bool _isOccupied;
         private int speedOfRotateVisualObject = 200;
+        private Building _currentBuilding;
+        private int _numberToSetRaiseValue = 5;
 
         public Transform SpotToPlaceBuilding => _spotToPlaceBuilding;
         public int BuildingPointIndex => _buildingPointIndex;
@@ -34,14 +36,19 @@ namespace Assets.Scripts.BuildingSystem
             _iconOfBuildPoint.transform.Rotate(0, speedOfRotateVisualObject * Time.deltaTime, 0);
         }
 
-        private void OnEnable()
+        private void RaiseCostForNextBuilding()
         {
-            Building.Destroyed += FreeSpotToBuild;
+
+            int valueToRaise = _costToBuild / _numberToSetRaiseValue;
+            _costToBuild += valueToRaise;
         }
 
         private void OnDisable()
         {
-            Building.Destroyed -= FreeSpotToBuild;
+           if(_currentBuilding != null)
+            {
+                _currentBuilding.Destroyed -= FreeSpotToBuild;
+            }  
         }
 
         private void OnTriggerEnter(Collider other)
@@ -62,6 +69,7 @@ namespace Assets.Scripts.BuildingSystem
             {
                 _isOccupied = false;
                 ActiveIconOfBuildPoint();
+                RaiseCostForNextBuilding();
             }
         }
 
@@ -69,15 +77,19 @@ namespace Assets.Scripts.BuildingSystem
         {
             if (other != null && other.gameObject.TryGetComponent(out Player player))
             {
-               // _currentPlayerCoins = player.Wallet.Coins;
-                PlayerWentOut?.Invoke(player.Wallet);
-                
+                PlayerWentOut?.Invoke(player.Wallet);     
             }
         }
 
         public void TakeSpot()
         {
             _isOccupied = true;
+        }
+
+        public void SignToCurrentBuilding(Building biulding)
+        {
+            _currentBuilding = biulding;
+            _currentBuilding.Destroyed += FreeSpotToBuild;
         }
 
         public void ActiveIconOfBuildPoint()

@@ -10,12 +10,13 @@ namespace Assets.Scripts.BuildingSystem
     {
         [SerializeField] private BuildingUI _buildingUI;
         [SerializeField] private List<BuildPoint> _buildPoints;  
-        [SerializeField] private List<Building> _buildings;
+        [SerializeField] private List<Building> _prefabsOfBuildings;
 
         private Transform _currentPlayersTransform;
         private PlayerWallet _currentPlayersWallet;
         private int _currentCostToBuild;
         private bool _canBuild;
+        private Building _currentBuilding;
 
         private void OnEnable()
         {
@@ -29,23 +30,25 @@ namespace Assets.Scripts.BuildingSystem
             _buildingUI.BuildButtonClicked -= Build;
         }
        
-        private void Build(PlayerWallet wallet)   //тут сравнивнить деньги с _buildingUI.BuidingCost
+        private void Build(PlayerWallet wallet)   
         {
-            _canBuild = false;
+           
  
             for (int i = 0; i < _buildPoints.Count; i++)
             {
                 if (_buildPoints[i].SpotToPlaceBuilding != null && _buildPoints[i].IsOccupied == false && _currentPlayersTransform == _buildPoints[i].transform)
                 {
-                    for (int j = 0; j < _buildings.Count; j++)
+                    for (int j = 0; j < _prefabsOfBuildings.Count; j++)
                     {
-                        if (_buildPoints[i].BuildingPointIndex == _buildings[j].IndexOfBuilding && _buildPoints[i].CostToBuild <= wallet.Coins)
+                        if (_buildPoints[i].BuildingPointIndex == _prefabsOfBuildings[j].IndexOfBuilding && _buildPoints[i].CostToBuild <= wallet.Coins)
                         {
-                                Instantiate(_buildings[j], _buildPoints[i].SpotToPlaceBuilding);
-                                _buildPoints[i].TakeSpot();
-                                _buildPoints[i].TryToDeActiveIconOfBuildPoint();
-                                _buildingUI.ToggleButton(BuildingUiHash.BuildButtonIndex, wallet, _currentCostToBuild, _canBuild);
-                                wallet.SpendCoins(_buildPoints[i].CostToBuild);
+                            _currentBuilding = Instantiate(_prefabsOfBuildings[j], _buildPoints[i].SpotToPlaceBuilding);
+                            _buildPoints[i].SignToCurrentBuilding(_currentBuilding);
+                             _canBuild = false;
+                             _buildPoints[i].TakeSpot();
+                             _buildPoints[i].TryToDeActiveIconOfBuildPoint();
+                             _buildingUI.ToggleButton(BuildingUiHash.BuildButtonIndex, wallet, _currentCostToBuild, _canBuild);
+                             wallet.SpendCoins(_buildPoints[i].CostToBuild);
                         }
                     }
                 }
