@@ -1704,12 +1704,12 @@ GameObject:
   - component: {fileID: 2648245537360583170}
   - component: {fileID: -1657893304729583073}
   - component: {fileID: 8875302175607403928}
+  - component: {fileID: -4260425169942852574}
   - component: {fileID: 246054152294843149}
   - component: {fileID: 8132696797318835197}
   - component: {fileID: 8038743604034866899}
   - component: {fileID: 2674794220624827716}
   - component: {fileID: 8963096653402308710}
-  - component: {fileID: 402559912779738349}
   m_Layer: 11
   m_Name: Player
   m_TagString: Untagged
@@ -1809,6 +1809,28 @@ CapsuleCollider:
   m_Height: 1.9713303
   m_Direction: 1
   m_Center: {x: 0, y: 0.9381923, z: 0}
+--- !u!195 &-4260425169942852574
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4475808446154770609}
+  m_Enabled: 1
+  m_AgentTypeID: -1923039037
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 100
+  avoidancePriority: 50
+  m_AngularSpeed: 360
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!114 &246054152294843149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1873,30 +1895,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a924d962da8d30344886d9b87709101e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 5
-  _attackMoveSpeed: 1
---- !u!195 &402559912779738349
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4475808446154770609}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 5
-  m_Acceleration: 100
-  avoidancePriority: 50
-  m_AngularSpeed: 360
-  m_StoppingDistance: 1
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 1
-  m_ObstacleAvoidanceType: 4
+  _data: {fileID: 11400000, guid: ded69eba618df4c4a80ed4d2e11e7ef6, type: 2}
 --- !u!1 &4840770937491530126
 GameObject:
   m_ObjectHideFlags: 0

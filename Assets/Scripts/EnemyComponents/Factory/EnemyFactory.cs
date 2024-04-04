@@ -1,56 +1,86 @@
 using Assets.Scripts.BuildingSystem.Buildings;
-using System.Collections.Generic;
+using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts.EnemyComponents
 {
     internal class EnemyFactory: MonoBehaviour
     {
-        [SerializeField] private List<EnemySpawnPoint> _spawnPoints;
+        [SerializeField] private EnemySpawnPoint[] _spawnPoints;
+        [SerializeField] private Wave[] _waves;
         [SerializeField] private EnemyData _range;
         [SerializeField] private EnemyData _melee;
         [SerializeField] private MainBuilding _building;
 
-        private EnemySpawnPoint _currentSpawnPoint;
-
         private EnemyPool _meleePool;
         private EnemyPool _rangePool;
+
+        private Coroutine _waveCoroutine;
+        private int _spawnPointIndex;
+
+        public event Action<float> WaveStarted;
 
         private void Start()
         {
             _meleePool = new EnemyPool(_melee, _building);
             _rangePool = new EnemyPool(_range, _building);
+        }
 
-            foreach(EnemySpawnPoint spawnPoint in _spawnPoints)
+        public void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Space)) 
             {
-                Spawn(spawnPoint.transform.position);
-                Spawn(spawnPoint.transform.position);
+                StartWavee(0);
             }
         }
 
-        public void Spawn(Vector3 position)
+        public void StartWavee(int waveNumber)
+        {
+            if (_waveCoroutine != null)
+            {
+                StopCoroutine(_waveCoroutine);
+            }
+
+            _waveCoroutine = StartCoroutine(SpawnWave(_waves[waveNumber]));
+        }
+
+        private void SpawnMelee(Vector3 position)
         {
             Enemy enemy = _meleePool.GetUnit();
 
             enemy.transform.position = position;
         }
 
-        private void ChooseSpawnPoint()
+        private void SpawnRange(Vector3 position)
         {
-            foreach (EnemySpawnPoint spawnPoint in _spawnPoints)
+            Enemy enemy = _rangePool.GetUnit();
+
+            enemy.transform.position = position;
+        }
+
+        private IEnumerator SpawnWave(Wave wave)
+        {
+            float waitSeconds = wave.SpawnDelay;
+            var waitForSec = new WaitForSeconds(waitSeconds);
+
+            for (int i = 0; i < wave.MeleeAmount; i++)
             {
+                SpawnMelee(_spawnPoints[_spawnPointIndex].transform.position);
 
+                _spawnPointIndex = (_spawnPointIndex + 1) % _spawnPoints.Length;
+
+                yield return waitForSec;
             }
-        }
+            
+            for (int i = 0; i < wave.RangeAmount; i++)
+            {
+                SpawnRange(_spawnPoints[_spawnPointIndex].transform.position);
 
-        private void CalculateEnemyPosition()
-        {
+                _spawnPointIndex = (_spawnPointIndex + 1) % _spawnPoints.Length;
 
-        }
-
-        private void EnableRandomEnemy()
-        {
-
+                yield return waitForSec;
+            }
         }
     }
 }

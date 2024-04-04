@@ -10,7 +10,7 @@ namespace Assets.Scripts.EnemyComponents
 {
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(NavMeshAgent))]
-    internal class Enemy : MonoBehaviour, IDamageable, IFSMControllable
+    internal abstract class Enemy : MonoBehaviour, IDamageable, IFSMControllable
     {
         private float _health;
 
@@ -69,5 +69,7 @@ namespace Assets.Scripts.EnemyComponents
         {
             gameObject.SetActive(false);
         }
+
+        public abstract void Attack(IDamageable target);
     }
 }

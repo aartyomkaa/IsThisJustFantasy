@@ -2,8 +2,9 @@
 
 namespace Assets.Scripts.GameLogic
 {
-    internal class Data : ScriptableObject
+    internal abstract class Data : ScriptableObject
     {
+        public DataType Type;
         public string Name;
         public LayerMask EnemyLayerMask;
         public float Health;

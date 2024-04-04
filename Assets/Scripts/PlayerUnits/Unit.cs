@@ -58,5 +58,9 @@ namespace Assets.Scripts.PlayerUnits
         {
             gameObject.SetActive(false);
         }
+
+        public void Attack(IDamageable target)
+        {
+        }
     }
 }
