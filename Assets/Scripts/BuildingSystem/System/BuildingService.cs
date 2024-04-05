@@ -47,7 +47,7 @@ namespace Assets.Scripts.BuildingSystem
                              _canBuild = false;
                              _buildPoints[i].TakeSpot();
                              _buildPoints[i].TryToDeActiveIconOfBuildPoint();
-                             _buildingUI.ToggleButton(BuildingUiHash.BuildButtonIndex, wallet, _currentCostToBuild, _canBuild);
+                             _buildingUI.ToggleBuildButton(BuildingUiHash.BuildButtonIndex, wallet, _currentCostToBuild, _canBuild);
                              wallet.SpendCoins(_buildPoints[i].CostToBuild);
                         }
                     }
@@ -86,7 +86,7 @@ namespace Assets.Scripts.BuildingSystem
                     _currentCostToBuild = _buildPoints[i].CostToBuild;
 
                     _currentPlayersWallet = wallet;
-                    _buildingUI.ToggleButton(BuildingUiHash.BuildButtonIndex, _currentPlayersWallet, _currentCostToBuild, _canBuild);    
+                    _buildingUI.ToggleBuildButton(BuildingUiHash.BuildButtonIndex, _currentPlayersWallet, _currentCostToBuild, _canBuild);    
                 }
             }
         }
@@ -95,7 +95,7 @@ namespace Assets.Scripts.BuildingSystem
         {
             _canBuild = false;
             _currentPlayersWallet = wallet;
-            _buildingUI.ToggleButton(BuildingUiHash.BuildButtonIndex, _currentPlayersWallet, _currentCostToBuild, _canBuild);
+            _buildingUI.ToggleBuildButton(BuildingUiHash.BuildButtonIndex, _currentPlayersWallet, _currentCostToBuild, _canBuild);
         }
     }
 }

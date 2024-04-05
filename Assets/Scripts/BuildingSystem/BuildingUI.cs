@@ -29,8 +29,8 @@ namespace Assets.Scripts.BuildingSystem
             _buildButton.onClick.AddListener(OnBuildButtonClicked);  //передвать деньги от игрока через _currentPlayersCoins
             _spawnUnitButton.onClick.AddListener(OnSpawnButtonClicked);  //передвать деньги от игрока через _currentPlayersCoins
             _spawnChestButton.onClick.AddListener(OnSpawnChestButtonClicked);  //передвать деньги от игрока через _currentPlayersCoins
-            ButtonBuyEventer.PlayerWentIn += ToggleButton;
-            ButtonBuyEventer.PlayerWentOut += ToggleButton;
+            ButtonBuyEventer.PlayerWentIn += ToggleBuildButton;
+            ButtonBuyEventer.PlayerWentOut += ToggleBuildButton;
            
         }
 
@@ -39,8 +39,8 @@ namespace Assets.Scripts.BuildingSystem
             _buildButton.onClick.RemoveListener(OnBuildButtonClicked);
             _spawnUnitButton.onClick.RemoveListener(OnSpawnButtonClicked);
             _spawnChestButton.onClick.RemoveListener(OnSpawnChestButtonClicked);
-            ButtonBuyEventer.PlayerWentIn -= ToggleButton;
-            ButtonBuyEventer.PlayerWentOut -= ToggleButton;
+            ButtonBuyEventer.PlayerWentIn -= ToggleBuildButton;
+            ButtonBuyEventer.PlayerWentOut -= ToggleBuildButton;
         }
 
         private void SetButtonText(Button activeButton,string title, int costToBuy)
@@ -63,7 +63,7 @@ namespace Assets.Scripts.BuildingSystem
             SpawnChestButtonClicked?.Invoke(_currentPlayersWallet, _currentCostToBuy);  //передвать деньги от игрока через _currentPlayersCoins
         }
 
-        public void ToggleButton(int indexOfButton, PlayerWallet wallet, int costToBuy, bool isTurnedOn)   //принимать деньги игрока и записывать в _currentPlayersCoins
+        public void ToggleBuildButton(int indexOfButton, PlayerWallet wallet, int costToBuy, bool isTurnedOn)   //принимать деньги игрока и записывать в _currentPlayersCoins
         {
             _currentPlayersWallet = wallet;
             _currentCostToBuy = costToBuy;
