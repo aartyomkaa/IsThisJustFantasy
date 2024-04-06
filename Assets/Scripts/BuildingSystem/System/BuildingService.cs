@@ -1,22 +1,32 @@
+using Assets.Scripts.BuildingSystem.Buildings;
 using Assets.Scripts.Constants;
 using Assets.Scripts.PlayerComponents;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Scripts.BuildingSystem
+namespace Assets.Scripts.BuildingSystem.System
 {
     internal class BuildingService : MonoBehaviour
     {
         [SerializeField] private BuildingUI _buildingUI;
         [SerializeField] private List<BuildPoint> _buildPoints;  
-        [SerializeField] private List<Building> _prefabsOfBuildings;
+        [SerializeField] private Tower _tower;
+        [SerializeField] private Barracks _barracks;
+        [SerializeField] private ResoorceBuilding _resoorceBuilding;
+
 
         private Transform _currentPlayersTransform;
         private PlayerWallet _currentPlayersWallet;
         private int _currentCostToBuild;
         private bool _canBuild;
         private Building _currentBuilding;
+        private BuildingsPool _buildingsPool;
+
+        private void Start()
+        {
+            _buildingsPool = new BuildingsPool(_tower, _barracks, _resoorceBuilding);
+        }
 
         private void OnEnable()
         {
@@ -31,26 +41,25 @@ namespace Assets.Scripts.BuildingSystem
         }
        
         private void Build(PlayerWallet wallet)   
-        {
-           
- 
+        {  
             for (int i = 0; i < _buildPoints.Count; i++)
             {
                 if (_buildPoints[i].SpotToPlaceBuilding != null && _buildPoints[i].IsOccupied == false && _currentPlayersTransform == _buildPoints[i].transform)
                 {
-                    for (int j = 0; j < _prefabsOfBuildings.Count; j++)
-                    {
-                        if (_buildPoints[i].BuildingPointIndex == _prefabsOfBuildings[j].IndexOfBuilding && _buildPoints[i].CostToBuild <= wallet.Coins)
+
+                        if(_buildPoints[i].CostToBuild <= wallet.Coins)
                         {
-                            _currentBuilding = Instantiate(_prefabsOfBuildings[j], _buildPoints[i].SpotToPlaceBuilding);
-                            _buildPoints[i].SignToCurrentBuilding(_currentBuilding);
-                             _canBuild = false;
-                             _buildPoints[i].TakeSpot();
-                             _buildPoints[i].TryToDeActiveIconOfBuildPoint();
-                             _buildingUI.ToggleBuildButton(BuildingUiHash.BuildButtonIndex, wallet, _currentCostToBuild, _canBuild);
-                             wallet.SpendCoins(_buildPoints[i].CostToBuild);
+                            _currentBuilding = _buildingsPool.GetBuilding(_buildPoints[i].BuildingPointIndex); 
+                             _currentBuilding.Transform.parent = _buildPoints[i].SpotToPlaceBuilding;
+                              _buildPoints[i].TakeSpot();
+
+                             _buildPoints[i].SignToCurrentBuilding(_currentBuilding);
+                            _canBuild = false;
+                            
+                            _buildPoints[i].TryToDeActiveIconOfBuildPoint();
+                            _buildingUI.ToggleBuildButton(BuildingUiHash.BuildButtonIndex, wallet, _currentCostToBuild, _canBuild);
+                            wallet.SpendCoins(_buildPoints[i].CostToBuild);
                         }
-                    }
                 }
             }
         }
@@ -73,7 +82,7 @@ namespace Assets.Scripts.BuildingSystem
             }
         }
 
-        private void OnPlayerWentIn(Transform spotOfPlayer, PlayerWallet wallet)  // тут получить деньги от игрока
+        private void OnPlayerWentIn(Transform spotOfPlayer, PlayerWallet wallet)  
         {
             _currentPlayersTransform = spotOfPlayer;
             
@@ -90,7 +99,6 @@ namespace Assets.Scripts.BuildingSystem
                 }
             }
         }
-
         private void OnPlayerWentOut(PlayerWallet wallet) 
         {
             _canBuild = false;

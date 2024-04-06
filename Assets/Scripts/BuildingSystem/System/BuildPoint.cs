@@ -58,20 +58,11 @@ namespace Assets.Scripts.BuildingSystem
                 if (_isOccupied == false) 
                 {
                     PlayerWentIn?.Invoke(transform, player.Wallet);   
-                    Debug.Log("Сейчас монет вот сколько - " + player.Wallet.Coins);
                 }
             }
         }
 
-        private void FreeSpotToBuild(Transform buidingTransform)
-        {
-            if (_isOccupied == true && buidingTransform.position == _spotToPlaceBuilding.position)
-            {
-                _isOccupied = false;
-                ActiveIconOfBuildPoint();
-                RaiseCostForNextBuilding();
-            }
-        }
+       
 
         private void OnTriggerExit(Collider other)
         {
@@ -89,9 +80,27 @@ namespace Assets.Scripts.BuildingSystem
         public void SignToCurrentBuilding(Building biulding)
         {
             _currentBuilding = biulding;
-            _currentBuilding.Destroyed += FreeSpotToBuild;
+
+            if (_isOccupied == true && _currentBuilding.Transform.parent.position == _spotToPlaceBuilding.position) 
+            {
+                
+
+                _currentBuilding.Destroyed += FreeSpotToBuild;
+            }
+                
         }
 
+        private void FreeSpotToBuild(Transform buidingTransform)
+        {
+
+            if (_isOccupied == true && buidingTransform.position == _spotToPlaceBuilding.position) 
+            {     
+                _isOccupied = false;
+                ActiveIconOfBuildPoint();
+                RaiseCostForNextBuilding();
+            }
+        }
+       
         public void ActiveIconOfBuildPoint()
         {
             _iconOfBuildPoint.SetActive(true);

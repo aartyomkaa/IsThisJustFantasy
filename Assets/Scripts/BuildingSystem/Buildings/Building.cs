@@ -51,8 +51,10 @@ namespace Assets.Scripts.BuildingSystem
         protected void Destroy()
         {
             //Instantiate(EffectOfDestroying, transform.position, Quaternion.identity);
-            Destroyed?.Invoke(this.transform);
-            DestroyImmediate(gameObject);
+            Destroyed?.Invoke(transform.parent);
+            
+            //DestroyImmediate(gameObject);
+            gameObject.SetActive(false);
             //_particleOfDestroy.Play();
         }
     }
