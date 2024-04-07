@@ -12,8 +12,9 @@ namespace Assets.Scripts.BuildingSystem
     internal abstract class Building : MonoBehaviour, IDamageable
     {
         [SerializeField] private ParticleSystem _particleOfDestroy;
+        [SerializeField] private ParticleSystem _particleOfCreate;
 
-       
+
 
         public int IndexOfBuilding;
 
@@ -33,6 +34,7 @@ namespace Assets.Scripts.BuildingSystem
         private void Start()
         {
             _audiosourseOfCreation.Play();
+            _particleOfCreate.Play();
         }
 
         public void TakeDamage(float damage)
