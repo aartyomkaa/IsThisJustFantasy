@@ -27,7 +27,7 @@ namespace Assets.Scripts.PlayerInput
 
         private void OnEnable()
         {
-            gameObject.SetActive(Device.IsMobile);
+            //gameObject.SetActive(Device.IsMobile);
 
             _worldPointFinder = new WorldPointFinder(_ground);
 

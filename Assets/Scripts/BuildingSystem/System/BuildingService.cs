@@ -15,7 +15,6 @@ namespace Assets.Scripts.BuildingSystem.System
         [SerializeField] private Barracks _barracks;
         [SerializeField] private ResoorceBuilding _resoorceBuilding;
 
-
         private Transform _currentPlayersTransform;
         private PlayerWallet _currentPlayersWallet;
         private int _currentCostToBuild;

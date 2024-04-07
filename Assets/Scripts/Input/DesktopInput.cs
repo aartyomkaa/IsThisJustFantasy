@@ -24,7 +24,10 @@ namespace Assets.Scripts.PlayerInput
             _inputActions = new InputActions();
             _inputActions.Enable();
 
+
             Cursor.visible = true;
+
+            gameObject.SetActive(false);
 
             _worldPointFinder = new WorldPointFinder(_ground);
 

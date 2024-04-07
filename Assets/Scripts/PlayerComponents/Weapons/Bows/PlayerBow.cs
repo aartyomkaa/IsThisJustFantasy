@@ -72,6 +72,7 @@ namespace Assets.Scripts.PlayerComponents.Weapons
             Arrow arrow = _pool.GetArrow();
 
             arrow.transform.position = _shootPoint.position;
+            arrow.transform.parent = null;
             arrow.Fly(_closestTarget.Transform);
 
             yield return new WaitForSeconds(_animationOffset);

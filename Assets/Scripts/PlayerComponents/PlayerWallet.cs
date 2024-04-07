@@ -20,16 +20,12 @@ namespace Assets.Scripts.PlayerComponents
             if (_coins >= amount)
             {
                 _coins -= amount;
-
-                Debug.Log("Монет стало меньше, теперь вот сколько - " + _coins);
             }
         }
 
         public void AddCoins(int amount)
         {
             _coins += amount;
-
-            Debug.Log("Монет стало больше, теперь вот сколько - " + _coins);
         }   
     }
 }
