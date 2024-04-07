@@ -271,8 +271,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleOfDestroy: {fileID: 198085798176871954, guid: 0d5fa37d01d5dd2438b02c98b1a78ef5, type: 3}
+  _strength: 100
   IndexOfBuilding: 3
-  Strength: 200
   _audiosourseOfCreation: {fileID: 0}
   _chestSpawnPoints: []
   _prefabOfChest: {fileID: 6472579799652719637, guid: 4605d85942dc7964caee25f9377b9a9b, type: 3}

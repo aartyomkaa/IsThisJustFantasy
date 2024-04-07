@@ -218,9 +218,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleOfDestroy: {fileID: 0}
-  _particleOfCreate: {fileID: 0}
+  _strength: 50
   IndexOfBuilding: 1
-  Strength: 70
   _audiosourseOfCreation: {fileID: 0}
 --- !u!95 &2482931808722549246
 Animator:

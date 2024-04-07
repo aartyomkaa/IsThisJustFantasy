@@ -12,10 +12,14 @@ namespace Assets.Scripts.BuildingSystem
     internal abstract class Building : MonoBehaviour, IDamageable
     {
         [SerializeField] private ParticleSystem _particleOfDestroy;
+        [SerializeField] private float _strength;
 
         public int IndexOfBuilding;
+       
+        private float _startStrength;
+      
 
-        public float Strength;
+        
         
         public AudioSource _audiosourseOfCreation;
         
@@ -31,17 +35,23 @@ namespace Assets.Scripts.BuildingSystem
         private void Start()
         {
             _audiosourseOfCreation.Play();
+            _startStrength = _strength;
+        }
+
+        private void RefreshStrength()
+        {
+            _strength = _startStrength;
         }
 
         public void TakeDamage(float damage)
         {
-            if (Strength > 0 && damage > 0)
+            if (_strength > 0 && damage > 0)
             {
-                Strength -= damage;
+                _strength -= damage;
 
-                if (Strength <= 0)
+                if (_strength <= 0)
                 {
-                    Destroy();
+                    Destroy();       
                 }
             }
         }
@@ -53,6 +63,7 @@ namespace Assets.Scripts.BuildingSystem
             
             //DestroyImmediate(gameObject);
             gameObject.SetActive(false);
+            RefreshStrength();
             //_particleOfDestroy.Play();
         }
     }

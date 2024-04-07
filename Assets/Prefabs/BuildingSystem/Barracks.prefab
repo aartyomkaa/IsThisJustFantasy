@@ -185,9 +185,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleOfDestroy: {fileID: 0}
-  _particleOfCreate: {fileID: 0}
+  _strength: 100
   IndexOfBuilding: 2
-  Strength: 100
   _audiosourseOfCreation: {fileID: 0}
   _unitsFactory: {fileID: 6468344224010567201}
 --- !u!95 &1054973193750157762
