@@ -29,9 +29,9 @@ namespace Assets.Scripts.PlayerComponents.Weapons
                 {
                     StopCoroutine(_flying);
                 }
-            }
 
-            gameObject.SetActive(false);
+                gameObject.SetActive(false);
+            }
         }
 
         public void Fly(Transform target)
@@ -52,12 +52,12 @@ namespace Assets.Scripts.PlayerComponents.Weapons
 
         private IEnumerator Flying(Transform target)
         {
-            while(target != null && Vector3.Distance(transform.position, target.position) > 0.1f)
-            {
-                transform.position = Vector3.MoveTowards(transform.position, target.position + Vector3.down, _speed * Time.deltaTime);
+            Vector3 relativePosition = target.position - transform.position;
+            transform.rotation = Quaternion.LookRotation(relativePosition, Vector3.up);
 
-                Vector3 relativePosition = target.position - transform.position;
-                transform.rotation = Quaternion.LookRotation(relativePosition, Vector3.up);
+            while (target != null && Vector3.Distance(transform.position, target.position) > 0.1f)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, target.position, _speed * Time.deltaTime);
 
                 yield return null;
             }

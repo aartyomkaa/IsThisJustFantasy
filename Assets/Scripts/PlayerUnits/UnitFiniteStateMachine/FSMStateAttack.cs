@@ -18,7 +18,7 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
 
         public override void Update()
         {
-            if (FSM.Target != null)
+            if (FSM.Target != null && FSM.Target.Transform.gameObject.activeSelf)
             {
                 if (NeedChaseEnemy())
                 {
@@ -37,9 +37,6 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
 
         private bool NeedChaseEnemy()
         {
-            if (FSM.Target == null)
-                return false;
-
             _distance = Vector3.Distance(Unit.Transform.position, FSM.Target.Transform.position);
 
             if (_distance > Data.AttackRange)

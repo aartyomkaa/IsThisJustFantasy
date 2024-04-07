@@ -796,10 +796,9 @@ MonoBehaviour:
   - {fileID: 9074764247227950738}
   - {fileID: 2812336141036345646}
   - {fileID: 5500343932206590589}
-  _buildings:
-  - {fileID: -1236911932528218677, guid: 2d156909b95bb724ba110d33774d6048, type: 3}
-  - {fileID: 6391643872984395748, guid: 76232895b08ca274694db13b2a3022ad, type: 3}
-  - {fileID: -5791194583978422223, guid: b5fd111384cc7da4e95f58d85921ac4e, type: 3}
+  _tower: {fileID: -5791194583978422223, guid: b5fd111384cc7da4e95f58d85921ac4e, type: 3}
+  _barracks: {fileID: -1236911932528218677, guid: 2d156909b95bb724ba110d33774d6048, type: 3}
+  _resoorceBuilding: {fileID: 6391643872984395748, guid: 76232895b08ca274694db13b2a3022ad, type: 3}
 --- !u!1 &4534882624351298770
 GameObject:
   m_ObjectHideFlags: 0
