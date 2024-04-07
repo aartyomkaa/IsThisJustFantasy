@@ -13,5 +13,10 @@ namespace Assets.Scripts.PlayerComponents
             _player = player;
             _player.transform.position = transform.position;
         }
+
+        private void Awake()
+        {
+            _player.transform.position = transform.position;
+        }
     }
 }
