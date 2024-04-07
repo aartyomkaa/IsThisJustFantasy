@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6da6b3aa0b0c1a449eeeb8e032da0b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _particleOfDestroy: {fileID: 0}
+  _particleOfDestroy: {fileID: 198085798176871954, guid: 0d5fa37d01d5dd2438b02c98b1a78ef5, type: 3}
   IndexOfBuilding: 3
   Strength: 200
   _audiosourseOfCreation: {fileID: 0}
