@@ -1,4 +1,5 @@
 using Assets.Scripts.BuildingSystem.Buildings;
+using Assets.Scripts.GameLogic;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -19,12 +20,16 @@ namespace Assets.Scripts.EnemyComponents
         private Coroutine _waveCoroutine;
         private int _spawnPointIndex;
 
+        public SceneSwitcher _sceneSwitcher;
+
         public event Action<float> WaveStarted;
 
         private void Start()
         {
-            _meleePool = new EnemyPool(_melee, _building);
-            _rangePool = new EnemyPool(_range, _building);
+            _meleePool = new EnemyPool(_melee, _building, transform);
+            _rangePool = new EnemyPool(_range, _building, transform);
+
+            _sceneSwitcher = new SceneSwitcher();
         }
 
         public void Update()
@@ -32,6 +37,11 @@ namespace Assets.Scripts.EnemyComponents
             if (Input.GetKeyDown(KeyCode.Space)) 
             {
                 StartWavee(0);
+            }
+
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                _sceneSwitcher.LoadScene("ArtjomScene");
             }
         }
 

@@ -13,8 +13,6 @@ namespace Assets.Scripts.BuildingSystem
     {
         [SerializeField] private ParticleSystem _particleOfDestroy;
 
-       
-
         public int IndexOfBuilding;
 
         public float Strength;
