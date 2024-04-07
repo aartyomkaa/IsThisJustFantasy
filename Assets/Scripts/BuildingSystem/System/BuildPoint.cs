@@ -14,6 +14,8 @@ namespace Assets.Scripts.BuildingSystem
 
         private bool _isOccupied;
         private int speedOfRotateVisualObject = 200;
+        private Building _currentBuilding;
+        private int _numberToSetRaiseValue = 5;
 
         public Transform SpotToPlaceBuilding => _spotToPlaceBuilding;
         public int BuildingPointIndex => _buildingPointIndex;
@@ -34,14 +36,19 @@ namespace Assets.Scripts.BuildingSystem
             _iconOfBuildPoint.transform.Rotate(0, speedOfRotateVisualObject * Time.deltaTime, 0);
         }
 
-        private void OnEnable()
+        private void RaiseCostForNextBuilding()
         {
-            Building.Destroyed += FreeSpotToBuild;
+
+            int valueToRaise = _costToBuild / _numberToSetRaiseValue;
+            _costToBuild += valueToRaise;
         }
 
         private void OnDisable()
         {
-            Building.Destroyed -= FreeSpotToBuild;
+           if(_currentBuilding != null)
+            {
+                _currentBuilding.Destroyed -= FreeSpotToBuild;
+            }  
         }
 
         private void OnTriggerEnter(Collider other)
@@ -51,27 +58,17 @@ namespace Assets.Scripts.BuildingSystem
                 if (_isOccupied == false) 
                 {
                     PlayerWentIn?.Invoke(transform, player.Wallet);   
-                    Debug.Log("Сейчас монет вот сколько - " + player.Wallet.Coins);
                 }
             }
         }
 
-        private void FreeSpotToBuild(Transform buidingTransform)
-        {
-            if (_isOccupied == true && buidingTransform.position == _spotToPlaceBuilding.position)
-            {
-                _isOccupied = false;
-                ActiveIconOfBuildPoint();
-            }
-        }
+       
 
         private void OnTriggerExit(Collider other)
         {
             if (other != null && other.gameObject.TryGetComponent(out Player player))
             {
-               // _currentPlayerCoins = player.Wallet.Coins;
-                PlayerWentOut?.Invoke(player.Wallet);
-                
+                PlayerWentOut?.Invoke(player.Wallet);     
             }
         }
 
@@ -80,6 +77,30 @@ namespace Assets.Scripts.BuildingSystem
             _isOccupied = true;
         }
 
+        public void SignToCurrentBuilding(Building biulding)
+        {
+            _currentBuilding = biulding;
+
+            if (_isOccupied == true && _currentBuilding.Transform.parent.position == _spotToPlaceBuilding.position) 
+            {
+                
+
+                _currentBuilding.Destroyed += FreeSpotToBuild;
+            }
+                
+        }
+
+        private void FreeSpotToBuild(Transform buidingTransform)
+        {
+
+            if (_isOccupied == true && buidingTransform.position == _spotToPlaceBuilding.position) 
+            {     
+                _isOccupied = false;
+                ActiveIconOfBuildPoint();
+                RaiseCostForNextBuilding();
+            }
+        }
+       
         public void ActiveIconOfBuildPoint()
         {
             _iconOfBuildPoint.SetActive(true);

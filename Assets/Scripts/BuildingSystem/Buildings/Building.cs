@@ -21,7 +21,7 @@ namespace Assets.Scripts.BuildingSystem
         
         public Transform Transform => transform;
 
-        public static Action<Transform> Destroyed;
+        public Action<Transform> Destroyed;
 
         private void Awake()
         {
@@ -49,9 +49,11 @@ namespace Assets.Scripts.BuildingSystem
         protected void Destroy()
         {
             //Instantiate(EffectOfDestroying, transform.position, Quaternion.identity);
-            Destroyed?.Invoke(this.transform);
-            DestroyImmediate(gameObject);
-            _particleOfDestroy.Play();
+            Destroyed?.Invoke(transform.parent);
+            
+            //DestroyImmediate(gameObject);
+            gameObject.SetActive(false);
+            //_particleOfDestroy.Play();
         }
     }
 }

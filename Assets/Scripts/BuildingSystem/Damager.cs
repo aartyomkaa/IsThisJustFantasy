@@ -6,7 +6,7 @@ namespace Assets.Scripts.BuildingSystem
     {
         public void GiveDamage(Building building)
         {
-            building.TakeDamage(5);
+            building.TakeDamage(50);
         }
     }
 }
