@@ -24,10 +24,11 @@ namespace Assets.Scripts.PlayerInput
             _inputActions = new InputActions();
             _inputActions.Enable();
 
-
             Cursor.visible = true;
 
-            gameObject.SetActive(false);
+#if UNITY_WEBGL && !UNITY_EDITOR
+            gameObject.SetActive(!Device.IsMobile);
+#endif
 
             _worldPointFinder = new WorldPointFinder(_ground);
 

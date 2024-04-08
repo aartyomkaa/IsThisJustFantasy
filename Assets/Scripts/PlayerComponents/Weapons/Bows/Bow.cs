@@ -12,7 +12,7 @@ namespace Assets.Scripts.PlayerComponents.Weapons.Bows
 
         private void Start()
         {
-            _pool = new ArrowsPool(_arrowPrefab, Damage, _layerMask, transform);
+            _pool = new ArrowsPool(_arrowPrefab, Damage, _layerMask);
         }
 
         public void Attack(IDamageable target)
@@ -20,7 +20,7 @@ namespace Assets.Scripts.PlayerComponents.Weapons.Bows
             Arrow arrow = _pool.GetArrow();
 
             arrow.transform.position = _shootPoint.position;
-            arrow.Fly(target.Transform);
+            arrow.Fly(target.Transform.position + Vector3.up);
         }
     }
 }

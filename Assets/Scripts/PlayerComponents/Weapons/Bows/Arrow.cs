@@ -34,14 +34,14 @@ namespace Assets.Scripts.PlayerComponents.Weapons
             }
         }
 
-        public void Fly(Transform target)
+        public void Fly(Vector3 targetPosition)
         {
             if (_flying != null)
             {
                 StopCoroutine(_flying);
             }
 
-            _flying = StartCoroutine(Flying(target));
+            _flying = StartCoroutine(Flying(targetPosition));
         }
 
         public void Init(float damage, LayerMask targetMask)
@@ -50,14 +50,14 @@ namespace Assets.Scripts.PlayerComponents.Weapons
             _layerMask = targetMask;
         }
 
-        private IEnumerator Flying(Transform target)
+        private IEnumerator Flying(Vector3 targetPosition)
         {
-            Vector3 relativePosition = target.position - transform.position;
+            Vector3 relativePosition = targetPosition - transform.position;
             transform.rotation = Quaternion.LookRotation(relativePosition, Vector3.up);
 
-            while (target != null && Vector3.Distance(transform.position, target.position) > 0.1f)
+            while (targetPosition != null && Vector3.Distance(transform.position, targetPosition) > 0.1f)
             {
-                transform.position = Vector3.MoveTowards(transform.position, target.position, _speed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, targetPosition, _speed * Time.deltaTime);
 
                 yield return null;
             }

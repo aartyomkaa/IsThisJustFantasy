@@ -1684,12 +1684,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 268537361354957356}
     m_Modifications:
     - target: {fileID: 799245096286778214, guid: af0c284f177ab7e40a8d439c8f91585b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.122
+      objectReference: {fileID: 0}
+    - target: {fileID: 799245096286778214, guid: af0c284f177ab7e40a8d439c8f91585b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.383
+      value: 0.066
       objectReference: {fileID: 0}
     - target: {fileID: 799245096286778214, guid: af0c284f177ab7e40a8d439c8f91585b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.645
+      value: 1.028
       objectReference: {fileID: 0}
     - target: {fileID: 3454314672767336819, guid: af0c284f177ab7e40a8d439c8f91585b, type: 3}
       propertyPath: _shootPoint
@@ -1738,6 +1742,10 @@ PrefabInstance:
     - target: {fileID: 5427856747089275036, guid: af0c284f177ab7e40a8d439c8f91585b, type: 3}
       propertyPath: m_Name
       value: Bow
+      objectReference: {fileID: 0}
+    - target: {fileID: 6677658714440505604, guid: af0c284f177ab7e40a8d439c8f91585b, type: 3}
+      propertyPath: m_Name
+      value: ShootPoint
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
