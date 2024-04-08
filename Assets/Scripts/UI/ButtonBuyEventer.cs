@@ -24,7 +24,6 @@ namespace Assets.Scripts.UI
             {
                 _isPlayerIn = true;
                 PlayerWentIn?.Invoke(_buttonIndex, player.Wallet, _costToBuy, _isPlayerIn);
-                Debug.Log("Сейчас монет вот сколько - " + player.Wallet.Coins);
             }
         }
 

@@ -22,7 +22,7 @@ namespace Assets.Scripts.Yandex
 
         private void OnInitialized()
         {
-            SceneManager.LoadScene("StudyLevel");
+            SceneManager.LoadScene("Level1 TEST");
         }
     }
 }

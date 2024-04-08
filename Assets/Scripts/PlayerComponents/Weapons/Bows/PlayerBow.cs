@@ -24,7 +24,7 @@ namespace Assets.Scripts.PlayerComponents.Weapons
         private void Start()
         {
             _closestTargetFinder = new ClosestTargetFinder(_radius, _layerMask);
-            _pool = new ArrowsPool(_arrowPrefab, Damage, _layerMask, transform);
+            _pool = new ArrowsPool(_arrowPrefab, Damage, _layerMask);
 
             _mark.Init();
         }
@@ -72,8 +72,7 @@ namespace Assets.Scripts.PlayerComponents.Weapons
             Arrow arrow = _pool.GetArrow();
 
             arrow.transform.position = _shootPoint.position;
-            arrow.transform.parent = null;
-            arrow.Fly(_closestTarget.Transform);
+            arrow.Fly(_closestTarget.Transform.position);
 
             yield return new WaitForSeconds(_animationOffset);
 

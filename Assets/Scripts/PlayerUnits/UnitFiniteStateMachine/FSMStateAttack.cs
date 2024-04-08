@@ -26,6 +26,7 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
                 }
                 else
                 {
+                    RotateTowards(FSM.Target.Transform.position);
                     Attack();
                 }
             }
@@ -47,6 +48,8 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
 
         private void Attack()
         {
+            
+
             _timePast += Time.deltaTime;
 
             if (_timePast >= Data.AttackSpeed)
@@ -60,6 +63,14 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
 
                 _timePast = 0;
             }
+        }
+
+        private void RotateTowards(Vector3 targetPosition)
+        {
+            Vector3 directionToTarget = targetPosition - Unit.Transform.position;
+            Quaternion targetRotation = Quaternion.LookRotation(directionToTarget, Vector3.up);
+
+            Unit.Transform.rotation = Quaternion.Slerp(Unit.Transform.rotation, targetRotation, Time.fixedDeltaTime);
         }
     }
 }

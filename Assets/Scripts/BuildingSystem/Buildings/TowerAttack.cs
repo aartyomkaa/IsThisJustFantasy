@@ -29,7 +29,7 @@ namespace Assets.Scripts.BuildingSystem
 
         private void Awake()
         {
-            _poolOfArrows = new ArrowsPool(_arrowPrefab, _damage, _targetlayerMask, transform);
+            _poolOfArrows = new ArrowsPool(_arrowPrefab, _damage, _targetlayerMask);
         }
 
         private void Update()
@@ -56,7 +56,7 @@ namespace Assets.Scripts.BuildingSystem
         {
             Arrow arrow = _poolOfArrows.GetArrow();
             arrow.transform.position = _shootPoint.position;
-            arrow.Fly(_targets.First());
+            arrow.Fly(_targets.First().position);
         }
 
         private void CleanTargets(List<Transform> targets)

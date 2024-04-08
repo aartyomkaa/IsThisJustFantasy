@@ -1,4 +1,5 @@
 ﻿using Agava.WebUtility;
+using Agava.YandexGames;
 using Assets.Scripts.GameLogic.Utilities;
 using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.PlayerUnits;
@@ -27,7 +28,10 @@ namespace Assets.Scripts.PlayerInput
 
         private void OnEnable()
         {
-            //gameObject.SetActive(Device.IsMobile);
+#if UNITY_WEBGL && !UNITY_EDITOR
+            YandexGamesSdk.GameReady();
+            gameObject.SetActive(Device.IsMobile);
+#endif
 
             _worldPointFinder = new WorldPointFinder(_ground);
 

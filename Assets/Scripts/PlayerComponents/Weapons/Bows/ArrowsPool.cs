@@ -11,13 +11,13 @@ namespace Assets.Scripts.PlayerComponents.Weapons.Bows
         private float _arrowDamage;
         private int _capacity = 10;
 
-        public ArrowsPool(Arrow arrowPrefab, float arrowDamage, LayerMask targetMask, Transform parent) 
+        public ArrowsPool(Arrow arrowPrefab, float arrowDamage, LayerMask targetMask) 
         {
             _arrowPrefab = arrowPrefab;
             _arrowDamage = arrowDamage;
             _mask = targetMask;
 
-            _pool = CreateArrows(parent);
+            _pool = CreateArrows();
         }
 
         public Arrow GetArrow()
@@ -35,13 +35,13 @@ namespace Assets.Scripts.PlayerComponents.Weapons.Bows
             throw new System.Exception("Not enough Arrows in The pool!!!");
         }
 
-        private Arrow[] CreateArrows(Transform parent)
+        private Arrow[] CreateArrows()
         {
             Arrow[] pool = new Arrow[_capacity];
 
             for (int i = 0; i < _capacity; i++) 
             { 
-                Arrow arrow = GameObject.Instantiate(_arrowPrefab, parent);
+                Arrow arrow = GameObject.Instantiate(_arrowPrefab);
                 arrow.Init(_arrowDamage, _mask);
                 arrow.gameObject.SetActive(false);
                 pool[i] = arrow;
