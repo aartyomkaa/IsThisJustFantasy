@@ -2,7 +2,6 @@ using UnityEngine;
 using Assets.Scripts.PlayerComponents;
 using System;
 
-
 namespace Assets.Scripts.BuildingSystem
 {
     internal class BuildPoint : MonoBehaviour
@@ -62,8 +61,6 @@ namespace Assets.Scripts.BuildingSystem
             }
         }
 
-       
-
         private void OnTriggerExit(Collider other)
         {
             if (other != null && other.gameObject.TryGetComponent(out Player player))
@@ -83,16 +80,12 @@ namespace Assets.Scripts.BuildingSystem
 
             if (_isOccupied == true && _currentBuilding.Transform.parent.position == _spotToPlaceBuilding.position) 
             {
-                
-
                 _currentBuilding.Destroyed += FreeSpotToBuild;
-            }
-                
+            }           
         }
 
         private void FreeSpotToBuild(Transform buidingTransform)
         {
-
             if (_isOccupied == true && buidingTransform.position == _spotToPlaceBuilding.position) 
             {     
                 _isOccupied = false;

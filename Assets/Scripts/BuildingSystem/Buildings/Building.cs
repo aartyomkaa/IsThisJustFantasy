@@ -56,6 +56,8 @@ namespace Assets.Scripts.BuildingSystem
             }
         }
 
+       
+
         protected void Destroy()
         {
             //Instantiate(EffectOfDestroying, transform.position, Quaternion.identity);

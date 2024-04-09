@@ -1,7 +1,7 @@
 using Assets.Scripts.BuildingSystem.Buildings;
 using Assets.Scripts.Constants;
+using Assets.Scripts.Props.Chest;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -36,7 +36,7 @@ namespace Assets.Scripts.BuildingSystem.System
         private void CreateBarracks(Barracks barracks)
         {
             _barracks = GameObject.Instantiate(barracks);
-            _barracks.gameObject.SetActive(false);
+            _barracks.gameObject.SetActive(false);     
         }
 
         private void CreateResoorceBuilding(ResoorceBuilding resoorceBuilding)
@@ -45,7 +45,7 @@ namespace Assets.Scripts.BuildingSystem.System
             _resoorceBuilding.gameObject.SetActive(false);
         }
 
-        public Building GetBuilding(int buildingPointIndex)  
+        public Building GetBuilding(int buildingPointIndex, ChestSpawnerPointsContainer chestSpawnPoints)  
         {
             switch (buildingPointIndex) 
             {
@@ -56,11 +56,14 @@ namespace Assets.Scripts.BuildingSystem.System
                             if (tower.gameObject.activeSelf == false)
                             {
                                 tower.gameObject.SetActive(true);
-                                return tower;
+                                
+                            return tower;
                             }    
                     }   
                      break;
+               
                 case BuildingsHash.BarracksIndex:
+                    
                     if(_barracks.gameObject.activeSelf == false)
                     {
                         _barracks.gameObject.SetActive(true);
@@ -68,10 +71,13 @@ namespace Assets.Scripts.BuildingSystem.System
                     }
 
                     break;
+               
                 case BuildingsHash.ResoorceBuildingIndex:
+                   
                     if (_resoorceBuilding.gameObject.activeSelf == false)
                     {
                         _resoorceBuilding.gameObject.SetActive(true);
+                        _resoorceBuilding.SetChestsSpawnPoints(chestSpawnPoints);
                         return _resoorceBuilding;
                     }
                     break;
