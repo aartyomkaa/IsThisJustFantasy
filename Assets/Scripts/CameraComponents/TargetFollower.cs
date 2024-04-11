@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using Zenject;
 using Assets.Scripts.PlayerComponents;
 
 namespace Assets.Scripts.CameraComponents
@@ -18,14 +17,9 @@ namespace Assets.Scripts.CameraComponents
         [SerializeField] private float _offsetRotationX;
         [SerializeField] private float _offsetRotationZ;
 
-        private Player _player;
-        private int QuaternionWValue = 15;
+        private Transform _target;
 
-        [Inject]
-        private void Construct(Player player)
-        {
-            _player = player;
-        }
+        private int QuaternionWValue = 15;
        
         private void Start()
         {
@@ -38,11 +32,16 @@ namespace Assets.Scripts.CameraComponents
             SetRotation();
         }
 
+        public void Init(Transform tartget)
+        {
+            _target = tartget;
+        }
+
 
         private void SetPosition()
         {
-            transform.position = new Vector3(_player.transform.position.x + _offsetPositionX,
-                _player.transform.position.y + _offsetPositionY, _player.transform.position.z + _offsetPositionZ);
+            transform.position = new Vector3(_target.transform.position.x + _offsetPositionX,
+                _target.transform.position.y + _offsetPositionY, _target.transform.position.z + _offsetPositionZ);
         }
 
         private void SetRotation()

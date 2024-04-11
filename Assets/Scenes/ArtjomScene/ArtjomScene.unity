@@ -825,67 +825,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!1001 &827371497
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -1236911932528218677, guid: 2d156909b95bb724ba110d33774d6048, type: 3}
-      propertyPath: _barracksButton
-      value: 
-      objectReference: {fileID: 612369434}
-    - target: {fileID: 2364937444342173813, guid: 2d156909b95bb724ba110d33774d6048, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 32.202652
-      objectReference: {fileID: 0}
-    - target: {fileID: 2364937444342173813, guid: 2d156909b95bb724ba110d33774d6048, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.0000009536743
-      objectReference: {fileID: 0}
-    - target: {fileID: 2364937444342173813, guid: 2d156909b95bb724ba110d33774d6048, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 11.015433
-      objectReference: {fileID: 0}
-    - target: {fileID: 2364937444342173813, guid: 2d156909b95bb724ba110d33774d6048, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2364937444342173813, guid: 2d156909b95bb724ba110d33774d6048, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2364937444342173813, guid: 2d156909b95bb724ba110d33774d6048, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2364937444342173813, guid: 2d156909b95bb724ba110d33774d6048, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2364937444342173813, guid: 2d156909b95bb724ba110d33774d6048, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 2364937444342173813, guid: 2d156909b95bb724ba110d33774d6048, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 2364937444342173813, guid: 2d156909b95bb724ba110d33774d6048, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 4692487842577338964, guid: 2d156909b95bb724ba110d33774d6048, type: 3}
-      propertyPath: m_Name
-      value: Barracks
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2d156909b95bb724ba110d33774d6048, type: 3}
 --- !u!1 &852616806
 GameObject:
   m_ObjectHideFlags: 0
@@ -897,7 +836,7 @@ GameObject:
   - component: {fileID: 852616808}
   - component: {fileID: 852616807}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: PlayerInitializer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -915,6 +854,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44b32b139ad687047a29843acdc810d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 246054152294843149, guid: 393504f7d3743e24faa618876404812d, type: 3}
+  _targetFollower: {fileID: 1613880428}
+  _desktopInput: {fileID: 7767014089020145184, guid: ba64e974c8fe44847a99348e16c3f64c, type: 3}
+  _mobileInput: {fileID: 5832144339058954635, guid: 3903a6270cd3a7545b95508df2ff462e, type: 3}
 --- !u!4 &852616808
 Transform:
   m_ObjectHideFlags: 0
@@ -1199,69 +1142,6 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: b761e4dc7d7490b469c601fb5e941faf, type: 2}
   m_BuildHeightMesh: 0
---- !u!1 &1302625274
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1302625277}
-  - component: {fileID: 1302625276}
-  m_Layer: 0
-  m_Name: SceneContext
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1302625276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1302625274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89715ad69b973a14899afa2c6730b30b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _scriptableObjectInstallers: []
-  _monoInstallers: []
-  _installerPrefabs: []
-  _autoRun: 1
-  OnPreInstall:
-    m_PersistentCalls:
-      m_Calls: []
-  OnPostInstall:
-    m_PersistentCalls:
-      m_Calls: []
-  OnPreResolve:
-    m_PersistentCalls:
-      m_Calls: []
-  OnPostResolve:
-    m_PersistentCalls:
-      m_Calls: []
-  _parentNewObjectsUnderSceneContext: 0
-  _contractNames: []
-  _parentContractNames: []
---- !u!4 &1302625277
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1302625274}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1352080875
 GameObject:
   m_ObjectHideFlags: 0
@@ -1845,7 +1725,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 1613880426}
+  m_Camera: {fileID: 0}
   m_PlaneDistance: 5
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -2620,7 +2500,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 1613880427}
   - {fileID: 1352080877}
-  - {fileID: 1302625277}
   - {fileID: 1494264000}
   - {fileID: 1588208730}
   - {fileID: 1182600477}
@@ -2630,6 +2509,5 @@ SceneRoots:
   - {fileID: 620524729}
   - {fileID: 1233258346}
   - {fileID: 1205226594}
-  - {fileID: 827371497}
   - {fileID: 1911999625}
   - {fileID: 852616808}

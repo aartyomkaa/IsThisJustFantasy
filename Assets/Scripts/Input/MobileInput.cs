@@ -5,7 +5,6 @@ using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.PlayerUnits;
 using UnityEngine;
 using UnityEngine.UI;
-using Zenject;
 
 namespace Assets.Scripts.PlayerInput
 {
@@ -25,19 +24,6 @@ namespace Assets.Scripts.PlayerInput
 
         private float _doubleTapThreshold = 0.5f;
         private float _lastTapTime;
-
-        private void OnEnable()
-        {
-#if UNITY_WEBGL && !UNITY_EDITOR
-            YandexGamesSdk.GameReady();
-            gameObject.SetActive(Device.IsMobile);
-#endif
-
-            _worldPointFinder = new WorldPointFinder(_ground);
-
-            _attack.onClick.AddListener(OnAttackInput);
-            _changeWeapon.onClick.AddListener(OnChangeWeaponInput);
-        }
 
         private void FixedUpdate()
         {
@@ -72,6 +58,17 @@ namespace Assets.Scripts.PlayerInput
             _changeWeapon.onClick.RemoveListener(OnChangeWeaponInput);
         }
 
+        public void Init(Player player)
+        {
+            _playerMover = player.GetComponent<PlayerMovement>();
+            _playerAttacker = player.GetComponent<PlayerAttacker>();
+
+            _worldPointFinder = new WorldPointFinder(_ground);
+
+            _attack.onClick.AddListener(OnAttackInput);
+            _changeWeapon.onClick.AddListener(OnChangeWeaponInput);
+        }
+
         private void OnMoveInput(Vector2 direction)
         {
             _playerMover.Move(direction);
@@ -90,13 +87,6 @@ namespace Assets.Scripts.PlayerInput
         private void OnMoveUnits(Vector3 position)
         {
             _selectedUnitsHandler.MoveUnits(position);
-        }
-
-        [Inject]
-        private void Construct(PlayerMovement movement, PlayerAttacker attacker)
-        {
-            _playerMover = movement;
-            _playerAttacker = attacker;
         }
     }
 }

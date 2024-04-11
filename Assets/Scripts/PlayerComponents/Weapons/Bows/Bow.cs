@@ -20,7 +20,7 @@ namespace Assets.Scripts.PlayerComponents.Weapons.Bows
             Arrow arrow = _pool.GetArrow();
 
             arrow.transform.position = _shootPoint.position;
-            arrow.Fly(target.Transform.position + Vector3.up);
+            arrow.Fly(target.Transform);
         }
     }
 }

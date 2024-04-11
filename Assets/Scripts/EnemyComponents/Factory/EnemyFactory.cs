@@ -1,4 +1,5 @@
 using Assets.Scripts.BuildingSystem.Buildings;
+using Assets.Scripts.Constants;
 using Assets.Scripts.GameLogic;
 using System;
 using System.Collections;
@@ -14,7 +15,8 @@ namespace Assets.Scripts.EnemyComponents
         [SerializeField] private EnemyData _range;
         [SerializeField] private EnemyData _melee;
         [SerializeField] private MainBuilding _building;
-        [SerializeField] private Button _start;
+        //[SerializeField] private Button _start;
+        [SerializeField] private SceneLoader _sceneSwitcher;
 
         private EnemyPool _meleePool;
         private EnemyPool _rangePool;
@@ -27,7 +29,7 @@ namespace Assets.Scripts.EnemyComponents
 
         private void OnEnable()
         {
-            _start.onClick.AddListener(StartWave);
+            //_start.onClick.AddListener(StartWave);
         }
 
         private void Start()
@@ -36,22 +38,22 @@ namespace Assets.Scripts.EnemyComponents
             _rangePool = new EnemyPool(_range, _building, transform);
         }
 
-        //public void Update()
-        //{
-        //    if (Input.GetKeyDown(KeyCode.Space)) 
-        //    {
-        //        StartWavee(0);
-        //    }
-
-        //    if (Input.GetKeyDown(KeyCode.LeftShift))
-        //    {
-        //        _sceneSwitcher.LoadScene("ArtjomScene");
-        //    }
-        //}
+        public void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                _sceneSwitcher.LoadScene(SceneNames.Level2);
+            }  
+            
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                StartWave();
+            }
+        }
 
         private void OnDisable()
         {
-            _start.onClick.RemoveListener(StartWave);
+            //_start.onClick.RemoveListener(StartWave);
         }
 
         public void StartWave()
@@ -82,8 +84,7 @@ namespace Assets.Scripts.EnemyComponents
 
         private IEnumerator SpawnWave(Wave wave)
         {
-            float waitSeconds = wave.SpawnDelay;
-            var waitForSec = new WaitForSeconds(waitSeconds);
+            var waitForSec = new WaitForSeconds(wave.SpawnDelay);
 
             for (int i = 0; i < wave.MeleeAmount; i++)
             {

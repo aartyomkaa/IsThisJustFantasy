@@ -1,18 +1,21 @@
 ﻿using UnityEngine;
 using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.PlayerComponents.Weapons;
-using Zenject;
 
 namespace Assets.Scripts.AnimatorScripts.Player
 {
     internal class PlayerBowAttack : StateMachineBehaviour
     {
+        [SerializeField] private Mark _mark;
+
         private PlayerMovement _movement;
-        private Mark _mark;
         private Vector3 _rotationOffset = new Vector3(0, 75, 0);
 
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
+            if (_movement == null)
+                _movement = animator.gameObject.GetComponent<PlayerMovement>();
+
             _movement.StopMove();
         }
 
@@ -24,13 +27,6 @@ namespace Assets.Scripts.AnimatorScripts.Player
         public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             _movement.StartMove();
-        }
-
-        [Inject]
-        private void Construct(PlayerMovement movement, Mark mark)
-        {
-            _movement = movement;
-            _mark = mark;
         }
     }
 }
