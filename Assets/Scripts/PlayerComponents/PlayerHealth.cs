@@ -17,7 +17,7 @@ namespace Assets.Scripts.PlayerComponents
 
         public Transform Transform => transform;
 
-        public Action<float> ValueChanged;
+        public event Action<float> ValueChanged;
 
         private void Start()
         {
@@ -29,6 +29,7 @@ namespace Assets.Scripts.PlayerComponents
         {
             if (_canTakeDamage)
                 _value -= damage;
+
             ValueChanged?.Invoke(_value);
 
             if (_value <= 0)

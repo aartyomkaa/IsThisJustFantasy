@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
 
 namespace Assets.Scripts.PlayerComponents
 {
@@ -10,7 +8,7 @@ namespace Assets.Scripts.PlayerComponents
 
         public int Coins => _coins;
 
-        public Action<int> CoinsChanged;
+        public event Action<int> CoinsChanged;
 
         public void SpendCoins(int amount)
         {

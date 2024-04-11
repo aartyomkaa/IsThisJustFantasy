@@ -7,7 +7,6 @@ namespace Assets.Scripts.UI
 {
     internal class PlayerUI : MonoBehaviour
     {
-
         private PlayerHealth _currentplayerHealth;
         private PlayerWallet _currentplayerWallet;
 
@@ -15,8 +14,9 @@ namespace Assets.Scripts.UI
         {
             _currentplayerHealth = health;
             _currentplayerWallet = coins;
+
             _currentplayerHealth.ValueChanged += OnHealthChanged;
-            //_currentplayerWallet.CoinsChanged += OnCoinsChanged;
+            _currentplayerWallet.CoinsChanged += OnCoinsChanged;
         }
 
         private void OnDisable()

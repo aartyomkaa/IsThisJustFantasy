@@ -5,7 +5,6 @@ using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 using Assets.Scripts.GameLogic.Interfaces;
 using Agava.WebUtility;
-using System;
 using Assets.Scripts.UI;
 
 namespace Assets.Scripts.PlayerComponents
@@ -17,10 +16,6 @@ namespace Assets.Scripts.PlayerComponents
         [SerializeField] private DesktopInput _desktopInput;
         [SerializeField] private MobileInput _mobileInput;
         [SerializeField] private PlayerUI _playerUI;
-
-        private PlayerHealth _currentPlayerHealth;
-        private PlayerWallet _currentPlayerWallet;
-
 
         private void OnEnable()
         {
@@ -34,15 +29,26 @@ namespace Assets.Scripts.PlayerComponents
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
+            Player player = InitializePlayer();
+
+            InitializeInput(player);
+            InitializeUI(player);
+        }
+
+        private Player InitializePlayer()
+        {
             Player player = Instantiate(_player);
+            NavMeshAgent agent = player.GetComponent<NavMeshAgent>();
+
             _targetFollower.Init(player.transform);
-            _currentPlayerHealth = player.GetComponent<PlayerHealth>();
-            _currentPlayerWallet = player.Wallet;
-            _playerUI.SignToPlayersValuesChanges(_currentPlayerHealth, _currentPlayerWallet);
+            agent.Warp(transform.position);
 
-           
+            return player;
+        }
 
-//#if UNITY_WEBGL && !UNITY_EDITOR
+        private void InitializeInput(Player player)
+        {
+            //#if UNITY_WEBGL && !UNITY_EDITOR
             if (1 == 2)
             {
                 MobileInput input = Instantiate(_mobileInput, transform);
@@ -53,10 +59,12 @@ namespace Assets.Scripts.PlayerComponents
                 DesktopInput input = Instantiate(_desktopInput, transform);
                 input.Init(player);
             }
-//#endif
+            //#endif
+        }
 
-            NavMeshAgent agent = player.GetComponent<NavMeshAgent>();
-            agent.Warp(transform.position);
+        private void InitializeUI(Player player)
+        {
+            _playerUI.SignToPlayersValuesChanges(player.GetComponent<PlayerHealth>(), player.Wallet);
         }
     }
 }
