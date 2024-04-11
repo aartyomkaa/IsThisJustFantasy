@@ -64,6 +64,7 @@ namespace Assets.Scripts.PlayerComponents.Weapons
         private IEnumerator AttackDelay(float attackSpeed)
         {
             Transform target = _closestTarget.Transform;
+
             _isOnCooldown = true;
 
             base.Attack();

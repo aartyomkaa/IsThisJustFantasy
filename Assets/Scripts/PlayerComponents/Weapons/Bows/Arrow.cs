@@ -12,6 +12,8 @@ namespace Assets.Scripts.PlayerComponents.Weapons
 
         private LayerMask _layerMask;
         private AudioSource _audiosourse;
+
+        private Vector3 _offset = Vector3.up + Vector3.up;
         private float _damage;
 
         private Coroutine _flying;
@@ -40,14 +42,14 @@ namespace Assets.Scripts.PlayerComponents.Weapons
             }
         }
 
-        public void Fly(Vector3 targetPosition)
+        public void Fly(Transform target)
         {
             if (_flying != null)
             {
                 StopCoroutine(_flying);
             }
 
-            _flying = StartCoroutine(Flying(targetPosition));
+            _flying = StartCoroutine(Flying(target));
             _audiosourse.Play();
         }
 
@@ -57,14 +59,14 @@ namespace Assets.Scripts.PlayerComponents.Weapons
             _layerMask = targetMask;
         }
 
-        private IEnumerator Flying(Vector3 targetPosition)
+        private IEnumerator Flying(Transform target)
         {
-            Vector3 relativePosition = targetPosition - transform.position;
-            transform.rotation = Quaternion.LookRotation(relativePosition, Vector3.up);
-
-            while (targetPosition != null && Vector3.Distance(transform.position, targetPosition) > 0.1f)
+            while (target != null && Vector3.Distance(transform.position, target.position) > 0.1f)
             {
-                transform.position = Vector3.MoveTowards(transform.position, targetPosition, _speed * Time.deltaTime);
+                Vector3 relativePosition = target.position - transform.position;
+
+                transform.rotation = Quaternion.LookRotation(relativePosition, Vector3.up);
+                transform.position = Vector3.MoveTowards(transform.position, target.position + _offset, _speed * Time.deltaTime);
 
                 yield return null;
             }
