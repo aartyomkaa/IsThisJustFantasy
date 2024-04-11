@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
-using Assets.Scripts.GameLogic.Damageable;
-using Assets.Scripts.PlayerComponents;
+using Assets.Scripts.GameLogic.Interfaces;
+
 
 namespace Assets.Scripts.BuildingSystem
 {
@@ -31,13 +31,17 @@ namespace Assets.Scripts.BuildingSystem
             _audiosourse = GetComponent<AudioSource>();
         }
 
-        private void Start()
+        private void OnEnable()
         {
-            if(_audiosourse.clip != null)
+            if (_audiosourse.clip != null)
             {
                 _audiosourse.Play();
             }
-           
+        }
+
+
+        private void Start()
+        {   
             _startStrength = _strength;
             SetScaleOfParticleOfDestroy();
         }

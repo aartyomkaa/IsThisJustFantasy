@@ -1,6 +1,6 @@
 using Assets.Scripts.BuildingSystem.Buildings;
 using Assets.Scripts.EnemyComponents;
-using Assets.Scripts.GameLogic.Damageable;
+using Assets.Scripts.GameLogic.Interfaces;
 using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.PlayerComponents.Weapons;
 using Assets.Scripts.PlayerComponents.Weapons.Bows;

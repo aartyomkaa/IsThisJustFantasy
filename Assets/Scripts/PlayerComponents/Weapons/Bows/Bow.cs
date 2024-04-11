@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.GameLogic.Damageable;
+﻿using Assets.Scripts.GameLogic.Interfaces;
 using UnityEngine;
 
 namespace Assets.Scripts.PlayerComponents.Weapons.Bows

@@ -10,22 +10,21 @@ namespace Assets.Scripts.PlayerComponents
 
         public int Coins => _coins;
 
-        public PlayerWallet() 
-        { 
-            //_coins = 1000;
-        }
+        public Action<int> CoinsChanged;
 
         public void SpendCoins(int amount)
         {
             if (_coins >= amount)
             {
                 _coins -= amount;
+                CoinsChanged?.Invoke(_coins);
             }
         }
 
         public void AddCoins(int amount)
         {
             _coins += amount;
+            CoinsChanged?.Invoke(_coins);
         }   
     }
 }

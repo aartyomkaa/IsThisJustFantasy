@@ -3,7 +3,10 @@ using Assets.Scripts.PlayerInput;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
+using Assets.Scripts.GameLogic.Interfaces;
 using Agava.WebUtility;
+using System;
+using Assets.Scripts.UI;
 
 namespace Assets.Scripts.PlayerComponents
 {
@@ -13,6 +16,11 @@ namespace Assets.Scripts.PlayerComponents
         [SerializeField] private TargetFollower _targetFollower;
         [SerializeField] private DesktopInput _desktopInput;
         [SerializeField] private MobileInput _mobileInput;
+        [SerializeField] private PlayerUI _playerUI;
+
+        private PlayerHealth _currentPlayerHealth;
+        private PlayerWallet _currentPlayerWallet;
+
 
         private void OnEnable()
         {
@@ -27,8 +35,12 @@ namespace Assets.Scripts.PlayerComponents
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
             Player player = Instantiate(_player);
-
             _targetFollower.Init(player.transform);
+            _currentPlayerHealth = player.GetComponent<PlayerHealth>();
+            _currentPlayerWallet = player.Wallet;
+            _playerUI.SignToPlayersValuesChanges(_currentPlayerHealth, _currentPlayerWallet);
+
+           
 
 //#if UNITY_WEBGL && !UNITY_EDITOR
             if (1 == 2)

@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using Assets.Scripts.GameLogic.Damageable;
+using Assets.Scripts.GameLogic.Interfaces;
 
 namespace Assets.Scripts.Sample
 {

@@ -1,5 +1,5 @@
 ﻿using Assets.Scripts.GameLogic;
-using Assets.Scripts.GameLogic.Damageable;
+using Assets.Scripts.GameLogic.Interfaces;
 using UnityEngine;
 using UnityEngine.AI;
 

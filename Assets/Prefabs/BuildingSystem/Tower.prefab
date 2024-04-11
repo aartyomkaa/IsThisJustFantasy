@@ -604,7 +604,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shootPoint: {fileID: 6724451649403741235}
-  _arrowPrefab: {fileID: 4237072780981311441, guid: de1b064d9c5b2f44ba91d1d031c16b43, type: 3}
+  _arrowPrefab: {fileID: 4306390963386993369, guid: a495a43c4ec10aa4c98ca79951eaacf3, type: 3}
   _delayOfShoot: 2
   _damage: 15
   _targetlayerMask:

@@ -1,5 +1,4 @@
 using Assets.Scripts.Constants;
-using Assets.Scripts.GameLogic.Damageable;
 using Assets.Scripts.PlayerComponents;
 using System.Collections;
 using System.Collections.Generic;

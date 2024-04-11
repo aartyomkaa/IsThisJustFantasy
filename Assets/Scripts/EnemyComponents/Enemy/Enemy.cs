@@ -1,7 +1,7 @@
 using Assets.Scripts.BuildingSystem.Buildings;
 using Assets.Scripts.Constants;
 using Assets.Scripts.GameLogic;
-using Assets.Scripts.GameLogic.Damageable;
+using Assets.Scripts.GameLogic.Interfaces;
 using Assets.Scripts.PlayerUnits.UnitFiniteStateMachine;
 using UnityEngine;
 using UnityEngine.AI;

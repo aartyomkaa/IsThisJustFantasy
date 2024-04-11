@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
-using Assets.Scripts.GameLogic.Damageable;
 using System.Collections;
+using Assets.Scripts.GameLogic.Interfaces;
+using System;
 
 namespace Assets.Scripts.PlayerComponents
 {
@@ -16,6 +17,8 @@ namespace Assets.Scripts.PlayerComponents
 
         public Transform Transform => transform;
 
+        public Action<float> ValueChanged;
+
         private void Start()
         {
             _value = _playerData.Health;
@@ -26,6 +29,7 @@ namespace Assets.Scripts.PlayerComponents
         {
             if (_canTakeDamage)
                 _value -= damage;
+            ValueChanged?.Invoke(_value);
 
             if (_value <= 0)
             {

@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.GameLogic.Damageable;
+﻿using Assets.Scripts.GameLogic.Interfaces;
 using System.Collections;
 using UnityEngine;
 
@@ -13,7 +13,8 @@ namespace Assets.Scripts.PlayerComponents.Weapons
         private LayerMask _layerMask;
         private AudioSource _audiosourse;
 
-        private Vector3 _offset = Vector3.up + Vector3.up;
+        //private Vector3 _offset = Vector3.up; 
+
         private float _damage;
 
         private Coroutine _flying;
@@ -66,7 +67,8 @@ namespace Assets.Scripts.PlayerComponents.Weapons
                 Vector3 relativePosition = target.position - transform.position;
 
                 transform.rotation = Quaternion.LookRotation(relativePosition, Vector3.up);
-                transform.position = Vector3.MoveTowards(transform.position, target.position + _offset, _speed * Time.deltaTime);
+               // transform.position = Vector3.MoveTowards(transform.position, target.position + _offset, _speed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, target.position, _speed * Time.deltaTime);
 
                 yield return null;
             }
