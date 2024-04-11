@@ -8,15 +8,19 @@ namespace Assets.Scripts.PlayerComponents
 {
     internal class PlayerAnimator : MonoBehaviour
     {
-        [SerializeField] private Animator _animator;
-
+        private Animator _animator;
         private AnimatorTriggerConfiguration _triggerConfig = new AnimatorTriggerConfiguration();
-
         private AnimatorClipInfo[] _currentClipInfo;
+
         private float _currentClipLength;
         private float _animationUpdateTime = 0.5f;
 
         private Coroutine _animatorUpdate;
+
+        private void Start()
+        {
+            _animator = GetComponent<Animator>();
+        }
 
         public void SetAnimatorSpeed(Vector3 movementVector, float moveSpeed)
         {
