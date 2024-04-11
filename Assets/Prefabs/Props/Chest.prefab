@@ -308,8 +308,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: b408bb8046d43bc4382718be23e4da57, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -407,3 +407,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _coins: 0
+  _particleOfGiveCoins: {fileID: 198662263970059650, guid: 2fc36faf2adcea4488dde332af279d4d, type: 3}

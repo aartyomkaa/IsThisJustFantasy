@@ -15,7 +15,6 @@ namespace Assets.Scripts.BuildingSystem
 
         public  Action<PlayerWallet> BuildButtonClicked;
 
-
         private void OnEnable()
         {
             _build.onClick.AddListener(OnBuildButtonClicked);         

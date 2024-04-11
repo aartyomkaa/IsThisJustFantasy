@@ -119,6 +119,7 @@ Transform:
   m_LocalScale: {x: 0.45, y: 0.4, z: 0.45}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 4720294941917349488}
   - {fileID: 4410137073265644184}
   - {fileID: 7105885320236737563}
   - {fileID: 247501085501964270}
@@ -235,10 +236,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba17c1020db7bd646a054359acdce012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _particleOfDestroy: {fileID: 0}
+  _particleOfDestroy: {fileID: 4793203275579310074, guid: 0fa135328e4e62440b1841ee18be5ce4, type: 3}
   _strength: 150
+  _valueOfScaleOfParticleOfDestroy: 3.5
+  _spotOfDestroyEffects: {fileID: 4720294941917349488}
   IndexOfBuilding: 0
-  _audiosourseOfCreation: {fileID: 0}
 --- !u!95 &2308016168629507532
 Animator:
   serializedVersion: 5
@@ -270,10 +272,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 74ff4bb5c04401c4cbb93e83b068b157, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: -1
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -346,7 +348,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.976
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -439,6 +441,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &6961291900133425068
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4720294941917349488}
+  m_Layer: 0
+  m_Name: SpotOfDestroyParticle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4720294941917349488
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6961291900133425068}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.06, y: 3, z: -6.78}
+  m_LocalScale: {x: 2.2222223, y: 2.5, z: 2.2222223}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7410638966486012694}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9010125431138812595
 GameObject:
   m_ObjectHideFlags: 0

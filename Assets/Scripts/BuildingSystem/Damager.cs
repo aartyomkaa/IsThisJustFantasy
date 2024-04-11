@@ -4,7 +4,9 @@ namespace Assets.Scripts.BuildingSystem
 {
     internal class Damager : MonoBehaviour
     {
-        public void GiveDamage(Building building)
+
+        
+        public void GiveDamage(Building building) 
         {
             building.TakeDamage(50);
         }

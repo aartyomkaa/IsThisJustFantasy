@@ -4,16 +4,22 @@ using UnityEngine;
 
 namespace Assets.Scripts.PlayerComponents.Weapons
 {
+    [RequireComponent(typeof(AudioSource))]
     internal class Arrow : MonoBehaviour
     {
         [SerializeField] private ParticleSystem _hitEffect;
         [SerializeField] private float _speed;
 
         private LayerMask _layerMask;
-
+        private AudioSource _audiosourse;
         private float _damage;
 
         private Coroutine _flying;
+
+        private void Awake()
+        {
+            _audiosourse = GetComponent<AudioSource>();
+        }
 
         private void OnTriggerEnter(Collider other)
         {   
@@ -42,6 +48,7 @@ namespace Assets.Scripts.PlayerComponents.Weapons
             }
 
             _flying = StartCoroutine(Flying(targetPosition));
+            _audiosourse.Play();
         }
 
         public void Init(float damage, LayerMask targetMask)
