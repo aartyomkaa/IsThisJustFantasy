@@ -3,12 +3,14 @@ using UnityEngine.AI;
 
 namespace Assets.Scripts.PlayerComponents
 {
+    [RequireComponent(typeof(NavMeshAgent))]
+    [RequireComponent(typeof(PlayerAnimator))]
     internal class PlayerMovement : MonoBehaviour
     {
         [SerializeField] private PlayerData _data;
 
-        private PlayerAnimator _animator;
         private NavMeshAgent _navMeshAgent;
+        private PlayerAnimator _animator;
 
         private bool _isAttacking;
 
@@ -20,13 +22,13 @@ namespace Assets.Scripts.PlayerComponents
 
         public void Move(Vector2 direction)
         {
-            Vector3 movementDIrection = new Vector3(direction.x, 0, direction.y);
-            Vector3 movePosition = transform.position + movementDIrection;
+            Vector3 movementDirection = new Vector3(direction.x, 0, direction.y);
+            Vector3 movePosition = transform.position + movementDirection;
 
             _navMeshAgent.speed = _isAttacking ? _data.AttackMoveSpeed : _data.Speed;
             _navMeshAgent.SetDestination(movePosition);
 
-            _animator.SetAnimatorSpeed(movementDIrection, _data.Speed);
+            _animator.SetAnimatorSpeed(movementDirection, _data.Speed);
         }
 
         public void StopMove()

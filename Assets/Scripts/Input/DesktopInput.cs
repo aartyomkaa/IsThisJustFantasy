@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using Zenject;
 using Agava.WebUtility;
 using Assets.Scripts.PlayerUnits;
 using Assets.Scripts.PlayerComponents;
@@ -19,24 +18,6 @@ namespace Assets.Scripts.PlayerInput
 
         private Vector2 _moveDirection;
 
-        private void OnEnable()
-        {
-            _inputActions = new InputActions();
-            _inputActions.Enable();
-
-            Cursor.visible = true;
-
-#if UNITY_WEBGL && !UNITY_EDITOR
-            gameObject.SetActive(!Device.IsMobile);
-#endif
-
-            _worldPointFinder = new WorldPointFinder(_ground);
-
-            _inputActions.Player.Attack.performed += ctx => OnAttackInput();
-            _inputActions.Player.ChangeWeapon.performed += ctx => OnChangeWeaponInput();
-            _inputActions.Player.MoveUnits.performed += ctx => OnMoveUnits();
-        }
-
         private void FixedUpdate()
         {
             _moveDirection = _inputActions.Player.Move.ReadValue<Vector2>();
@@ -47,6 +28,23 @@ namespace Assets.Scripts.PlayerInput
         private void OnDisable()
         {
             _inputActions.Disable();
+        }
+
+        public void Init(Player player)
+        {
+            _inputActions = new InputActions();
+            _inputActions.Enable();
+
+            _playerMover = player.GetComponent<PlayerMovement>();
+            _playerAttacker = player.GetComponent<PlayerAttacker>();
+
+            Cursor.visible = true;
+
+            _worldPointFinder = new WorldPointFinder(_ground);
+
+            _inputActions.Player.Attack.performed += ctx => OnAttackInput();
+            _inputActions.Player.ChangeWeapon.performed += ctx => OnChangeWeaponInput();
+            _inputActions.Player.MoveUnits.performed += ctx => OnMoveUnits();
         }
 
         private void OnMoveInput(Vector2 direction)
@@ -67,13 +65,6 @@ namespace Assets.Scripts.PlayerInput
         private void OnMoveUnits()
         {
             _selectedUnitsHandler.MoveUnits(_worldPointFinder.GetPosition(Input.mousePosition));
-        }
-
-        [Inject]
-        private void Construct(PlayerMovement movement, PlayerAttacker attacker)
-        {
-            _playerMover = movement;
-            _playerAttacker = attacker;
         }
     }
 }

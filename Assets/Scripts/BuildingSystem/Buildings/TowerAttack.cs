@@ -56,7 +56,7 @@ namespace Assets.Scripts.BuildingSystem
         {
             Arrow arrow = _poolOfArrows.GetArrow();
             arrow.transform.position = _shootPoint.position;
-            arrow.Fly(_targets.First().position);
+            arrow.Fly(_targets.First());
         }
 
         private void CleanTargets(List<Transform> targets)

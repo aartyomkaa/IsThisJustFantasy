@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6290089752773975098
 Transform:
   m_ObjectHideFlags: 0
@@ -27,13 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6629637169501341312}
-  m_LocalRotation: {x: -0.70883423, y: -0.700937, z: -0.05620158, w: -0.05552216}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.7088331, y: -0.7009385, z: -0.056196947, w: -0.055521786}
   m_LocalPosition: {x: 38.9, y: 1.4, z: -10.4}
   m_LocalScale: {x: 8000, y: 8000, z: 8000}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: -179.996, y: -9.062012, z: -89.358}
 --- !u!33 &6982049299842847647
 MeshFilter:
@@ -120,9 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2902e535722ced47b014ba49c74bbe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 0
-  _attackSpeed: 2
-  _name: Sword
-  LayerMask:
+  _damage: 10
+  _attackSpeed: 1
+  _layerMask:
     serializedVersion: 2
     m_Bits: 64
