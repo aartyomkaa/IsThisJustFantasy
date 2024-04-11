@@ -13,29 +13,39 @@ namespace Assets.Scripts.BuildingSystem
     {
         [SerializeField] private ParticleSystem _particleOfDestroy;
         [SerializeField] private float _strength;
+        [SerializeField] private float _valueOfScaleOfParticleOfDestroy;
+        [SerializeField] private Transform _spotOfDestroyEffects;
 
-        public int IndexOfBuilding;
-       
+        private AudioSource _audiosourse;
+        private Vector3 _scaleOfParticleOfDestroy;
+
+        public int IndexOfBuilding; 
         private float _startStrength;
-      
 
-        
-        
-        public AudioSource _audiosourseOfCreation;
-        
         public Transform Transform => transform;
 
         public Action<Transform> Destroyed;
 
         private void Awake()
         {
-            _audiosourseOfCreation = GetComponent<AudioSource>();
+            _audiosourse = GetComponent<AudioSource>();
         }
 
         private void Start()
         {
-            _audiosourseOfCreation.Play();
+            if(_audiosourse.clip != null)
+            {
+                _audiosourse.Play();
+            }
+           
             _startStrength = _strength;
+            SetScaleOfParticleOfDestroy();
+        }
+
+        private void SetScaleOfParticleOfDestroy()
+        {
+            _scaleOfParticleOfDestroy = new Vector3(_valueOfScaleOfParticleOfDestroy, _valueOfScaleOfParticleOfDestroy, _valueOfScaleOfParticleOfDestroy);
+            _particleOfDestroy.transform.localScale = _scaleOfParticleOfDestroy;
         }
 
         private void RefreshStrength()
@@ -55,18 +65,14 @@ namespace Assets.Scripts.BuildingSystem
                 }
             }
         }
-
-       
+ 
 
         protected void Destroy()
-        {
-            //Instantiate(EffectOfDestroying, transform.position, Quaternion.identity);
+        { 
+            Instantiate(_particleOfDestroy, _spotOfDestroyEffects.position, Quaternion.identity);
             Destroyed?.Invoke(transform.parent);
-            
-            //DestroyImmediate(gameObject);
             gameObject.SetActive(false);
-            RefreshStrength();
-            //_particleOfDestroy.Play();
+            RefreshStrength();    
         }
     }
 }

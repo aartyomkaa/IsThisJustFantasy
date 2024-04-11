@@ -4,17 +4,22 @@ using UnityEngine;
 
 namespace Assets.Scripts.PlayerComponents.Weapons
 {
+    [RequireComponent(typeof(AudioSource))]
     internal class Arrow : MonoBehaviour
     {
         [SerializeField] private ParticleSystem _hitEffect;
         [SerializeField] private float _speed;
 
         private LayerMask _layerMask;
-
+        private AudioSource _audiosourse;
         private float _damage;
-        private Vector3 _offset = Vector3.up * 2;
 
         private Coroutine _flying;
+
+        private void Awake()
+        {
+            _audiosourse = GetComponent<AudioSource>();
+        }
 
         private void OnTriggerEnter(Collider other)
         {   
@@ -35,14 +40,15 @@ namespace Assets.Scripts.PlayerComponents.Weapons
             }
         }
 
-        public void Fly(Transform target)
+        public void Fly(Vector3 targetPosition)
         {
             if (_flying != null)
             {
                 StopCoroutine(_flying);
             }
 
-            _flying = StartCoroutine(Flying(target));
+            _flying = StartCoroutine(Flying(targetPosition));
+            _audiosourse.Play();
         }
 
         public void Init(float damage, LayerMask targetMask)
@@ -51,14 +57,14 @@ namespace Assets.Scripts.PlayerComponents.Weapons
             _layerMask = targetMask;
         }
 
-        private IEnumerator Flying(Transform target)
+        private IEnumerator Flying(Vector3 targetPosition)
         {
-            while (target != null && Vector3.Distance(transform.position, target.position) > 0.1f)
-            {
-                Vector3 relativePosition = target.position - transform.position;
+            Vector3 relativePosition = targetPosition - transform.position;
+            transform.rotation = Quaternion.LookRotation(relativePosition, Vector3.up);
 
-                transform.rotation = Quaternion.LookRotation(relativePosition, Vector3.up);
-                transform.position = Vector3.MoveTowards(transform.position, target.position + _offset, _speed * Time.deltaTime);
+            while (targetPosition != null && Vector3.Distance(transform.position, targetPosition) > 0.1f)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, targetPosition, _speed * Time.deltaTime);
 
                 yield return null;
             }

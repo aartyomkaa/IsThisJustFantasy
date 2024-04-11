@@ -8,7 +8,6 @@ using UnityEngine;
 namespace Assets.Scripts.Props.Chest
 {
     [RequireComponent(typeof(Animator))]
-   // [RequireComponent(typeof(ParticleSystem))]
     [RequireComponent(typeof(AudioSource))]
     internal class Chest : MonoBehaviour
     {
@@ -30,16 +29,14 @@ namespace Assets.Scripts.Props.Chest
             if (other.gameObject.TryGetComponent(out Player player) && _isEmpty == false)
             {
                 _animator.SetBool(AnimatorHash.IsPlayerNear, true);
-               // _particleOfGiveCoins.Play();
+                Instantiate(_particleOfGiveCoins, transform.position, Quaternion.identity);
                 _audiosourse.Play();    
                 GiveCoins(player);
             }
         }
 
-
         private void GiveCoins(Player player)
         {
-            // вызвать метод взятия монет у игрока
             _isEmpty = true;
             player.Wallet.AddCoins(_coins);
         }
