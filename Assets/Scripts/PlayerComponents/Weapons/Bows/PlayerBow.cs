@@ -63,6 +63,7 @@ namespace Assets.Scripts.PlayerComponents.Weapons
 
         private IEnumerator AttackDelay(float attackSpeed)
         {
+            Transform target = _closestTarget.Transform;
             _isOnCooldown = true;
 
             base.Attack();
@@ -72,7 +73,7 @@ namespace Assets.Scripts.PlayerComponents.Weapons
             Arrow arrow = _pool.GetArrow();
 
             arrow.transform.position = _shootPoint.position;
-            arrow.Fly(_closestTarget.Transform.position);
+            arrow.Fly(target);
 
             yield return new WaitForSeconds(_animationOffset);
 

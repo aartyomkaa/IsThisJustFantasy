@@ -1,21 +1,23 @@
 ﻿using Assets.Scripts.PlayerComponents.Weapons;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace Assets.Scripts.PlayerComponents
 {
-    internal class PlayerAttacker
+    [RequireComponent(typeof(PlayerAnimator))]
+    internal class PlayerAttacker : MonoBehaviour
     {
-        private PlayerAnimator _animator;
+        [SerializeField] private List<Weapon> _weapons;
 
-        private WeaponsInventory _inventory;
+        private PlayerAnimator _animator;
         private Weapon _currentWeapon;
 
-        public PlayerAttacker(WeaponsInventory inventory, PlayerAnimator animator)
+        private void Start()
         {
-            _inventory = inventory;
-            _animator = animator;
+            _animator = GetComponent<PlayerAnimator>();
 
-            _inventory.Init();
-            ChangeWeapon();
+            _currentWeapon = _weapons[0];
+            _currentWeapon.gameObject.SetActive(true);
         }
 
         public void Attack()
@@ -30,7 +32,13 @@ namespace Assets.Scripts.PlayerComponents
 
         public void ChangeWeapon()
         {
-            _currentWeapon = _inventory.ChangeWeapon();
+            _currentWeapon.gameObject.SetActive(false);
+
+            int currentIndex = _weapons.IndexOf(_currentWeapon);
+            int nextIndex = (currentIndex + 1) % _weapons.Count;
+
+            _currentWeapon = _weapons[nextIndex];
+            _currentWeapon.gameObject.SetActive(true);
 
             _animator.SetAnimatorChangeWeaponTrigger(_currentWeapon);
         }
