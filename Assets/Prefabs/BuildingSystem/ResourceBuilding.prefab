@@ -338,6 +338,7 @@ GameObject:
   - component: {fileID: 6391643872984395748}
   - component: {fileID: 3433262904813694332}
   - component: {fileID: 5394228417826165922}
+  - component: {fileID: -4570712380787787382}
   m_Layer: 11
   m_Name: ResourceBuilding
   m_TagString: Untagged
@@ -598,6 +599,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!208 &-4570712380787787382
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6078276059395135974}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 3.4370003, y: 4.6190004, z: 3.6250002}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -3.3260002, y: 2.107, z: -3.5140002}
+  m_TimeToStationary: 0.5
 --- !u!1 &6685673503310742461
 GameObject:
   m_ObjectHideFlags: 0

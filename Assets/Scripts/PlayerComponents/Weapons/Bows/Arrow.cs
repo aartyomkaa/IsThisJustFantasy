@@ -13,7 +13,8 @@ namespace Assets.Scripts.PlayerComponents.Weapons
         private LayerMask _layerMask;
         private AudioSource _audiosourse;
 
-        //private Vector3 _offset = Vector3.up; 
+        private Vector3 _correctPosition;
+        private Vector3 _offset = Vector3.up * 1.5f;
 
         private float _damage;
 
@@ -64,11 +65,12 @@ namespace Assets.Scripts.PlayerComponents.Weapons
         {
             while (target != null && Vector3.Distance(transform.position, target.position) > 0.1f)
             {
-                Vector3 relativePosition = target.position - transform.position;
+                _correctPosition = target.position + _offset;
+
+                Vector3 relativePosition = _correctPosition - transform.position;
 
                 transform.rotation = Quaternion.LookRotation(relativePosition, Vector3.up);
-               // transform.position = Vector3.MoveTowards(transform.position, target.position + _offset, _speed * Time.deltaTime);
-                transform.position = Vector3.MoveTowards(transform.position, target.position, _speed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, _correctPosition, _speed * Time.deltaTime);
 
                 yield return null;
             }

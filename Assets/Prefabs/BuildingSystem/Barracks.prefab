@@ -436,6 +436,7 @@ GameObject:
   - component: {fileID: -1236911932528218677}
   - component: {fileID: 1054973193750157762}
   - component: {fileID: 7945495570110303869}
+  - component: {fileID: -2263197226113308615}
   m_Layer: 11
   m_Name: Barracks
   m_TagString: Untagged
@@ -698,6 +699,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!208 &-2263197226113308615
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4692487842577338964}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 4.339, y: 5.5620003, z: 5.925}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -2.5, y: 4.3050003, z: -5.026}
+  m_TimeToStationary: 0.5
 --- !u!1 &5098329011409132469
 GameObject:
   m_ObjectHideFlags: 0

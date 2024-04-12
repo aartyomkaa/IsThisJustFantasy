@@ -27,12 +27,12 @@ namespace Assets.Scripts.UI
 
         private void OnHealthChanged(float health)
         {
-            Debug.Log("Здоровье игрока - " + health);
+            //Debug.Log("Здоровье игрока - " + health);
         }
 
         private void OnCoinsChanged(int coins)
         {
-            Debug.Log("Монеты игрока - " + coins);
+            //Debug.Log("Монеты игрока - " + coins);
         }
     }
 }
