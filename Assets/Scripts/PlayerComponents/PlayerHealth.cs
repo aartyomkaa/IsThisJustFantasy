@@ -10,10 +10,10 @@ namespace Assets.Scripts.PlayerComponents
         [SerializeField] private PlayerData _playerData;
 
         private float _value;
-        private float _recoverTime;
-        private bool _canTakeDamage;
+        private bool _canTakeDamage = true;
 
         private Coroutine _damageRecover;
+        private WaitForSeconds _recoverTime;
 
         public Transform Transform => transform;
         public float Value => _value;
@@ -23,36 +23,37 @@ namespace Assets.Scripts.PlayerComponents
         private void Awake()
         {
             _value = _playerData.Health;
-            _recoverTime = _playerData.RecoverTime;
+            _recoverTime = new WaitForSeconds(_playerData.RecoverTime);
         }
 
         public void TakeDamage(float damage)
         {
             if (_canTakeDamage)
+            {
                 _value -= damage;
-
-            ValueChanged?.Invoke(_value);
+                ValueChanged?.Invoke(_value);
+            }
 
             if (_value <= 0)
             {
                 gameObject.SetActive(false);
             }
-            else
+            else if (_canTakeDamage)
             {
                 if (_damageRecover != null)
                 {
                     StopCoroutine(_damageRecover);
                 }
 
-                _damageRecover = StartCoroutine(DamageRecover(_recoverTime));
+                _damageRecover = StartCoroutine(DamageRecover());
             }
         }
 
-        private IEnumerator DamageRecover(float time)
+        private IEnumerator DamageRecover()
         {
             _canTakeDamage = false;
 
-            yield return new WaitForSeconds(time);
+            yield return _recoverTime;
 
             _canTakeDamage = true;
         }

@@ -7,6 +7,9 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
 {
     internal class FSMStateMove : FSMState
     {
+        private Vector3 _roundedUnitPos;
+        private Vector3 _roundedTargetPos;
+
         public FSMStateMove(FiniteStateMachine fsm, IFSMControllable unit, NavMeshAgent navMesh, Animator animator, Data data)
             : base(fsm, unit, navMesh, animator, data)
         {
@@ -26,10 +29,18 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
 
         public override void Update()
         {
-            if (UnitNavMesh.pathEndPosition == Unit.Transform.position)
+            if (HasArriveDestination(Unit.Transform.position, UnitNavMesh.pathEndPosition))
             {
                 FSM.SetState<FSMStateIdle>();
             }
+        }
+
+        private bool HasArriveDestination(Vector3 position, Vector3 targetPosition)
+        {
+            _roundedUnitPos = new Vector3(Mathf.RoundToInt(position.x), Mathf.RoundToInt(position.y), Mathf.RoundToInt(position.z));
+            _roundedTargetPos = new Vector3(Mathf.RoundToInt(targetPosition.x), Mathf.RoundToInt(targetPosition.y), Mathf.RoundToInt(targetPosition.z));
+
+            return _roundedUnitPos == _roundedTargetPos;
         }
     }
 }

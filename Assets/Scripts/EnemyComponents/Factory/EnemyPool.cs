@@ -11,9 +11,9 @@ namespace Assets.Scripts.EnemyComponents
 
         public Enemy[] Pool => _enemyPool;
 
-        public EnemyPool(EnemyData data, MainBuilding building, Transform parent)
+        public EnemyPool(EnemyData data, MainBuilding building)
         {
-            _enemyPool = CreateUnitsPool(data, building, parent);
+            _enemyPool = CreateUnitsPool(data, building);
         }
 
         public Enemy GetUnit()
@@ -31,13 +31,13 @@ namespace Assets.Scripts.EnemyComponents
             throw new System.Exception("Not enough units in The pool!!!");
         }
 
-        private Enemy[] CreateUnitsPool(EnemyData data, MainBuilding building, Transform parent)
+        private Enemy[] CreateUnitsPool(EnemyData data, MainBuilding building)
         {
             Enemy[] pool = new Enemy[_capacity];
 
             for (int i = 0; i < _capacity; i++)
             {
-                Enemy unit = GameObject.Instantiate(data.Prefab, new Vector3(19, 0, -47), Quaternion.identity, parent);
+                Enemy unit = GameObject.Instantiate(data.Prefab);
                 unit.Init(data);
                 unit.InitMainBuilding(building);
                 unit.gameObject.SetActive(false);

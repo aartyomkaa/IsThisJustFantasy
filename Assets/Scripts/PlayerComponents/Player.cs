@@ -9,7 +9,7 @@ namespace Assets.Scripts.PlayerComponents
 
         public PlayerWallet Wallet => _wallet;
 
-        private void OnEnable()
+        private void Awake()
         {
             _wallet = new PlayerWallet();
         }

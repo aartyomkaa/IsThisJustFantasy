@@ -15,5 +15,5 @@ MonoBehaviour:
   <Speed>k__BackingField: 5
   <AttackMoveSpeed>k__BackingField: 1
   <RotationSpeed>k__BackingField: 5
-  <RecoverTime>k__BackingField: 1
+  <RecoverTime>k__BackingField: 5
   <Health>k__BackingField: 100
