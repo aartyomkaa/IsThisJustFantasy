@@ -63,8 +63,8 @@ namespace Assets.Scripts.BuildingSystem
         {
             for (int i = 0; i < _targets.Count; i++)
             {
-                if (targets[i] == null) // || targets[i].gameObject.activeSelf == false)
-                {
+                if (targets[i] == null || targets[i].gameObject.activeSelf == false)
+                { 
                     _targets.RemoveAt(i);
                 }
             }

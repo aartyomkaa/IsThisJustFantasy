@@ -10,15 +10,15 @@ namespace Assets.Scripts.UI
     {
         [SerializeField] private int _costToBuy;
         [SerializeField] GameObject _panelToShow;
-        [SerializeField] private Button _spawnObjectButton;
-        [SerializeField] private Button _spawnObjectForAdButton;
+        [SerializeField] private Button _spawnObjectButton;    //+ один выброс за игровые деньги   
+        [SerializeField] private Button _spawnObjectForAdButton;   // - минус один выброс за реламу
         [SerializeField] private Button _extraButton;   // кнопка начала новой волны, пока не знаю как назвать
 
         private PlayerWallet _currentPlayersWallet;
 
         public Action<PlayerWallet, int> SpawnObjectButtonClicked;
         public Action SpawnObjectForAdButtonClicked;
-        public Action ExtraButtonButtonClicked;
+        public Action ExtraButtonClicked;
 
         private void Start()
         {
@@ -80,7 +80,7 @@ namespace Assets.Scripts.UI
 
         public void OnExtraButtonClicked()
         {
-            ExtraButtonButtonClicked?.Invoke();
+            ExtraButtonClicked?.Invoke();
         }
     }
 }
