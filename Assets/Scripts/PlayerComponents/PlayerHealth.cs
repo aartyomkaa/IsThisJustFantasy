@@ -16,10 +16,11 @@ namespace Assets.Scripts.PlayerComponents
         private Coroutine _damageRecover;
 
         public Transform Transform => transform;
+        public float Value => _value;
 
         public event Action<float> ValueChanged;
 
-        private void Start()
+        private void Awake()
         {
             _value = _playerData.Health;
             _recoverTime = _playerData.RecoverTime;
