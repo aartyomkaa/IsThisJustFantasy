@@ -13,8 +13,12 @@ namespace Assets.Scripts.UI
         [SerializeField] private Button _spawnObjectButton;    //+ один выброс за игровые деньги   
         [SerializeField] private Button _spawnObjectForAdButton;   // - минус один выброс за реламу
         [SerializeField] private Button _extraButton;   // кнопка начала новой волны, пока не знаю как назвать
+        [SerializeField] private int _panelMoveXValue;
 
         private PlayerWallet _currentPlayersWallet;
+        private bool _currentStatus;
+        private float _changeScaleSpeed = 0.15f;
+       
 
         public Action<PlayerWallet, int> SpawnObjectButtonClicked;
         public Action SpawnObjectForAdButtonClicked;
@@ -50,7 +54,8 @@ namespace Assets.Scripts.UI
         {
             if (other.gameObject.TryGetComponent(out Player player))
             {
-                _panelToShow.gameObject.SetActive(true);
+                _currentStatus = true;
+                Open();
                 _currentPlayersWallet = player.Wallet;
             }
         }
@@ -59,7 +64,8 @@ namespace Assets.Scripts.UI
         {
             if (other.gameObject.TryGetComponent(out Player player))
             {
-                _panelToShow.gameObject.SetActive(false);
+                _currentStatus = false;
+                Close();
             }
         }
 
@@ -81,6 +87,24 @@ namespace Assets.Scripts.UI
         public void OnExtraButtonClicked()
         {
             ExtraButtonClicked?.Invoke();
+        }
+
+        private void Open()
+        {
+            ChangeActiveStatus();
+            _panelToShow.GetComponent<RectTransform>().LeanSetLocalPosX(transform.position.x + _panelMoveXValue);
+            LeanTween.moveX(_panelToShow.GetComponent<RectTransform>(), - _panelMoveXValue, _changeScaleSpeed);
+           
+        }
+
+        private void Close()
+        {
+            LeanTween.moveX(_panelToShow.GetComponent<RectTransform>(), _panelMoveXValue, _changeScaleSpeed).setOnComplete(ChangeActiveStatus);
+        }
+
+        private void ChangeActiveStatus()
+        {
+            _panelToShow.gameObject.SetActive(_currentStatus);
         }
     }
 }
