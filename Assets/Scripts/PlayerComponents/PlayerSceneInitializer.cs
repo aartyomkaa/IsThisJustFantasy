@@ -3,7 +3,6 @@ using Assets.Scripts.PlayerInput;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
-using Assets.Scripts.GameLogic.Interfaces;
 using Agava.WebUtility;
 using Assets.Scripts.UI;
 

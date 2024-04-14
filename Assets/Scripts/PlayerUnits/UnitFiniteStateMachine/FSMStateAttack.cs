@@ -48,8 +48,6 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
 
         private void Attack()
         {
-            
-
             _timePast += Time.deltaTime;
 
             if (_timePast >= Data.AttackSpeed)

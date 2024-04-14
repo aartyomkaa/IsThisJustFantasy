@@ -6,9 +6,9 @@ namespace Assets.Scripts.GameLogic
 {
     internal class SceneLoader : MonoBehaviour
     {
-        private void Awake()
+        private void OnEnable()
         {
-            DontDestroyOnLoad(gameObject);
+            LoadMenuScene();
         }
 
         public void LoadScene(string sceneName)

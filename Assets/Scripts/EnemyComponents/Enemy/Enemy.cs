@@ -3,6 +3,7 @@ using Assets.Scripts.Constants;
 using Assets.Scripts.GameLogic;
 using Assets.Scripts.GameLogic.Interfaces;
 using Assets.Scripts.PlayerUnits.UnitFiniteStateMachine;
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -22,6 +23,8 @@ namespace Assets.Scripts.EnemyComponents
         private MainBuilding _building;
 
         public Transform Transform => transform;
+
+        public event Action<Enemy> Died;
 
         private void Start()
         {
@@ -54,19 +57,18 @@ namespace Assets.Scripts.EnemyComponents
             }
         }
 
-        public void Init(EnemyData data)
+        public void Init(EnemyData data, MainBuilding target)
         {
             _data = data;
             _health = data.Health;
-        }
-
-        public void InitMainBuilding(MainBuilding target)
-        {
             _building = target;
         }
 
         private void Die()
         {
+            Died?.Invoke(this);
+            _health = _data.Health;
+            _fsm.SetState<FSMStateIdle>();
             gameObject.SetActive(false);
         }
 

@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Melee
   m_EditorClassIdentifier: 
   Name: Melee knight
-  Prefab: {fileID: -1230271623890824326, guid: fe5d0b40303882c43a7e9de4698ea63a, type: 3}
   EnemyLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  Health: 50
+  Health: 100
   Speed: 3.5
-  Damage: 5
+  Damage: 10
   AttackSpeed: 2
   AttackRange: 2
   AggroRange: 5
+  Prefab: {fileID: -1230271623890824326, guid: fe5d0b40303882c43a7e9de4698ea63a, type: 3}

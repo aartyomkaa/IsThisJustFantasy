@@ -63,7 +63,7 @@ namespace Assets.Scripts.PlayerComponents.Weapons
 
         private IEnumerator Flying(Transform target)
         {
-            while (target != null && Vector3.Distance(transform.position, target.position) > 0.1f)
+            while (target != null && Vector3.Distance(transform.position, target.position) > 0.1f && target.transform.gameObject.activeSelf)
             {
                 _correctPosition = target.position + _offset;
 

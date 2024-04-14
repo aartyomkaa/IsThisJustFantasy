@@ -15,6 +15,7 @@ namespace Assets.Scripts.PlayerInput
         private PlayerMovement _playerMover;
         private PlayerAttacker _playerAttacker;
         private WorldPointFinder _worldPointFinder;
+        private PointerSelectableChecker _poinerChecker;
 
         private Vector2 _moveDirection;
 
@@ -41,6 +42,7 @@ namespace Assets.Scripts.PlayerInput
             Cursor.visible = true;
 
             _worldPointFinder = new WorldPointFinder(_ground);
+            _poinerChecker = new PointerSelectableChecker();
 
             _inputActions.Player.Attack.performed += ctx => OnAttackInput();
             _inputActions.Player.ChangeWeapon.performed += ctx => OnChangeWeaponInput();
@@ -54,7 +56,10 @@ namespace Assets.Scripts.PlayerInput
 
         private void OnAttackInput()
         {
-            _playerAttacker.Attack();
+            if (_poinerChecker.IsPointerOverSelectableObject() == false)
+            {
+                _playerAttacker.Attack();
+            }
         }
         
         private void OnChangeWeaponInput()

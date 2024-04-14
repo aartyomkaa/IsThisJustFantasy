@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ArtjomScene/Level2.unity
     guid: 49bf62eb726ffad49a3750b721255220
+  - enabled: 1
+    path: Assets/Scenes/ArtjomScene/Menu.unity
+    guid: 47e90e619c82a4e4f8dd15929b53e6ed
   m_configObjects: {}

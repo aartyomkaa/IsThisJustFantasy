@@ -57,6 +57,7 @@ namespace Assets.Scripts.PlayerUnits
         private void Die()
         {
             gameObject.SetActive(false);
+            _health = _unitData.Health;
         }
 
         public void Attack(IDamageable target)

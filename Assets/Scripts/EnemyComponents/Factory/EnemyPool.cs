@@ -9,14 +9,12 @@ namespace Assets.Scripts.EnemyComponents
 
         private int _capacity = 20;
 
-        public Enemy[] Pool => _enemyPool;
-
         public EnemyPool(EnemyData data, MainBuilding building)
         {
             _enemyPool = CreateUnitsPool(data, building);
         }
 
-        public Enemy GetUnit()
+        public Enemy GetEnemy()
         {
             foreach (var melee in _enemyPool)
             {
@@ -38,8 +36,7 @@ namespace Assets.Scripts.EnemyComponents
             for (int i = 0; i < _capacity; i++)
             {
                 Enemy unit = GameObject.Instantiate(data.Prefab);
-                unit.Init(data);
-                unit.InitMainBuilding(building);
+                unit.Init(data, building);
                 unit.gameObject.SetActive(false);
                 pool[i] = unit;
             }

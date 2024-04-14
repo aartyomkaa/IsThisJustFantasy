@@ -28,6 +28,7 @@ namespace Assets.Scripts.PlayerUnits
         private void OnDisable()
         {
             _isSelected = false;
+            _ring.Stop();
             Deselected?.Invoke(this);
         }
 
@@ -54,14 +55,13 @@ namespace Assets.Scripts.PlayerUnits
             else
             {
                 _isSelected = true;
+                _ring.Play();
+                Selected?.Invoke(this);
 
                 if (_selected != null)
                     StopCoroutine(_selected);
 
                 _selected = StartCoroutine(SelectedRing());
-
-                _ring.Play();
-                Selected?.Invoke(this);
             }
         }
 
