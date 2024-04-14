@@ -23,9 +23,10 @@ namespace Assets.Scripts.EnemyComponents
 
         private Coroutine _waveCoroutine;
         private int _spawnPointIndex;
-        private int _wave = 0;
+        private int _waveIndex = 0;
 
         public event Action<float> WaveStarted;
+        public event Action WavesFinished;
 
         private void OnEnable()
         {
@@ -59,50 +60,36 @@ namespace Assets.Scripts.EnemyComponents
         public void StartWave()
         {
             if (_waveCoroutine != null)
-            {
                 StopCoroutine(_waveCoroutine);
-            }
 
-            _waveCoroutine = StartCoroutine(SpawnWave(_waves[_wave]));
+            _waveCoroutine = StartCoroutine(SpawnWave(_waves[_waveIndex]));
 
-            _wave++;
+            if (_waves.Length == _waveIndex)
+                WavesFinished?.Invoke();
+            else
+                _waveIndex++;
         }
 
-        private void SpawnMelee(Vector3 position)
+        private void SpawnEnemy(EnemyPool pool, Vector3 position)
         {
-            Enemy enemy = _meleePool.GetUnit();
-
+            Enemy enemy = pool.GetUnit();
             NavMeshAgent agent = enemy.GetComponent<NavMeshAgent>();
-
-            agent.Warp(position);
-        }
-
-        private void SpawnRange(Vector3 position)
-        {
-            Enemy enemy = _rangePool.GetUnit();
-
-            NavMeshAgent agent = enemy.GetComponent<NavMeshAgent>();
-
             agent.Warp(position);
         }
 
         private IEnumerator SpawnWave(Wave wave)
         {
-            var waitForSec = new WaitForSeconds(wave.SpawnDelay);
+            WaitForSeconds waitForSec = new WaitForSeconds(wave.SpawnDelay);
 
             for (int i = 0; i < wave.SpawnAmount; i++)
             {
                 for (int j = 0; j < wave.MeleeAmount; j++)
-                {
-                    SpawnMelee(_spawnPoints[_spawnPointIndex].transform.position);
-                }
+                    SpawnEnemy(_meleePool, _spawnPoints[_spawnPointIndex].transform.position);
 
-                for (int k = 0 ; k < wave.RangeAmount; k++)
-                {
-                    SpawnRange(_spawnPoints[_spawnPointIndex].transform.position);
-                }
+                for (int k = 0; k < wave.RangeAmount; k++)
+                    SpawnEnemy(_rangePool, _spawnPoints[_spawnPointIndex].transform.position);
 
-                _spawnPointIndex = i % _spawnPoints.Length;
+                _spawnPointIndex = (i + 1) % _spawnPoints.Length;
 
                 yield return waitForSec;
             }

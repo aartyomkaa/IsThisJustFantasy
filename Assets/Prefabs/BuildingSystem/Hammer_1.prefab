@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2024118930652225726}
   - component: {fileID: 2859236786326628164}
   - component: {fileID: 8458328098266625045}
-  - component: {fileID: -9039606483403495322}
   m_Layer: 11
   m_Name: Hammer_1
   m_TagString: Untagged
@@ -107,19 +106,3 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43187037282479756, guid: d61a0c4b1dd3e9b439b3d6b9a183db3e, type: 2}
---- !u!208 &-9039606483403495322
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5129592591792702071}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.044000003, y: 0.28300002, z: 0.116000004}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0.178, z: -0.009000001}
-  m_TimeToStationary: 0.5
