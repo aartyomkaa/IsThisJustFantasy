@@ -12,7 +12,8 @@ namespace Assets.Scripts.Props.Chest
     {
         [SerializeField] private int _coins;
         [SerializeField] ParticleSystem _particleOfGiveCoins;
-        
+        [SerializeField] ParticleSystem _particleOfPosition;
+
         private Animator _animator;
         private AudioSource _audiosourse;
         private bool _isEmpty = false;
@@ -31,6 +32,7 @@ namespace Assets.Scripts.Props.Chest
                 Instantiate(_particleOfGiveCoins, transform.position, Quaternion.identity);
                 _audiosourse.Play();    
                 GiveCoins(player);
+                _particleOfPosition.Stop();
             }
         }
 

@@ -16,6 +16,7 @@ namespace Assets.Scripts.PlayerComponents
         private WaitForSeconds _recoverTime;
 
         public Transform Transform => transform;
+        public float Value => _value;
 
         public event Action<float> ValueChanged;
 

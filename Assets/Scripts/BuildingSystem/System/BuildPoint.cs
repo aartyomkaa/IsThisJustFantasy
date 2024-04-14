@@ -22,8 +22,7 @@ namespace Assets.Scripts.BuildingSystem
         public int CostToBuild => _costToBuild;
 
         public Action<Transform,PlayerWallet> PlayerWentIn;
-        public Action<PlayerWallet> PlayerWentOut; 
-
+        public Action<PlayerWallet> PlayerWentOut;
 
         private void Update()
         {
@@ -32,7 +31,7 @@ namespace Assets.Scripts.BuildingSystem
 
         private void RotateIconOfBuildingPoint()
         {
-            _iconOfBuildPoint.transform.Rotate(0, speedOfRotateVisualObject * Time.deltaTime, 0);
+             _iconOfBuildPoint.transform.Rotate(0, speedOfRotateVisualObject * Time.deltaTime, 0);
         }
 
         private void RaiseCostForNextBuilding()
