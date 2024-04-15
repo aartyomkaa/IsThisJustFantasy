@@ -11,19 +11,19 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/ElginScenes/ElginForTests.unity
     guid: 79ea0a3602ba2c347ad260690eb984f9
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ArtjomScene/ArtjomScene.unity
     guid: 3086321b49e54452faadf2e9efba3096
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/DevelopmentBuildScenes/SDKInitializerScene.unity
     guid: 405c71356d357724cb5ced2cc6e80c42
   - enabled: 1
     path: Assets/Scenes/DmitriysScenes/Level1 TEST.unity
     guid: 6cdc4142914b443499c03f631296ad74
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ArtjomScene/Level2.unity
     guid: 49bf62eb726ffad49a3750b721255220
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ArtjomScene/Menu.unity
     guid: 47e90e619c82a4e4f8dd15929b53e6ed
   m_configObjects: {}

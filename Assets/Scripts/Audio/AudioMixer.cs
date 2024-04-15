@@ -4,7 +4,7 @@ using UnityEngine.Audio;
 using Assets.Scripts.Constants;
 using Assets.Scripts.PlayerComponents;
 
-namespace Assets
+namespace Assets.Scripts.Audio
 {
     internal class AudioMixer : MonoBehaviour
     {
