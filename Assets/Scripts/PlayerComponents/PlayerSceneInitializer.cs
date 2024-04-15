@@ -5,6 +5,9 @@ using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 using Agava.WebUtility;
 using Assets.Scripts.UI;
+using Assets.Scripts.EnemyComponents;
+using Assets.Scripts.Audio;
+using Assets.Scripts.YandexSDK;
 
 namespace Assets.Scripts.PlayerComponents
 {
@@ -15,6 +18,11 @@ namespace Assets.Scripts.PlayerComponents
         [SerializeField] private DesktopInput _desktopInput;
         [SerializeField] private MobileInput _mobileInput;
         [SerializeField] private PlayerUI _playerUI;
+        [SerializeField] private EnemyFactory _enemyFactory;
+        [SerializeField] private AudioMixer _audioMixer;
+        [SerializeField] private InterstitialAdShower _interstitialAd;
+        [SerializeField] private VideoADShower _videoAd;
+
 
         private void OnEnable()
         {
@@ -47,8 +55,8 @@ namespace Assets.Scripts.PlayerComponents
 
         private void InitializeInput(Player player)
         {
-            //#if UNITY_WEBGL && !UNITY_EDITOR
-            if (1 == 2)
+#if UNITY_WEBGL && !UNITY_EDITOR
+            if (Device.IsMobile)
             {
                 MobileInput input = Instantiate(_mobileInput, transform);
                 input.Init(player);
@@ -58,7 +66,7 @@ namespace Assets.Scripts.PlayerComponents
                 DesktopInput input = Instantiate(_desktopInput, transform);
                 input.Init(player);
             }
-            //#endif
+#endif
         }
 
         private void InitializeUI(Player player)
