@@ -24,26 +24,26 @@ namespace Assets.Scripts.BuildingSystem.Buildings
         private void OnEnable()
         {
             _eventer = GetComponentInChildren<ColliderPanelEventer>();
-            _eventer.SpawnObjectButtonClicked += SpawnChest;
+            _eventer.FirstButtonClicked += SpawnChest;
         }
 
         private void OnDisable()
         {
-             _eventer.SpawnObjectButtonClicked -= SpawnChest;
+             _eventer.FirstButtonClicked -= SpawnChest;
         }
 
-        private void SpawnChest(PlayerWallet wallet, int costToBuy)   
+        private void SpawnChest(Player player, int costToBuy)   
         {
             if(_currentSpawnPoints.Count != 0)
             {  
-                if(wallet.Coins >= costToBuy)
+                if(player.Wallet.Coins >= costToBuy)
                 {
                     int _lastChestSpawnPoint = _currentSpawnPoints.Count;
                     _currentIndexOfChestSpawnPoint = Random.Range(_firstChestSpawnPoint, _lastChestSpawnPoint);
                     Chest chestToSpawn = Instantiate(_prefabOfChest, _currentSpawnPoints[_currentIndexOfChestSpawnPoint].transform);
                      chestToSpawn.SetCountOfCoins(_currentSpawnPoints[_currentIndexOfChestSpawnPoint].CoinsOfChest);
                     _currentSpawnPoints.RemoveAt(_currentIndexOfChestSpawnPoint);
-                    wallet.SpendCoins(costToBuy);
+                    player.Wallet.SpendCoins(costToBuy);
                 }   
             }  
         }

@@ -13,8 +13,7 @@ namespace Assets.Scripts.UI
         [SerializeField] private Image _ckekMarkOff;
 
        
-        public event Action <bool> SoundValueChanged;
-        
+        public event Action <bool> SoundValueChanged;       
         
         private void OnEnable()
         {

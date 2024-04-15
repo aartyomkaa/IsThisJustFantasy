@@ -17,12 +17,13 @@ namespace Assets.Scripts.PlayerComponents
         [SerializeField] private TargetFollower _targetFollower;
         [SerializeField] private DesktopInput _desktopInput;
         [SerializeField] private MobileInput _mobileInput;
-        [SerializeField] private GlobalUI _globalUI;
-        [SerializeField] private PlayerUI _playerUI;
-        [SerializeField] private EnemyFactory _enemyFactory;
         [SerializeField] private AudioMixer _audioMixer;
+        [SerializeField] private GlobalUI _globalUI;
+        [SerializeField] private EnemyFactory _enemyFactory;
         [SerializeField] private InterstitialAdShower _interstitialAd;
         [SerializeField] private VideoADShower _videoAd;
+
+        private Pauser _pauser;
 
         private void OnEnable()
         {
@@ -40,6 +41,9 @@ namespace Assets.Scripts.PlayerComponents
 
             InitializeInput(player);
             InitializeUI(player);
+            InitializeSound(_globalUI.SoundToggler);
+            _pauser = new Pauser(_audioMixer, _mobileInput);
+            _globalUI.PausePanel.SignToPauserEvents(_pauser);
         }
 
         private Player InitializePlayer()
@@ -53,9 +57,14 @@ namespace Assets.Scripts.PlayerComponents
             return player;
         }
 
+        private void InitializeSound(SoundToggler soundToggler) 
+        {
+            _audioMixer.SignSoundValuesChanges(soundToggler);
+        }
+
         private void InitializeInput(Player player)
         {
-#if UNITY_WEBGL && !UNITY_EDITOR
+//#if UNITY_WEBGL && !UNITY_EDITOR
             if (Device.IsMobile)
             {
                 MobileInput input = Instantiate(_mobileInput, transform);
@@ -66,7 +75,7 @@ namespace Assets.Scripts.PlayerComponents
                 DesktopInput input = Instantiate(_desktopInput, transform);
                 input.Init(player);
             }
-#endif
+//#endif
         }
 
         private void InitializeUI(Player player)

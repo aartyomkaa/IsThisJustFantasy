@@ -2,6 +2,8 @@
 using System.Collections;
 using Assets.Scripts.GameLogic.Interfaces;
 using System;
+using UnityEngine.Assertions.Must;
+using UnityEngine.Rendering;
 
 namespace Assets.Scripts.PlayerComponents
 {
@@ -47,6 +49,20 @@ namespace Assets.Scripts.PlayerComponents
 
                 _damageRecover = StartCoroutine(DamageRecover());
             }
+        }
+
+        public void TakeHeal(float importHealValue)
+        {
+            float maxValueToHeal = 100 - _value;  //максимальному и минимальному здоровью надо избавиться от магичности
+            
+            if (maxValueToHeal >= importHealValue)
+            {
+                _value += importHealValue;
+            }
+            else
+            {
+                _value += maxValueToHeal;
+            }        
         }
 
         private IEnumerator DamageRecover()

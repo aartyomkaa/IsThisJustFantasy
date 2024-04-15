@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Audio;
 using Assets.Scripts.Constants;
-using Assets.Scripts.PlayerComponents;
+using Assets.Scripts.UI;
 
 namespace Assets.Scripts.Audio
 {
@@ -12,6 +12,7 @@ namespace Assets.Scripts.Audio
 
         private float _minVolume = -80;
         private float _maxVolume = 0;
+        private SoundToggler _currentSoundToggler;
 
         private bool _isMuted = false;
 
@@ -28,14 +29,20 @@ namespace Assets.Scripts.Audio
             Muted?.Invoke(_isMuted);
         }
 
-        public void SignSoundValuesChanges(bool isOn)
+        public void SignSoundValuesChanges(SoundToggler soundToggler)
         {
-            ToggleMusic(isOn);
+            _currentSoundToggler = soundToggler;
+            _currentSoundToggler.SoundValueChanged += ToggleMusic;
+        }
+
+        private void OnDisable()
+        {
+            _currentSoundToggler.SoundValueChanged -= ToggleMusic;
         }
 
         public void ToggleMusic(bool isOn)
         {
-            _isMuted    = isOn;
+            _isMuted = isOn;
 
             if (_isMuted)
             {

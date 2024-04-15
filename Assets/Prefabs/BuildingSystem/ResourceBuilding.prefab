@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6118955349752845117}
   - component: {fileID: 5634065310282388832}
   - component: {fileID: 5268382962051835907}
-  m_Layer: 11
+  m_Layer: 5
   m_Name: ChestBuyer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.72, y: -0.9, z: -6.93}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6809838645741094024}
@@ -70,10 +70,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _costToBuy: 20
   _panelToShow: {fileID: 4854261595463553538}
-  _spawnObjectButton: {fileID: 7589520402816414247}
-  _spawnObjectForAdButton: {fileID: 7615797959785786439}
+  _firstButton: {fileID: 7589520402816414247}
+  _secondButton: {fileID: 7615797959785786439}
   _extraButton: {fileID: 0}
-  _panelMoveXValue: 228
 --- !u!1 &4015571404492770244
 GameObject:
   m_ObjectHideFlags: 0
@@ -718,7 +717,7 @@ AudioSource:
   m_GameObject: {fileID: 6078276059395135974}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3893247371368356918, guid: 375e1e04bb62d924c99433a5d210ccaf, type: 2}
   m_audioClip: {fileID: 8300000, guid: 74ff4bb5c04401c4cbb93e83b068b157, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -1047,7 +1046,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &2004847687858194498
 MonoBehaviour:
@@ -1309,9 +1308,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6118955349752845117}
     m_Modifications:
+    - target: {fileID: 1346037226766914, guid: 40b064983e0a8fa46b63f2e8d4cf87ad, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1354858191909326, guid: 40b064983e0a8fa46b63f2e8d4cf87ad, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1890275634725560, guid: 40b064983e0a8fa46b63f2e8d4cf87ad, type: 3}
       propertyPath: m_Name
       value: LootRingYellow
+      objectReference: {fileID: 0}
+    - target: {fileID: 1890275634725560, guid: 40b064983e0a8fa46b63f2e8d4cf87ad, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4485015937641892, guid: 40b064983e0a8fa46b63f2e8d4cf87ad, type: 3}
       propertyPath: m_LocalScale.x

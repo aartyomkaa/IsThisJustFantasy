@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,8 +5,8 @@ namespace Assets.Scripts.UI
 {
     internal abstract class PanelToggler : MonoBehaviour
     {
-        [SerializeField] private Button _openButton;
-        [SerializeField] private Button _closeButton;
+        [SerializeField] public Button _openButton;
+        [SerializeField] public Button _closeButton;
         [SerializeField] private GameObject _panel;
 
         private void OnEnable()

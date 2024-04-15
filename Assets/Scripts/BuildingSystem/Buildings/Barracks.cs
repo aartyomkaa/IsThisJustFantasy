@@ -7,26 +7,27 @@ namespace Assets.Scripts.BuildingSystem.Buildings
 {
     internal class Barracks : Building
     {
-        [SerializeField] private UnitsFactory _unitsFactory;
+        private UnitsFactory _unitsFactory;
         private ColliderPanelEventer _eventer;
 
         private void OnEnable()
         {
             _eventer = GetComponentInChildren<ColliderPanelEventer>();
-            _eventer.SpawnObjectButtonClicked += SpawnUnit;
+            _unitsFactory = GetComponentInChildren<UnitsFactory>();   
+            _eventer.FirstButtonClicked += SpawnUnit;
         }
 
         private void OnDisable()
         {
-            _eventer.SpawnObjectButtonClicked -= SpawnUnit;
+            _eventer.FirstButtonClicked -= SpawnUnit;
         }
 
-        private void SpawnUnit(PlayerWallet wallet, int costToBuy)  
+        private void SpawnUnit(Player player, int costToBuy)  
         {
-            if(wallet.Coins >= costToBuy)
+            if(player.Wallet.Coins >= costToBuy)
             {
                 _unitsFactory.Spawn();
-                wallet.SpendCoins(costToBuy);
+                player.Wallet.SpendCoins(costToBuy);
             }  
         }
     }

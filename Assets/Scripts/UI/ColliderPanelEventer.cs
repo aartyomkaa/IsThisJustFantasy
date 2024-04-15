@@ -10,29 +10,30 @@ namespace Assets.Scripts.UI
     {
         [SerializeField] private int _costToBuy;
         [SerializeField] GameObject _panelToShow;
-        [SerializeField] private Button _spawnObjectButton;    //+ один выброс за игровые деньги   
-        [SerializeField] private Button _spawnObjectForAdButton;   // - минус один выброс за реламу
+        [SerializeField] private Button _firstButton;    //+ один выброс за игровые деньги   
+        [SerializeField] private Button _secondButton;   // - минус один выброс за рекламу
         [SerializeField] private Button _extraButton;   // кнопка начала новой волны, пока не знаю как назвать
-        [SerializeField] private int _panelMoveXValue;
+        
 
-        private PlayerWallet _currentPlayersWallet;
+        private Player _currentPlayer;
         private bool _currentStatus;
         private float _changeScaleSpeed = 0.15f;
-       
+        private int _panelMoveXValue = 228;
 
-        public Action<PlayerWallet, int> SpawnObjectButtonClicked;
-        public Action SpawnObjectForAdButtonClicked;
+
+        public Action<Player, int> FirstButtonClicked;
+        public Action SecondButtonClicked;
         public Action ExtraButtonClicked;
 
         private void Start()
         {
-            SetCostToButtonText(_spawnObjectButton, _costToBuy);
+            SetCostToButtonText(_firstButton, _costToBuy);
         }
        
         private void OnEnable()
         {
-            _spawnObjectButton.onClick.AddListener(OnSpawnObjectButtonClicked);
-            _spawnObjectForAdButton.onClick.AddListener(OnSpawnObjectForAdButtonClicked);
+            _firstButton.onClick.AddListener(OnFirsttButtonClicked);
+            _secondButton.onClick.AddListener(OnSecondButtonClicked);
            
             if(_extraButton != null)
             {
@@ -41,8 +42,8 @@ namespace Assets.Scripts.UI
         }
         private void OnDisable()
         {
-            _spawnObjectButton.onClick.RemoveListener(OnSpawnObjectButtonClicked);
-            _spawnObjectForAdButton.onClick.RemoveListener(OnSpawnObjectForAdButtonClicked);
+            _firstButton.onClick.RemoveListener(OnFirsttButtonClicked);
+            _secondButton.onClick.RemoveListener(OnSecondButtonClicked);
 
             if (_extraButton != null)
             {
@@ -56,7 +57,7 @@ namespace Assets.Scripts.UI
             {
                 _currentStatus = true;
                 Open();
-                _currentPlayersWallet = player.Wallet;
+                _currentPlayer = player;
             }
         }
 
@@ -74,14 +75,14 @@ namespace Assets.Scripts.UI
             activeButton.GetComponentInChildren<TMP_Text>().text += costToBuy;
         }
 
-        public void OnSpawnObjectButtonClicked()
+        public void OnFirsttButtonClicked()
         {
-            SpawnObjectButtonClicked?.Invoke(_currentPlayersWallet, _costToBuy);
+            FirstButtonClicked?.Invoke(_currentPlayer, _costToBuy);
         }
 
-        public void OnSpawnObjectForAdButtonClicked()
+        public void OnSecondButtonClicked()
         {
-            SpawnObjectForAdButtonClicked?.Invoke();
+            SecondButtonClicked?.Invoke();
         }
 
         public void OnExtraButtonClicked()

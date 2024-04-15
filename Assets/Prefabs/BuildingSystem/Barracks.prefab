@@ -358,7 +358,6 @@ MonoBehaviour:
   _valueOfScaleOfParticleOfDestroy: 4
   _spotOfDestroyEffects: {fileID: 178295802140744155}
   IndexOfBuilding: 2
-  _unitsFactory: {fileID: 6468344224010567201}
 --- !u!95 &1054973193750157762
 Animator:
   serializedVersion: 5
@@ -389,7 +388,7 @@ AudioSource:
   m_GameObject: {fileID: 4692487842577338964}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3893247371368356918, guid: 375e1e04bb62d924c99433a5d210ccaf, type: 2}
   m_audioClip: {fileID: 8300000, guid: 74ff4bb5c04401c4cbb93e83b068b157, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -625,7 +624,7 @@ GameObject:
   - component: {fileID: 7603827074308717270}
   - component: {fileID: 6468344224010567201}
   - component: {fileID: 8444019166520336635}
-  m_Layer: 11
+  m_Layer: 5
   m_Name: UnitFactory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -642,7 +641,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -9.58, y: 0.52, z: -12.91}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 573245695444387037}
@@ -699,10 +698,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _costToBuy: 15
   _panelToShow: {fileID: 8077669750747915907}
-  _spawnObjectButton: {fileID: 2169441456550259160}
-  _spawnObjectForAdButton: {fileID: 3915648209065908353}
+  _firstButton: {fileID: 2169441456550259160}
+  _secondButton: {fileID: 3915648209065908353}
   _extraButton: {fileID: 0}
-  _panelMoveXValue: 228
 --- !u!1 &6736769962142248280
 GameObject:
   m_ObjectHideFlags: 0
@@ -1179,7 +1177,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &708289860499468566
 MonoBehaviour:
@@ -1229,9 +1227,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7071392141967138436}
     m_Modifications:
+    - target: {fileID: 1076723814778322, guid: 595c7f3ba932bd94fbfe783379ac8ab6, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1425585707762180, guid: 595c7f3ba932bd94fbfe783379ac8ab6, type: 3}
       propertyPath: m_Name
       value: LootRingGreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 1425585707762180, guid: 595c7f3ba932bd94fbfe783379ac8ab6, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1940018662049300, guid: 595c7f3ba932bd94fbfe783379ac8ab6, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4592934022823910, guid: 595c7f3ba932bd94fbfe783379ac8ab6, type: 3}
       propertyPath: m_LocalScale.x

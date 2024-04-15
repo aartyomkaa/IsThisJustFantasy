@@ -19693,10 +19693,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _costToBuy: 50
   _panelToShow: {fileID: 4602404888281056933}
-  _spawnObjectButton: {fileID: 697273783272987876}
-  _spawnObjectForAdButton: {fileID: 1658715542513679202}
+  _firstButton: {fileID: 697273783272987876}
+  _secondButton: {fileID: 1658715542513679202}
   _extraButton: {fileID: 7996842564300728628}
-  _panelMoveXValue: 228
 --- !u!135 &7542424257075128048
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -20502,7 +20501,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &4661769471202511496
 MonoBehaviour:
