@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.UI
 {
-    internal class PausePanel : PanelToungle
+    internal class PausePanel : PanelToggler
     {
 
     }

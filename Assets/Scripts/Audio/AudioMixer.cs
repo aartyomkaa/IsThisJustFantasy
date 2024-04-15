@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.Audio;
 using Assets.Scripts.Constants;
+using Assets.Scripts.PlayerComponents;
 
 namespace Assets
 {
@@ -27,8 +28,15 @@ namespace Assets
             Muted?.Invoke(_isMuted);
         }
 
-        public void ToggleMusic()
+        public void SignSoundValuesChanges(bool isOn)
         {
+            ToggleMusic(isOn);
+        }
+
+        public void ToggleMusic(bool isOn)
+        {
+            _isMuted    = isOn;
+
             if (_isMuted)
             {
                 SetVolumeValue();
