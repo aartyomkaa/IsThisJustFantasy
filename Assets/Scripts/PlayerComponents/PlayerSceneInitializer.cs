@@ -14,7 +14,7 @@ namespace Assets.Scripts.PlayerComponents
         [SerializeField] private TargetFollower _targetFollower;
         [SerializeField] private DesktopInput _desktopInput;
         [SerializeField] private MobileInput _mobileInput;
-        [SerializeField] private PlayerUI _playerUI;
+        [SerializeField] private GlobalUI _globalUI;
 
         private void OnEnable()
         {
@@ -63,7 +63,7 @@ namespace Assets.Scripts.PlayerComponents
 
         private void InitializeUI(Player player)
         {
-            _playerUI.SignToPlayersValuesChanges(player.GetComponent<PlayerHealth>(), player.Wallet);
+            _globalUI.PlayerUI.SignToPlayersValuesChanges(player.GetComponent<PlayerHealth>(), player.Wallet);
         }
     }
 }
