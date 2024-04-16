@@ -32,8 +32,8 @@ namespace Assets.Scripts.EnemyComponents
         private int _spawnPointIndex;
         private int _waveIndex = 0;
 
-        public event Action<float> WaveStarted;
-        public event Action WaveFinished;
+        public event Action<int> WaveStarted;
+        public event Action NextSpawned;
 
         private void OnEnable()
         {
@@ -63,6 +63,7 @@ namespace Assets.Scripts.EnemyComponents
         {
             if (_waves.Length > _waveIndex)
             {
+                WaveStarted?.Invoke(_waves[_waveIndex].SpawnAmount);
                 _enemySpawned = 0;
 
                 if (_waveCoroutine != null)
@@ -116,6 +117,7 @@ namespace Assets.Scripts.EnemyComponents
                     SpawnEnemy(_rangePool, _spawnPoints[_spawnPointIndex].transform.position);
 
                 _spawnPointIndex = (i + 1) % _spawnPoints.Length;
+                NextSpawned?.Invoke();
 
                 yield return wave.SpawnDelay;
             }
