@@ -461,6 +461,10 @@ PrefabInstance:
       propertyPath: m_MaxValue
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 4819159625965793932, guid: 806c5019c94b9f7489c0b18b667ef845, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4819159625965793933, guid: 806c5019c94b9f7489c0b18b667ef845, type: 3}
       propertyPath: m_Color.b
       value: 0.11868419

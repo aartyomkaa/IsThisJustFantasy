@@ -3,12 +3,13 @@ using Assets.Scripts.PlayerUnits.UnitFiniteStateMachine;
 using UnityEngine.AI;
 using Assets.Scripts.GameLogic;
 using Assets.Scripts.GameLogic.Interfaces;
+using System;
 
 namespace Assets.Scripts.PlayerUnits
 {
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(NavMeshAgent))]
-    internal class Unit : Selectable, IDamageable, IFSMControllable
+    internal class Unit : Selectable, IDamageable, IFSMControllable, IHealthDisplayable
     {
         private UnitData _unitData;
         private float _health;
@@ -18,6 +19,8 @@ namespace Assets.Scripts.PlayerUnits
         private NavMeshAgent _agent;
 
         public Transform Transform => transform;
+
+        public event Action<float> HealthValueChanged;
 
         private void Start()
         {
@@ -38,6 +41,8 @@ namespace Assets.Scripts.PlayerUnits
         {
             _health -= damage;
 
+            HealthValueChanged?.Invoke(_health);
+
             if (_health <= 0)
                 Die();
         }
@@ -46,6 +51,7 @@ namespace Assets.Scripts.PlayerUnits
         {
             _unitData = data;
             _health = data.Health;
+            HealthValueChanged?.Invoke(_health);
         }
 
         public void Move(Vector3 position)
