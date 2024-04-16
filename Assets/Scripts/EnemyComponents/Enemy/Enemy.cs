@@ -11,7 +11,7 @@ namespace Assets.Scripts.EnemyComponents
 {
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(NavMeshAgent))]
-    internal abstract class Enemy : MonoBehaviour, IDamageable, IFSMControllable
+    internal abstract class Enemy : MonoBehaviour, IDamageable, IFSMControllable, IHealthDisplayable
     {
         private float _health;
 
@@ -25,6 +25,7 @@ namespace Assets.Scripts.EnemyComponents
         public Transform Transform => transform;
 
         public event Action<Enemy> Died;
+        public event Action<float> HealthValueChanged;
 
         private void Start()
         {
@@ -50,6 +51,7 @@ namespace Assets.Scripts.EnemyComponents
         public void TakeDamage(float damage)
         {
             _health -= damage;
+            HealthValueChanged?.Invoke(_health);
 
             if (_health <= 0)
             {
