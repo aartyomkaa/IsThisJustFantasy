@@ -1,3 +1,4 @@
+using Assets.Scripts.Constants;
 using Assets.Scripts.PlayerComponents;
 using System;
 using TMPro;
@@ -21,8 +22,8 @@ namespace Assets.Scripts.UI
         private int _panelMoveXValue = 228;
 
 
-        public Action<Player, int> FirstButtonClicked;
-        public Action SecondButtonClicked;
+        public Action<Player, int, int> FirstButtonClicked;
+        public Action<Player, int,int> SecondButtonClicked;
         public Action ExtraButtonClicked;
 
         private void Start()
@@ -77,12 +78,12 @@ namespace Assets.Scripts.UI
 
         public void OnFirsttButtonClicked()
         {
-            FirstButtonClicked?.Invoke(_currentPlayer, _costToBuy);
+            FirstButtonClicked?.Invoke(_currentPlayer, _costToBuy,UiHash.CoinsButtonIndex);
         }
 
         public void OnSecondButtonClicked()
         {
-            SecondButtonClicked?.Invoke();
+            SecondButtonClicked?.Invoke(_currentPlayer, _costToBuy, UiHash.AdButtonIndex);
         }
 
         public void OnExtraButtonClicked()

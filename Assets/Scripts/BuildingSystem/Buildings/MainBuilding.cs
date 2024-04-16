@@ -26,7 +26,7 @@ namespace Assets.Scripts.BuildingSystem.Buildings
             _eventer.FirstButtonClicked -= HealPlayer;
         }
 
-        private void HealPlayer(Player player, int costToBuy)
+        private void HealPlayer(Player player, int costToBuy, int buttonIndex)
         {
             if(player.Wallet.Coins >= costToBuy)
             {
