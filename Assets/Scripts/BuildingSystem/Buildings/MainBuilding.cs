@@ -19,6 +19,7 @@ namespace Assets.Scripts.BuildingSystem.Buildings
         {
             _eventer = GetComponentInChildren<ColliderPanelEventer>();
             _eventer.FirstButtonClicked += HealPlayer;
+
         }
 
         private void OnDisable()
@@ -26,7 +27,7 @@ namespace Assets.Scripts.BuildingSystem.Buildings
             _eventer.FirstButtonClicked -= HealPlayer;
         }
 
-        private void HealPlayer(Player player, int costToBuy)
+        private void HealPlayer(Player player, int costToBuy, int buttonIndex)
         {
             if(player.Wallet.Coins >= costToBuy)
             {

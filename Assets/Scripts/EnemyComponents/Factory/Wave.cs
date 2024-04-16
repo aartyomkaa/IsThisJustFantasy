@@ -19,5 +19,7 @@ namespace Assets.Scripts.EnemyComponents
         {
             _spawnAmount += increase ? 1 : -1;
         }
+
+      
     }
 }

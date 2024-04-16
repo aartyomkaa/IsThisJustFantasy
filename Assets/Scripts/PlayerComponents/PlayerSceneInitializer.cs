@@ -26,10 +26,12 @@ namespace Assets.Scripts.PlayerComponents
         [SerializeField] private SceneLoader _sceneLoader;
 
         private Pauser _pauser;
+       
 
         private void OnEnable()
         {
-            SceneManager.sceneLoaded += OnSceneLoaded;  
+            SceneManager.sceneLoaded += OnSceneLoaded;
+          
         }
 
         private void OnDisable()

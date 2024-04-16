@@ -1,4 +1,6 @@
+using Assets.Scripts.Constants;
 using Assets.Scripts.PlayerComponents;
+using Assets.Scripts.PlayerUnits;
 using Assets.Scripts.Props.Chest;
 using Assets.Scripts.UI;
 using System.Collections.Generic;
@@ -25,26 +27,40 @@ namespace Assets.Scripts.BuildingSystem.Buildings
         {
             _eventer = GetComponentInChildren<ColliderPanelEventer>();
             _eventer.FirstButtonClicked += SpawnChest;
+            _eventer.SecondButtonClicked += SpawnChest;
         }
 
         private void OnDisable()
         {
              _eventer.FirstButtonClicked -= SpawnChest;
+             _eventer.SecondButtonClicked -= SpawnChest;
         }
 
-        private void SpawnChest(Player player, int costToBuy)   
+        private void SpawnChest(Player player, int costToBuy, int buttonIndex)   
         {
-            if(_currentSpawnPoints.Count != 0)
-            {  
-                if(player.Wallet.Coins >= costToBuy)
+            if (_currentSpawnPoints.Count != 0)
+            {
+                if (buttonIndex == UiHash.CoinsButtonIndex)
+                {
+                    if (player.Wallet.Coins >= costToBuy)
+                    {
+                        int _lastChestSpawnPoint = _currentSpawnPoints.Count;
+                        _currentIndexOfChestSpawnPoint = Random.Range(_firstChestSpawnPoint, _lastChestSpawnPoint);
+                        Chest chestToSpawn = Instantiate(_prefabOfChest, _currentSpawnPoints[_currentIndexOfChestSpawnPoint].transform);
+                        chestToSpawn.SetCountOfCoins(_currentSpawnPoints[_currentIndexOfChestSpawnPoint].CoinsOfChest);
+                        _currentSpawnPoints.RemoveAt(_currentIndexOfChestSpawnPoint);
+                        player.Wallet.SpendCoins(costToBuy);
+                    }
+                }
+
+                if (buttonIndex == UiHash.AdButtonIndex)
                 {
                     int _lastChestSpawnPoint = _currentSpawnPoints.Count;
                     _currentIndexOfChestSpawnPoint = Random.Range(_firstChestSpawnPoint, _lastChestSpawnPoint);
                     Chest chestToSpawn = Instantiate(_prefabOfChest, _currentSpawnPoints[_currentIndexOfChestSpawnPoint].transform);
-                     chestToSpawn.SetCountOfCoins(_currentSpawnPoints[_currentIndexOfChestSpawnPoint].CoinsOfChest);
+                    chestToSpawn.SetCountOfCoins(_currentSpawnPoints[_currentIndexOfChestSpawnPoint].CoinsOfChest);
                     _currentSpawnPoints.RemoveAt(_currentIndexOfChestSpawnPoint);
-                    player.Wallet.SpendCoins(costToBuy);
-                }   
+                }
             }  
         }
     }

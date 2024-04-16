@@ -55,7 +55,7 @@ namespace Assets.Scripts.BuildingSystem
                 Close();
             }
                  
-            SetButtonText(_build, BuildingUiHash.BuildButtonText, costToBuy); 
+            SetButtonText(_build, UiHash.BuildButtonText, costToBuy); 
         }
 
         private void Close()

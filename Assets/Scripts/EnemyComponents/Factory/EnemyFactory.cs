@@ -1,5 +1,9 @@
 using Assets.Scripts.BuildingSystem.Buildings;
+using Assets.Scripts.Constants;
 using Assets.Scripts.GameLogic;
+using Assets.Scripts.PlayerComponents;
+using Assets.Scripts.Props.Chest;
+using Assets.Scripts.UI;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -21,6 +25,8 @@ namespace Assets.Scripts.EnemyComponents
         private EnemyPool _meleePool;
         private EnemyPool _rangePool;
         private int _enemySpawned;
+        private ColliderPanelEventer _eventer;
+        private bool _upOrLowSwawnAmount;
 
         private Coroutine _waveCoroutine;
         private int _spawnPointIndex;
@@ -31,7 +37,12 @@ namespace Assets.Scripts.EnemyComponents
 
         private void OnEnable()
         {
-            _start.onClick.AddListener(StartWave);
+            //_start.onClick.AddListener(StartWave);
+            _eventer = GetComponentInChildren<ColliderPanelEventer>();
+            _eventer.FirstButtonClicked += ChangeSpawnAmount;
+            _eventer.SecondButtonClicked += ChangeSpawnAmount;
+            _eventer.ExtraButtonClicked += StartWave;
+
         }
 
         private void Start()
@@ -43,6 +54,9 @@ namespace Assets.Scripts.EnemyComponents
         private void OnDisable()
         {
             _start.onClick.RemoveListener(StartWave);
+            _eventer.FirstButtonClicked -= ChangeSpawnAmount;
+            _eventer.SecondButtonClicked -= ChangeSpawnAmount;
+            _eventer.ExtraButtonClicked -= StartWave;
         }
 
         public void StartWave()
@@ -60,10 +74,25 @@ namespace Assets.Scripts.EnemyComponents
             }
         }
 
-        private void ChangeSpawnAmount(bool increase)
+        private void ChangeSpawnAmount(Player player, int costToBuy, int buttonIndex)
         {
             if (_waveIndex + 1 < _waves.Length)
-                _waves[_waveIndex + 1].ChangeSpawnAmount(increase);
+            {
+                if (buttonIndex == UiHash.CoinsButtonIndex)
+                {
+                    if (player.Wallet.Coins >= costToBuy)
+                    {
+                        _upOrLowSwawnAmount = true; 
+                        _waves[_waveIndex + 1].ChangeSpawnAmount(_upOrLowSwawnAmount);
+                    }
+                }
+
+                if (buttonIndex == UiHash.AdButtonIndex)
+                {
+                    _upOrLowSwawnAmount = false;
+                    _waves[_waveIndex + 1].ChangeSpawnAmount(_upOrLowSwawnAmount);
+                }       
+            }        
         }
 
         private void SpawnEnemy(EnemyPool pool, Vector3 position)
