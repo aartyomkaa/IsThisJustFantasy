@@ -19,6 +19,7 @@ namespace Assets.Scripts.BuildingSystem.Buildings
         {
             _eventer = GetComponentInChildren<ColliderPanelEventer>();
             _eventer.FirstButtonClicked += HealPlayer;
+
         }
 
         private void OnDisable()
