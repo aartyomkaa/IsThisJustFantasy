@@ -67,8 +67,6 @@ namespace Assets.Scripts.Audio
 
         public void Unmute()
         {
-            float value = PlayerPrefs.GetFloat(PlayerConfigs.MusicVolume);
-
             if (_isMuted == false)
             {
                 SetVolumeValue();
