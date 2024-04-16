@@ -8,6 +8,7 @@ using Assets.Scripts.UI;
 using Assets.Scripts.EnemyComponents;
 using Assets.Scripts.Audio;
 using Assets.Scripts.YandexSDK;
+using Assets.Scripts.GameLogic;
 
 namespace Assets.Scripts.PlayerComponents
 {
@@ -22,6 +23,7 @@ namespace Assets.Scripts.PlayerComponents
         [SerializeField] private EnemyFactory _enemyFactory;
         [SerializeField] private InterstitialAdShower _interstitialAd;
         [SerializeField] private VideoADShower _videoAd;
+        [SerializeField] private SceneLoader _sceneLoader;
 
         private Pauser _pauser;
 
@@ -44,6 +46,7 @@ namespace Assets.Scripts.PlayerComponents
             InitializeSound(_globalUI.SoundToggler);
             _pauser = new Pauser(_audioMixer, _mobileInput);
             _globalUI.PausePanel.SignToPauserEvents(_pauser);
+            _sceneLoader.SignToPausePanelEvents(_globalUI.PausePanel);
         }
 
         private Player InitializePlayer()

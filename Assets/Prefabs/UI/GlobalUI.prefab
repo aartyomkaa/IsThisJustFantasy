@@ -336,6 +336,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _openButton: {fileID: 1530640795672595172}
   _closeButton: {fileID: 7103321506086508092}
+  _restartSceneButton: {fileID: 6082295262918401563}
+  _exitToMainMenuButton: {fileID: 7111929824058212133}
   _panel: {fileID: 1194910630434955113}
 --- !u!1 &558095094877730296
 GameObject:
