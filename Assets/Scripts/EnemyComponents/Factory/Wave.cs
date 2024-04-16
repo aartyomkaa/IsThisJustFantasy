@@ -14,5 +14,10 @@ namespace Assets.Scripts.EnemyComponents
         public int MeleeAmount => _meleeAmount;
         public int RangeAmount => _rangeAmount;
         public int SpawnAmount => _spawnAmount;
+
+        public void ChangeSpawnAmount(bool increase)
+        {
+            _spawnAmount += increase ? 1 : -1;
+        }
     }
 }

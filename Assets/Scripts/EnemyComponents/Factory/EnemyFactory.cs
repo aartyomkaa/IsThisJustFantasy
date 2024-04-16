@@ -60,6 +60,12 @@ namespace Assets.Scripts.EnemyComponents
             }
         }
 
+        private void ChangeSpawnAmount(bool increase)
+        {
+            if (_waveIndex + 1 < _waves.Length)
+                _waves[_waveIndex + 1].ChangeSpawnAmount(increase);
+        }
+
         private void SpawnEnemy(EnemyPool pool, Vector3 position)
         {
             Enemy enemy = pool.GetEnemy();
