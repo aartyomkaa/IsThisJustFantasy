@@ -39,7 +39,7 @@ namespace Assets.Scripts.UI
 
         private void IncreaseTotalScore()
         {
-            _totalScore += _wallet.Coins * _scoreMultiplier; ;
+            _totalScore += _wallet.Coins * _scoreMultiplier; 
 
             ScoreChanged?.Invoke(_totalScore);
         }

@@ -10,21 +10,25 @@ namespace Assets.Scripts.UI
     {
         private AudioMixer _audioMixer;
         private MobileInput _mobileInput;
+        private bool _isCurrentSoundOff;
 
         public Pauser(AudioMixer audioMixer, MobileInput mobileInput)
         {
             _audioMixer = audioMixer;
             _mobileInput = mobileInput;
+            
         }
 
         public void Pause()
         {
+            _isCurrentSoundOff = _audioMixer.IsMuted;
+
             if (_mobileInput != null && Application.isMobilePlatform)
             {
               _mobileInput.gameObject.SetActive(false);
             }
 
-            if (_audioMixer != null)
+            if (!_isCurrentSoundOff)
             {
                 _audioMixer.Mute();
             }
@@ -39,7 +43,7 @@ namespace Assets.Scripts.UI
                 _mobileInput.gameObject.SetActive(true);
             }
 
-            if (_audioMixer != null)
+            if (!_isCurrentSoundOff)
             {
                 _audioMixer.Unmute();
             }

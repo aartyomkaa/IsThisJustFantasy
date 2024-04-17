@@ -7,14 +7,18 @@ namespace Assets.Scripts.UI
 {
     internal class PausePanel : MonoBehaviour
     {
-        [SerializeField] public Button _openButton;
-        [SerializeField] public Button _closeButton;
+      
         [SerializeField] private Button _restartSceneButton;
         [SerializeField] private Button _exitToMainMenuButton;
         [SerializeField] private GameObject _panel;
 
         private  Pauser _currentPauser;
 
+        public Pauser CurrentPauser => _currentPauser;
+
+        public Button OpenButton;
+        public Button CloseButton;
+       
         public event Action MainMenuButtonClicked;
         public event Action RestartSceneButtonClicked;
 
@@ -22,8 +26,8 @@ namespace Assets.Scripts.UI
         public void SignToPauserEvents(Pauser pauser)
         {
             _currentPauser = pauser;
-            _openButton.onClick.AddListener(OnOpenButtonClicked);
-            _closeButton.onClick.AddListener(OnCloseButtonClicked);
+            OpenButton.onClick.AddListener(OnOpenButtonClicked);
+            CloseButton.onClick.AddListener(OnCloseButtonClicked);
             _exitToMainMenuButton.onClick.AddListener(OnMainMenuButtonClicked);
             _restartSceneButton.onClick.AddListener(OnRestartSceneButtonClicked);
         }
@@ -31,8 +35,8 @@ namespace Assets.Scripts.UI
 
         private void OnDisable()
         {
-            _openButton.onClick.RemoveListener(OnOpenButtonClicked);
-            _closeButton.onClick.RemoveListener(OnCloseButtonClicked);
+            OpenButton.onClick.RemoveListener(OnOpenButtonClicked);
+            CloseButton.onClick.RemoveListener(OnCloseButtonClicked);
             _exitToMainMenuButton.onClick.RemoveListener(OnMainMenuButtonClicked);
             _restartSceneButton.onClick.RemoveListener(OnRestartSceneButtonClicked);
         }

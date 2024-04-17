@@ -9,6 +9,7 @@ using Assets.Scripts.EnemyComponents;
 using Assets.Scripts.Audio;
 using Assets.Scripts.YandexSDK;
 using Assets.Scripts.GameLogic;
+using Unity.VisualScripting;
 
 namespace Assets.Scripts.PlayerComponents
 {
@@ -30,13 +31,13 @@ namespace Assets.Scripts.PlayerComponents
 
         private void OnEnable()
         {
-            SceneManager.sceneLoaded += OnSceneLoaded;
-          
+            SceneManager.sceneLoaded += OnSceneLoaded;         
         }
 
         private void OnDisable()
         {
             SceneManager.sceneLoaded -= OnSceneLoaded;
+            _audioMixer.VolumeValueChanged -= _globalUI.SoundToggler.SetCurrentStatus;
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -48,6 +49,7 @@ namespace Assets.Scripts.PlayerComponents
             InitializeSound(_globalUI.SoundToggler);
             _pauser = new Pauser(_audioMixer, _mobileInput);
             _globalUI.PausePanel.SignToPauserEvents(_pauser);
+            _audioMixer.VolumeValueChanged += _globalUI.SoundToggler.SetCurrentStatus;
             _sceneLoader.SignToPausePanelEvents(_globalUI.PausePanel);
         }
 

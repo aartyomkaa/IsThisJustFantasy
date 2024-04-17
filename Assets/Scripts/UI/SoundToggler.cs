@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,41 +6,65 @@ namespace Assets.Scripts.UI
 {
     internal class SoundToggler : MonoBehaviour
     {
-        [SerializeField] private Toggle _sound;
-        [SerializeField] private Image _ckekMarkOn;
-        [SerializeField] private Image _ckekMarkOff;
+        [SerializeField] private Sprite _ckekMarkOn;
+        [SerializeField] private Sprite _ckekMarkOff;
+        [SerializeField] private Button _soundButton;
 
-       
-        public event Action <bool> SoundValueChanged;       
+        private bool _isMuted;
+
+        public event Action <bool> SoundValueChanged;    
         
         private void OnEnable()
         {
-            _sound.onValueChanged.AddListener(OnSoundValueChanged);
+            _soundButton.onClick.AddListener(OnSoundValueChanged); 
         }
 
         private void OnDisable()
         {
-            _sound.onValueChanged.RemoveListener(OnSoundValueChanged);
+            _soundButton.onClick.RemoveListener(OnSoundValueChanged);
         }
 
-        private void OnSoundValueChanged(bool isOn)
+        private void OnSoundValueChanged()
         {
-            if (isOn)
-            {
-                _sound.graphic = _ckekMarkOn;
-                _ckekMarkOn.gameObject.SetActive(true);
-                _ckekMarkOff.gameObject.SetActive(false);
-                
-                SoundValueChanged?.Invoke(isOn);
+            if (_isMuted == true)
+            {   
+                TurnOn();
             }
-            else 
+            else
             {
-                _sound.graphic = _ckekMarkOff;
-                _ckekMarkOff.gameObject.SetActive(true);
-                _ckekMarkOn.gameObject.SetActive(false);
-               
-                SoundValueChanged?.Invoke(isOn);
-            }         
+                Turnoff();   
+            }
+           
+            SoundValueChanged?.Invoke(_isMuted);
+            SetCurrentImage();
+        }
+
+        private void TurnOn()
+        {
+            _isMuted = false;
+        }
+
+        private void Turnoff()
+        {
+            _isMuted = true;
+        }
+
+        public void SetCurrentStatus(bool isMuted)
+        {
+            _isMuted = isMuted;
+            SetCurrentImage();
+        }
+
+        private void SetCurrentImage()
+        {
+            if(_isMuted)
+            {
+                _soundButton.image.sprite = _ckekMarkOff;
+            }
+            else
+            {
+                _soundButton.image.sprite = _ckekMarkOn;
+            }
         }
     }
 }

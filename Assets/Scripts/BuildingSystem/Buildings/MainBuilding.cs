@@ -31,7 +31,8 @@ namespace Assets.Scripts.BuildingSystem.Buildings
         {
             if(player.Wallet.Coins >= costToBuy)
             {
-                player.GetComponent<PlayerHealth>().TakeHeal(_valueToHeal);
+                player.GetComponent<PlayerHealth>().Heal(_valueToHeal);
+                player.Wallet.SpendCoins(costToBuy);
             }    
         }
     }

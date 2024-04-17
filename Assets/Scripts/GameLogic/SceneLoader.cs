@@ -27,8 +27,6 @@ namespace Assets.Scripts.GameLogic
             _currentPausePanel = pausePanel;
             _currentPausePanel.MainMenuButtonClicked += LoadMenuScene;
             _currentPausePanel.RestartSceneButtonClicked += RestartCurrentScene;
-
-
         }
 
         public void LoadScene(string sceneName)
