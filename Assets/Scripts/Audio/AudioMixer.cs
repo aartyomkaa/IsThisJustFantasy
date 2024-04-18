@@ -3,30 +3,33 @@ using UnityEngine;
 using UnityEngine.Audio;
 using Assets.Scripts.Constants;
 using Assets.Scripts.UI;
+using Unity.VisualScripting;
 
 namespace Assets.Scripts.Audio
 {
     internal class AudioMixer : MonoBehaviour
     {
         [SerializeField] private AudioMixerGroup _mixer;
-
-        private float _minVolume = -80;
-        private float _maxVolume = 0;
         private SoundToggler _currentSoundToggler;
 
         private bool _isMuted = false;
 
         public bool IsMuted => _isMuted;
 
-        public event Action<bool> Muted;
+        public event Action<bool> VolumeValueChanged;
 
-        public void ChangeVolume(float volume)
-        {
-            _mixer.audioMixer.SetFloat(PlayerConfigs.MusicVolume, volume);
-            PlayerPrefs.SetFloat(PlayerConfigs.MusicVolume, volume);
+        //public void ChangeVolume(float volume)
+        //{
+        //    _mixer.audioMixer.SetFloat(PlayerConfigs.MusicVolume, volume);
+        //    PlayerPrefs.SetFloat(PlayerConfigs.MusicVolume, volume);
 
-            _isMuted = false;
-            Muted?.Invoke(_isMuted);
+        //    _isMuted = false;
+        //    VolumeValueChanged?.Invoke(_isMuted);
+        //}
+
+        private void Start()
+        {      
+            SetVolumeValue();  
         }
 
         public void SignSoundValuesChanges(SoundToggler soundToggler)
@@ -40,47 +43,53 @@ namespace Assets.Scripts.Audio
             _currentSoundToggler.SoundValueChanged -= ToggleMusic;
         }
 
-        public void ToggleMusic(bool isOn)
+        public void ToggleMusic(bool isMuted)
         {
-            _isMuted = isOn;
+            _isMuted = isMuted;
 
             if (_isMuted)
             {
-                SetVolumeValue();
-
-                _isMuted = false;
+                Mute();
+               
             }
             else
             {
-                _mixer.audioMixer.SetFloat(PlayerConfigs.MusicVolume, _minVolume);
-                _isMuted = true;
-            }
-
-            Muted?.Invoke(_isMuted);
+                Unmute();
+            } 
         }
 
         public void Mute()
         {
-            if (_isMuted == false)
-                _mixer.audioMixer.SetFloat(PlayerConfigs.MusicVolume, _minVolume);
+
+            _mixer.audioMixer.SetFloat(PlayerConfigs.MusicVolume, PlayerConfigs.MinVolume);
+            PlayerPrefs.SetFloat(PlayerConfigs.MusicVolume,PlayerConfigs.MinVolume);
+            _isMuted = true;
+            VolumeValueChanged?.Invoke(_isMuted);
+      
         }
 
         public void Unmute()
         {
-            if (_isMuted == false)
-            {
-                SetVolumeValue();
-            }
+
+            _mixer.audioMixer.SetFloat(PlayerConfigs.MusicVolume, PlayerConfigs.MaxVolume);
+            PlayerPrefs.SetFloat(PlayerConfigs.MusicVolume, PlayerConfigs.MaxVolume);
+            _isMuted = false;
+            VolumeValueChanged?.Invoke(_isMuted);
+
         }
 
         private void SetVolumeValue()
         {
             float value = PlayerPrefs.GetFloat(PlayerConfigs.MusicVolume);
 
-            if (value > _minVolume)
-                _mixer.audioMixer.SetFloat(PlayerConfigs.MusicVolume, value);
+            if (value == PlayerConfigs.MinVolume)
+            {
+                Mute();
+            }     
             else
-                _mixer.audioMixer.SetFloat(PlayerConfigs.MusicVolume, _maxVolume);
+            {
+                Unmute();
+            }       
         }
     }
 }

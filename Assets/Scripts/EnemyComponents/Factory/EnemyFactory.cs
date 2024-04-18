@@ -84,11 +84,12 @@ namespace Assets.Scripts.EnemyComponents
                     if (player.Wallet.Coins >= costToBuy)
                     {
                         _upOrLowSwawnAmount = true; 
-                        _waves[_waveIndex + 1].ChangeSpawnAmount(_upOrLowSwawnAmount);
+                        _waves[_waveIndex].ChangeSpawnAmount(_upOrLowSwawnAmount);   //+1
+                        player.Wallet.SpendCoins(costToBuy);
                     }
                 }
 
-                if (buttonIndex == UiHash.AdButtonIndex)
+                if (buttonIndex == UiHash.AdButtonIndex)   // кнопка за рекламу
                 {
                     _upOrLowSwawnAmount = false;
                     _waves[_waveIndex + 1].ChangeSpawnAmount(_upOrLowSwawnAmount);
@@ -111,7 +112,9 @@ namespace Assets.Scripts.EnemyComponents
             for (int i = 0; i < wave.SpawnAmount; i++)
             {
                 for (int j = 0; j < wave.MeleeAmount; j++)
+                {
                     SpawnEnemy(_meleePool, _spawnPoints[_spawnPointIndex].transform.position);
+                }     
 
                 for (int k = 0; k < wave.RangeAmount; k++)
                     SpawnEnemy(_rangePool, _spawnPoints[_spawnPointIndex].transform.position);

@@ -12,14 +12,21 @@ namespace Assets.Scripts.YandexSDK
 
         public abstract void Show();
 
+        private bool _isCurrentSoundOff;
+
         protected void OnOpenCallBack()
         {
             Time.timeScale = 0;
 
+            _isCurrentSoundOff = _audioMixer.IsMuted;
+
             foreach (Button button in _adButtons)
                 button.interactable = false;
 
-            _audioMixer.Mute();
+            if (!_isCurrentSoundOff)
+            {
+                _audioMixer.Mute();
+            }               
         }
 
         protected void OnCloseCallBack()
@@ -29,7 +36,10 @@ namespace Assets.Scripts.YandexSDK
             foreach (Button button in _adButtons)
                 button.interactable = true;
 
-            _audioMixer.Unmute();
+            if (!_isCurrentSoundOff)
+            {
+                _audioMixer.Unmute();
+            }   
         }
 
         protected void OnCloseCallBack(bool wasShown)

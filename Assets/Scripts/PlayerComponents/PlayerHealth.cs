@@ -2,8 +2,6 @@
 using System.Collections;
 using Assets.Scripts.GameLogic.Interfaces;
 using System;
-using UnityEngine.Assertions.Must;
-using UnityEngine.Rendering;
 
 namespace Assets.Scripts.PlayerComponents
 {
@@ -51,9 +49,9 @@ namespace Assets.Scripts.PlayerComponents
             }
         }
 
-        public void TakeHeal(float importHealValue)
+        public void Heal(float importHealValue)
         {
-            _value += importHealValue;  //максимальному и минимальному здоровью надо избавиться от магичности
+            _value += importHealValue;
 
             _value = _value > _playerData.Health ? _playerData.Health : _value;        
         }
