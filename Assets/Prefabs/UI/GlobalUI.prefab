@@ -187,8 +187,8 @@ MonoBehaviour:
   _restartSceneButton: {fileID: 6082295262918401563}
   _exitToMainMenuButton: {fileID: 7111929824058212133}
   _panel: {fileID: 1194910630434955113}
-  OpenButton: {fileID: 0}
-  CloseButton: {fileID: 0}
+  OpenButton: {fileID: 1530640795672595172}
+  CloseButton: {fileID: 7103321506086508092}
 --- !u!1 &558095094877730296
 GameObject:
   m_ObjectHideFlags: 0
