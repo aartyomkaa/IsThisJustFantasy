@@ -12,7 +12,7 @@ namespace Assets.Scripts.PlayerComponents.Weapons.Bows
 
         private void Start()
         {
-            _pool = new ArrowsPool(_arrowPrefab, Damage, _layerMask);
+            _pool = new ArrowsPool(_arrowPrefab, Damage, EnemyLayerMask);
         }
 
         public void Attack(IDamageable target)

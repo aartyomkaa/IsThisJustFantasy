@@ -3468,6 +3468,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6425813114538562238}
     m_Modifications:
+    - target: {fileID: 3860490325897578753, guid: afd1c7c6e1349714eb3781cbf7666f55, type: 3}
+      propertyPath: m_Size.x
+      value: 0.00040005756
+      objectReference: {fileID: 0}
+    - target: {fileID: 3860490325897578753, guid: afd1c7c6e1349714eb3781cbf7666f55, type: 3}
+      propertyPath: m_Size.y
+      value: 0.030953445
+      objectReference: {fileID: 0}
+    - target: {fileID: 3860490325897578753, guid: afd1c7c6e1349714eb3781cbf7666f55, type: 3}
+      propertyPath: m_Size.z
+      value: 0.019029805
+      objectReference: {fileID: 0}
+    - target: {fileID: 3860490325897578753, guid: afd1c7c6e1349714eb3781cbf7666f55, type: 3}
+      propertyPath: m_Center.x
+      value: -0.0000000093692005
+      objectReference: {fileID: 0}
+    - target: {fileID: 3860490325897578753, guid: afd1c7c6e1349714eb3781cbf7666f55, type: 3}
+      propertyPath: m_Center.y
+      value: -0.012707083
+      objectReference: {fileID: 0}
+    - target: {fileID: 3860490325897578753, guid: afd1c7c6e1349714eb3781cbf7666f55, type: 3}
+      propertyPath: m_Center.z
+      value: 0.0063603846
+      objectReference: {fileID: 0}
     - target: {fileID: 6290089752773975098, guid: afd1c7c6e1349714eb3781cbf7666f55, type: 3}
       propertyPath: m_LocalPosition.x
       value: 45.9
@@ -3512,8 +3536,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sword 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2125033730032672858, guid: afd1c7c6e1349714eb3781cbf7666f55, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

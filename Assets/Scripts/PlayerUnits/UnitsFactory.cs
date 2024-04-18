@@ -16,14 +16,6 @@ namespace Assets.Scripts.PlayerUnits
             _handler.Init(_pool.MeleePool);
         }
 
-        private void Update()
-        {
-            if (Input.GetKeyUp(KeyCode.Space))
-            {
-                Spawn();
-            }
-        }
-
         public void Spawn()  
         {
             Unit unit = _pool.GetUnit();

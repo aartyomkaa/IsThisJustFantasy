@@ -7,7 +7,8 @@ namespace Assets.Scripts.PlayerComponents.Weapons
     {
         [SerializeField] private float _damage;
         [SerializeField] private float _attackSpeed;
-        [SerializeField] protected LayerMask _layerMask;
+
+        [SerializeField] protected LayerMask EnemyLayerMask;
 
         protected Coroutine AttackCoroutine;
 

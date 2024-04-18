@@ -23,8 +23,8 @@ namespace Assets.Scripts.PlayerComponents.Weapons
 
         private void Start()
         {
-            _closestTargetFinder = new ClosestTargetFinder(_radius, _layerMask);
-            _pool = new ArrowsPool(_arrowPrefab, Damage, _layerMask);
+            _closestTargetFinder = new ClosestTargetFinder(_radius, EnemyLayerMask);
+            _pool = new ArrowsPool(_arrowPrefab, Damage, EnemyLayerMask);
 
             _mark.Init();
         }

@@ -53,16 +53,9 @@ namespace Assets.Scripts.PlayerComponents
 
         public void TakeHeal(float importHealValue)
         {
-            float maxValueToHeal = 100 - _value;  //максимальному и минимальному здоровью надо избавиться от магичности
-            
-            if (maxValueToHeal >= importHealValue)
-            {
-                _value += importHealValue;
-            }
-            else
-            {
-                _value += maxValueToHeal;
-            }        
+            _value += importHealValue;  //максимальному и минимальному здоровью надо избавиться от магичности
+
+            _value = _value > _playerData.Health ? _playerData.Health : _value;        
         }
 
         private IEnumerator DamageRecover()
