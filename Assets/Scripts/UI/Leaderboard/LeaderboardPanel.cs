@@ -3,16 +3,16 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.UI.Leaderboard
+namespace Assets.Scripts.UI
 {
-    internal class LeaderboardPanel : MonoBehaviour
+    internal class LeaderboardPanel : Screen
     {
         [SerializeField] private Button _closeButton;
         [SerializeField] private LeaderboardView _leaderboardView;
 
         private int _topPlayers = 5;
 
-        public Action Closed;
+        public event Action Closed;
 
         private void OnEnable()
         {
@@ -26,11 +26,11 @@ namespace Assets.Scripts.UI.Leaderboard
 
         public void Init()
         {
-           // Open();
+            Open();
 
-            ClearViews();
+            // ClearViews(); закомментил ДО билда, в билде раскомментить
 
-            LoadEntries();
+            // LoadEntries();  закомментил ДО билда, в билде раскомментить
         }
 
         private void LoadEntries()
@@ -53,6 +53,7 @@ namespace Assets.Scripts.UI.Leaderboard
         {
            // ButtonAudio.Play();
             Closed?.Invoke();
+            Close();
         }
     }
 }

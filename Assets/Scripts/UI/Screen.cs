@@ -2,28 +2,31 @@
 
 namespace Assets.Scripts.UI
 {
+
     internal abstract class Screen : MonoBehaviour
     {
-        [SerializeField] protected CanvasGroup CanvasGroup;
-        [SerializeField] protected AudioSource ButtonAudio;
+        [SerializeField] protected CanvasGroup CurrentCanvasGroup;
+       // [SerializeField] protected AudioSource ButtonAudio;
 
+       
+        
         private void Start()
         {
-            Close();
+            Close(); 
         }
 
         public void Close()
         {
-            CanvasGroup.alpha = 0f;
-            CanvasGroup.interactable = false;
-            CanvasGroup.blocksRaycasts = false;
+            CurrentCanvasGroup.alpha = 0f;
+            CurrentCanvasGroup.interactable = false;
+            CurrentCanvasGroup.blocksRaycasts = false;
         }
 
         public virtual void Open()
         {
-            CanvasGroup.alpha = 1f;
-            CanvasGroup.interactable = true;
-            CanvasGroup.blocksRaycasts = true;
+            CurrentCanvasGroup.alpha = 1f;
+            CurrentCanvasGroup.interactable = true;
+            CurrentCanvasGroup.blocksRaycasts = true;
         }
     }
 }

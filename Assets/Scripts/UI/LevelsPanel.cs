@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.UI
 {
-    internal class LevelsPanel : MonoBehaviour
+    internal class LevelsPanel : Screen
     {
         [SerializeField] private List<LevelButton> _levelButtons;
         [SerializeField] private SceneLoader _sceneLoader;
@@ -16,11 +16,11 @@ namespace Assets.Scripts.UI
         private int _lastAvailableLevel = 1;
 
 
-        private void Start()
-        {
-            SetLastAvailableLevel();
-            ActiveAvailableLevels();
-        }
+        //private void Start()
+        //{
+        //    SetLastAvailableLevel();
+        //    ActiveAvailableLevels();
+        //}
 
 
         private void OnEnable()
@@ -31,6 +31,13 @@ namespace Assets.Scripts.UI
         private void OnDisable()
         {
             UnSignToButtons();
+        }
+
+        public void Init()
+        {
+            Open();
+            SetLastAvailableLevel();
+            ActiveAvailableLevels();
         }
 
 

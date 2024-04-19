@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.UI.Leaderboard
+namespace Assets.Scripts.UI
 {
     internal class LeaderboardEntryView : MonoBehaviour
     {

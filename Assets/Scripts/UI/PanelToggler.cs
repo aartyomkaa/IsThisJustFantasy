@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.UI
 {
-    internal  class PanelToggler : MonoBehaviour
+    internal abstract class PanelToggler : MonoBehaviour
     {
         [SerializeField] public Button _openButton;
         [SerializeField] public Button _closeButton;
@@ -21,12 +21,12 @@ namespace Assets.Scripts.UI
             _closeButton.onClick.RemoveListener(OnCloseButtonClicked);
         }
 
-        public void OnOpenButtonClicked()
+        public virtual void OnOpenButtonClicked()
         {
             _panel.SetActive(true);
         }
 
-        public void OnCloseButtonClicked()
+        public virtual void OnCloseButtonClicked()
         {
             _panel.SetActive(false);
         }

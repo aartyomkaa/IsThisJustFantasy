@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.UI.Leaderboard
+namespace Assets.Scripts.UI
 {
     internal class LoginPanel : Screen
     {
@@ -28,21 +28,17 @@ namespace Assets.Scripts.UI.Leaderboard
 
         private void OnAccept()
         {
-            ButtonAudio.Play();
+            // PlayerAccount.Authorize();  закомментил ДО билда, в билде раскомментить
 
-            PlayerAccount.Authorize();
+            // _score.SetScore(); закомментил ДО билда, в билде раскомментить
 
-            _score.SetScore();
-
-            Accept?.Invoke();
+            // Accept?.Invoke(); закомментил ДО билда, в билде раскомментить
             Close();
         }
 
         private void OnDecline()
         {
-            ButtonAudio.Play();
-
-            Decline?.Invoke();
+            // Decline?.Invoke(); закомментил ДО билда, в билде раскомментить
             Close();
         }
     }
