@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.UI
 {
-    internal class PanelToggler : MonoBehaviour
+    internal  class PanelToggler : MonoBehaviour
     {
         [SerializeField] public Button _openButton;
         [SerializeField] public Button _closeButton;

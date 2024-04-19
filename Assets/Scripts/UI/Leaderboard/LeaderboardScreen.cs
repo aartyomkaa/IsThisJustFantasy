@@ -3,24 +3,21 @@ using UnityEngine;
 
 namespace Assets.Scripts.UI.Leaderboard
 {
-    internal class LeaderboardScreen : Screen
+    internal class LeaderboardScreen 
     {
-        [SerializeField] private LoginPanel _logInPanel;
-        [SerializeField] private LeaderboardPanel _leaderboardPanel;
+        [SerializeField] private GameObject _loginpanel;
+       
 
-        public override void Open()
+        public  void Open()
         {
-            base.Open();
-
             if (PlayerAccount.IsAuthorized)
             {
                 PlayerAccount.RequestPersonalProfileDataPermission();
-
-                _leaderboardPanel.Init();
+        
             }
             else
             {
-                _logInPanel.Open();
+                _loginpanel.SetActive(true);
             }
         }
     }
