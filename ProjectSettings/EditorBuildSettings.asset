@@ -5,25 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/DevelopmentBuildScenes/StudyLevel.unity
-    guid: 4f8ed0f3ba3feaa4f80cf7c93dde93cd
-  - enabled: 0
-    path: Assets/Scenes/ElginScenes/ElginForTests.unity
-    guid: 79ea0a3602ba2c347ad260690eb984f9
-  - enabled: 0
-    path: Assets/Scenes/ArtjomScene/ArtjomScene.unity
-    guid: 3086321b49e54452faadf2e9efba3096
-  - enabled: 0
-    path: Assets/Scenes/DevelopmentBuildScenes/SDKInitializerScene.unity
-    guid: 405c71356d357724cb5ced2cc6e80c42
   - enabled: 1
-    path: Assets/Scenes/DmitriysScenes/Level1 TEST.unity
-    guid: 6cdc4142914b443499c03f631296ad74
-  - enabled: 0
-    path: Assets/Scenes/ArtjomScene/Level2.unity
-    guid: 49bf62eb726ffad49a3750b721255220
+    path: Assets/Scenes/DmitriysScenes/Menu.unity
+    guid: 92d646ba031263341a43c42405db139f
   - enabled: 1
-    path: Assets/Scenes/ArtjomScene/Menu.unity
-    guid: 47e90e619c82a4e4f8dd15929b53e6ed
+    path: Assets/Scenes/DmitriysScenes/Level1.unity
+    guid: 6fc706393a0d9e54c98ced5e9d93a7ca
+  - enabled: 1
+    path: Assets/Scenes/DmitriysScenes/Level2.unity
+    guid: 3028f182a6cb07645a71ec7c9e56f63f
   m_configObjects: {}
