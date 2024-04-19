@@ -1,0 +1,48 @@
+﻿using Assets.Scripts.Constants;
+using Assets.Scripts.EnemyComponents;
+using Assets.Scripts.PlayerComponents;
+using Assets.Scripts.UI;
+using UnityEngine;
+
+namespace Assets.Scripts.BuildingSystem.Buildings
+{
+    internal class EnemyBuilding : MonoBehaviour
+    {
+        private EnemyFactory _enemyFactory;
+        private ColliderPanelEventer _eventer;
+
+        private bool _isIncrease;
+
+        private void OnEnable()
+        {
+            _eventer = GetComponentInChildren<ColliderPanelEventer>();
+            _enemyFactory = GetComponentInChildren<EnemyFactory>();
+            _eventer.FirstButtonClicked += ChangeSpawnAmount;
+            _eventer.SecondButtonClicked += ChangeSpawnAmount;
+            _eventer.ExtraButtonClicked += _enemyFactory.StartWave;
+        }
+
+        private void OnDisable()
+        {
+            _eventer.FirstButtonClicked -= ChangeSpawnAmount;
+            _eventer.SecondButtonClicked -= ChangeSpawnAmount;
+            _eventer.ExtraButtonClicked -= _enemyFactory.StartWave;
+        }
+
+        private void ChangeSpawnAmount(Player player, int costToBuy, int buttonIndex)
+        {
+            if (buttonIndex == UiHash.CoinsButtonIndex && player.Wallet.Coins >= costToBuy)
+            {
+                _isIncrease = true;
+                player.Wallet.SpendCoins(costToBuy);
+            }
+
+            if (buttonIndex == UiHash.AdButtonIndex)
+            {
+                _isIncrease = false;
+            }
+
+            _enemyFactory.ChangeSpawnAmount(_isIncrease);
+        }
+    }
+}

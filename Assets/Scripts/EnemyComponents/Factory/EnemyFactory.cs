@@ -1,14 +1,8 @@
 using Assets.Scripts.BuildingSystem.Buildings;
-using Assets.Scripts.Constants;
-using Assets.Scripts.GameLogic;
-using Assets.Scripts.PlayerComponents;
-using Assets.Scripts.Props.Chest;
-using Assets.Scripts.UI;
 using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UI;
 
 namespace Assets.Scripts.EnemyComponents
 {
@@ -19,14 +13,10 @@ namespace Assets.Scripts.EnemyComponents
         [SerializeField] private EnemyData _range;
         [SerializeField] private EnemyData _melee;
         [SerializeField] private MainBuilding _building;
-        [SerializeField] private Button _start;
-        [SerializeField] private SceneLoader _sceneSwitcher;
 
         private EnemyPool _meleePool;
         private EnemyPool _rangePool;
         private int _enemySpawned;
-        private ColliderPanelEventer _eventer;
-        private bool _upOrLowSwawnAmount;
 
         private Coroutine _waveCoroutine;
         private int _spawnPointIndex;
@@ -34,29 +24,12 @@ namespace Assets.Scripts.EnemyComponents
 
         public event Action<int> WaveStarted;
         public event Action NextSpawned;
-
-        private void OnEnable()
-        {
-            //_start.onClick.AddListener(StartWave);
-            _eventer = GetComponentInChildren<ColliderPanelEventer>();
-            _eventer.FirstButtonClicked += ChangeSpawnAmount;
-            _eventer.SecondButtonClicked += ChangeSpawnAmount;
-            _eventer.ExtraButtonClicked += StartWave;
-
-        }
+        public event Action FinalWaveCleared;
 
         private void Start()
         {
             _meleePool = new EnemyPool(_melee, _building);
             _rangePool = new EnemyPool(_range, _building);
-        }
-
-        private void OnDisable()
-        {
-            _start.onClick.RemoveListener(StartWave);
-            _eventer.FirstButtonClicked -= ChangeSpawnAmount;
-            _eventer.SecondButtonClicked -= ChangeSpawnAmount;
-            _eventer.ExtraButtonClicked -= StartWave;
         }
 
         public void StartWave()
@@ -75,25 +48,11 @@ namespace Assets.Scripts.EnemyComponents
             }
         }
 
-        private void ChangeSpawnAmount(Player player, int costToBuy, int buttonIndex)
+        public void ChangeSpawnAmount(bool isIncrease)
         {
             if (_waveIndex + 1 < _waves.Length)
             {
-                if (buttonIndex == UiHash.CoinsButtonIndex)
-                {
-                    if (player.Wallet.Coins >= costToBuy)
-                    {
-                        _upOrLowSwawnAmount = true; 
-                        _waves[_waveIndex].ChangeSpawnAmount(_upOrLowSwawnAmount);   //+1
-                        player.Wallet.SpendCoins(costToBuy);
-                    }
-                }
-
-                if (buttonIndex == UiHash.AdButtonIndex)   // кнопка за рекламу
-                {
-                    _upOrLowSwawnAmount = false;
-                    _waves[_waveIndex + 1].ChangeSpawnAmount(_upOrLowSwawnAmount);
-                }       
+                _waves[_waveIndex].ChangeSpawnAmount(isIncrease);
             }        
         }
 
@@ -132,7 +91,7 @@ namespace Assets.Scripts.EnemyComponents
             enemy.Died -= OnEnemyDied;
 
             if (_enemySpawned == 0 && _waves.Length == _waveIndex)
-                _sceneSwitcher.gameObject.SetActive(true);
+                FinalWaveCleared?.Invoke();
         }
     }
 }
