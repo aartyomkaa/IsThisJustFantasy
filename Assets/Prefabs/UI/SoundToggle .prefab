@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6385058860128106985}
   - component: {fileID: 8553026861609124302}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: btn_icon_volume_mute
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 6877228167148428340}
   - component: {fileID: 3978684434509910919}
   - component: {fileID: 1291227335705977502}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +214,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4888308841921733444}
   - component: {fileID: 1607459772826204832}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: 'SoundToggle '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -271,7 +271,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4548812498709008006}
   - component: {fileID: 8937986456972319317}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: btn_icon_volume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -356,7 +356,7 @@ GameObject:
   - component: {fileID: 4309346146374270623}
   - component: {fileID: 7618939484570770337}
   - component: {fileID: 8244637377285667863}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}

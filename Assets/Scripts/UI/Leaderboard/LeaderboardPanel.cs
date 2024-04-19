@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.UI.Leaderboard
 {
-    internal class LeaderboardPanel : Screen
+    internal class LeaderboardPanel : MonoBehaviour
     {
         [SerializeField] private Button _closeButton;
         [SerializeField] private LeaderboardView _leaderboardView;
@@ -26,7 +26,7 @@ namespace Assets.Scripts.UI.Leaderboard
 
         public void Init()
         {
-            Open();
+           // Open();
 
             ClearViews();
 
@@ -51,7 +51,7 @@ namespace Assets.Scripts.UI.Leaderboard
 
         private void OnClose()
         {
-            ButtonAudio.Play();
+           // ButtonAudio.Play();
             Closed?.Invoke();
         }
     }

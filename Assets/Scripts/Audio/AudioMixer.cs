@@ -60,12 +60,10 @@ namespace Assets.Scripts.Audio
 
         public void Mute()
         {
-
             _mixer.audioMixer.SetFloat(PlayerConfigs.MusicVolume, PlayerConfigs.MinVolume);
             PlayerPrefs.SetFloat(PlayerConfigs.MusicVolume,PlayerConfigs.MinVolume);
             _isMuted = true;
             VolumeValueChanged?.Invoke(_isMuted);
-      
         }
 
         public void Unmute()

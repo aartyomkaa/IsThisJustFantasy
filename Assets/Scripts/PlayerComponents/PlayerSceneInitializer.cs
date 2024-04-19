@@ -27,30 +27,35 @@ namespace Assets.Scripts.PlayerComponents
         [SerializeField] private SceneLoader _sceneLoader;
 
         private Pauser _pauser;
-       
+        private NextLevelZone _nextLevelZone;
+
 
         private void OnEnable()
         {
-            SceneManager.sceneLoaded += OnSceneLoaded;         
+            SceneManager.sceneLoaded += OnSceneLoaded;
+            
         }
 
         private void OnDisable()
         {
             SceneManager.sceneLoaded -= OnSceneLoaded;
-            _audioMixer.VolumeValueChanged -= _globalUI.SoundToggler.SetCurrentStatus;
+            
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
             Player player = InitializePlayer();
+            _nextLevelZone = GetComponentInChildren<NextLevelZone>();
 
             InitializeInput(player);
             InitializeUI(player);
             InitializeSound(_globalUI.SoundToggler);
             _pauser = new Pauser(_audioMixer, _mobileInput);
             _globalUI.PausePanel.SignToPauserEvents(_pauser);
-            _audioMixer.VolumeValueChanged += _globalUI.SoundToggler.SetCurrentStatus;
+            _globalUI.SignSoundTogglerToAudio(_audioMixer);
+            _globalUI.SignToNextLevelPanelToZone(_nextLevelZone);
             _sceneLoader.SignToPausePanelEvents(_globalUI.PausePanel);
+            _sceneLoader.SignToNextLevelPanelToZone(_nextLevelZone);
         }
 
         private Player InitializePlayer()

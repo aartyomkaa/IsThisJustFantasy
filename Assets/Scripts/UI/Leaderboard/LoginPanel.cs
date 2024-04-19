@@ -9,10 +9,10 @@ namespace Assets.Scripts.UI.Leaderboard
     {
         [SerializeField] private Button _accept;
         [SerializeField] private Button _decline;
-        [SerializeField] private Score _scorePanel;
+        [SerializeField] private Score _score;
 
-        public Action Decline;
-        public Action Accept;
+        public event Action Decline;
+        public event Action Accept;
 
         private void OnEnable()
         {
@@ -32,7 +32,7 @@ namespace Assets.Scripts.UI.Leaderboard
 
             PlayerAccount.Authorize();
 
-            _scorePanel.SetScore();
+            _score.SetScore();
 
             Accept?.Invoke();
             Close();

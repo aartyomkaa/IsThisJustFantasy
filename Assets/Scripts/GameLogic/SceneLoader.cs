@@ -9,6 +9,10 @@ namespace Assets.Scripts.GameLogic
     {
         private PausePanel _currentPausePanel;
 
+       private int _currentScene;
+        private int _nextLevelNumber = 1;
+        private NextLevelZone _currentNextLevelZone;
+
         private void OnEnable()
         {
             //LoadMenuScene();
@@ -16,11 +20,18 @@ namespace Assets.Scripts.GameLogic
 
         private void OnDisable()
         {
-            _currentPausePanel.MainMenuButtonClicked -= LoadMenuScene;
-            _currentPausePanel.RestartSceneButtonClicked -= RestartCurrentScene;
+            
+            if (_currentPausePanel != null)
+            {
+                _currentPausePanel.MainMenuButtonClicked -= LoadMenuScene;
+                _currentPausePanel.RestartSceneButtonClicked -= RestartCurrentScene;
+            } 
+
+            if(_currentNextLevelZone != null)
+            {
+
+            }
         }
-
-
 
         public void SignToPausePanelEvents(PausePanel pausePanel)
         {
@@ -41,7 +52,24 @@ namespace Assets.Scripts.GameLogic
 
         private void RestartCurrentScene()
         {
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name, LoadSceneMode.Single);          
         }
+
+        private void IncreaseLevel()   // вызывать в момент первого показа панельки о прохождении уровня
+        {
+            _currentScene = SceneManager.GetActiveScene().buildIndex;
+
+            Debug.Log("нынешний уровень вот такой - " + _currentScene);
+
+            PlayerPrefs.SetInt(SceneNames.LastAvailableLevel, _currentScene += _nextLevelNumber);
+
+            Debug.Log("Повысил уровень на такой - " + PlayerPrefs.GetInt(SceneNames.LastAvailableLevel));
+        }
+
+        public void SignToNextLevelPanelToZone(NextLevelZone nextLevelZone)
+        {
+            _currentNextLevelZone = nextLevelZone;
+            _currentNextLevelZone.LevelUped += IncreaseLevel;
+        }      
     }
 }
