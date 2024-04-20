@@ -1846,6 +1846,10 @@ PrefabInstance:
       propertyPath: _shootPoint
       value: 
       objectReference: {fileID: 6224023804092760644}
+    - target: {fileID: 3454314672767336819, guid: af0c284f177ab7e40a8d439c8f91585b, type: 3}
+      propertyPath: EnemyLayerMask.m_Bits
+      value: 2048
+      objectReference: {fileID: 0}
     - target: {fileID: 4460179070690123453, guid: af0c284f177ab7e40a8d439c8f91585b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -10,7 +10,6 @@ namespace Assets.Scripts.UI
 
         public bool _isPlayerAuthorized;
 
-
         private void OnEnable()
         {
             _leaderboardpanel.Closed += OnLeaderBordPanelClosed;
