@@ -14,9 +14,11 @@ namespace Assets.Scripts.BuildingSystem.Buildings
         [SerializeField] private Chest _prefabOfChest;
 
         private int _currentIndexOfChestSpawnPoint;
-        private ColliderPanelEventer _eventer;
+        //private ColliderPanelEventer _eventer;
         private int _firstChestSpawnPoint = 0;
         private List<ChestSpawnPoint> _currentSpawnPoints;
+
+       // public ColliderPanelEventer Eventer => _eventer;
 
         public void SetChestsSpawnPoints(ChestSpawnerPointsContainer chestSpawnPoints)
         {
@@ -25,15 +27,15 @@ namespace Assets.Scripts.BuildingSystem.Buildings
 
         private void OnEnable()
         {
-            _eventer = GetComponentInChildren<ColliderPanelEventer>();
-            _eventer.FirstButtonClicked += SpawnChest;
-            _eventer.SecondButtonClicked += SpawnChest;
+            //_eventer = GetComponentInChildren<ColliderPanelEventer>();
+            Eventer.FirstButtonClicked += SpawnChest;
+            Eventer.SecondButtonClicked += SpawnChest;
         }
 
         private void OnDisable()
         {
-             _eventer.FirstButtonClicked -= SpawnChest;
-             _eventer.SecondButtonClicked -= SpawnChest;
+            Eventer.FirstButtonClicked -= SpawnChest;
+            Eventer.SecondButtonClicked -= SpawnChest;
         }
 
         private void SpawnChest(Player player, int costToBuy, int buttonIndex)   

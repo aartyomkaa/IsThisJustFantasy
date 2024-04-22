@@ -21,6 +21,8 @@ namespace Assets.Scripts.UI
         private float _changeScaleSpeed = 0.15f;
         private int _panelMoveXValue = 228;
 
+        public Button SecondButton => _secondButton;
+
 
         public Action<Player, int, int> FirstButtonClicked;
         public Action<Player, int,int> SecondButtonClicked;

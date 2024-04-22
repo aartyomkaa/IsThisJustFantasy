@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using Assets.Scripts.GameLogic.Interfaces;
+using Assets.Scripts.UI;
 
 
 namespace Assets.Scripts.BuildingSystem
@@ -18,17 +19,20 @@ namespace Assets.Scripts.BuildingSystem
 
         private AudioSource _audiosourse;
         private Vector3 _scaleOfParticleOfDestroy;
+        protected ColliderPanelEventer Eventer;
 
         public int IndexOfBuilding; 
         private float _startStrength;
 
         public Transform Transform => transform;
 
-        public Action<Transform> Destroyed;
+        public event Action<Transform> Destroyed;
+        public event Action<ColliderPanelEventer> BuildWithEventorWasMade;
 
         private void Awake()
         {
             _audiosourse = GetComponent<AudioSource>();
+            Eventer = GetComponentInChildren<ColliderPanelEventer>();
         }
 
         private void OnEnable()
@@ -69,7 +73,16 @@ namespace Assets.Scripts.BuildingSystem
                 }
             }
         }
- 
+
+        public void AnnounceOfCreation()
+        {
+            if(Eventer != null)
+            {
+                BuildWithEventorWasMade?.Invoke(Eventer);
+            }
+        }
+
+
 
         protected void Destroy()
         { 

@@ -2,8 +2,11 @@ using Assets.Scripts.BuildingSystem.Buildings;
 using Assets.Scripts.Constants;
 using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.Props.Chest;
+using Assets.Scripts.UI;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.Scripts.BuildingSystem.System
 {
@@ -21,6 +24,9 @@ namespace Assets.Scripts.BuildingSystem.System
         private PlayerWallet _currentPlayersWallet;
         private int _currentCostToBuild;
         private bool _canBuild;
+        private Building _currentBuilding;
+
+        public event Action<Button> EventerWithAdButtonWasMade;
 
         private void Start()
         {
@@ -37,6 +43,7 @@ namespace Assets.Scripts.BuildingSystem.System
         {
             UnSignToBuildingsPointEvents();
             _builder.BuildButtonClicked -= Build;
+            _currentBuilding.BuildWithEventorWasMade -= OnBuildWithEventorWasMade;
         }
        
         private void Build(PlayerWallet wallet)   
@@ -49,7 +56,9 @@ namespace Assets.Scripts.BuildingSystem.System
                         {
                             _buildingSpawner.Spawn(_buildPoints[i].BuildingPointIndex, _buildPoints[i].SpotToPlaceBuilding, _chestSpawnPoints);
                             _buildPoints[i].TakeSpot();
-                            _buildPoints[i].SignToCurrentBuilding(_buildingSpawner.CurrentBuilding);
+                            _buildPoints[i].SignToCurrentBuilding(_buildingSpawner.CurrentBuilding);                          
+                            _currentBuilding = _buildingSpawner.CurrentBuilding;
+                            _currentBuilding.BuildWithEventorWasMade += OnBuildWithEventorWasMade;        
                             _canBuild = false;
                             _buildPoints[i].TryToDeActiveIconOfBuildPoint();
                             _builder.ToggleButton(wallet, _currentCostToBuild, _canBuild);
@@ -66,6 +75,11 @@ namespace Assets.Scripts.BuildingSystem.System
                 _buildPoints[i].PlayerWentIn += OnPlayerWentIn;
                 _buildPoints[i].PlayerWentOut += OnPlayerWentOut;
             }
+        }
+
+        private void OnBuildWithEventorWasMade(ColliderPanelEventer currentEventer)
+        {
+            EventerWithAdButtonWasMade?.Invoke(currentEventer.SecondButton);
         }
 
         private void UnSignToBuildingsPointEvents()

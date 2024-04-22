@@ -43,6 +43,7 @@ namespace Assets.Scripts.UI
 
         private void OnMainMenuButtonClicked()
         {
+            _currentPauser.Resume();
             MainMenuButtonClicked?.Invoke();
         }
 

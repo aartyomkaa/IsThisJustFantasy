@@ -9,7 +9,7 @@ namespace Assets.Scripts.GameLogic
     {
         private PausePanel _currentPausePanel;
 
-       private int _currentScene;
+        private int _currentScene;
         private int _nextLevelNumber = 1;
         private NextLevelZone _currentNextLevelZone;
 
@@ -29,7 +29,7 @@ namespace Assets.Scripts.GameLogic
 
             if(_currentNextLevelZone != null)
             {
-
+                _currentNextLevelZone.LevelUped -= IncreaseLevel;
             }
         }
 
@@ -61,6 +61,7 @@ namespace Assets.Scripts.GameLogic
 
             Debug.Log("нынешний уровень вот такой - " + _currentScene);
 
+            
             PlayerPrefs.SetInt(SceneNames.LastAvailableLevel, _currentScene += _nextLevelNumber);
 
             Debug.Log("Повысил уровень на такой - " + PlayerPrefs.GetInt(SceneNames.LastAvailableLevel));

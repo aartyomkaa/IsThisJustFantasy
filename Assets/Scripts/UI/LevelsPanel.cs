@@ -15,19 +15,6 @@ namespace Assets.Scripts.UI
 
         private int _lastAvailableLevel = 1;
 
-
-        //private void Start()
-        //{
-        //    SetLastAvailableLevel();
-        //    ActiveAvailableLevels();
-        //}
-
-
-        private void OnEnable()
-        {
-            SignToButtons();
-        }
-
         private void OnDisable()
         {
             UnSignToButtons();
@@ -38,6 +25,7 @@ namespace Assets.Scripts.UI
             Open();
             SetLastAvailableLevel();
             ActiveAvailableLevels();
+            SignToButtons();
         }
 
 

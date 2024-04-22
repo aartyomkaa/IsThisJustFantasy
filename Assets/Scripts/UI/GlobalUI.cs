@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts.Audio;
+using UnityEngine.UI;
+using Assets.Scripts.GameLogic;
 
 
 namespace Assets.Scripts.UI
@@ -12,6 +14,8 @@ namespace Assets.Scripts.UI
         [SerializeField] private PausePanel _pausePanel;
         [SerializeField] private SoundToggler _soundToggler;
         [SerializeField] private NextLevelPanel _nextLevelPanel;
+        [SerializeField] private Button _goToMenu;
+        [SerializeField] private SceneLoader _sceneLoader;
 
         private NextLevelZone _currentNextLevelZone;
         private AudioMixer _currentaudioMixer;
@@ -19,6 +23,12 @@ namespace Assets.Scripts.UI
         public PlayerUI PlayerUI => _playerUI;
         public PausePanel PausePanel => _pausePanel;
         public SoundToggler SoundToggler => _soundToggler;
+
+
+        private void OnEnable()
+        {
+           // _goToMenu.onClick.AddListener(_sceneLoader.LoadMenuScene);
+        }
 
 
         public void SignToNextLevelPanelToZone(NextLevelZone nextLevelZone)
@@ -33,6 +43,7 @@ namespace Assets.Scripts.UI
             _currentNextLevelZone.PlayerWentIn -= OpenNextLevelPanel;
             _currentNextLevelZone.PlayerWentOut -= CloseNextLevelPanel;
             _currentaudioMixer.VolumeValueChanged -= _soundToggler.SetCurrentStatus;
+           // _goToMenu.onClick.RemoveListener(_sceneLoader.LoadMenuScene);
         }
 
         public void SignSoundTogglerToAudio(AudioMixer audioMixer)

@@ -9,20 +9,22 @@ namespace Assets.Scripts.BuildingSystem.Buildings
     internal class Barracks : Building
     {
         private UnitsFactory _unitsFactory;
-        private ColliderPanelEventer _eventer;
+       // private ColliderPanelEventer _eventer;
+
+        //public ColliderPanelEventer Eventer => _eventer;
 
         private void OnEnable()
         {
-            _eventer = GetComponentInChildren<ColliderPanelEventer>();
-            _unitsFactory = GetComponentInChildren<UnitsFactory>();   
-            _eventer.FirstButtonClicked += SpawnUnit;
-            _eventer.SecondButtonClicked += SpawnUnit;
+           // _eventer = GetComponentInChildren<ColliderPanelEventer>();
+            _unitsFactory = GetComponentInChildren<UnitsFactory>();
+            Eventer.FirstButtonClicked += SpawnUnit;
+            Eventer.SecondButtonClicked += SpawnUnit;
         }
 
         private void OnDisable()
         {
-            _eventer.FirstButtonClicked -= SpawnUnit;
-            _eventer.SecondButtonClicked -= SpawnUnit;
+            Eventer.FirstButtonClicked -= SpawnUnit;
+            Eventer.SecondButtonClicked -= SpawnUnit;
         }
 
         private void SpawnUnit(Player player, int costToBuy, int buttonIndex)  

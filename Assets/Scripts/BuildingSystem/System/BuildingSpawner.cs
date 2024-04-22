@@ -2,6 +2,7 @@
 using UnityEngine;
 using Assets.Scripts.BuildingSystem.Buildings;
 using Assets.Scripts.Props.Chest;
+using Unity.VisualScripting;
 
 namespace Assets.Scripts.BuildingSystem.System
 {
@@ -15,10 +16,25 @@ namespace Assets.Scripts.BuildingSystem.System
             _buildingsPool = new BuildingsPool(tower, barracks, resoorceBuilding);
         }
 
+        private void OnEnable()
+        {
+            //_buildingsPool.ResoorceBuildingCreated +=
+        }
+
+        private void OnDisable()
+        {
+           
+        }
+
         public void Spawn(int SpawnPointIndex, Transform SpawnPointTransform, ChestSpawnerPointsContainer chestSpawnPoints)
         {
             CurrentBuilding = _buildingsPool.GetBuilding(SpawnPointIndex, chestSpawnPoints);
             CurrentBuilding.Transform.parent = SpawnPointTransform;
+        }
+
+        private void OnResoorceBuildingCreated()
+        {
+
         }
     }
 }

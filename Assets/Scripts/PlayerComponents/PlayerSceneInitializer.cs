@@ -9,7 +9,7 @@ using Assets.Scripts.EnemyComponents;
 using Assets.Scripts.Audio;
 using Assets.Scripts.YandexSDK;
 using Assets.Scripts.GameLogic;
-using Unity.VisualScripting;
+using Assets.Scripts.BuildingSystem.System;
 
 namespace Assets.Scripts.PlayerComponents
 {
@@ -25,6 +25,7 @@ namespace Assets.Scripts.PlayerComponents
         [SerializeField] private InterstitialAdShower _interstitialAd;
         [SerializeField] private VideoADShower _videoAd;
         [SerializeField] private SceneLoader _sceneLoader;
+        [SerializeField] private BuildingService _buildingSystem;
 
         private Pauser _pauser;
         private NextLevelZone _nextLevelZone;
@@ -38,8 +39,7 @@ namespace Assets.Scripts.PlayerComponents
 
         private void OnDisable()
         {
-            SceneManager.sceneLoaded -= OnSceneLoaded;
-            
+            SceneManager.sceneLoaded -= OnSceneLoaded;    
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)

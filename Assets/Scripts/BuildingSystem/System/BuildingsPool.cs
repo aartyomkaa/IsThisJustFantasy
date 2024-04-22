@@ -1,6 +1,8 @@
 using Assets.Scripts.BuildingSystem.Buildings;
 using Assets.Scripts.Constants;
 using Assets.Scripts.Props.Chest;
+using Assets.Scripts.UI;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,6 +23,9 @@ namespace Assets.Scripts.BuildingSystem.System
             CreateResoorceBuilding(resoorceBuilding);
         }
 
+        public event Action<ColliderPanelEventer> BarrackCreated;
+        public event Action<ColliderPanelEventer> ResoorceBuildingCreated;
+
         private void CreateTowerPool(Tower tower)
         {
             _towerPool = new List<Tower>();
@@ -36,12 +41,14 @@ namespace Assets.Scripts.BuildingSystem.System
         private void CreateBarracks(Barracks barracks)
         {
             _barracks = GameObject.Instantiate(barracks);
+           // BarrackCreated?.Invoke(_barracks.Eventer);
             _barracks.gameObject.SetActive(false);     
         }
 
         private void CreateResoorceBuilding(ResoorceBuilding resoorceBuilding)
         {
             _resoorceBuilding = GameObject.Instantiate(resoorceBuilding);
+           // ResoorceBuildingCreated?.Invoke(_resoorceBuilding.Eventer);
             _resoorceBuilding.gameObject.SetActive(false);
         }
 

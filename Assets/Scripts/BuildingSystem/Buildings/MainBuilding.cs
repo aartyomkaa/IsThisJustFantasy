@@ -12,19 +12,19 @@ namespace Assets.Scripts.BuildingSystem.Buildings
         private int _valueToHeal = 50;
        
         
-        private ColliderPanelEventer _eventer;
+        //private ColliderPanelEventer _eventer;
        // private PlayerHealth _currentPlayerHealth;
 
         private void OnEnable()
         {
-            _eventer = GetComponentInChildren<ColliderPanelEventer>();
-            _eventer.FirstButtonClicked += HealPlayer;
+            // _eventer = GetComponentInChildren<ColliderPanelEventer>();
+            Eventer.FirstButtonClicked += HealPlayer;
 
         }
 
         private void OnDisable()
         {
-            _eventer.FirstButtonClicked -= HealPlayer;
+            Eventer.FirstButtonClicked -= HealPlayer;
         }
 
         private void HealPlayer(Player player, int costToBuy, int buttonIndex)
