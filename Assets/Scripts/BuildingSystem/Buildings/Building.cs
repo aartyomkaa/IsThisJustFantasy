@@ -82,7 +82,6 @@ namespace Assets.Scripts.BuildingSystem
             if(Eventer != null)
             {
                 BuildWithEventorWasMade?.Invoke(Eventer);
-                Debug.Log("Объявил о создании");
             }
         }
 
