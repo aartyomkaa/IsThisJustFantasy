@@ -58,7 +58,8 @@ namespace Assets.Scripts.BuildingSystem.System
                             _buildPoints[i].TakeSpot();
                             _buildPoints[i].SignToCurrentBuilding(_buildingSpawner.CurrentBuilding);                          
                             _currentBuilding = _buildingSpawner.CurrentBuilding;
-                            _currentBuilding.BuildWithEventorWasMade += OnBuildWithEventorWasMade;        
+                            _currentBuilding.BuildWithEventorWasMade += OnBuildWithEventorWasMade;
+                            _currentBuilding.AnnounceOfCreation();
                             _canBuild = false;
                             _buildPoints[i].TryToDeActiveIconOfBuildPoint();
                             _builder.ToggleButton(wallet, _currentCostToBuild, _canBuild);
@@ -80,6 +81,7 @@ namespace Assets.Scripts.BuildingSystem.System
         private void OnBuildWithEventorWasMade(ColliderPanelEventer currentEventer)
         {
             EventerWithAdButtonWasMade?.Invoke(currentEventer.SecondButton);
+            Debug.Log("Рассказал о кнопке");
         }
 
         private void UnSignToBuildingsPointEvents()

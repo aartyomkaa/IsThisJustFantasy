@@ -40,7 +40,10 @@ namespace Assets.Scripts.BuildingSystem
             if (_audiosourse.clip != null)
             {
                 _audiosourse.Play();
+               
             }
+
+           
         }
 
 
@@ -79,6 +82,7 @@ namespace Assets.Scripts.BuildingSystem
             if(Eventer != null)
             {
                 BuildWithEventorWasMade?.Invoke(Eventer);
+                Debug.Log("Объявил о создании");
             }
         }
 

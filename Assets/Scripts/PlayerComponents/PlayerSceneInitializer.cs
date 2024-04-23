@@ -10,6 +10,7 @@ using Assets.Scripts.Audio;
 using Assets.Scripts.YandexSDK;
 using Assets.Scripts.GameLogic;
 using Assets.Scripts.BuildingSystem.System;
+using UnityEngine.UI;
 
 namespace Assets.Scripts.PlayerComponents
 {
@@ -34,12 +35,20 @@ namespace Assets.Scripts.PlayerComponents
         private void OnEnable()
         {
             SceneManager.sceneLoaded += OnSceneLoaded;
-            
+            _buildingSystem.EventerWithAdButtonWasMade += OnEventerWithAdButtonWasMade;
+
+
         }
 
         private void OnDisable()
         {
-            SceneManager.sceneLoaded -= OnSceneLoaded;    
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+            _buildingSystem.EventerWithAdButtonWasMade -= OnEventerWithAdButtonWasMade;
+        }
+
+        private void OnEventerWithAdButtonWasMade(Button button)
+        {
+            Debug.Log(button.name);
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
