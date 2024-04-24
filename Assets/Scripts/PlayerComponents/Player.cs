@@ -10,11 +10,9 @@ namespace Assets.Scripts.PlayerComponents
         [SerializeField] private PlayerData[] _levels;
 
         private int _currentLevel;
-
         private PlayerWallet _wallet;
 
-        public int CurrentLevel;
-
+        public int CurrentLevel => _currentLevel;
         public PlayerWallet Wallet => _wallet;
 
         private void Awake()
