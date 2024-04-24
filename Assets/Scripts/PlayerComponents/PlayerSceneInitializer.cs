@@ -31,13 +31,10 @@ namespace Assets.Scripts.PlayerComponents
         private Pauser _pauser;
         private NextLevelZone _nextLevelZone;
 
-
         private void OnEnable()
         {
             SceneManager.sceneLoaded += OnSceneLoaded;
             _buildingSystem.EventerWithAdButtonWasMade += OnEventerWithAdButtonWasMade;
-
-
         }
 
         private void OnDisable()
@@ -59,12 +56,6 @@ namespace Assets.Scripts.PlayerComponents
             InitializeInput(player);
             InitializeUI(player);
             InitializeSound(_globalUI.SoundToggler);
-            _pauser = new Pauser(_audioMixer, _mobileInput);
-            _globalUI.PausePanel.SignToPauserEvents(_pauser);
-            _globalUI.SignSoundTogglerToAudio(_audioMixer);
-            _globalUI.SignToNextLevelPanelToZone(_nextLevelZone);
-            _sceneLoader.SignToPausePanelEvents(_globalUI.PausePanel);
-            _sceneLoader.SignToNextLevelPanelToZone(_nextLevelZone);
         }
 
         private Player InitializePlayer()
@@ -101,7 +92,13 @@ namespace Assets.Scripts.PlayerComponents
 
         private void InitializeUI(Player player)
         {
+            _pauser = new Pauser(_audioMixer, _mobileInput);
             _globalUI.PlayerUI.SignToPlayersValuesChanges(player.GetComponent<PlayerHealth>(), player.Wallet);
+            _globalUI.PausePanel.SignToPauserEvents(_pauser);
+            _globalUI.SignSoundTogglerToAudio(_audioMixer);
+            _globalUI.SignToNextLevelPanelToZone(_nextLevelZone);
+            _sceneLoader.SignToPausePanelEvents(_globalUI.PausePanel);
+            _sceneLoader.SignToNextLevelPanelToZone(_nextLevelZone);
         }
     }
 }

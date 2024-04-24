@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Assets.Scripts.PlayerComponents
 {
     [RequireComponent(typeof(PlayerAnimator))]
-    internal class PlayerAttacker : MonoBehaviour
+    internal class PlayerAttacker : PlayerComponent
     {
         [SerializeField] private List<Weapon> _weapons;
 
@@ -41,6 +41,14 @@ namespace Assets.Scripts.PlayerComponents
             _currentWeapon.gameObject.SetActive(true);
 
             _animator.SetAnimatorChangeWeaponTrigger(_currentWeapon);
+        }
+
+        public override void Init(PlayerData level)
+        {
+            foreach (var weapon in _weapons)
+            {
+                weapon.LevelUp(level.WeaponDamageLevelUpAmount, level.WeaponAttackSpeedLevelUpAmount);
+            }
         }
     }
 }

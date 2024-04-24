@@ -41,7 +41,7 @@ namespace Assets.Scripts.EnemyComponents
         {
             _fsm.Update();
 
-            if (_fsm.Target == null)
+            if (_fsm.Target == null && _agent.destination != _building.transform.position)
             {
                 _agent.SetDestination(_building.transform.position);
                 _animator.SetBool(AnimatorHash.Moving, true);

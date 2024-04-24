@@ -5,11 +5,10 @@ using System;
 
 namespace Assets.Scripts.PlayerComponents
 {
-    internal class PlayerHealth : MonoBehaviour, IDamageable
+    internal class PlayerHealth : PlayerComponent, IDamageable
     {
-        [SerializeField] private PlayerData _playerData;
-
         private float _value;
+        private float _maxHealth;
         private bool _canTakeDamage = true;
 
         private Coroutine _damageRecover;
@@ -20,10 +19,11 @@ namespace Assets.Scripts.PlayerComponents
 
         public event Action<float> ValueChanged;
 
-        private void Awake()
+        public override void Init(PlayerData data)
         {
-            _value = _playerData.Health;
-            _recoverTime = new WaitForSeconds(_playerData.RecoverTime);
+            _maxHealth = data.Health;
+            _value = _maxHealth;
+            _recoverTime = new WaitForSeconds(data.RecoverTime);
         }
 
         public void TakeDamage(float damage)
@@ -53,7 +53,7 @@ namespace Assets.Scripts.PlayerComponents
         {
             _value += importHealValue;
 
-            _value = _value > _playerData.Health ? _playerData.Health : _value;        
+            _value = _value > _maxHealth ? _maxHealth : _value;        
         }
 
         private IEnumerator DamageRecover()

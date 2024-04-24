@@ -1692,7 +1692,7 @@ NavMeshAgent:
   m_Speed: 5
   m_Acceleration: 100
   avoidancePriority: 50
-  m_AngularSpeed: 360
+  m_AngularSpeed: 720
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -1713,6 +1713,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c93703e179b9b6040af735e26bc351ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _components:
+  - {fileID: 2674794220624827716}
+  - {fileID: -4396018295839852046}
+  _data: {fileID: 11400000, guid: ded69eba618df4c4a80ed4d2e11e7ef6, type: 2}
 --- !u!114 &2674794220624827716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1725,7 +1729,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeb6ff6016f80274a9dc5542f89152e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerData: {fileID: 11400000, guid: ded69eba618df4c4a80ed4d2e11e7ef6, type: 2}
 --- !u!114 &1230826354234749028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1750,7 +1753,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a924d962da8d30344886d9b87709101e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data: {fileID: 11400000, guid: ded69eba618df4c4a80ed4d2e11e7ef6, type: 2}
 --- !u!114 &-7763941498002306990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3385,6 +3387,10 @@ PrefabInstance:
     - target: {fileID: 5102919991719705125, guid: 373e745bf4567f54f881ad1de60d16d7, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6274449716085618512, guid: 373e745bf4567f54f881ad1de60d16d7, type: 3}
+      propertyPath: EnemyLayerMask.m_Bits
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 7722257063585167795, guid: 373e745bf4567f54f881ad1de60d16d7, type: 3}
       propertyPath: m_LocalScale.x

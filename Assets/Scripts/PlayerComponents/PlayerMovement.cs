@@ -5,10 +5,9 @@ namespace Assets.Scripts.PlayerComponents
 {
     [RequireComponent(typeof(NavMeshAgent))]
     [RequireComponent(typeof(PlayerAnimator))]
-    internal class PlayerMovement : MonoBehaviour
+    internal class PlayerMovement : PlayerComponent
     {
-        [SerializeField] private PlayerData _data;
-
+        private PlayerData _data;
         private NavMeshAgent _navMeshAgent;
         private PlayerAnimator _animator;
 
@@ -50,6 +49,11 @@ namespace Assets.Scripts.PlayerComponents
             offset = new Vector3(transform.rotation.x, offset.y, transform.rotation.z);
 
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation * Quaternion.Euler(offset), Time.fixedDeltaTime);
+        }
+
+        public override void Init(PlayerData data)
+        {
+            _data = data;
         }
     }
 }
