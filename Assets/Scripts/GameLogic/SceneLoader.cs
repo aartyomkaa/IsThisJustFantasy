@@ -29,7 +29,7 @@ namespace Assets.Scripts.GameLogic
 
             if(_currentNextLevelZone != null)
             {
-                _currentNextLevelZone.LevelUped -= IncreaseLevel;
+                _currentNextLevelZone.GameLevelUped -= IncreaseLevel;
             }
         }
 
@@ -70,7 +70,7 @@ namespace Assets.Scripts.GameLogic
         public void SignToNextLevelPanelToZone(NextLevelZone nextLevelZone)
         {
             _currentNextLevelZone = nextLevelZone;
-            _currentNextLevelZone.LevelUped += IncreaseLevel;
+            _currentNextLevelZone.GameLevelUped += IncreaseLevel;
         }      
     }
 }
