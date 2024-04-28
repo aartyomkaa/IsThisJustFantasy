@@ -1,47 +1,41 @@
 using Assets.Scripts.PlayerComponents;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using Assets.Scripts.Constants;
 
-public class NextLevelZone : MonoBehaviour
+namespace Assets.Scripts
 {
-    private bool _hasLeveledUp = false;
-
-    public event Action PlayerWentIn;
-    public event Action PlayerWentOut;
-    public event Action LevelUped;
-
-    private int _countOfPlayersCameIn = 0;
-    private int _firstPlayersCameIn = 1;
-
-    private void OnTriggerEnter(Collider other)
+    public class NextLevelZone : MonoBehaviour
     {
-        if (other.gameObject.TryGetComponent(out Player player))
-        {
-            PlayerWentIn?.Invoke();
+        private bool _hasLeveledUp = false;
 
-            if (_hasLeveledUp == false)
+        public event Action PlayerWentIn;
+        public event Action PlayerWentOut;
+        public event Action LevelUped;
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.TryGetComponent(out Player player))
             {
-                player.LevelUp();
-                _hasLeveledUp = true;
+                PlayerWentIn?.Invoke();
+
+                if (_hasLeveledUp == false)
+                {
+                    player.LevelUp();
+                    LevelUped?.Invoke();
+                    _hasLeveledUp = true;
+                    PlayerPrefs.SetInt(PlayerConfigs.HasPassedTutorial, 1);
+                }
             }
-
-            _countOfPlayersCameIn++;
-           
-            if (_countOfPlayersCameIn == _firstPlayersCameIn)
-            {
-                LevelUped?.Invoke();
-            }  
         }
-    }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.TryGetComponent(out Player player))
+        private void OnTriggerExit(Collider other)
         {
-            PlayerWentOut?.Invoke();
+            if (other.gameObject.TryGetComponent(out Player player))
+            {
+                PlayerWentOut?.Invoke();
+            }
         }
     }
 }
+

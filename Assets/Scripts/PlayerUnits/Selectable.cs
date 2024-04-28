@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -10,7 +9,7 @@ namespace Assets.Scripts.PlayerUnits
         [SerializeField] private ParticleSystem _ring;
 
         private bool _isSelected;
-        private Coroutine _selected;
+        private float _offset = 0.1f;
 
         public bool IsSelected => _isSelected;
 
@@ -19,9 +18,11 @@ namespace Assets.Scripts.PlayerUnits
 
         private void Awake()
         {
-            _ring = Instantiate(_ring, new Vector3(transform.position.x, transform.position.y - 1, transform.position.z), Quaternion.identity);
-            _ring.Stop();
+            Vector3 offset = new Vector3(transform.position.x, transform.position.y + _offset, transform.position.z);
 
+            _ring = Instantiate(_ring, offset, _ring.transform.rotation, transform);
+
+            _ring.Stop();
             _isSelected = false;
         }
 
@@ -35,7 +36,6 @@ namespace Assets.Scripts.PlayerUnits
         public void OnPointerEnter(PointerEventData eventData)
         {
             _ring.Play();
-            _ring.transform.position = transform.position;
         }
 
         public void OnPointerExit(PointerEventData eventData)
@@ -57,21 +57,6 @@ namespace Assets.Scripts.PlayerUnits
                 _isSelected = true;
                 _ring.Play();
                 Selected?.Invoke(this);
-
-                if (_selected != null)
-                    StopCoroutine(_selected);
-
-                _selected = StartCoroutine(SelectedRing());
-            }
-        }
-
-        private IEnumerator SelectedRing()
-        {
-            while (_isSelected)
-            {
-                _ring.transform.position = transform.position;
-
-                yield return null;
             }
         }
     }

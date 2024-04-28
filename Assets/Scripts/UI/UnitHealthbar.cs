@@ -10,8 +10,6 @@ namespace Assets.Scripts.UI
         [SerializeField] private GameObject _unit;
 
         private IHealthDisplayable _displayable;
-        private Vector3 _lookRotation;
-        private Camera _camera;
 
         private void OnEnable()
         {
@@ -23,15 +21,10 @@ namespace Assets.Scripts.UI
             }
         }
 
-        private void Start()
+        private void Update()
         {
-            _camera = Camera.main;
-        }
-
-        private void LateUpdate()
-        {
-            _lookRotation = _camera.transform.position - transform.position;
-            transform.rotation = Quaternion.LookRotation(_lookRotation);
+            transform.LookAt(transform.position + Camera.main.transform.rotation * Vector3.back, 
+                Camera.main.transform.rotation * Vector3.up);
         }
 
         private void OnDisable()
