@@ -1,5 +1,6 @@
 using Assets.Scripts.Constants;
 using Assets.Scripts.PlayerComponents;
+using Lean.Localization;
 using System;
 using System.Collections;
 using TMPro;
@@ -11,6 +12,8 @@ namespace Assets.Scripts.BuildingSystem
     internal class BuilderButton : MonoBehaviour
     {
         [SerializeField] private Button _build;     
+        [SerializeField] private LeanToken _building;     
+        [SerializeField] private LeanToken _cost;     
 
         private PlayerWallet _currentPlayersWallet;
         private Vector3 _closeValues = Vector3.zero;
@@ -32,7 +35,10 @@ namespace Assets.Scripts.BuildingSystem
 
         private void SetButtonText(Button activeButton,string title, int costToBuy)
         {
-            activeButton.GetComponentInChildren<TMP_Text>().text = title + costToBuy;
+            //activeButton.GetComponentInChildren<TMP_Text>().text = title + costToBuy;
+
+            _building.SetValue("врн щрн");
+            _cost.SetValue(costToBuy);
         }
 
         private void OnBuildButtonClicked()
@@ -42,6 +48,8 @@ namespace Assets.Scripts.BuildingSystem
 
         public void ToggleButton(PlayerWallet wallet, int costToBuy, bool isPlayerIn)   
         {
+            SetButtonText(_build, UiHash.BuildButtonText, costToBuy);
+
             _currentPlayersWallet = wallet;
             _currentStatus = isPlayerIn;
 
@@ -54,8 +62,6 @@ namespace Assets.Scripts.BuildingSystem
             {
                 Close();
             }
-                 
-            SetButtonText(_build, UiHash.BuildButtonText, costToBuy); 
         }
 
         private void Close()
