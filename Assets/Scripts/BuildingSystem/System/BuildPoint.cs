@@ -7,7 +7,7 @@ namespace Assets.Scripts.BuildingSystem
     internal class BuildPoint : MonoBehaviour
     {
         [SerializeField] private Transform _spotToPlaceBuilding;
-        [SerializeField] private int _buildingPointIndex;
+        [SerializeField] private int _index;
         [SerializeField] private GameObject _iconOfBuildPoint;
         [SerializeField] private int _costToBuild;
 
@@ -17,7 +17,7 @@ namespace Assets.Scripts.BuildingSystem
         private int _numberToSetRaiseValue = 5;
 
         public Transform SpotToPlaceBuilding => _spotToPlaceBuilding;
-        public int BuildingPointIndex => _buildingPointIndex;
+        public int Index => _index;
         public bool IsOccupied => _isOccupied;
         public int CostToBuild => _costToBuild;
 

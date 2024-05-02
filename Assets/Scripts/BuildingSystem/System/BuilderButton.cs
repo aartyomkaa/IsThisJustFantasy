@@ -1,3 +1,4 @@
+using Assets.Scripts.BuildingSystem.Buildings;
 using Assets.Scripts.Constants;
 using Assets.Scripts.PlayerComponents;
 using System;
@@ -5,6 +6,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static Agava.YandexGames.LeaderboardDescriptionResponse;
 
 namespace Assets.Scripts.BuildingSystem
 {
@@ -30,17 +32,28 @@ namespace Assets.Scripts.BuildingSystem
             _build.onClick.RemoveListener(OnBuildButtonClicked);
         }
 
-        private void SetButtonText(Button activeButton,string title, int costToBuy)
+        private void SetButtonText(Button activeButton, int builPointIndex, int costToBuy)
         {
-            activeButton.GetComponentInChildren<TMP_Text>().text = title + costToBuy;
+            switch (builPointIndex)
+            {
+                case BuildingsHash.TowerIndex:
+                    activeButton.GetComponentInChildren<TMP_Text>().text = UiHash.BuildTowerButtonText + costToBuy;   
+                    break;
+                case BuildingsHash.BarracksIndex:
+                    activeButton.GetComponentInChildren<TMP_Text>().text = UiHash.BuildBarracksButtonText + costToBuy;
+                    break;
+                case BuildingsHash.ResoorceBuildingIndex:
+                    activeButton.GetComponentInChildren<TMP_Text>().text = UiHash.BuildResoorceBuildingButtonText + costToBuy;
+                    break;
+            }
         }
-
+           
         private void OnBuildButtonClicked()
         {
             BuildButtonClicked?.Invoke(_currentPlayersWallet);   
         }
 
-        public void ToggleButton(PlayerWallet wallet, int costToBuy, bool isPlayerIn)   
+        public void ToggleButton(PlayerWallet wallet, int builPointIndex, int costToBuy, bool isPlayerIn)   
         {
             _currentPlayersWallet = wallet;
             _currentStatus = isPlayerIn;
@@ -55,7 +68,7 @@ namespace Assets.Scripts.BuildingSystem
                 Close();
             }
                  
-            SetButtonText(_build, UiHash.BuildButtonText, costToBuy); 
+            SetButtonText(_build, builPointIndex, costToBuy); 
         }
 
         private void Close()

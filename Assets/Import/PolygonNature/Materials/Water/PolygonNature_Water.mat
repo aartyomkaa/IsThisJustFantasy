@@ -106,6 +106,6 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _WaterDeepColor: {r: 0.1473389, g: 0.38881332, b: 0.4056604, a: 0}
-    - _WaterShallowColor: {r: 0.18823427, g: 0.8867924, b: 0.8867924, a: 0}
+    - _WaterDeepColor: {r: 0.14297791, g: 0.5665635, b: 0.5943396, a: 0}
+    - _WaterShallowColor: {r: 0, g: 0.946259, b: 1, a: 0}
   m_BuildTextureStacks: []
