@@ -150,6 +150,7 @@ MonoBehaviour:
   _interstitialAd: {fileID: 1431303192100847473}
   _videoAd: {fileID: 8854807450515014847}
   _sceneLoader: {fileID: 0}
+  _buildingSystem: {fileID: 0}
 --- !u!1 &6182744578163918658
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,12 +214,24 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8970473100369879199, guid: 6a673321dfb01934499defbf1d0588e5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8970473100369879199, guid: 6a673321dfb01934499defbf1d0588e5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8970473100369879199, guid: 6a673321dfb01934499defbf1d0588e5, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8970473100369879199, guid: 6a673321dfb01934499defbf1d0588e5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 19.01
       objectReference: {fileID: 0}
     - target: {fileID: 8970473100369879199, guid: 6a673321dfb01934499defbf1d0588e5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2.1
       objectReference: {fileID: 0}
     - target: {fileID: 8970473100369879199, guid: 6a673321dfb01934499defbf1d0588e5, type: 3}
       propertyPath: m_LocalPosition.z

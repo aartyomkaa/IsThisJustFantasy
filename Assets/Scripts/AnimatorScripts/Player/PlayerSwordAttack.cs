@@ -1,6 +1,5 @@
 using Assets.Scripts.PlayerComponents;
 using UnityEngine;
-using Zenject;
 
 namespace Assets.Scripts.AnimatorScripts.Player
 {

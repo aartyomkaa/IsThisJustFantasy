@@ -2,14 +2,12 @@
 
 namespace Assets.Scripts.UI
 {
-
+    [RequireComponent(typeof(CanvasGroup))]
     internal abstract class Screen : MonoBehaviour
     {
-        [SerializeField] protected CanvasGroup CurrentCanvasGroup;
        // [SerializeField] protected AudioSource ButtonAudio;
+       [SerializeField] private CanvasGroup _canvasGroup;
 
-       
-        
         private void Start()
         {
             Close(); 
@@ -17,16 +15,12 @@ namespace Assets.Scripts.UI
 
         public void Close()
         {
-            CurrentCanvasGroup.alpha = 0f;
-            CurrentCanvasGroup.interactable = false;
-            CurrentCanvasGroup.blocksRaycasts = false;
+            gameObject.SetActive(false);
         }
 
         public virtual void Open()
         {
-            CurrentCanvasGroup.alpha = 1f;
-            CurrentCanvasGroup.interactable = true;
-            CurrentCanvasGroup.blocksRaycasts = true;
+            gameObject.SetActive(true);
         }
     }
 }

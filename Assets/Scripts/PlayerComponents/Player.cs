@@ -10,6 +10,7 @@ namespace Assets.Scripts.PlayerComponents
         [SerializeField] private PlayerData[] _levels;
 
         private int _currentLevel;
+        private int _maxLevel = 4;
         private PlayerWallet _wallet;
 
         public int CurrentLevel => _currentLevel;
@@ -19,7 +20,7 @@ namespace Assets.Scripts.PlayerComponents
         {
             _wallet = new PlayerWallet();
             
-            _currentLevel = PlayerPrefs.GetInt(PlayerConfigs.PlayerLevel);
+            _currentLevel = 0;
 
             for (int i =  0; i < _levels.Length; i++)
             {
@@ -29,14 +30,19 @@ namespace Assets.Scripts.PlayerComponents
                     {
                         component.Init(_levels[i]);
                     }
+
+                    break;
                 }
             }
         }
 
         public void LevelUp()
         {
-            _currentLevel++;
-            PlayerPrefs.SetInt(PlayerConfigs.PlayerLevel, _currentLevel);
+            if (_currentLevel < _maxLevel)
+            {
+                _currentLevel++;
+                PlayerPrefs.SetInt(PlayerConfigs.PlayerLevel, _currentLevel);
+            }
         }
     }
 }

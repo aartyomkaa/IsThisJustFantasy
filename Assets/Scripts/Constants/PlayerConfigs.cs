@@ -3,6 +3,7 @@
     internal class PlayerConfigs
     {
         public static string PlayerLevel = "PlayerLevel";
+        public static string HasPassedTutorial = "HasPassedTutorial";
         public static string MusicVolume = "MasterVolume";
         public static string Score = "Score";
         public static string Leaderboard = "aaaaa";

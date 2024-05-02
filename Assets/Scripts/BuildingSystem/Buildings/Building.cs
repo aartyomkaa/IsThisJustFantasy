@@ -16,6 +16,7 @@ namespace Assets.Scripts.BuildingSystem
         [SerializeField] private float _strength;
         [SerializeField] private float _valueOfScaleOfParticleOfDestroy;
         [SerializeField] private Transform _spotOfDestroyEffects;
+        [SerializeField] private TutorialPanel _tutorialPanel;
 
         private AudioSource _audiosourse;
         private Vector3 _scaleOfParticleOfDestroy;
@@ -40,10 +41,7 @@ namespace Assets.Scripts.BuildingSystem
             if (_audiosourse.clip != null)
             {
                 _audiosourse.Play();
-               
             }
-
-           
         }
 
 
@@ -84,8 +82,6 @@ namespace Assets.Scripts.BuildingSystem
                 BuildWithEventorWasMade?.Invoke(Eventer);
             }
         }
-
-
 
         protected void Destroy()
         { 
