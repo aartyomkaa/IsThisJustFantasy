@@ -37,13 +37,13 @@ namespace Assets.Scripts.BuildingSystem
             switch (builPointIndex)
             {
                 case BuildingsHash.TowerIndex:
-                    activeButton.GetComponentInChildren<TMP_Text>().text = UiHash.BuildTowerButtonText + costToBuy;   
+                    activeButton.GetComponentInChildren<Text>().text = UiHash.BuildTowerButtonText + costToBuy;     
                     break;
                 case BuildingsHash.BarracksIndex:
-                    activeButton.GetComponentInChildren<TMP_Text>().text = UiHash.BuildBarracksButtonText + costToBuy;
+                    activeButton.GetComponentInChildren<Text>().text = UiHash.BuildBarracksButtonText + costToBuy;
                     break;
                 case BuildingsHash.ResoorceBuildingIndex:
-                    activeButton.GetComponentInChildren<TMP_Text>().text = UiHash.BuildResoorceBuildingButtonText + costToBuy;
+                    activeButton.GetComponentInChildren<Text>().text = UiHash.BuildResoorceBuildingButtonText + costToBuy;
                     break;
             }
         }
