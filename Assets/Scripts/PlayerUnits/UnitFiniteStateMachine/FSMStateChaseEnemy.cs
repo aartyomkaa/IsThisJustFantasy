@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Constants;
+using Assets.Scripts.EnemyComponents;
 using Assets.Scripts.GameLogic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -7,8 +8,8 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
 {
     internal class FSMStateChaseEnemy : FSMState
     {
-        public FSMStateChaseEnemy(FiniteStateMachine fsm, IFSMControllable unit, NavMeshAgent navMesh, Animator animator, Data data)
-            : base(fsm, unit, navMesh, animator, data)
+        public FSMStateChaseEnemy(FiniteStateMachine fsm, IFSMControllable unit, NavMeshAgent navMesh, Animator animator, Data data, UnitSFX enemySFX)
+            : base(fsm, unit, navMesh, animator, data, enemySFX)
         {
         }
 

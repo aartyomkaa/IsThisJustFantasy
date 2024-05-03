@@ -26,8 +26,9 @@ namespace Assets.Scripts.PlayerUnits
         {
             _animator = GetComponent<Animator>();
             _agent = GetComponent<NavMeshAgent>();
+            _e
 
-            _fsm = new FiniteStateMachine(_animator, _agent, this, _unitData);
+            _fsm = new FiniteStateMachine(_animator, _agent, this, _unitData, _);
 
             _fsm.SetState<FSMStateIdle>();
         }

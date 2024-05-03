@@ -11,8 +11,8 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
         private float _distance;
         private float _timePast;
 
-        public FSMStateAttack(FiniteStateMachine fsm, IFSMControllable unit, NavMeshAgent navMesh, Animator animator, Data data)
-            : base(fsm, unit, navMesh, animator, data)
+        public FSMStateAttack(FiniteStateMachine fsm, IFSMControllable unit, NavMeshAgent navMesh, Animator animator, Data data, UnitSFX unitSFX)
+            : base(fsm, unit, navMesh, animator, data, unitSFX)
         {
         }
 
@@ -52,10 +52,8 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
 
             if (_timePast >= Data.AttackSpeed)
             {
-                if (Unit.GetType() == typeof(EnemyRange))
-                    Unit.Attack(FSM.Target);
-                else
-                    FSM.Target.TakeDamage(Data.Damage);
+                Unit.Attack(FSM.Target);
+                EnemySFX.PlayAttackSound();
 
                 Animator.SetTrigger(AnimatorHash.Attack);
 

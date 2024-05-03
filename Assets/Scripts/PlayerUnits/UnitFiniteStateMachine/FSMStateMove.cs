@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Constants;
+using Assets.Scripts.EnemyComponents;
 using Assets.Scripts.GameLogic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -10,8 +11,8 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
         private Vector3 _roundedUnitPos;
         private Vector3 _roundedTargetPos;
 
-        public FSMStateMove(FiniteStateMachine fsm, IFSMControllable unit, NavMeshAgent navMesh, Animator animator, Data data)
-            : base(fsm, unit, navMesh, animator, data)
+        public FSMStateMove(FiniteStateMachine fsm, IFSMControllable unit, NavMeshAgent navMesh, Animator animator, Data data, UnitSFX unitSFX)
+            : base(fsm, unit, navMesh, animator, data, unitSFX)
         {
         }
 

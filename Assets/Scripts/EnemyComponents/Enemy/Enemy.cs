@@ -16,6 +16,7 @@ namespace Assets.Scripts.EnemyComponents
         private float _health;
 
         private EnemyData _data;
+        private UnitSFX _enemySFX;
         private FiniteStateMachine _fsm;
         private Animator _animator;
         private NavMeshAgent _agent;
@@ -74,6 +75,9 @@ namespace Assets.Scripts.EnemyComponents
             gameObject.SetActive(false);
         }
 
-        public abstract void Attack(IDamageable target);
+        public virtual void Attack(IDamageable target)
+        {
+            target.TakeDamage(_data.Damage);
+        }
     }
 }

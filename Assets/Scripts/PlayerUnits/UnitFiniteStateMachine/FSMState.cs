@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.GameLogic;
+﻿using Assets.Scripts.EnemyComponents;
+using Assets.Scripts.GameLogic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,14 +12,16 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
         protected Data Data;
         protected NavMeshAgent UnitNavMesh;
         protected Animator Animator;
+        protected UnitSFX EnemySFX;
 
-        public FSMState(FiniteStateMachine fsm, IFSMControllable unit, NavMeshAgent navMesh, Animator animator, Data data)
+        public FSMState(FiniteStateMachine fsm, IFSMControllable unit, NavMeshAgent navMesh, Animator animator, Data data, UnitSFX unitSFX)
         {
             FSM = fsm;
             Unit = unit;
             UnitNavMesh = navMesh;
             Animator = animator;
             Data = data;
+            EnemySFX = unitSFX;
         }
 
         public virtual void Enter() { }
