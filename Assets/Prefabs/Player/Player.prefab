@@ -1580,6 +1580,7 @@ GameObject:
   - component: {fileID: 1230826354234749028}
   - component: {fileID: -4396018295839852046}
   - component: {fileID: -7763941498002306990}
+  - component: {fileID: 5046433044140599631}
   m_Layer: 11
   m_Name: Player
   m_TagString: Untagged
@@ -1773,6 +1774,14 @@ MonoBehaviour:
   _weapons:
   - {fileID: 8675813776986265212}
   - {fileID: 27726292830988240}
+--- !u!81 &5046433044140599631
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4475808446154770609}
+  m_Enabled: 1
 --- !u!1 &4840770937491530126
 GameObject:
   m_ObjectHideFlags: 0

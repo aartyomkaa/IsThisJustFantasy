@@ -53,7 +53,7 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
             if (_timePast >= Data.AttackSpeed)
             {
                 Unit.Attack(FSM.Target);
-                EnemySFX.PlayAttackSound();
+                UnitSFX.PlayAttackSound();
 
                 Animator.SetTrigger(AnimatorHash.Attack);
 

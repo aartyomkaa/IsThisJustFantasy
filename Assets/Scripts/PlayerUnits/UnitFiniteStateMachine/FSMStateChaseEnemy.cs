@@ -15,6 +15,7 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
 
         public override void Enter()
         {
+            UnitSFX.PlayWalkSound();
             UnitNavMesh.SetDestination(FSM.Target.Transform.position);
             Animator.SetBool(AnimatorHash.Moving, true);
         }

@@ -19,6 +19,7 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
 
         public override void Enter()
         {
+            UnitSFX.Stop();
             FSM.SetEnemy(null);
         }
 

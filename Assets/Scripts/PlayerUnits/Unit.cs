@@ -4,6 +4,7 @@ using UnityEngine.AI;
 using Assets.Scripts.GameLogic;
 using Assets.Scripts.GameLogic.Interfaces;
 using System;
+using Assets.Scripts.EnemyComponents;
 
 namespace Assets.Scripts.PlayerUnits
 {
@@ -11,12 +12,15 @@ namespace Assets.Scripts.PlayerUnits
     [RequireComponent(typeof(NavMeshAgent))]
     internal class Unit : Selectable, IDamageable, IFSMControllable, IHealthDisplayable
     {
+        [SerializeField] private AudioSource _audioSource;
+
         private UnitData _unitData;
         private float _health;
 
         private FiniteStateMachine _fsm;
         private Animator _animator;
         private NavMeshAgent _agent;
+        private UnitSFX _unitSFX;
 
         public Transform Transform => transform;
 
@@ -26,9 +30,9 @@ namespace Assets.Scripts.PlayerUnits
         {
             _animator = GetComponent<Animator>();
             _agent = GetComponent<NavMeshAgent>();
-            _e
+            _unitSFX = GetComponentInChildren<UnitSFX>();
 
-            _fsm = new FiniteStateMachine(_animator, _agent, this, _unitData, _);
+            _fsm = new FiniteStateMachine(_animator, _agent, this, _unitData, _unitSFX);
 
             _fsm.SetState<FSMStateIdle>();
         }
@@ -69,6 +73,8 @@ namespace Assets.Scripts.PlayerUnits
 
         public void Attack(IDamageable target)
         {
+            _audioSource.Play();
+            target.TakeDamage(_unitData.Damage);
         }
     }
 }

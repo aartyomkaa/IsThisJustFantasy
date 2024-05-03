@@ -1,30 +1,46 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace Assets.Scripts.EnemyComponents
 {
     internal class UnitSFX : MonoBehaviour
     {
-        [SerializeField] private AudioClip _attack;
-        [SerializeField] private AudioClip _dead;
-        [SerializeField] private AudioClip _walk;
+        [SerializeField] private List<AudioClip> _attack;
+        [SerializeField] private List<AudioClip> _death;
+        [SerializeField] private List<AudioClip> _walk;
         [SerializeField] private AudioSource _source;
 
-        public void PlayDeathSound()
+        private float _minPitch = 0.8f;
+        private float _maxPitch = 1.5f;
+        private System.Random _random = new System.Random();
+
+        public void PlaySound(List<AudioClip> clipList, bool loop = false)
         {
-            _source.clip = _dead;
+            _source.Stop();
+            _source.loop = loop;
+            _source.clip = GetRandomClip(clipList);
+            _source.pitch = UnityEngine.Random.Range(_minPitch, _maxPitch);
             _source.Play();
         }
 
-        public void PlayAttackSound()
+        public void Stop()
         {
-            _source.clip = _attack;
-            _source.Play();
+            _source.Stop();
         }
 
-        public void PlayWalkSound()
+        public void PlayDeathSound() => PlaySound(_death);
+
+        public void PlayAttackSound() => PlaySound(_attack);
+
+        public void PlayWalkSound() => PlaySound(_walk, true);
+
+        private AudioClip GetRandomClip(List<AudioClip> clipList)
         {
-            _source.clip = _walk;
-            _source.Play();
+            if (clipList.Count == 0)
+                throw new ArgumentException("There are no AudioClips!");
+
+            return clipList[_random.Next(clipList.Count)];
         }
     }
 }

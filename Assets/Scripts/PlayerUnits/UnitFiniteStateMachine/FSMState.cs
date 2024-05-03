@@ -12,7 +12,7 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
         protected Data Data;
         protected NavMeshAgent UnitNavMesh;
         protected Animator Animator;
-        protected UnitSFX EnemySFX;
+        protected UnitSFX UnitSFX;
 
         public FSMState(FiniteStateMachine fsm, IFSMControllable unit, NavMeshAgent navMesh, Animator animator, Data data, UnitSFX unitSFX)
         {
@@ -21,7 +21,7 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
             UnitNavMesh = navMesh;
             Animator = animator;
             Data = data;
-            EnemySFX = unitSFX;
+            UnitSFX = unitSFX;
         }
 
         public virtual void Enter() { }

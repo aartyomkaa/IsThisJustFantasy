@@ -16,7 +16,7 @@ namespace Assets.Scripts.EnemyComponents
         private float _health;
 
         private EnemyData _data;
-        private UnitSFX _enemySFX;
+        private UnitSFX _unitSFX;
         private FiniteStateMachine _fsm;
         private Animator _animator;
         private NavMeshAgent _agent;
@@ -32,8 +32,9 @@ namespace Assets.Scripts.EnemyComponents
         {
             _animator = GetComponent<Animator>();
             _agent = GetComponent<NavMeshAgent>();
+            _unitSFX = GetComponentInChildren<UnitSFX>();
 
-            _fsm = new FiniteStateMachine(_animator, _agent, this, _data);
+            _fsm = new FiniteStateMachine(_animator, _agent, this, _data, _unitSFX);
 
             _fsm.SetState<FSMStateIdle>();
         }
@@ -72,6 +73,7 @@ namespace Assets.Scripts.EnemyComponents
             Died?.Invoke(this);
             _health = _data.Health;
             _fsm.SetState<FSMStateIdle>();
+            _unitSFX.PlayDeathSound();
             gameObject.SetActive(false);
         }
 
