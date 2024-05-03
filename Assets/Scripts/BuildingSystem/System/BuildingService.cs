@@ -23,8 +23,10 @@ namespace Assets.Scripts.BuildingSystem.System
         private Transform _currentPlayersTransform;
         private PlayerWallet _currentPlayersWallet;
         private int _currentCostToBuild;
+        private int _currentBuildPointIndex;
         private bool _canBuild;
         private Building _currentBuilding;
+        private bool _isEventerExist = false;
 
         public event Action<Button> EventerWithAdButtonWasMade;
 
@@ -43,7 +45,11 @@ namespace Assets.Scripts.BuildingSystem.System
         {
             UnSignToBuildingsPointEvents();
             _builder.BuildButtonClicked -= Build;
-            _currentBuilding.BuildWithEventorWasMade -= OnBuildWithEventorWasMade;
+            
+            if (_isEventerExist == true)
+            {
+                _currentBuilding.BuildWithEventorWasMade -= OnBuildWithEventorWasMade;
+            }         
         }
        
         private void Build(PlayerWallet wallet)   
@@ -54,13 +60,13 @@ namespace Assets.Scripts.BuildingSystem.System
                 {
                         if(_buildPoints[i].CostToBuild <= wallet.Coins)
                         {
-                            _buildingSpawner.Spawn(_buildPoints[i].BuildingPointIndex, _buildPoints[i].SpotToPlaceBuilding, _chestSpawnPoints);
+                            _buildingSpawner.Spawn(_buildPoints[i].Index, _buildPoints[i].SpotToPlaceBuilding, _chestSpawnPoints);
                             _buildPoints[i].TakeSpot();
                             _buildPoints[i].SignToCurrentBuilding(_buildingSpawner.CurrentBuilding);
                              SendEventer();
                             _canBuild = false;
                             _buildPoints[i].TryToDeActiveIconOfBuildPoint();
-                            _builder.ToggleButton(wallet, _currentCostToBuild, _canBuild);
+                            _builder.ToggleButton(wallet, _currentBuildPointIndex, _currentCostToBuild, _canBuild);
                             wallet.SpendCoins(_buildPoints[i].CostToBuild);
                         }
                 }
@@ -84,8 +90,9 @@ namespace Assets.Scripts.BuildingSystem.System
         }
 
         private void OnBuildWithEventorWasMade(ColliderPanelEventer currentEventer)
-        {
+        {         
             EventerWithAdButtonWasMade?.Invoke(currentEventer.SecondButton);
+            _isEventerExist = true;
         }
 
         private void UnSignToBuildingsPointEvents()
@@ -107,9 +114,10 @@ namespace Assets.Scripts.BuildingSystem.System
                 if (_buildPoints[i].transform == spotOfPlayer)
                 {
                     _currentCostToBuild = _buildPoints[i].CostToBuild;
+                    _currentBuildPointIndex = _buildPoints[i].Index;
 
                     _currentPlayersWallet = wallet;
-                    _builder.ToggleButton(_currentPlayersWallet, _currentCostToBuild, _canBuild);    
+                    _builder.ToggleButton(_currentPlayersWallet, _currentBuildPointIndex, _currentCostToBuild, _canBuild);    
                 }
             }
         }
@@ -117,7 +125,7 @@ namespace Assets.Scripts.BuildingSystem.System
         {
             _canBuild = false;
             _currentPlayersWallet = wallet;
-            _builder.ToggleButton(_currentPlayersWallet, _currentCostToBuild, _canBuild);
+            _builder.ToggleButton(_currentPlayersWallet, _currentBuildPointIndex, _currentCostToBuild, _canBuild);
         }
     }
 }
