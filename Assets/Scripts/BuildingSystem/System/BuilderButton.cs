@@ -2,11 +2,8 @@ using Assets.Scripts.BuildingSystem.Buildings;
 using Assets.Scripts.Constants;
 using Assets.Scripts.PlayerComponents;
 using System;
-using System.Collections;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static Agava.YandexGames.LeaderboardDescriptionResponse;
 
 namespace Assets.Scripts.BuildingSystem
 {

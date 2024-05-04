@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Assets.Scripts.Audio;
 using Assets.Scripts.GameLogic;
 using Assets.Scripts.GameLogic.Interfaces;
-using Assets.Scripts.EnemyComponents;
 
 namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
 {

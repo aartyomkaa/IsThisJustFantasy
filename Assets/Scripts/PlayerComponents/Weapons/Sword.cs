@@ -7,12 +7,13 @@ namespace Assets.Scripts.PlayerComponents.Weapons
     {
         private RaycastHit[] _hitColliders;
         private float _maxDistance = 1f;
+        private int _sizeScale = 5500;
 
         public override void Attack()
         {
             base.Attack();
 
-            _hitColliders = Physics.BoxCastAll(transform.position, transform.localScale / 5500, transform.forward, Quaternion.identity, _maxDistance, EnemyLayerMask);
+            _hitColliders = Physics.BoxCastAll(transform.position, transform.localScale / _sizeScale, transform.forward, Quaternion.identity, _maxDistance, EnemyLayerMask);
 
             if (_hitColliders.Length > 0)
             {

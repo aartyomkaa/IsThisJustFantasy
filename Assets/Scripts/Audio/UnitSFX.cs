@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Scripts.EnemyComponents
+namespace Assets.Scripts.Audio
 {
     internal class UnitSFX : MonoBehaviour
     {

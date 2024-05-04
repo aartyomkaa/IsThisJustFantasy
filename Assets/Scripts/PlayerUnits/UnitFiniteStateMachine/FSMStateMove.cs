@@ -1,8 +1,8 @@
-﻿using Assets.Scripts.Constants;
-using Assets.Scripts.EnemyComponents;
-using Assets.Scripts.GameLogic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
+using Assets.Scripts.Audio;
+using Assets.Scripts.Constants;
+using Assets.Scripts.GameLogic;
 
 namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
 {

@@ -1,11 +1,13 @@
+using System;
+using System.Collections;
+using UnityEngine;
+using UnityEngine.AI;
+using Assets.Scripts.Audio;
 using Assets.Scripts.BuildingSystem.Buildings;
 using Assets.Scripts.Constants;
 using Assets.Scripts.GameLogic;
 using Assets.Scripts.GameLogic.Interfaces;
 using Assets.Scripts.PlayerUnits.UnitFiniteStateMachine;
-using System;
-using UnityEngine;
-using UnityEngine.AI;
 
 namespace Assets.Scripts.EnemyComponents
 {
@@ -21,9 +23,14 @@ namespace Assets.Scripts.EnemyComponents
         private Animator _animator;
         private NavMeshAgent _agent;
 
+        private Coroutine _deathCoroutine;
+        private float _deathDuration = 5f;
+
         private MainBuilding _building;
 
         public Transform Transform => transform;
+
+        public float Health => _health;
 
         public event Action<Enemy> Died;
         public event Action<float> HealthValueChanged;
@@ -41,6 +48,9 @@ namespace Assets.Scripts.EnemyComponents
 
         private void Update()
         {
+            if (_health <= 0)
+                return;
+
             _fsm.Update();
 
             if (_fsm.Target == null && _agent.destination != _building.transform.position)
@@ -68,18 +78,31 @@ namespace Assets.Scripts.EnemyComponents
             _building = target;
         }
 
-        private void Die()
-        {
-            Died?.Invoke(this);
-            _health = _data.Health;
-            _fsm.SetState<FSMStateIdle>();
-            _unitSFX.PlayDeathSound();
-            gameObject.SetActive(false);
-        }
-
         public virtual void Attack(IDamageable target)
         {
             target.TakeDamage(_data.Damage);
+        }
+
+        private void Die()
+        {
+            if (_deathCoroutine != null)
+            {
+                StopCoroutine(_deathCoroutine );
+            }
+
+            _deathCoroutine = StartCoroutine(Death(_deathDuration));
+        }
+
+        private IEnumerator Death(float time)
+        {
+            Died?.Invoke(this);
+            _unitSFX.PlayDeathSound();
+            _animator.SetTrigger(AnimatorHash.Death);
+
+            yield return new WaitForSeconds(time);
+
+            _health = _data.Health;
+            gameObject.SetActive(false);
         }
     }
 }

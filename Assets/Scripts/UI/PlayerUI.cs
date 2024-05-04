@@ -21,7 +21,7 @@ namespace Assets.Scripts.UI
         public void SignToPlayersValuesChanges(PlayerHealth health, PlayerWallet coins)
         {
             _currentplayerHealth = health;
-            _health.value = _currentplayerHealth.Value;
+            _health.value = _currentplayerHealth.Health;
 
             _currentplayerWallet = coins;
             _coins.text = _currentplayerWallet.Coins.ToString();

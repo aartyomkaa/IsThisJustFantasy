@@ -1,8 +1,8 @@
-﻿using Assets.Scripts.EnemyComponents;
+﻿using UnityEngine;
+using UnityEngine.AI;
+using Assets.Scripts.Audio;
 using Assets.Scripts.GameLogic;
 using Assets.Scripts.GameLogic.Interfaces;
-using UnityEngine;
-using UnityEngine.AI;
 
 namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
 {
@@ -24,7 +24,7 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
         }
 
         public override void Update() 
-        { 
+        {
             if (_targetFinder.TryFindTarget(Unit.Transform.position, out _target))
             {
                 FSM.SetEnemy(_target);

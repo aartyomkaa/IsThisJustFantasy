@@ -1,8 +1,8 @@
-﻿using Assets.Scripts.Constants;
-using Assets.Scripts.EnemyComponents;
-using Assets.Scripts.GameLogic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
+using Assets.Scripts.Constants;
+using Assets.Scripts.GameLogic;
+using Assets.Scripts.Audio;
 
 namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
 {
@@ -18,7 +18,7 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
 
         public override void Update()
         {
-            if (FSM.Target != null && FSM.Target.Transform.gameObject.activeSelf)
+            if (FSM.Target != null && FSM.Target.Transform.gameObject.activeSelf && FSM.Target.Health > 0)
             {
                 if (NeedChaseEnemy())
                 {
