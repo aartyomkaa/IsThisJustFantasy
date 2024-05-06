@@ -32,8 +32,8 @@ namespace Assets.Scripts.PlayerComponents.Weapons
 
         public void LevelUp(float damage, float attackSpeed)
         {
-            _damage = damage;
-            _attackSpeed = attackSpeed;
+            _damage += damage;
+            _attackSpeed -= attackSpeed;
         }
 
         private IEnumerator AttackDelay(float attackSpeed)

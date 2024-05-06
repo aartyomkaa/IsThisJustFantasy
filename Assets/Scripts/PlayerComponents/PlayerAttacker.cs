@@ -9,6 +9,7 @@ namespace Assets.Scripts.PlayerComponents
     {
         [SerializeField] private List<Weapon> _weapons;
 
+        private PlayerSFX _playerSFX;
         private PlayerAnimator _animator;
         private Weapon _currentWeapon;
 
@@ -41,10 +42,13 @@ namespace Assets.Scripts.PlayerComponents
             _currentWeapon.gameObject.SetActive(true);
 
             _animator.SetAnimatorChangeWeaponTrigger(_currentWeapon);
+            _playerSFX.PlayChangeWeaponSound();
         }
 
-        public override void Init(PlayerData level)
+        public override void Init(PlayerData level, PlayerSFX sfx)
         {
+            _playerSFX = sfx;
+
             foreach (var weapon in _weapons)
             {
                 weapon.LevelUp(level.WeaponDamageLevelUpAmount, level.WeaponAttackSpeedLevelUpAmount);

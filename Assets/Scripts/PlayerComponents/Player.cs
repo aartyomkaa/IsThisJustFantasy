@@ -19,6 +19,7 @@ namespace Assets.Scripts.PlayerComponents
         private void Awake()
         {
             _wallet = new PlayerWallet();
+            PlayerSFX sfx = GetComponentInChildren<PlayerSFX>();
             
             _currentLevel = 0;
 
@@ -28,7 +29,7 @@ namespace Assets.Scripts.PlayerComponents
                 {
                     foreach (PlayerComponent component in _components)
                     {
-                        component.Init(_levels[i]);
+                        component.Init(_levels[i], sfx);
                     }
 
                     break;

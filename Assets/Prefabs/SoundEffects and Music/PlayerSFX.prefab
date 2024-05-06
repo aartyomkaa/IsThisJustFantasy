@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4144073900976195365}
-  - component: {fileID: 1500976410350081683}
+  - component: {fileID: 181646998336417408}
   - component: {fileID: 519179287288508853}
   m_Layer: 0
   m_Name: PlayerSFX
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1500976410350081683
+--- !u!114 &181646998336417408
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,13 +42,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 7179989028455603301}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b0dc4c58e502ef46be77ab326de54f9, type: 3}
+  m_Script: {fileID: 11500000, guid: 173548754ee97954f8b7f26131505dc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attack: []
-  _death: []
-  _walk: []
-  _source: {fileID: 0}
+  _source: {fileID: 519179287288508853}
+  _heal:
+  - {fileID: 8300000, guid: ba2ef52f738f4294999ea7e5a812d578, type: 3}
+  _changeWeapon:
+  - {fileID: 8300000, guid: 46ebd4adc25723d4e9291f4c83d3c7b0, type: 3}
+  - {fileID: 8300000, guid: f42d825400f396d459948fa4015c1bc2, type: 3}
+  - {fileID: 8300000, guid: 5390ca4aabdebb9428e858e55f5bb0ce, type: 3}
+  - {fileID: 8300000, guid: c556bbd061de2c844aa4885e1a2db035, type: 3}
+  - {fileID: 8300000, guid: 40a1655379dd4794b974d7ad1e2b03aa, type: 3}
+  - {fileID: 8300000, guid: 50ec0cbca7488d54bb222b16bf732b99, type: 3}
+  _takeHit:
+  - {fileID: 8300000, guid: 767e3a48aaf01274bbd7447fc2527eca, type: 3}
+  - {fileID: 8300000, guid: 3e47454833bed5643833e755c7c7a64f, type: 3}
+  - {fileID: 8300000, guid: f55f8d531637fd94c9f8f32a1e14a72b, type: 3}
+  _walk:
+  - {fileID: 8300000, guid: 354f5596fd1b56947ba58cd566c6faf9, type: 3}
+  - {fileID: 8300000, guid: fffaacae04bd3dd4e94fae824484f011, type: 3}
+  - {fileID: 8300000, guid: e6bc0ad93bde18d41973a88d7d56350d, type: 3}
+  - {fileID: 8300000, guid: 4cb3843923f84fb43b84303146dda053, type: 3}
+  - {fileID: 8300000, guid: 0d519df153c1d564e923c6966cfa8c9b, type: 3}
 --- !u!82 &519179287288508853
 AudioSource:
   m_ObjectHideFlags: 0
@@ -60,8 +76,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_PlayOnAwake: 0
+  m_Volume: 0.296
   m_Pitch: 1
   Loop: 0
   Mute: 0

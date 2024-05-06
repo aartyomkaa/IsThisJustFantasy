@@ -1,10 +1,6 @@
-
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UI;
+using Agava.YandexGames;
 
 namespace Assets.Scripts.UI
 {
@@ -16,6 +12,10 @@ namespace Assets.Scripts.UI
         [SerializeField] private Button _openLevelsPanelButton;
         [SerializeField] private Button _closeLevelsPanelButton;
 
+        private void Awake()
+        {
+            YandexGamesSdk.GameReady();
+        }
 
         private void OnEnable()
         {

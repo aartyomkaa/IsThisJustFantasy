@@ -11,6 +11,7 @@ namespace Assets.Scripts.PlayerComponents
         private float _maxHealth;
         private bool _canTakeDamage = true;
 
+        private PlayerSFX _playerSFX;
         private Coroutine _damageRecover;
         private WaitForSeconds _recoverTime;
 
@@ -19,8 +20,9 @@ namespace Assets.Scripts.PlayerComponents
 
         public event Action<float> ValueChanged;
 
-        public override void Init(PlayerData data)
+        public override void Init(PlayerData data, PlayerSFX sfx)
         {
+            _playerSFX = sfx;
             _maxHealth = data.Health;
             _value = _maxHealth;
             _recoverTime = new WaitForSeconds(data.RecoverTime);
@@ -32,6 +34,7 @@ namespace Assets.Scripts.PlayerComponents
             {
                 _value -= damage;
                 ValueChanged?.Invoke(_value);
+                _playerSFX.PlayTakeHitSound();
             }
 
             if (_value <= 0)
@@ -53,7 +56,8 @@ namespace Assets.Scripts.PlayerComponents
         {
             _value += importHealValue;
 
-            _value = _value > _maxHealth ? _maxHealth : _value;        
+            _value = _value > _maxHealth ? _maxHealth : _value;
+            _playerSFX.PlayHealSound();
         }
 
         private IEnumerator DamageRecover()
