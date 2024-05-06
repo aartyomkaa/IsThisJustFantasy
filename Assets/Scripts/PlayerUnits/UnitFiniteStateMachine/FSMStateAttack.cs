@@ -1,8 +1,8 @@
-﻿using Assets.Scripts.Constants;
-using Assets.Scripts.EnemyComponents;
-using Assets.Scripts.GameLogic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
+using Assets.Scripts.Constants;
+using Assets.Scripts.GameLogic;
+using Assets.Scripts.Audio;
 
 namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
 {
@@ -11,14 +11,14 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
         private float _distance;
         private float _timePast;
 
-        public FSMStateAttack(FiniteStateMachine fsm, IFSMControllable unit, NavMeshAgent navMesh, Animator animator, Data data)
-            : base(fsm, unit, navMesh, animator, data)
+        public FSMStateAttack(FiniteStateMachine fsm, IFSMControllable unit, NavMeshAgent navMesh, Animator animator, Data data, UnitSFX unitSFX)
+            : base(fsm, unit, navMesh, animator, data, unitSFX)
         {
         }
 
         public override void Update()
         {
-            if (FSM.Target != null && FSM.Target.Transform.gameObject.activeSelf)
+            if (FSM.Target != null && FSM.Target.Transform.gameObject.activeSelf && FSM.Target.Health > 0)
             {
                 if (NeedChaseEnemy())
                 {
@@ -52,10 +52,8 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
 
             if (_timePast >= Data.AttackSpeed)
             {
-                if (Unit.GetType() == typeof(EnemyRange))
-                    Unit.Attack(FSM.Target);
-                else
-                    FSM.Target.TakeDamage(Data.Damage);
+                Unit.Attack(FSM.Target);
+                UnitSFX.PlayAttackSound();
 
                 Animator.SetTrigger(AnimatorHash.Attack);
 

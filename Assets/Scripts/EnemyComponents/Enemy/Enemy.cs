@@ -1,11 +1,13 @@
+using System;
+using System.Collections;
+using UnityEngine;
+using UnityEngine.AI;
+using Assets.Scripts.Audio;
 using Assets.Scripts.BuildingSystem.Buildings;
 using Assets.Scripts.Constants;
 using Assets.Scripts.GameLogic;
 using Assets.Scripts.GameLogic.Interfaces;
 using Assets.Scripts.PlayerUnits.UnitFiniteStateMachine;
-using System;
-using UnityEngine;
-using UnityEngine.AI;
 
 namespace Assets.Scripts.EnemyComponents
 {
@@ -16,13 +18,19 @@ namespace Assets.Scripts.EnemyComponents
         private float _health;
 
         private EnemyData _data;
+        private UnitSFX _unitSFX;
         private FiniteStateMachine _fsm;
         private Animator _animator;
         private NavMeshAgent _agent;
 
+        private Coroutine _deathCoroutine;
+        private float _deathDuration = 5f;
+
         private MainBuilding _building;
 
         public Transform Transform => transform;
+
+        public float Health => _health;
 
         public event Action<Enemy> Died;
         public event Action<float> HealthValueChanged;
@@ -31,14 +39,18 @@ namespace Assets.Scripts.EnemyComponents
         {
             _animator = GetComponent<Animator>();
             _agent = GetComponent<NavMeshAgent>();
+            _unitSFX = GetComponentInChildren<UnitSFX>();
 
-            _fsm = new FiniteStateMachine(_animator, _agent, this, _data);
+            _fsm = new FiniteStateMachine(_animator, _agent, this, _data, _unitSFX);
 
             _fsm.SetState<FSMStateIdle>();
         }
 
         private void Update()
         {
+            if (_health <= 0)
+                return;
+
             _fsm.Update();
 
             if (_fsm.Target == null && _agent.destination != _building.transform.position)
@@ -66,14 +78,31 @@ namespace Assets.Scripts.EnemyComponents
             _building = target;
         }
 
-        private void Die()
+        public virtual void Attack(IDamageable target)
         {
-            Died?.Invoke(this);
-            _health = _data.Health;
-            _fsm.SetState<FSMStateIdle>();
-            gameObject.SetActive(false);
+            target.TakeDamage(_data.Damage);
         }
 
-        public abstract void Attack(IDamageable target);
+        private void Die()
+        {
+            if (_deathCoroutine != null)
+            {
+                StopCoroutine(_deathCoroutine );
+            }
+
+            _deathCoroutine = StartCoroutine(Death(_deathDuration));
+        }
+
+        private IEnumerator Death(float time)
+        {
+            Died?.Invoke(this);
+            _unitSFX.PlayDeathSound();
+            _animator.SetTrigger(AnimatorHash.Death);
+
+            yield return new WaitForSeconds(time);
+
+            _health = _data.Health;
+            gameObject.SetActive(false);
+        }
     }
 }

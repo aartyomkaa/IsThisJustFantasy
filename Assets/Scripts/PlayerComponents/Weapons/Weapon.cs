@@ -5,9 +5,11 @@ namespace Assets.Scripts.PlayerComponents.Weapons
 {
     internal abstract class Weapon : MonoBehaviour
     {
+        [SerializeField] protected LayerMask EnemyLayerMask;
+        [SerializeField] protected AudioSource AudioSource;
+
         [SerializeField] private float _damage;
         [SerializeField] private float _attackSpeed;
-        [SerializeField] protected LayerMask EnemyLayerMask;
 
         protected Coroutine AttackCoroutine;
 
@@ -30,12 +32,13 @@ namespace Assets.Scripts.PlayerComponents.Weapons
 
         public void LevelUp(float damage, float attackSpeed)
         {
-            _damage = damage;
-            _attackSpeed = attackSpeed;
+            _damage += damage;
+            _attackSpeed -= attackSpeed;
         }
 
         private IEnumerator AttackDelay(float attackSpeed)
         {
+            AudioSource.Play();
             CanAttack = false;
 
             yield return new WaitForSeconds(attackSpeed);

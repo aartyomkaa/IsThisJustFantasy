@@ -1,18 +1,17 @@
-using Assets.Scripts.BuildingSystem.Buildings;
 using Assets.Scripts.Constants;
 using Assets.Scripts.PlayerComponents;
+using Lean.Localization;
 using System;
-using System.Collections;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static Agava.YandexGames.LeaderboardDescriptionResponse;
 
 namespace Assets.Scripts.BuildingSystem
 {
     internal class BuilderButton : MonoBehaviour
     {
-        [SerializeField] private Button _build;     
+        [SerializeField] private Button _build;
+        [SerializeField] private LeanToken _cost;
+        [SerializeField] private LeanToken _building;
 
         private PlayerWallet _currentPlayersWallet;
         private Vector3 _closeValues = Vector3.zero;
@@ -37,14 +36,22 @@ namespace Assets.Scripts.BuildingSystem
             switch (builPointIndex)
             {
                 case BuildingsHash.TowerIndex:
-                    activeButton.GetComponentInChildren<Text>().text = UiHash.BuildTowerButtonText + costToBuy;     
+                    _building.SetValue(UiHash.BuildTowerButtonText);
+                    _cost.SetValue(costToBuy);     
                     break;
+
                 case BuildingsHash.BarracksIndex:
-                    activeButton.GetComponentInChildren<Text>().text = UiHash.BuildBarracksButtonText + costToBuy;
+                    _building.SetValue(UiHash.BuildBarracksButtonText);
+                    _cost.SetValue(costToBuy);
                     break;
+
                 case BuildingsHash.ResoorceBuildingIndex:
-                    activeButton.GetComponentInChildren<Text>().text = UiHash.BuildResoorceBuildingButtonText + costToBuy;
+                    _building.SetValue(UiHash.BuildResoorceBuildingButtonText);
+                    _cost.SetValue(costToBuy);
                     break;
+
+                default:
+                    throw new Exception("No such building id");
             }
         }
            
@@ -61,14 +68,13 @@ namespace Assets.Scripts.BuildingSystem
             if (isPlayerIn)
             {
                 Open();
+                SetButtonText(_build, builPointIndex, costToBuy);
                 _build.gameObject.SetActive(isPlayerIn);
             }
             else
             {
                 Close();
             }
-                 
-            SetButtonText(_build, builPointIndex, costToBuy); 
         }
 
         private void Close()

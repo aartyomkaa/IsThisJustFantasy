@@ -76,8 +76,8 @@ namespace Assets.Scripts.PlayerComponents
 
         private void InitializeInput(Player player)
         {
-//#if UNITY_WEBGL && !UNITY_EDITOR
-            if (1 == 2)
+#if UNITY_WEBGL && !UNITY_EDITOR
+            if (Device.IsMobile)
             {
                 MobileInput input = Instantiate(_mobileInput, transform);
                 input.Init(player);
@@ -87,7 +87,7 @@ namespace Assets.Scripts.PlayerComponents
                 DesktopInput input = Instantiate(_desktopInput, transform);
                 input.Init(player);
             }
-//#endif
+#endif
         }
 
         private void InitializeUI(Player player)

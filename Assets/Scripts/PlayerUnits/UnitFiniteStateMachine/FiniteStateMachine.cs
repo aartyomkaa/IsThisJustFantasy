@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Assets.Scripts.Audio;
 using Assets.Scripts.GameLogic;
 using Assets.Scripts.GameLogic.Interfaces;
 
@@ -15,12 +16,12 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
         public Vector3 MovePosition { get; private set; }
         public IDamageable Target { get; private set; }
 
-        public FiniteStateMachine(Animator animator, NavMeshAgent agent, IFSMControllable unit, Data data)
+        public FiniteStateMachine(Animator animator, NavMeshAgent agent, IFSMControllable unit, Data data, UnitSFX unitSFX)
         {
-            AddState(new FSMStateIdle(this, unit, agent, animator, data));
-            AddState(new FSMStateMove(this, unit, agent, animator, data));
-            AddState(new FSMStateChaseEnemy(this, unit, agent, animator, data));
-            AddState(new FSMStateAttack(this, unit, agent, animator, data));
+            AddState(new FSMStateIdle(this, unit, agent, animator, data, unitSFX));
+            AddState(new FSMStateMove(this, unit, agent, animator, data, unitSFX));
+            AddState(new FSMStateChaseEnemy(this, unit, agent, animator, data, unitSFX));
+            AddState(new FSMStateAttack(this, unit, agent, animator, data, unitSFX));
         }
 
         public void AddState(FSMState state)

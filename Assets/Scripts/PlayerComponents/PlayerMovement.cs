@@ -8,6 +8,7 @@ namespace Assets.Scripts.PlayerComponents
     internal class PlayerMovement : PlayerComponent
     {
         private PlayerData _data;
+        private PlayerSFX _playerSFX;
         private NavMeshAgent _navMeshAgent;
         private PlayerAnimator _animator;
 
@@ -22,12 +23,17 @@ namespace Assets.Scripts.PlayerComponents
         public void Move(Vector2 direction)
         {
             Vector3 movementDirection = new Vector3(direction.x, 0, direction.y);
+            _animator.SetAnimatorSpeed(movementDirection, _data.Speed);
+
+            if (movementDirection == Vector3.zero)
+                return;
+
             Vector3 movePosition = transform.position + movementDirection;
 
             _navMeshAgent.speed = _isAttacking ? _data.AttackMoveSpeed : _data.Speed;
             _navMeshAgent.SetDestination(movePosition);
 
-            _animator.SetAnimatorSpeed(movementDirection, _data.Speed);
+            _playerSFX.PlayWalkSound(_data.Speed);
         }
 
         public void StopMove()
@@ -51,9 +57,10 @@ namespace Assets.Scripts.PlayerComponents
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation * Quaternion.Euler(offset), Time.fixedDeltaTime);
         }
 
-        public override void Init(PlayerData data)
+        public override void Init(PlayerData data, PlayerSFX sfx)
         {
             _data = data;
+            _playerSFX = sfx;
         }
     }
 }

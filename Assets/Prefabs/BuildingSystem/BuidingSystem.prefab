@@ -912,6 +912,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _build: {fileID: 2266825693280785749}
+  _cost: {fileID: 3469671815210071272, guid: 75bae2701a1af8947a7a032da4a31972, type: 3}
+  _building: {fileID: 1063371797568624340, guid: 0e2058740d761094db544b5e528aa155, type: 3}
 --- !u!1 &6682009318053650408
 GameObject:
   m_ObjectHideFlags: 0

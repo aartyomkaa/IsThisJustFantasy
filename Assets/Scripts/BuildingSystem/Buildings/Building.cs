@@ -27,6 +27,8 @@ namespace Assets.Scripts.BuildingSystem
 
         public Transform Transform => transform;
 
+        public float Health => _strength;
+
         public event Action<Transform> Destroyed;
         public event Action<ColliderPanelEventer> BuildWithEventorWasMade;
 
