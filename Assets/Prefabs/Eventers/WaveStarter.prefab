@@ -14796,7 +14796,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 10.996803, y: 1.14, z: -42.950607}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2702851882946791203}
@@ -19696,6 +19696,7 @@ MonoBehaviour:
   _firstButton: {fileID: 697273783272987876}
   _secondButton: {fileID: 1658715542513679202}
   _extraButton: {fileID: 7996842564300728628}
+  _tutorial: {fileID: 0}
 --- !u!135 &7542424257075128048
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -357,7 +357,7 @@ MonoBehaviour:
   _strength: 100
   _valueOfScaleOfParticleOfDestroy: 4
   _spotOfDestroyEffects: {fileID: 178295802140744155}
-  _tutorialPanel: {fileID: 0}
+  _tutorialPanel: {fileID: 814378230377625133}
   IndexOfBuilding: 2
 --- !u!95 &1054973193750157762
 Animator:
@@ -1394,17 +1394,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7104536003519519982, guid: a9237970a81ae5948b18dec59a387b24, type: 3}
       propertyPath: m_Text
-      value: "\u0424\u0443\u043D\u043A\u0446\u0438\u044F: \u0421\u043E\u0437\u0434\u0430\u044E\u0442
-        \u044E\u043D\u0438\u0442\u043E\u0432, \u043D\u0435\u043E\u0431\u0445\u043E\u0434\u0438\u043C\u044B\u0445
-        \u0434\u043B\u044F \u0437\u0430\u0449\u0438\u0442\u044B \u0432\u0430\u0448\u0435\u0439
-        \u0431\u0430\u0437\u044B \u0438 \u043D\u0430\u043F\u0430\u0434\u0435\u043D\u0438\u044F
-        \u043D\u0430 \u0432\u0440\u0430\u0436\u0435\u0441\u043A\u0438\u0435 \u043E\u0431\u044A\u0435\u043A\u0442\u044B.\r\n\u0418\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435:
-        \u0427\u0442\u043E\u0431\u044B \u0441\u043E\u0437\u0434\u0430\u0442\u044C
-        \u044E\u043D\u0438\u0442\u043E\u0432, \u043D\u0430\u0436\u043C\u0438\u0442\u0435
-        \u043D\u0430 \u0431\u0430\u0440\u0430\u043A\u0438 \u0438 \u0432\u044B\u0431\u0435\u0440\u0438\u0442\u0435
-        \u0436\u0435\u043B\u0430\u0435\u043C\u044B\u0439 \u0442\u0438\u043F \u044E\u043D\u0438\u0442\u0430
-        \u0438\u0437 \u0441\u043F\u0438\u0441\u043A\u0430 \u0434\u043E\u0441\u0442\u0443\u043F\u043D\u044B\u0445
-        \u043E\u043F\u0446\u0438\u0439."
+      value: 'This is a barracks building
+
+
+
+        Function: Create the units necessary
+        to defend your base and attack enemy targets.
+
+
+
+        Usage: To create
+        units, click on the button in the pop-up window.'
       objectReference: {fileID: 0}
     - target: {fileID: 7925530684692225479, guid: a9237970a81ae5948b18dec59a387b24, type: 3}
       propertyPath: m_PresetInfoIsWorld

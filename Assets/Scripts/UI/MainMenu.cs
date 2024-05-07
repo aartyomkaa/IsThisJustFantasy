@@ -14,7 +14,30 @@ namespace Assets.Scripts.UI
 
         private void Awake()
         {
+#if UNITY_WEBGL && !UNITY_EDITOR
             YandexGamesSdk.GameReady();
+
+            switch (YandexGamesSdk.Environment.i18n.lang)
+            {
+                case "en":
+                    LeanLocalization.SetCurrentLanguageAll("English");
+                    break;
+
+                case "ru":
+                    LeanLocalization.SetCurrentLanguageAll("Russian");
+                    break;
+
+                case "tr":
+                    LeanLocalization.SetCurrentLanguageAll("Turkish");
+                    break;
+
+                default:
+                    LeanLocalization.SetCurrentLanguageAll("English");
+                    break;
+            }
+
+            LeanLocalization.UpdateTranslations();
+#endif
         }
 
         private void OnEnable()

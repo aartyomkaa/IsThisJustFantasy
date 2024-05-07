@@ -16,8 +16,8 @@ namespace Assets.Scripts.UI
         [SerializeField] private NextLevelPanel _nextLevelPanel;
         [SerializeField] private Button _goToMenu;
         [SerializeField] private SceneLoader _sceneLoader;
+        [SerializeField] private NextLevelZone _currentNextLevelZone;
 
-        private NextLevelZone _currentNextLevelZone;
         private AudioMixer _currentaudioMixer;
 
         public PlayerUI PlayerUI => _playerUI;

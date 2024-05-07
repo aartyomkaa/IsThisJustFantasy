@@ -8,14 +8,14 @@ namespace Assets.Scripts.BuildingSystem.Buildings
 {
     internal class EnemyBuilding : MonoBehaviour
     {
+        [SerializeField] private ColliderPanelEventer _eventer;
+
         private EnemyFactory _enemyFactory;
-        private ColliderPanelEventer _eventer;
 
         private bool _isIncrease;
 
         private void OnEnable()
         {
-            _eventer = GetComponentInChildren<ColliderPanelEventer>();
             _enemyFactory = GetComponentInChildren<EnemyFactory>();
             _eventer.FirstButtonClicked += ChangeSpawnAmount;
             _eventer.SecondButtonClicked += ChangeSpawnAmount;

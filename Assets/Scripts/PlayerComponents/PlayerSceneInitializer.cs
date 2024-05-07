@@ -27,9 +27,9 @@ namespace Assets.Scripts.PlayerComponents
         [SerializeField] private VideoADShower _videoAd;
         [SerializeField] private SceneLoader _sceneLoader;
         [SerializeField] private BuildingService _buildingSystem;
+        [SerializeField] private NextLevelZone _nextLevelZone;
 
         private Pauser _pauser;
-        private NextLevelZone _nextLevelZone;
 
         private void OnEnable()
         {
@@ -51,7 +51,6 @@ namespace Assets.Scripts.PlayerComponents
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
             Player player = InitializePlayer();
-            _nextLevelZone = GetComponentInChildren<NextLevelZone>();
 
             InitializeInput(player);
             InitializeUI(player);
@@ -76,8 +75,8 @@ namespace Assets.Scripts.PlayerComponents
 
         private void InitializeInput(Player player)
         {
-#if UNITY_WEBGL && !UNITY_EDITOR
-            if (Device.IsMobile)
+//#if UNITY_WEBGL && !UNITY_EDITOR
+            if (1 == 2)
             {
                 MobileInput input = Instantiate(_mobileInput, transform);
                 input.Init(player);
@@ -87,7 +86,7 @@ namespace Assets.Scripts.PlayerComponents
                 DesktopInput input = Instantiate(_desktopInput, transform);
                 input.Init(player);
             }
-#endif
+//#endif
         }
 
         private void InitializeUI(Player player)
