@@ -926,7 +926,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 1013706237}
-  _level: Level1 TEST
+  _level: Level1
 --- !u!1 &281919675
 GameObject:
   m_ObjectHideFlags: 0

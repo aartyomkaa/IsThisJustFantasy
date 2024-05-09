@@ -9,9 +9,9 @@ namespace Assets.Scripts.EnemyComponents
 
         private int _capacity = 20;
 
-        public EnemyPool(EnemyData data, MainBuilding building)
+        public EnemyPool(EnemyData data, MainBuilding building, Vector3 position)
         {
-            _enemyPool = CreateUnitsPool(data, building);
+            _enemyPool = CreateUnitsPool(data, building, position);
         }
 
         public Enemy GetEnemy()
@@ -29,13 +29,13 @@ namespace Assets.Scripts.EnemyComponents
             throw new System.Exception("Not enough units in The pool!!!");
         }
 
-        private Enemy[] CreateUnitsPool(EnemyData data, MainBuilding building)
+        private Enemy[] CreateUnitsPool(EnemyData data, MainBuilding building, Vector3 position)
         {
             Enemy[] pool = new Enemy[_capacity];
 
             for (int i = 0; i < _capacity; i++)
             {
-                Enemy unit = GameObject.Instantiate(data.Prefab);
+                Enemy unit = GameObject.Instantiate(data.Prefab, position, Quaternion.identity);
                 unit.Init(data, building);
                 unit.gameObject.SetActive(false);
                 pool[i] = unit;

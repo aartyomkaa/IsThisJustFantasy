@@ -35,12 +35,14 @@ namespace Assets.Scripts.PlayerComponents
         {
             SceneManager.sceneLoaded += OnSceneLoaded;
             _buildingSystem.EventerWithAdButtonWasMade += OnEventerWithAdButtonWasMade;
+            _enemyFactory.FinalWaveCleared += _nextLevelZone.OnAllWavesDefeated;
         }
 
         private void OnDisable()
         {
             SceneManager.sceneLoaded -= OnSceneLoaded;
             _buildingSystem.EventerWithAdButtonWasMade -= OnEventerWithAdButtonWasMade;
+            _enemyFactory.FinalWaveCleared -= _nextLevelZone.OnAllWavesDefeated;
         }
 
         private void OnEventerWithAdButtonWasMade(Button button)
@@ -59,7 +61,7 @@ namespace Assets.Scripts.PlayerComponents
 
         private Player InitializePlayer()
         {
-            Player player = Instantiate(_player);
+            Player player = Instantiate(_player, transform.position, Quaternion.identity);
             NavMeshAgent agent = player.GetComponent<NavMeshAgent>();
 
             _targetFollower.Init(player.transform);

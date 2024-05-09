@@ -28,8 +28,8 @@ namespace Assets.Scripts.EnemyComponents
 
         private void Start()
         {
-            _meleePool = new EnemyPool(_melee, _building);
-            _rangePool = new EnemyPool(_range, _building);
+            _meleePool = new EnemyPool(_melee, _building, transform.position);
+            _rangePool = new EnemyPool(_range, _building, transform.position);
         }
 
         public void StartWave()

@@ -13,6 +13,11 @@ public class NextLevelZone : MonoBehaviour
     public event Action PlayerWentOut;
     public event Action GameLevelUped;
 
+    private void Awake()
+    {
+        gameObject.SetActive(false);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.TryGetComponent(out Player player))
@@ -34,5 +39,10 @@ public class NextLevelZone : MonoBehaviour
         {
             PlayerWentOut?.Invoke();
         }
+    }
+
+    public void OnAllWavesDefeated()
+    {
+        gameObject.SetActive(true);
     }
 }

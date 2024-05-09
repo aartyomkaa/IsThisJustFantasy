@@ -1,16 +1,8 @@
-using Assets.Scripts.BuildingSystem.Buildings;
-using Assets.Scripts.EnemyComponents;
 using Assets.Scripts.GameLogic.Interfaces;
-using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.PlayerComponents.Weapons;
 using Assets.Scripts.PlayerComponents.Weapons.Bows;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
-using static UnityEngine.GraphicsBuffer;
 
 namespace Assets.Scripts.BuildingSystem
 {
@@ -22,8 +14,7 @@ namespace Assets.Scripts.BuildingSystem
         [SerializeField] private float _damage;
         [SerializeField] private LayerMask _targetlayerMask;
 
-        private List<Transform> _targets = new();
-        private Transform _target;
+        private List<IDamageable> _targets = new();
         private ArrowsPool _poolOfArrows;
         private float _currentDelay;
 
@@ -43,27 +34,30 @@ namespace Assets.Scripts.BuildingSystem
 
         private void TryToShoot()
         {
-            if (_currentDelay >= _delayOfShoot)
+            foreach (IDamageable target in _targets)
             {
-                Shoot();
-                _currentDelay = 0;
+                if (target.Health > 0 && _currentDelay >= _delayOfShoot)
+                {
+                    Shoot(target);
+                    _currentDelay = 0;
+                }
             }
 
             _currentDelay += Time.deltaTime;
         }
 
-        private void Shoot()
+        private void Shoot(IDamageable target)
         {
             Arrow arrow = _poolOfArrows.GetArrow();
             arrow.transform.position = _shootPoint.position;
-            arrow.Fly(_targets.First());
+            arrow.Fly(target.Transform);
         }
 
-        private void CleanTargets(List<Transform> targets)
+        private void CleanTargets(List<IDamageable> targets)
         {
             for (int i = 0; i < _targets.Count; i++)
             {
-                if (targets[i] == null || targets[i].gameObject.activeSelf == false)
+                if (targets[i] == null || targets[i].Transform.gameObject.activeSelf == false)
                 { 
                     _targets.RemoveAt(i);
                 }
@@ -76,7 +70,7 @@ namespace Assets.Scripts.BuildingSystem
 
             if (other.gameObject.TryGetComponent(out IDamageable target) && mask == _targetlayerMask)
             {
-                _targets.Add(target.Transform);
+                _targets.Add(target);
             }
         }
 
@@ -86,7 +80,7 @@ namespace Assets.Scripts.BuildingSystem
 
             if (other.gameObject.TryGetComponent(out IDamageable target) && mask == _targetlayerMask)
             {
-                _targets.Remove(target.Transform);
+                _targets.Remove(target);
             }
         }
     }
