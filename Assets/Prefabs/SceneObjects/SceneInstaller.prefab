@@ -145,7 +145,7 @@ MonoBehaviour:
   _desktopInput: {fileID: 7767014089020145184, guid: ba64e974c8fe44847a99348e16c3f64c, type: 3}
   _mobileInput: {fileID: 5832144339058954635, guid: 3903a6270cd3a7545b95508df2ff462e, type: 3}
   _audioMixer: {fileID: 7059007590806085919}
-  _globalUI: {fileID: 3570684940059162440, guid: 4fec0f9392d9fa34e9856d23e10214c4, type: 3}
+  _globalUI: {fileID: 5269537694327506808}
   _enemyFactory: {fileID: 0}
   _interstitialAd: {fileID: 1431303192100847473}
   _videoAd: {fileID: 8854807450515014847}
@@ -344,6 +344,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fec0f9392d9fa34e9856d23e10214c4, type: 3}
+--- !u!114 &5269537694327506808 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3570684940059162440, guid: 4fec0f9392d9fa34e9856d23e10214c4, type: 3}
+  m_PrefabInstance: {fileID: 8695526834378125360}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b378bd744055cbf41881e3535151a70e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8045051260212443576 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1659986489879644552, guid: 4fec0f9392d9fa34e9856d23e10214c4, type: 3}
