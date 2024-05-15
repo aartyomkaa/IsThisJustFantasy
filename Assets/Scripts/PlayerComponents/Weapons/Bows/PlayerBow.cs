@@ -21,24 +21,26 @@ namespace Assets.Scripts.PlayerComponents.Weapons
         private ClosestTargetFinder _closestTargetFinder;
         private IDamageable _closestTarget;
 
+        public Transform Target => _closestTarget.Transform;
+
         private void Start()
         {
             _closestTargetFinder = new ClosestTargetFinder(_radius, EnemyLayerMask);
             _pool = new ArrowsPool(_arrowPrefab, Damage, EnemyLayerMask);
 
-            _mark.Init();
+            _mark.transform.SetParent(null);
         }
 
         private void FixedUpdate()
         {
             if (_closestTargetFinder.TryFindTarget(transform.position, out _closestTarget) && _closestTarget.Health > 0)
             {
-                Mark(_closestTarget);
+                _mark.MarkEnemy(_closestTarget);
                 CanAttack = !_isOnCooldown;
             }
             else
             {
-                UnMark();
+                _mark.UnMarkEnemy();
                 CanAttack = false;
             }
         }
@@ -79,16 +81,6 @@ namespace Assets.Scripts.PlayerComponents.Weapons
             yield return new WaitForSeconds(_animationOffset);
 
             _isOnCooldown = false;
-        }
-
-        private void Mark(IDamageable enemy)
-        {
-            _mark.MarkEnemy(enemy);
-        }
-
-        private void UnMark()
-        {
-            _mark.UnMarkEnemy();
         }
     }
 }

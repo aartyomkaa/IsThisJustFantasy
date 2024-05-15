@@ -6,8 +6,8 @@ namespace Assets.Scripts.UI
     {
         private void OnEnable()
         {
-            //transform.LookAt(transform.position + Camera.main.transform.rotation * -Vector3.back,
-                    //Camera.main.transform.rotation * Vector3.up);
+            transform.LookAt(transform.position + Camera.main.transform.rotation * -Vector3.back,
+                  Camera.main.transform.rotation * Vector3.up);
         }
     }
 }

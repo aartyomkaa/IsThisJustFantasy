@@ -817,7 +817,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 3.4370003, y: 4.6190004, z: 3.6250002}
+  m_Extents: {x: 3.4370003, y: 2.125, z: 3.03}
   m_MoveThreshold: 0.1
   m_Carve: 0
   m_CarveOnlyStationary: 1

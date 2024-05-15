@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3737966170419307351}
   - component: {fileID: 5414123330989271284}
   - component: {fileID: 3833987313493990735}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SM_Prop_Chest_01_Latch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6362233121397685902}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SpotForParticleOfPosition
   m_TagString: Untagged
   m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 6210027623968186860}
   - component: {fileID: 7161529203389259999}
   - component: {fileID: 6739772389167809243}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SM_Prop_Chest_01_Lid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 707984158037544311}
   - component: {fileID: 8250326531783704784}
   - component: {fileID: 6472579799652719637}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -439,7 +439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39bd9942277921242aa0505e36d9f78c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coins: 0
+  _coins: 150
   _particleOfGiveCoins: {fileID: 198662263970059650, guid: 2fc36faf2adcea4488dde332af279d4d, type: 3}
   _particleOfPosition: {fileID: 7739721802476751684}
 --- !u!1001 &7613426673127237416
@@ -450,9 +450,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5026968026058060447}
     m_Modifications:
+    - target: {fileID: 1085515540903928, guid: 574382ad61b28584e81abf5e9b4530a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 1213458553501220, guid: 574382ad61b28584e81abf5e9b4530a5, type: 3}
       propertyPath: m_Name
       value: LootRayYellow
+      objectReference: {fileID: 0}
+    - target: {fileID: 1213458553501220, guid: 574382ad61b28584e81abf5e9b4530a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1398004384614232, guid: 574382ad61b28584e81abf5e9b4530a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1489971639638164, guid: 574382ad61b28584e81abf5e9b4530a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4708895040415766, guid: 574382ad61b28584e81abf5e9b4530a5, type: 3}
       propertyPath: m_LocalPosition.x

@@ -12,16 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a4cc0a1c13b2094fa304cdafefeb53d, type: 3}
   m_Name: MeleeEnemy
   m_EditorClassIdentifier: 
-  Type: 0
   Name: Enemy Melee
   EnemyLayerMask:
     serializedVersion: 2
     m_Bits: 2048
   Health: 100
-  Speed: 3
+  Speed: 6
   Damage: 5
   AttackSpeed: 2
-  AttackRange: 2.5
-  AggroRange: 7
+  AttackRange: 2
+  AggroRange: 8
   Prefab: {fileID: 5404321608083313800, guid: 27d6b7249ada844a99a360ebf69cff0b, type: 3}
   Weapon: {fileID: 0}

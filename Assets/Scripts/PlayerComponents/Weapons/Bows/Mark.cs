@@ -5,35 +5,24 @@ namespace Assets.Scripts.PlayerComponents.Weapons
 {
     internal class Mark : MonoBehaviour
     {
-        [SerializeField] private ParticleSystem _particlePrefab;
+        private float _offset = 2.5f;
 
-        private ParticleSystem _markEffect;
-
-        private IDamageable _target;
-
-        public Transform Target => _target.Transform;
-
-        public void Init()
+        private void Start()
         {
-            _markEffect = Instantiate(_particlePrefab, transform.position, Quaternion.identity);
-            _markEffect.Stop();
+            gameObject.SetActive(false);
         }
 
         public void MarkEnemy(IDamageable enemy)
         {
-            _target = enemy;
-            _markEffect.transform.position = _target.Transform.position;
-
-            if (_markEffect.isStopped)
-                _markEffect.Play();
+            gameObject.SetActive(true);
+            transform.position = enemy.Transform.position + Vector3.up * _offset;
+            transform.LookAt(transform.position + Camera.main.transform.rotation * -Vector3.back,
+                      Camera.main.transform.rotation * Vector3.up);
         }
 
         public void UnMarkEnemy()
         {
-            if (_markEffect != null)
-            {
-                _markEffect.Stop();
-            }
+            gameObject.SetActive(false);
         }
     }
 }
