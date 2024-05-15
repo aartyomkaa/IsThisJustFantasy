@@ -4,6 +4,7 @@ using UnityEngine;
 using Assets.Scripts.Audio;
 using UnityEngine.UI;
 using Assets.Scripts.GameLogic;
+using TMPro;
 
 
 namespace Assets.Scripts.UI
@@ -14,8 +15,9 @@ namespace Assets.Scripts.UI
         [SerializeField] private PausePanel _pausePanel;
         [SerializeField] private SoundToggler _soundToggler;
         [SerializeField] private NextLevelPanel _nextLevelPanel;
+        [SerializeField] private TMP_Text _waves;
         //[SerializeField] private SceneLoader _sceneLoader;
-        
+
         private NextLevelZone _currentNextLevelZone;
         private AudioMixer _currentaudioMixer;
 
@@ -52,6 +54,24 @@ namespace Assets.Scripts.UI
         private void CloseNextLevelPanel()
         {
             _nextLevelPanel.gameObject.SetActive(false);
+        }
+
+        public void OnWaveStarted(int amount)
+        {
+            _waves.text = amount.ToString();
+            _waves.gameObject.SetActive(true);
+        }
+
+        public void OnWaveSpawnAmountChanged(int amount)
+        {
+            if(amount > 0) 
+            {
+                _waves.text = amount.ToString();
+            }
+            else
+            {
+                _waves.gameObject.SetActive(false);
+            }
         }
     }
 }

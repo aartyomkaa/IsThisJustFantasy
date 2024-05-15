@@ -30,6 +30,7 @@ namespace Assets.Scripts.PlayerComponents
         [SerializeField] private NextLevelZone _nextLevelZone;
 
         private Pauser _pauser;
+        private Player _currentPlayer;
 
         private void OnEnable()
         {
@@ -43,6 +44,9 @@ namespace Assets.Scripts.PlayerComponents
             SceneManager.sceneLoaded -= OnSceneLoaded;
             _buildingSystem.EventerWithAdButtonWasMade -= OnEventerWithAdButtonWasMade;
             _enemyFactory.FinalWaveCleared -= _nextLevelZone.OnAllWavesDefeated;
+            _currentPlayer.LevelChanged -= _globalUI.PlayerUI.OnLevelChanged;
+            _enemyFactory.WaveStarted -= _globalUI.OnWaveStarted;
+            _enemyFactory.WaveSpawnAmountChanged -= _globalUI.OnWaveSpawnAmountChanged;
         }
 
         private void OnEventerWithAdButtonWasMade(Button button)
@@ -52,11 +56,15 @@ namespace Assets.Scripts.PlayerComponents
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
-            Player player = InitializePlayer();
+            //Player player = InitializePlayer();  //тут изменил на _currentPlayer, чтобы подписываться на изменения уровня и отписываться
 
-            InitializeInput(player);
-            InitializeUI(player);
+            _currentPlayer = InitializePlayer();
+
+            InitializeInput(_currentPlayer);
+            InitializeUI(_currentPlayer);
             InitializeSound(_globalUI.SoundToggler);
+            _currentPlayer.LevelChanged += _globalUI.PlayerUI.OnLevelChanged;
+
         }
 
         private Player InitializePlayer()
@@ -94,12 +102,15 @@ namespace Assets.Scripts.PlayerComponents
         private void InitializeUI(Player player)
         {
             _pauser = new Pauser(_audioMixer, _mobileInput);
-            _globalUI.PlayerUI.SignToPlayersValuesChanges(player.GetComponent<PlayerHealth>(), player.Wallet);
+           
+            _globalUI.PlayerUI.SignToPlayersValuesChanges(player.GetComponent<PlayerHealth>(), player.Wallet, player.CurrentLevel);
             _globalUI.PausePanel.SignToPauserEvents(_pauser);
             _globalUI.SignSoundTogglerToAudio(_audioMixer);
             _globalUI.SignToNextLevelPanelToZone(_nextLevelZone);
             _sceneLoader.SignToPausePanelEvents(_globalUI.PausePanel);
             _sceneLoader.SignToNextLevelPanelToZone(_nextLevelZone);
+            _enemyFactory.WaveStarted += _globalUI.OnWaveStarted;
+            _enemyFactory.WaveSpawnAmountChanged += _globalUI.OnWaveSpawnAmountChanged;
         }
     }
 }

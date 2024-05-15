@@ -15,25 +15,36 @@ namespace Assets.Scripts.UI
         [SerializeField] private TMP_Text _coins;
         [SerializeField] private TMP_Text _level;
 
-        private PlayerHealth _currentplayerHealth;
-        private PlayerWallet _currentplayerWallet;
+        private PlayerHealth _currentPlayerHealth;
+        private PlayerWallet _currentPlayerWallet;
+        private int _currentPlayerLevel;
 
-        public void SignToPlayersValuesChanges(PlayerHealth health, PlayerWallet coins)
+        public void SignToPlayersValuesChanges(PlayerHealth health, PlayerWallet coins, int playerLevel)
         {
-            _currentplayerHealth = health;
-            _health.value = _currentplayerHealth.Health;
+            _currentPlayerHealth = health;
+            _health.value = _currentPlayerHealth.Health;
 
-            _currentplayerWallet = coins;
-            _coins.text = _currentplayerWallet.Coins.ToString();
+            OnLevelChanged(playerLevel);
 
-            _currentplayerHealth.ValueChanged += OnHealthChanged;
-            _currentplayerWallet.CoinsChanged += OnCoinsChanged;
+            _currentPlayerWallet = coins;
+            _coins.text = _currentPlayerWallet.Coins.ToString();
+
+            _currentPlayerHealth.ValueChanged += OnHealthChanged;
+            _currentPlayerWallet.CoinsChanged += OnCoinsChanged;
         }
+
+        public void OnLevelChanged(int newPlayerLevel)
+        {
+            _currentPlayerLevel = newPlayerLevel;
+            _level.text = _currentPlayerLevel.ToString();
+        }
+
+        
 
         private void OnDisable()
         {
-            _currentplayerHealth.ValueChanged -= OnHealthChanged;
-            _currentplayerWallet.CoinsChanged -= OnCoinsChanged;
+            _currentPlayerHealth.ValueChanged -= OnHealthChanged;
+            _currentPlayerWallet.CoinsChanged -= OnCoinsChanged;
         }
 
         private void OnHealthChanged(float health)

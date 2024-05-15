@@ -18,8 +18,6 @@ namespace Assets.Scripts.EnemyComponents
         public void ChangeSpawnAmount(bool increase)
         {
             _spawnAmount += increase ? 1 : -1;
-        }
-
-      
+        }  
     }
 }

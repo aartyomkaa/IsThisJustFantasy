@@ -23,8 +23,9 @@ namespace Assets.Scripts.EnemyComponents
         private int _waveIndex = 0;
 
         public event Action<int> WaveStarted;
-        public event Action NextSpawned;
+        public event Action<int> WaveSpawnAmountChanged;
         public event Action FinalWaveCleared;
+        public event Action WaveEnded;
 
         private void Start()
         {
@@ -68,6 +69,10 @@ namespace Assets.Scripts.EnemyComponents
         {
             _enemySpawned = (wave.MeleeAmount + wave.RangeAmount) * wave.SpawnAmount;
 
+            int currentWaveSpawnAmount = wave.SpawnAmount;
+
+            //float coolDown = new WaitForSeconds(wave.SpawnDelay);
+
             for (int i = 0; i < wave.SpawnAmount; i++)
             {
                 for (int j = 0; j < wave.MeleeAmount; j++)
@@ -76,12 +81,21 @@ namespace Assets.Scripts.EnemyComponents
                 }     
 
                 for (int k = 0; k < wave.RangeAmount; k++)
+                {
                     SpawnEnemy(_rangePool, _spawnPoints[_spawnPointIndex].transform.position);
-
+                }
+                   
                 _spawnPointIndex = (i + 1) % _spawnPoints.Length;
-                NextSpawned?.Invoke();
 
-                yield return wave.SpawnDelay;
+                yield return new WaitForSeconds(wave.SpawnDelay);   // тут можно закешировать этот WaitForSeconds, забыл как 
+
+                currentWaveSpawnAmount--;
+                WaveSpawnAmountChanged?.Invoke(currentWaveSpawnAmount);
+
+                if (i == wave.SpawnAmount)
+                {
+                    WaveEnded?.Invoke();
+                }
             }
         }
 

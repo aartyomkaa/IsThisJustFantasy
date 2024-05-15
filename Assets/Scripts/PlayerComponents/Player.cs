@@ -1,4 +1,5 @@
 using Assets.Scripts.Constants;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,6 +16,8 @@ namespace Assets.Scripts.PlayerComponents
 
         public int CurrentLevel => _currentLevel;
         public PlayerWallet Wallet => _wallet;
+
+        public event Action<int> LevelChanged;
 
         private void Awake()
         {
@@ -43,6 +46,7 @@ namespace Assets.Scripts.PlayerComponents
             {
                 _currentLevel++;
                 PlayerPrefs.SetInt(PlayerConfigs.PlayerLevel, _currentLevel);
+                LevelChanged?.Invoke(_currentLevel);
             }
         }
     }
