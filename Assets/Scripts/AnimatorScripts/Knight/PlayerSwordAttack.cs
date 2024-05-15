@@ -1,7 +1,7 @@
 using Assets.Scripts.PlayerComponents;
 using UnityEngine;
 
-namespace Assets.Scripts.AnimatorScripts.Player
+namespace Assets.Scripts.AnimatorScripts
 {
     internal class PlayerSwordAttack : StateMachineBehaviour
     {

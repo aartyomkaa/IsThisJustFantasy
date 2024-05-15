@@ -26,8 +26,6 @@ namespace Assets.Scripts.EnemyComponents
         private NavMeshAgent _agent;
 
         private Coroutine _deathCoroutine;
-        private Coroutine _reviveCoroutine;
-        private float _reviveTime = 60f;
         private float _deathDuration = 5f;
 
         private MainBuilding _building;
@@ -123,16 +121,6 @@ namespace Assets.Scripts.EnemyComponents
 
             _health = _data.Health;
             gameObject.SetActive(false);
-
-            if (_isChestGuard)
-                _reviveCoroutine = StartCoroutine(Revive(_reviveTime));
-        }
-
-        private IEnumerator Revive(float time)
-        {
-            yield return new WaitForSeconds(time);
-
-            gameObject.SetActive(true);
         }
     }
 }
