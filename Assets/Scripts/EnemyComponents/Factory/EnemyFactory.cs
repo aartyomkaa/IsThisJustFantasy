@@ -23,7 +23,7 @@ namespace Assets.Scripts.EnemyComponents
         private int _waveIndex = 0;
 
         public event Action<int> WaveStarted;
-        public event Action NextSpawned;
+        public event Action NextWaveSpawned;
         public event Action FinalWaveCleared;
 
         private void Start()
@@ -76,10 +76,12 @@ namespace Assets.Scripts.EnemyComponents
                 }     
 
                 for (int k = 0; k < wave.RangeAmount; k++)
+                {
                     SpawnEnemy(_rangePool, _spawnPoints[_spawnPointIndex].transform.position);
+                }
 
                 _spawnPointIndex = (i + 1) % _spawnPoints.Length;
-                NextSpawned?.Invoke();
+                NextWaveSpawned?.Invoke();
 
                 yield return wave.SpawnDelay;
             }

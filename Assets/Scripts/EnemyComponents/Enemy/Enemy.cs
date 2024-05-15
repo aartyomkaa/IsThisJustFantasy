@@ -15,15 +15,19 @@ namespace Assets.Scripts.EnemyComponents
     [RequireComponent(typeof(NavMeshAgent))]
     internal abstract class Enemy : MonoBehaviour, IDamageable, IFSMControllable, IHealthDisplayable
     {
+        [SerializeField] private bool _isChestGuard;
+        [SerializeField] private EnemyData _data;
+
         private float _health;
 
-        private EnemyData _data;
         private UnitSFX _unitSFX;
         private FiniteStateMachine _fsm;
         private Animator _animator;
         private NavMeshAgent _agent;
 
         private Coroutine _deathCoroutine;
+        private Coroutine _reviveCoroutine;
+        private float _reviveTime = 60f;
         private float _deathDuration = 5f;
 
         private MainBuilding _building;
@@ -41,6 +45,14 @@ namespace Assets.Scripts.EnemyComponents
             _agent = GetComponent<NavMeshAgent>();
             _unitSFX = GetComponentInChildren<UnitSFX>();
 
+            if (_isChestGuard)
+            {
+                if (_data != null)
+                    _health = _data.Health;
+                else
+                    throw new Exception("Set the data!");
+            }
+
             _fsm = new FiniteStateMachine(_animator, _agent, this, _data, _unitSFX);
 
             _fsm.SetState<FSMStateIdle>();
@@ -53,10 +65,9 @@ namespace Assets.Scripts.EnemyComponents
 
             _fsm.Update();
 
-            if (_fsm.Target == null && _agent.destination != _building.transform.position)
+            if (_isChestGuard == false)
             {
-                _agent.SetDestination(_building.transform.position);
-                _animator.SetBool(AnimatorHash.Moving, true);
+                SetDestination(_building.transform.position);
             }
         }
 
@@ -83,6 +94,15 @@ namespace Assets.Scripts.EnemyComponents
             target.TakeDamage(_data.Damage);
         }
 
+        private void SetDestination(Vector3 position)
+        {
+            if (_agent.destination != position && _fsm.Target != null)
+            {
+                _agent.SetDestination(position);
+                _animator.SetBool(AnimatorHash.Moving, true);
+            }
+        }
+
         private void Die()
         {
             if (_deathCoroutine != null)
@@ -103,6 +123,16 @@ namespace Assets.Scripts.EnemyComponents
 
             _health = _data.Health;
             gameObject.SetActive(false);
+
+            if (_isChestGuard)
+                _reviveCoroutine = StartCoroutine(Revive(_reviveTime));
+        }
+
+        private IEnumerator Revive(float time)
+        {
+            yield return new WaitForSeconds(time);
+
+            gameObject.SetActive(true);
         }
     }
 }

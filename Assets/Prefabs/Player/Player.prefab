@@ -3487,6 +3487,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: ab9988ab137b5064f8476d7f8c985189, type: 3}
     - target: {fileID: 6274449716085618512, guid: 373e745bf4567f54f881ad1de60d16d7, type: 3}
+      propertyPath: _mark
+      value: 
+      objectReference: {fileID: -3238385088569367862, guid: 5cf3f317b2bbb084a918f05a985077b2, type: 3}
+    - target: {fileID: 6274449716085618512, guid: 373e745bf4567f54f881ad1de60d16d7, type: 3}
       propertyPath: _shoot
       value: 
       objectReference: {fileID: 8300000, guid: 776ae4a83ba61ed4981133b968541de9, type: 3}

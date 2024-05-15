@@ -26,7 +26,7 @@ namespace Assets.Scripts.PlayerComponents.Weapons
             _closestTargetFinder = new ClosestTargetFinder(_radius, EnemyLayerMask);
             _pool = new ArrowsPool(_arrowPrefab, Damage, EnemyLayerMask);
 
-            _mark.Init();
+            _mark.transform.SetParent(null);
         }
 
         private void FixedUpdate()

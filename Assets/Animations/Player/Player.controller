@@ -422,7 +422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68ce4b9a9ea35940861cb927436f7fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mark: {fileID: 302326569377911993, guid: 5cf3f317b2bbb084a918f05a985077b2, type: 3}
+  _mark: {fileID: -3238385088569367862, guid: 5cf3f317b2bbb084a918f05a985077b2, type: 3}
 --- !u!1101 &4531625961862686210
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
