@@ -1,4 +1,4 @@
-using Assets.Scripts.Constants;
+using Assets.Scripts.GameLogic.Utilities;
 using Assets.Scripts.PlayerComponents;
 using Lean.Localization;
 using System;
@@ -13,6 +13,7 @@ namespace Assets.Scripts.BuildingSystem
         [SerializeField] private LeanToken _cost;
         [SerializeField] private LeanToken _building;
 
+        private ButtonTranslator _translator;
         private PlayerWallet _currentPlayersWallet;
         private Vector3 _closeValues = Vector3.zero;
         private Vector3 _openValues = new Vector3(1,1,1);
@@ -26,33 +27,20 @@ namespace Assets.Scripts.BuildingSystem
             _build.onClick.AddListener(OnBuildButtonClicked);         
         }
 
+        private void Start()
+        {
+            _translator = new ButtonTranslator();
+        }
+
         private void OnDisable()
         {
             _build.onClick.RemoveListener(OnBuildButtonClicked);
         }
 
-        private void SetButtonText(Button activeButton, int builPointIndex, int costToBuy)
+        private void SetButtonText(int builPointIndex, int costToBuy)
         {
-            switch (builPointIndex)
-            {
-                case BuildingsHash.TowerIndex:
-                    _building.SetValue(UiHash.BuildTowerButtonText);
-                    _cost.SetValue(costToBuy);     
-                    break;
-
-                case BuildingsHash.BarracksIndex:
-                    _building.SetValue(UiHash.BuildBarracksButtonText);
-                    _cost.SetValue(costToBuy);
-                    break;
-
-                case BuildingsHash.ResoorceBuildingIndex:
-                    _building.SetValue(UiHash.BuildResoorceBuildingButtonText);
-                    _cost.SetValue(costToBuy);
-                    break;
-
-                default:
-                    throw new Exception("No such building id");
-            }
+            _building.SetValue(_translator.GetTranslation(builPointIndex));
+            _cost.SetValue(costToBuy);
         }
            
         private void OnBuildButtonClicked()
@@ -68,7 +56,7 @@ namespace Assets.Scripts.BuildingSystem
             if (isPlayerIn)
             {
                 Open();
-                SetButtonText(_build, builPointIndex, costToBuy);
+                SetButtonText(builPointIndex, costToBuy);
                 _build.gameObject.SetActive(isPlayerIn);
             }
             else

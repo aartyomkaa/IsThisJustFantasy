@@ -94,7 +94,7 @@ namespace Assets.Scripts.EnemyComponents
 
         private void SetDestination(Vector3 position)
         {
-            if (_agent.destination != position && _fsm.Target != null)
+            if (_agent.destination != position && _fsm.Target == null)
             {
                 _agent.SetDestination(position);
                 _animator.SetBool(AnimatorHash.Moving, true);

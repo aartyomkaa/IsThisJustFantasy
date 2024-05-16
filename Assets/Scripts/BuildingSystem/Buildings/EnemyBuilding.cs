@@ -17,6 +17,8 @@ namespace Assets.Scripts.BuildingSystem.Buildings
         private void OnEnable()
         {
             _enemyFactory = GetComponentInChildren<EnemyFactory>();
+            _enemyFactory.WaveStarted += OnWaveStart;
+            _enemyFactory.WaveEnded += OnWaveEnd;
             _eventer.FirstButtonClicked += ChangeSpawnAmount;
             _eventer.SecondButtonClicked += ChangeSpawnAmount;
             _eventer.ExtraButtonClicked += _enemyFactory.StartWave;
@@ -24,6 +26,8 @@ namespace Assets.Scripts.BuildingSystem.Buildings
 
         private void OnDisable()
         {
+            _enemyFactory.WaveStarted -= OnWaveStart;
+            _enemyFactory.WaveEnded -= OnWaveEnd;
             _eventer.FirstButtonClicked -= ChangeSpawnAmount;
             _eventer.SecondButtonClicked -= ChangeSpawnAmount;
             _eventer.ExtraButtonClicked -= _enemyFactory.StartWave;
@@ -43,6 +47,16 @@ namespace Assets.Scripts.BuildingSystem.Buildings
             }
 
             _enemyFactory.ChangeSpawnAmount(_isIncrease);
+        }
+
+        private void OnWaveStart(int spawnAmount)
+        {
+            _eventer.gameObject.SetActive(false);
+        }
+
+        private void OnWaveEnd()
+        {
+            _eventer.gameObject.SetActive(true);
         }
     }
 }

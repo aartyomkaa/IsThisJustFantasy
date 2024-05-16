@@ -50,7 +50,9 @@ namespace Assets.Scripts.UI
             if (_extraButton != null)
             {
                 _extraButton.onClick.RemoveListener(OnExtraButtonClicked);
-            }        
+            }
+            
+            Close();
         }
        
         private void OnTriggerEnter(Collider other)
