@@ -15,7 +15,7 @@ namespace Assets.Scripts.GameLogic.Utilities
 
         public ButtonTranslator() 
         { 
-            SetTranslationDictionary(YandexGamesSdk.Environment.i18n.lang);
+            //SetTranslationDictionary(YandexGamesSdk.Environment.i18n.lang);
         }
 
         public string GetTranslation(int buildingIndex)

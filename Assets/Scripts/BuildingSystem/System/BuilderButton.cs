@@ -13,7 +13,7 @@ namespace Assets.Scripts.BuildingSystem
         [SerializeField] private LeanToken _cost;
         [SerializeField] private LeanToken _building;
 
-        private ButtonTranslator _translator;
+        private ButtonTranslator _translator = new ButtonTranslator();
         private PlayerWallet _currentPlayersWallet;
         private Vector3 _closeValues = Vector3.zero;
         private Vector3 _openValues = new Vector3(1,1,1);
@@ -24,12 +24,8 @@ namespace Assets.Scripts.BuildingSystem
 
         private void OnEnable()
         {
-            _build.onClick.AddListener(OnBuildButtonClicked);         
-        }
-
-        private void Start()
-        {
-            _translator = new ButtonTranslator();
+            _build.onClick.AddListener(OnBuildButtonClicked);
+            
         }
 
         private void OnDisable()
@@ -39,8 +35,8 @@ namespace Assets.Scripts.BuildingSystem
 
         private void SetButtonText(int builPointIndex, int costToBuy)
         {
-            _building.SetValue(_translator.GetTranslation(builPointIndex));
-            _cost.SetValue(costToBuy);
+            //_building.SetValue(_translator.GetTranslation(builPointIndex));
+            //_cost.SetValue(costToBuy);
         }
            
         private void OnBuildButtonClicked()
