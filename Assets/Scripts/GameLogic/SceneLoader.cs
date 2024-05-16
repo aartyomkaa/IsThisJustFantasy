@@ -67,6 +67,12 @@ namespace Assets.Scripts.GameLogic
             Debug.Log("Повысил уровень на такой - " + PlayerPrefs.GetInt(SceneNames.LastAvailableLevel));
         }
 
+        public void LoadNextMap()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + _nextLevelNumber, LoadSceneMode.Single);
+        }
+
+       
         public void SignToNextLevelPanelToZone(NextLevelZone nextLevelZone)
         {
             _currentNextLevelZone = nextLevelZone;

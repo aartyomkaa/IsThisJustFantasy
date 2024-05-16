@@ -14,6 +14,8 @@ namespace Assets.Scripts.UI
         private PlayerWallet _wallet;
         private int _scoreMultiplier = 2;
 
+        public int TotalScore => _totalScore;
+
         public event Action<int> ScoreChanged;
 
         public void Init(PlayerWallet wallet)

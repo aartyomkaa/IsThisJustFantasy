@@ -28,6 +28,7 @@ namespace Assets.Scripts.PlayerComponents
         [SerializeField] private SceneLoader _sceneLoader;
         [SerializeField] private BuildingService _buildingSystem;
         [SerializeField] private NextLevelZone _nextLevelZone;
+        [SerializeField] private Score _playerScore;
 
         private Pauser _pauser;
         private Player _currentPlayer;
@@ -47,6 +48,7 @@ namespace Assets.Scripts.PlayerComponents
             _currentPlayer.LevelChanged -= _globalUI.PlayerUI.OnLevelChanged;
             _enemyFactory.WaveStarted -= _globalUI.OnWaveStarted;
             _enemyFactory.WaveSpawnAmountChanged -= _globalUI.OnWaveSpawnAmountChanged;
+            _globalUI.NextLevelButtonClicked -= _sceneLoader.LoadNextMap;
         }
 
         private void OnEventerWithAdButtonWasMade(Button button)
@@ -106,9 +108,10 @@ namespace Assets.Scripts.PlayerComponents
             _globalUI.PlayerUI.SignToPlayersValuesChanges(player.GetComponent<PlayerHealth>(), player.Wallet, player.CurrentLevel);
             _globalUI.PausePanel.SignToPauserEvents(_pauser);
             _globalUI.SignSoundTogglerToAudio(_audioMixer);
-            _globalUI.SignToNextLevelPanelToZone(_nextLevelZone);
+            _globalUI.SignToNextLevelPanelToZone(_nextLevelZone,_playerScore, _pauser);
             _sceneLoader.SignToPausePanelEvents(_globalUI.PausePanel);
             _sceneLoader.SignToNextLevelPanelToZone(_nextLevelZone);
+            _globalUI.NextLevelButtonClicked += _sceneLoader.LoadNextMap;
             _enemyFactory.WaveStarted += _globalUI.OnWaveStarted;
             _enemyFactory.WaveSpawnAmountChanged += _globalUI.OnWaveSpawnAmountChanged;
         }
