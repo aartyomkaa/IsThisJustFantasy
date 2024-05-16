@@ -105,7 +105,14 @@ namespace Assets.Scripts.EnemyComponents
             enemy.Died -= OnEnemyDied;
 
             if (_enemySpawned == 0 && _waves.Length == _waveIndex)
+            {
                 FinalWaveCleared?.Invoke();
+            }
+            else if (_enemySpawned == 0)
+            {
+                WaveEnded?.Invoke();
+            }
+                
         }
     }
 }

@@ -4,9 +4,15 @@ namespace Assets.Scripts.Constants
     {
         public const int CoinsButtonIndex = 1;
         public const int AdButtonIndex = 2;
-        public static string BuildTowerButtonText = "Tower";
-        public static string BuildBarracksButtonText = "Barracks"; 
-        public static string BuildResoorceBuildingButtonText = "Bank";
+        public static string TowerButtonTextEn = "Tower";
+        public static string BarracksButtonTextEn = "Barracks"; 
+        public static string ResoorceBuildingButtonTextEn = "Bank";        
+        public static string TowerButtonTextRu = "Башню";
+        public static string BarracksButtonTextRu = "Барраки"; 
+        public static string ResoorceBuildingButtonTextRu = "Банк";        
+        public static string TowerButtonTextTr = "Kule";
+        public static string BarracksButtonTextTr = "Banka"; 
+        public static string ResoorceBuildingButtonTextTr = "Bank";
         public static string SpawnUnitButtonText = "Создать юнита за ";
         public static string SpawnChestButtonText = "Спавн сундука за ";
         public static string EnemyWavesBuyButtonText = "Добавить одну волну за ";
