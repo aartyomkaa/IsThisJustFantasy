@@ -9,7 +9,7 @@ namespace Assets.Scripts.PlayerComponents.Weapons.Bows
         private LayerMask _mask;
 
         private float _arrowDamage;
-        private int _capacity = 10;
+        private int _capacity = 2;
 
         public ArrowsPool(Arrow arrowPrefab, float arrowDamage, LayerMask targetMask) 
         {

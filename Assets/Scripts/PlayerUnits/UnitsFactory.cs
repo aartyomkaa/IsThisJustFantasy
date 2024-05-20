@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 
 namespace Assets.Scripts.PlayerUnits
 {
@@ -12,14 +13,15 @@ namespace Assets.Scripts.PlayerUnits
 
         private void Start() 
         { 
-            _pool = new UnitsPool(_unitData);
+            _pool = new UnitsPool(_unitData, transform.position);
             _handler.Init(_pool.MeleePool);
         }
 
         public void Spawn()  
         {
             Unit unit = _pool.GetUnit();
-            unit.transform.position = _spotOfRespawnUnits.transform.position; 
+            NavMeshAgent agent = unit.GetComponent<NavMeshAgent>();
+            agent.Warp(_spotOfRespawnUnits.transform.position); 
         }
     }
 }

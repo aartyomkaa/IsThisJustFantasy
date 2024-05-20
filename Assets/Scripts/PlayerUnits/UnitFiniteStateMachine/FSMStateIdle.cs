@@ -20,14 +20,14 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
         public override void Enter()
         {
             UnitSFX.Stop();
-            FSM.SetEnemy(null);
+            FSM.SetTarget(null);
         }
 
         public override void Update() 
         {
             if (_targetFinder.TryFindTarget(Unit.Transform.position, out _target))
             {
-                FSM.SetEnemy(_target);
+                FSM.SetTarget(_target);
                 FSM.SetState<FSMStateChaseEnemy>();
             }
         }

@@ -39,8 +39,6 @@ namespace Assets.Scripts.UI
             _level.text = _currentPlayerLevel.ToString();
         }
 
-        
-
         private void OnDisable()
         {
             _currentPlayerHealth.ValueChanged -= OnHealthChanged;

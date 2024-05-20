@@ -20674,6 +20674,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9207235321170850431}
     m_Modifications:
+    - target: {fileID: 4509801477385779870, guid: a9237970a81ae5948b18dec59a387b24, type: 3}
+      propertyPath: translationName
+      value: EnemyBuilding
+      objectReference: {fileID: 0}
     - target: {fileID: 5871717768122778838, guid: a9237970a81ae5948b18dec59a387b24, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.002
@@ -20805,6 +20809,21 @@ PrefabInstance:
     - target: {fileID: 6785846221476032690, guid: a9237970a81ae5948b18dec59a387b24, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7104536003519519982, guid: a9237970a81ae5948b18dec59a387b24, type: 3}
+      propertyPath: m_Text
+      value: 'This is an altar for manipulating enemy waves
+
+
+
+        Function:
+        Allows you to control enemy attack waves.
+
+
+
+        Use: Adjust the parameters
+        of attack waves to prepare for enemy attacks or launch a counterattack when
+        advantageous.'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

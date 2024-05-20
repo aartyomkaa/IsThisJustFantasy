@@ -15,6 +15,7 @@ namespace Assets.Scripts.UI
         [SerializeField] private Button _secondButton;   // - минус один выброс за рекламу
         [SerializeField] private Button _extraButton;   // кнопка начала новой волны, пока не знаю как назвать
         [SerializeField] private TutorialPanel _tutorial;
+        [SerializeField] private AudioSource _audioSource;
         
         private Player _currentPlayer;
         private bool _currentStatus;
@@ -81,6 +82,9 @@ namespace Assets.Scripts.UI
 
         public void OnFirsttButtonClicked()
         {
+            if (_audioSource != null)
+                _audioSource.Play();
+
             FirstButtonClicked?.Invoke(_currentPlayer, _costToBuy,UiHash.CoinsButtonIndex);
         }
 

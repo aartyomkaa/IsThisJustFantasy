@@ -26,7 +26,7 @@ namespace Assets.Scripts.EnemyComponents
         private NavMeshAgent _agent;
 
         private Coroutine _deathCoroutine;
-        private float _deathDuration = 5f;
+        private float _deathDuration = 6f;
 
         private MainBuilding _building;
 
@@ -115,6 +115,8 @@ namespace Assets.Scripts.EnemyComponents
         {
             Died?.Invoke(this);
             _unitSFX.PlayDeathSound();
+            _fsm.SetTarget(null);
+            _agent.ResetPath();
             _animator.SetTrigger(AnimatorHash.Death);
 
             yield return new WaitForSeconds(time);

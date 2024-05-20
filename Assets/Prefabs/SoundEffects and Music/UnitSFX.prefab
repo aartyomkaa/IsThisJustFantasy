@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b0dc4c58e502ef46be77ab326de54f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _source: {fileID: 6000960162649738870}
   _attack:
   - {fileID: 8300000, guid: a906a7fa467e4c54fa580065034e7c30, type: 3}
   - {fileID: 8300000, guid: 2761b3d140a761a4083eb4240bc6b1ad, type: 3}
@@ -59,7 +60,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e6bc0ad93bde18d41973a88d7d56350d, type: 3}
   - {fileID: 8300000, guid: 4cb3843923f84fb43b84303146dda053, type: 3}
   - {fileID: 8300000, guid: 0d519df153c1d564e923c6966cfa8c9b, type: 3}
-  _source: {fileID: 6000960162649738870}
 --- !u!82 &6000960162649738870
 AudioSource:
   m_ObjectHideFlags: 0
@@ -72,7 +72,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -3893247371368356918, guid: 375e1e04bb62d924c99433a5d210ccaf, type: 2}
   m_audioClip: {fileID: 8300000, guid: 0d519df153c1d564e923c6966cfa8c9b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.55
   m_Pitch: 1.0095339
   Loop: 0
   Mute: 0

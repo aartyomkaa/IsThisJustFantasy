@@ -11,7 +11,7 @@ namespace Assets.Scripts.PlayerComponents
         [SerializeField] private PlayerData[] _levels;
 
         private int _currentLevel;
-        private int _maxLevel = 4;
+        private int _maxLevel = 6;
         private PlayerWallet _wallet;
 
         public int CurrentLevel => _currentLevel;

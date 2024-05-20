@@ -19,7 +19,7 @@ namespace Assets.Scripts.PlayerComponents.Weapons
             {
                 foreach (var hit in _hitColliders)
                 {
-                    if (hit.transform.gameObject.TryGetComponent<IDamageable>(out IDamageable enemy))
+                    if (hit.transform.gameObject.TryGetComponent<IDamageable>(out IDamageable enemy) && enemy.Health > 0)
                     {
                         enemy.TakeDamage(Damage);
                     }

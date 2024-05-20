@@ -10,9 +10,9 @@ namespace Assets.Scripts.PlayerUnits
 
         public Unit[] MeleePool => _unitsPool;
 
-        public UnitsPool(UnitData data)
+        public UnitsPool(UnitData data, Vector3 position)
         {
-            _unitsPool = CreateUnitsPool(data);
+            _unitsPool = CreateUnitsPool(data, position);
         }
 
         public Unit GetUnit()
@@ -30,13 +30,13 @@ namespace Assets.Scripts.PlayerUnits
             throw new System.Exception("Not enough MeleeUnit in The pool!!!");
         }
 
-        private Unit[] CreateUnitsPool(UnitData data)
+        private Unit[] CreateUnitsPool(UnitData data, Vector3 position)
         {
             Unit[] pool = new Unit[_capacity];
 
             for (int i = 0; i < _capacity; i++)
             {
-                Unit unit = GameObject.Instantiate(data.Prefab, new Vector3(19, 1, -47), Quaternion.identity);
+                Unit unit = GameObject.Instantiate(data.Prefab, position, Quaternion.identity);
                 unit.Init(data);
                 unit.gameObject.SetActive(false);
                 pool[i] = unit;

@@ -56,7 +56,7 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
             MovePosition = position;
         }
 
-        public void SetEnemy(IDamageable target)
+        public void SetTarget(IDamageable target)
         {
             Target = target;
         }

@@ -18,7 +18,7 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
 
         public override void Update()
         {
-            if (FSM.Target != null && FSM.Target.Transform.gameObject.activeSelf && FSM.Target.Health > 0)
+            if (FSM.Target != null && FSM.Target.Health > 0 && FSM.Target.Transform.gameObject.activeSelf)
             {
                 if (NeedChaseEnemy())
                 {

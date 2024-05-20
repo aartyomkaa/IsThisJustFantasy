@@ -93,6 +93,7 @@ namespace Assets.Scripts.PlayerUnits
         private IEnumerator Death(float time)
         {
             _unitSFX.PlayDeathSound();
+            _agent.ResetPath();
             _animator.SetTrigger(AnimatorHash.Death);
 
             yield return new WaitForSeconds(time);

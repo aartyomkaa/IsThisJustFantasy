@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4974534716401202}
   - component: {fileID: 33131503809694530}
   - component: {fileID: 23664247422088650}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Plant_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.4242117, y: 1.4242116, z: 1.4242117}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

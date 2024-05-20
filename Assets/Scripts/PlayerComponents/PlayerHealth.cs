@@ -35,14 +35,7 @@ namespace Assets.Scripts.PlayerComponents
                 _value -= damage;
                 ValueChanged?.Invoke(_value);
                 _playerSFX.PlayTakeHitSound();
-            }
 
-            if (_value <= 0)
-            {
-                gameObject.SetActive(false);
-            }
-            else if (_canTakeDamage)
-            {
                 if (_damageRecover != null)
                 {
                     StopCoroutine(_damageRecover);
@@ -50,6 +43,9 @@ namespace Assets.Scripts.PlayerComponents
 
                 _damageRecover = StartCoroutine(DamageRecover());
             }
+
+            if (_value <= 0)
+                gameObject.SetActive(false);
         }
 
         public void Heal(float importHealValue)
@@ -57,6 +53,7 @@ namespace Assets.Scripts.PlayerComponents
             _value += importHealValue;
 
             _value = _value > _maxHealth ? _maxHealth : _value;
+            ValueChanged?.Invoke(_value);
             _playerSFX.PlayHealSound();
         }
 

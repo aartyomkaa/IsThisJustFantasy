@@ -7,7 +7,7 @@ namespace Assets.Scripts.EnemyComponents
     {
         private Enemy[] _enemyPool;
 
-        private int _capacity = 20;
+        private int _capacity = 15;
 
         public EnemyPool(EnemyData data, MainBuilding building, Vector3 position)
         {
