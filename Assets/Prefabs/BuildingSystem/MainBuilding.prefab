@@ -252,6 +252,7 @@ MonoBehaviour:
   _secondButton: {fileID: 2326959115535464510}
   _extraButton: {fileID: 0}
   _tutorial: {fileID: 0}
+  _audioSource: {fileID: 0}
 --- !u!135 &7511716510800338889
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1499,7 +1500,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7104536003519519982, guid: a9237970a81ae5948b18dec59a387b24, type: 3}
       propertyPath: m_Text
-      value: "This is the main building\r\n\r\nFunction: Restores the player's health
+      value: "This is a main building\r\n\r\nFunction: Restores the player's health
         and makes it possible to complete training again. Regularly check the condition
         of your main building, if it is destroyed you will lose.\r\n\r\nUse: To restore
         the hero\u2019s health, click on the button in the pop-up window."

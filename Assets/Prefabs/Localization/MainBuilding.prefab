@@ -71,7 +71,7 @@ MonoBehaviour:
       geri y\xFCklemek i\xE7in a\xE7\u0131l\u0131r penceredeki d\xFC\u011Fmeye t\u0131klay\u0131n."
     Object: {fileID: 0}
   - Language: English
-    Text: "This is the main building\r\n\r\nFunction: Restores the player's health
+    Text: "This is a main building\r\n\r\nFunction: Restores the player's health
       and makes it possible to complete training again. Regularly check the condition
       of your main building, if it is destroyed you will lose.\r\n\r\nUse: To restore
       the hero\u2019s health, click on the button in the pop-up window."

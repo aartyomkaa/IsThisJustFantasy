@@ -8,8 +8,6 @@ namespace Assets.Scripts.UI
         [SerializeField] private LoginPanel _loginpanel;
         [SerializeField] private LeaderboardPanel _leaderboardpanel;
 
-        public bool _isPlayerAuthorized;
-
         private void OnEnable()
         {
             _leaderboardpanel.Closed += OnLeaderBordPanelClosed;
@@ -22,10 +20,10 @@ namespace Assets.Scripts.UI
 
         public override void Open()
         {
-            base.Open();
-
-            if (_isPlayerAuthorized)
+            if (PlayerAccount.IsAuthorized)
             {
+                PlayerAccount.RequestPersonalProfileDataPermission();
+
                 _leaderboardpanel.Init();
             }
             else
@@ -33,20 +31,6 @@ namespace Assets.Scripts.UI
                 _loginpanel.Open();
             }
         }
-
-        //public override void Open()                              закомментил ДО билда, в билде раскомментить 
-        //{
-        //    if (PlayerAccount.IsAuthorized)
-        //    {
-        //        PlayerAccount.RequestPersonalProfileDataPermission();
-
-        //        _leaderboardpanel.Init();
-        //    }
-        //    else
-        //    {
-        //        _loginpanel.Open();
-        //    }
-        //}
 
         private void OnLeaderBordPanelClosed()
         {

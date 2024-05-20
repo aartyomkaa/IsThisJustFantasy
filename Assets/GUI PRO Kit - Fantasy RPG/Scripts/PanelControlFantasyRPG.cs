@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,14 +11,14 @@ namespace LayerLab.FantasyRPG
         private int page = 0;
         private bool isReady = false;
         [SerializeField] private List<GameObject> panels = new List<GameObject>();
-        private TextMeshProUGUI textTitle;
+        //private TextMeshProUGUI textTitle;
         [SerializeField] private Transform panelTransform;
         [SerializeField] private Button buttonPrev;
         [SerializeField] private Button buttonNext;
 
         private void Start()
         {
-            textTitle = transform.GetComponentInChildren<TextMeshProUGUI>();
+            //textTitle = transform.GetComponentInChildren<TextMeshProUGUI>();
             buttonPrev.onClick.AddListener(Click_Prev);
             buttonNext.onClick.AddListener(Click_Next);
 
@@ -52,7 +51,7 @@ namespace LayerLab.FantasyRPG
 
             panels[page].SetActive(false);
             panels[page -= 1].SetActive(true);
-            textTitle.text = panels[page].name;
+            //textTitle.text = panels[page].name;
             CheckControl();
         }
 
@@ -75,7 +74,7 @@ namespace LayerLab.FantasyRPG
         //SetTitle, SetArrow Active
         private void CheckControl()
         {
-            textTitle.text = panels[page].name.Replace("_", " ");
+            //textTitle.text = panels[page].name.Replace("_", " ");
             SetArrowActive();
         }
     }
