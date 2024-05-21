@@ -10,8 +10,8 @@ namespace Assets.Scripts.Audio
     internal class AudioMixer : MonoBehaviour
     {
         [SerializeField] private AudioMixerGroup _mixer;
-        private SoundToggler _currentSoundToggler;
 
+        private SoundToggler _soundToggler;
         private bool _isMuted = false;
 
         public bool IsMuted => _isMuted;
@@ -21,7 +21,7 @@ namespace Assets.Scripts.Audio
         //public void ChangeVolume(float volume)
         //{
         //    _mixer.audioMixer.SetFloat(PlayerConfigs.MusicVolume, volume);
-        //    PlayerPrefs.SetFloat(PlayerConfigs.MusicVolume, volume);
+        //    PlayerPrefs.SetFloat(PlayerConfigs.MusicVolume, volume);        ???????
 
         //    _isMuted = false;
         //    VolumeValueChanged?.Invoke(_isMuted);
@@ -34,13 +34,13 @@ namespace Assets.Scripts.Audio
 
         public void SignSoundValuesChanges(SoundToggler soundToggler)
         {
-            _currentSoundToggler = soundToggler;
-            _currentSoundToggler.SoundValueChanged += ToggleMusic;
+            _soundToggler = soundToggler;
+            _soundToggler.SoundValueChanged += ToggleMusic;
         }
 
         private void OnDisable()
         {
-            _currentSoundToggler.SoundValueChanged -= ToggleMusic;
+            _soundToggler.SoundValueChanged -= ToggleMusic;
         }
 
         public void ToggleMusic(bool isMuted)

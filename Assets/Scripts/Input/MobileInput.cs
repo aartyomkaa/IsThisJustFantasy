@@ -3,6 +3,7 @@ using Agava.YandexGames;
 using Assets.Scripts.GameLogic.Utilities;
 using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.PlayerUnits;
+using Assets.Scripts.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,11 +20,17 @@ namespace Assets.Scripts.PlayerInput
         private PlayerMovement _playerMover;
         private PlayerAttacker _playerAttacker;
         private Vector2 _moveDirection;
+        private SpriteChanger _spriteChanger;
 
         private WorldPointFinder _worldPointFinder;
 
         private float _doubleTapThreshold = 0.5f;
         private float _lastTapTime;
+
+        private void Start()
+        {
+            _spriteChanger = _changeWeapon.GetComponent<SpriteChanger>();
+        }
 
         private void FixedUpdate()
         {
@@ -82,6 +89,7 @@ namespace Assets.Scripts.PlayerInput
         private void OnChangeWeaponInput()
         {
             _playerAttacker.ChangeWeapon();
+            _spriteChanger.ChangeSprite();
         }
 
         private void OnMoveUnits(Vector3 position)

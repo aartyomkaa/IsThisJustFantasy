@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,7 +14,6 @@ namespace Assets.Scripts.UI
         public event Action BackButtonClicked;
         public event Action ContinueButtonClicked;
 
-
         private void OnEnable()
         {
             _backButton.onClick.AddListener(OnBackButtonClicked);
@@ -29,10 +26,9 @@ namespace Assets.Scripts.UI
             _continueButton.onClick.RemoveListener(OnContinueButtonClicked);
         }
 
-
-        public void SetTextScore(Score playerScore)
+        public void SetTextScore(string score)
         {
-            _textScore.text = playerScore.TotalScore.ToString();
+            _textScore.text = score;
         }
 
         private void OnBackButtonClicked()
@@ -44,8 +40,5 @@ namespace Assets.Scripts.UI
         {
             ContinueButtonClicked?.Invoke();
         }
-
-
-
     }  
 }

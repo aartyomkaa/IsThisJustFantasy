@@ -1,53 +1,49 @@
-using Assets.Scripts.PlayerComponents;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using Assets.Scripts.PlayerComponents;
 
 namespace Assets.Scripts.UI
 {
     internal class PlayerUI : MonoBehaviour
     {
-        [SerializeField] private Slider _health;
+        [SerializeField] private Slider _slider;
         [SerializeField] private TMP_Text _coins;
         [SerializeField] private TMP_Text _level;
 
-        private PlayerHealth _currentPlayerHealth;
-        private PlayerWallet _currentPlayerWallet;
-        private int _currentPlayerLevel;
+        private PlayerHealth _health;
+        private PlayerWallet _wallet;
+        private int _playerLevel;
 
-        public void SignToPlayersValuesChanges(PlayerHealth health, PlayerWallet coins, int playerLevel)
+        public void SignToPlayerValuesChanges(Player player)
         {
-            _currentPlayerHealth = health;
-            _health.value = _currentPlayerHealth.Health;
+            _health = player.GetComponent<PlayerHealth>();
+            _slider.value = _health.Health;
 
-            OnLevelChanged(playerLevel);
+            OnLevelChanged(player.CurrentLevel);
 
-            _currentPlayerWallet = coins;
-            _coins.text = _currentPlayerWallet.Coins.ToString();
+            _wallet = player.Wallet;
+            _coins.text = _wallet.Coins.ToString();
 
-            _currentPlayerHealth.ValueChanged += OnHealthChanged;
-            _currentPlayerWallet.CoinsChanged += OnCoinsChanged;
+            _health.ValueChanged += OnHealthChanged;
+            _wallet.CoinsChanged += OnCoinsChanged;
         }
 
         public void OnLevelChanged(int newPlayerLevel)
         {
-            _currentPlayerLevel = newPlayerLevel;
-            _level.text = _currentPlayerLevel.ToString();
+            _playerLevel = newPlayerLevel;
+            _level.text = _playerLevel.ToString();
         }
 
         private void OnDisable()
         {
-            _currentPlayerHealth.ValueChanged -= OnHealthChanged;
-            _currentPlayerWallet.CoinsChanged -= OnCoinsChanged;
+            _health.ValueChanged -= OnHealthChanged;
+            _wallet.CoinsChanged -= OnCoinsChanged;
         }
 
         private void OnHealthChanged(float health)
         {
-            _health.value = health;
+            _slider.value = health;
         }
 
         private void OnCoinsChanged(int coins)

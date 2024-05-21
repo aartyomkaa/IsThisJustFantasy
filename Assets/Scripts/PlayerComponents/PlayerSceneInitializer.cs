@@ -23,15 +23,10 @@ namespace Assets.Scripts.PlayerComponents
         [SerializeField] private AudioMixer _audioMixer;
         [SerializeField] private GlobalUI _globalUI;
         [SerializeField] private EnemyFactory _enemyFactory;
-        [SerializeField] private InterstitialAdShower _interstitialAd;
-        [SerializeField] private VideoADShower _videoAd;
         [SerializeField] private SceneLoader _sceneLoader;
         [SerializeField] private BuildingService _buildingSystem;
         [SerializeField] private NextLevelZone _nextLevelZone;
-        [SerializeField] private Score _playerScore;
-
-        private Pauser _pauser;
-        private Player _currentPlayer;
+        [SerializeField] private Score _score;
 
         private void OnEnable()
         {
@@ -45,7 +40,6 @@ namespace Assets.Scripts.PlayerComponents
             SceneManager.sceneLoaded -= OnSceneLoaded;
             _buildingSystem.EventerWithAdButtonWasMade -= OnEventerWithAdButtonWasMade;
             _enemyFactory.FinalWaveCleared -= _nextLevelZone.OnAllWavesDefeated;
-            _currentPlayer.LevelChanged -= _globalUI.PlayerUI.OnLevelChanged;
             _enemyFactory.WaveStarted -= _globalUI.OnWaveStarted;
             _enemyFactory.WaveSpawnAmountChanged -= _globalUI.OnWaveSpawnAmountChanged;
             _globalUI.NextLevelButtonClicked -= _sceneLoader.LoadNextMap;
@@ -53,20 +47,15 @@ namespace Assets.Scripts.PlayerComponents
 
         private void OnEventerWithAdButtonWasMade(Button button)
         {
-            Debug.Log(button.name);
+            Debug.Log(button.name); // ?????
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
-            //Player player = InitializePlayer();  //тут изменил на _currentPlayer, чтобы подписываться на изменения уровня и отписываться
+            Player player = InitializePlayer();
 
-            _currentPlayer = InitializePlayer();
-
-            InitializeInput(_currentPlayer);
-            InitializeUI(_currentPlayer);
-            InitializeSound(_globalUI.SoundToggler);
-            _currentPlayer.LevelChanged += _globalUI.PlayerUI.OnLevelChanged;
-
+            InitializeInput(player);
+            InitializeUI(player);
         }
 
         private Player InitializePlayer()
@@ -80,15 +69,10 @@ namespace Assets.Scripts.PlayerComponents
             return player;
         }
 
-        private void InitializeSound(SoundToggler soundToggler) 
-        {
-            _audioMixer.SignSoundValuesChanges(soundToggler);
-        }
-
         private void InitializeInput(Player player)
         {
 //#if UNITY_WEBGL && !UNITY_EDITOR
-            if (1 == 2)
+            if (1 == 1)
             {
                 MobileInput input = Instantiate(_mobileInput, transform);
                 input.Init(player);
@@ -103,15 +87,9 @@ namespace Assets.Scripts.PlayerComponents
 
         private void InitializeUI(Player player)
         {
-            _pauser = new Pauser(_audioMixer, _mobileInput);
+            Pauser pauser = new Pauser(_audioMixer, _mobileInput);
            
-            _globalUI.PlayerUI.SignToPlayersValuesChanges(player.GetComponent<PlayerHealth>(), player.Wallet, player.CurrentLevel);
-            _globalUI.PausePanel.SignToPauserEvents(_pauser);
-            _globalUI.SignSoundTogglerToAudio(_audioMixer);
-            _globalUI.SignToNextLevelPanelToZone(_nextLevelZone,_playerScore, _pauser);
-            _sceneLoader.SignToPausePanelEvents(_globalUI.PausePanel);
-            _sceneLoader.SignToNextLevelPanelToZone(_nextLevelZone);
-            _globalUI.NextLevelButtonClicked += _sceneLoader.LoadNextMap;
+            _globalUI.Init(player, _nextLevelZone, _score, pauser, _sceneLoader, _audioMixer);
             _enemyFactory.WaveStarted += _globalUI.OnWaveStarted;
             _enemyFactory.WaveSpawnAmountChanged += _globalUI.OnWaveSpawnAmountChanged;
         }

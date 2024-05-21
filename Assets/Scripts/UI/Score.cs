@@ -13,40 +13,34 @@ namespace Assets.Scripts.UI
         private int _levelScore;
 
         private PlayerWallet _wallet;
-        private int _scoreMultiplier = 2;
+        private int _scoreMultiplier = 3;
 
         public int TotalScore => _totalScore;
         public int LevelScore => _levelScore;
-
-        public event Action<int> ScoreChanged;
 
         public void Init(PlayerWallet wallet)
         {
             _wallet = wallet;
 
             LoadScore();
-            ScoreChanged?.Invoke(_totalScore);
         }
 
-        public void ShowResult()
+        public void UpdateTotalScore()
         {
             IncreaseTotalScore();
 
-            SetScore();
-        }
-
-        public void SetScore()
-        {
             SaveScore(_totalScore);
             SaveLeaderboardScore(_totalScore);
         }
 
-        private void IncreaseTotalScore()
+        public void UpdateLevelScore()
         {
             _levelScore += _wallet.Coins * _scoreMultiplier;
-            _totalScore += _levelScore;
+        }
 
-            ScoreChanged?.Invoke(_totalScore);
+        private void IncreaseTotalScore()
+        {
+            _totalScore += _levelScore;
         }
 
         private void LoadScore()

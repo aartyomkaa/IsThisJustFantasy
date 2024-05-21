@@ -112,7 +112,6 @@ namespace Assets.Scripts.EnemyComponents
             {
                 WaveEnded?.Invoke();
             }
-                
         }
     }
 }

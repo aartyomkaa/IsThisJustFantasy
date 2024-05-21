@@ -5,9 +5,8 @@ using Assets.Scripts.Audio;
 using UnityEngine.UI;
 using Assets.Scripts.GameLogic;
 using TMPro;
-using Unity.VisualScripting.Antlr3.Runtime;
 using System;
-
+using Assets.Scripts.PlayerComponents;
 
 namespace Assets.Scripts.UI
 {
@@ -19,63 +18,48 @@ namespace Assets.Scripts.UI
         [SerializeField] private ScorePanel _nextLevelPanel;
         [SerializeField] private ScorePanel _endGamePanel;
         [SerializeField] private TMP_Text _waves;
-        //[SerializeField] private SceneLoader _sceneLoader;
 
-        private NextLevelZone _currentNextLevelZone;
-        private AudioMixer _currentAudioMixer;
-        private Score _currentPlayerScore;
-        private Pauser _currentPauser;
-
-        public PlayerUI PlayerUI => _playerUI;
-        public PausePanel PausePanel => _pausePanel;
-        public SoundToggler SoundToggler => _soundToggler;
+        private SceneLoader _sceneLoader;
+        private NextLevelZone _nextLevelZone;
+        private AudioMixer _audioMixer;
+        private Score _score;
+        private Pauser _pauser;
+        private Player _player;
 
         public event Action NextLevelButtonClicked;
 
-        public void SignToNextLevelPanelToZone(NextLevelZone nextLevelZone, Score playerScore, Pauser _pauser)
-        {
-            _currentPauser = _pauser;
-            _currentPlayerScore = playerScore;
-
-            _currentNextLevelZone = nextLevelZone;
-            _currentNextLevelZone.PlayerWentIn += OpenNextLevelPanel;
-            // _currentNextLevelZone.PlayerWentOut += CloseNextLevelPanel;
-            _nextLevelPanel.BackButtonClicked += CloseNextLevelPanel;
-            _nextLevelPanel.ContinueButtonClicked += OnNextLevelButtonClicked;
-        }
-
         private void OnDisable()
         {
-            _currentNextLevelZone.PlayerWentIn -= OpenNextLevelPanel;
-             _nextLevelPanel.BackButtonClicked -= CloseNextLevelPanel;
-            _currentAudioMixer.VolumeValueChanged -= _soundToggler.SetCurrentStatus;
+            _nextLevelZone.PlayerWentIn -= OpenNextLevelPanel;
+            _nextLevelPanel.BackButtonClicked -= CloseNextLevelPanel;
             _nextLevelPanel.ContinueButtonClicked -= OnNextLevelButtonClicked;
+            _audioMixer.VolumeValueChanged -= _soundToggler.SetCurrentStatus;
+
+            _player.LevelChanged -= _playerUI.OnLevelChanged;
         }
 
-        public void SignSoundTogglerToAudio(AudioMixer audioMixer)
+        public void Init(Player player, NextLevelZone zone, Score score, Pauser pauser, SceneLoader loader, AudioMixer mixer)
         {
-            _currentAudioMixer = audioMixer;
-            _currentAudioMixer.VolumeValueChanged += _soundToggler.SetCurrentStatus;
-        }
+            _pauser = pauser;
+            _score = score;
+            _sceneLoader = loader;
+            _nextLevelZone = zone;
+            _player = player;
+            _audioMixer = mixer;
 
-        private void OpenNextLevelPanel()
-        {
-            _nextLevelPanel.gameObject.SetActive(true);
-            _nextLevelPanel.SetTextScore(_currentPlayerScore);
-            _currentPauser.Pause();
+            _player.LevelChanged += _playerUI.OnLevelChanged;
+            _playerUI.SignToPlayerValuesChanges(player);
 
-        }
+            _audioMixer.SignSoundValuesChanges(_soundToggler);
+            _audioMixer.VolumeValueChanged += _soundToggler.SetCurrentStatus;
 
-        private void CloseNextLevelPanel()
-        {
-            _currentPauser.Resume();
-            _nextLevelPanel.gameObject.SetActive(false);
-        }
+            _sceneLoader.SignToPausePanelEvents(_pausePanel);
+            _sceneLoader.SignToNextLevelPanelToZone(_nextLevelZone);
 
-        private void OnNextLevelButtonClicked()
-        {
-            _currentPauser.Resume();
-            NextLevelButtonClicked?.Invoke();
+            // _currentNextLevelZone.PlayerWentOut += CloseNextLevelPanel; ?????????
+            _nextLevelZone.PlayerWentIn += OpenNextLevelPanel;
+            _nextLevelPanel.BackButtonClicked += CloseNextLevelPanel;
+            _nextLevelPanel.ContinueButtonClicked += OnNextLevelButtonClicked;
         }
 
         public void OnWaveStarted(int amount)
@@ -86,7 +70,7 @@ namespace Assets.Scripts.UI
 
         public void OnWaveSpawnAmountChanged(int amount)
         {
-            if(amount > 0) 
+            if (amount > 0)
             {
                 _waves.text = amount.ToString();
             }
@@ -94,6 +78,27 @@ namespace Assets.Scripts.UI
             {
                 _waves.gameObject.SetActive(false);
             }
+        }
+
+        private void OpenNextLevelPanel()
+        {
+            _nextLevelPanel.gameObject.SetActive(true);
+            _score.UpdateLevelScore();
+            _nextLevelPanel.SetTextScore(_score.LevelScore.ToString());
+            _pauser.Pause();
+        }
+
+        private void CloseNextLevelPanel()
+        {
+            _pauser.Resume();
+            _nextLevelPanel.gameObject.SetActive(false);
+        }
+
+        private void OnNextLevelButtonClicked()
+        {
+            _pauser.Resume();
+            _score.UpdateTotalScore();
+            NextLevelButtonClicked?.Invoke();
         }
     }
 }
