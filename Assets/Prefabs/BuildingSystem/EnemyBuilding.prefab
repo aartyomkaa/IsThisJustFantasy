@@ -17,7 +17,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4575540500680482
 Transform:
@@ -109,6 +109,10 @@ PrefabInstance:
     - target: {fileID: 2833508966409144620, guid: 1772be25ae5fbef44914456423c59f94, type: 3}
       propertyPath: m_Name
       value: EnemyFactory
+      objectReference: {fileID: 0}
+    - target: {fileID: 2833508966409144620, guid: 1772be25ae5fbef44914456423c59f94, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4817410634980526628, guid: 1772be25ae5fbef44914456423c59f94, type: 3}
       propertyPath: _tutorial

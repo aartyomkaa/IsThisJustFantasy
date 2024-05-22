@@ -12,7 +12,8 @@ namespace Assets.Scripts.UI
         [SerializeField] private PlayerUI _playerUI;
         [SerializeField] private PausePanel _pausePanel;
         [SerializeField] private SoundToggler _soundToggler;
-        [SerializeField] private TMP_Text _waves;
+        [SerializeField] private GameObject _waves;
+        [SerializeField] private TMP_Text _wavesNumber;
 
         private SceneLoader _sceneLoader;
         private NextLevelZone _nextLevelZone;
@@ -44,7 +45,7 @@ namespace Assets.Scripts.UI
 
         public void OnWaveStarted(int amount)
         {
-            _waves.text = amount.ToString();
+            _wavesNumber.text = amount.ToString();
             _waves.gameObject.SetActive(true);
         }
 
@@ -52,7 +53,7 @@ namespace Assets.Scripts.UI
         {
             if (amount > 0)
             {
-                _waves.text = amount.ToString();
+                _wavesNumber.text = amount.ToString();
             }
             else
             {
