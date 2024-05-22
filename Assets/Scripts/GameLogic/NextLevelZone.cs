@@ -13,6 +13,11 @@ namespace Assets.Scripts.GameLogic
         private SceneLoader _sceneLoader;
         private Player _player;
 
+        private void Awake()
+        {
+            gameObject.SetActive(false);
+        }
+
         private void OnEnable()
         {
             _nextLevelPanel.BackButtonPressed += OnBackButtonPressed;

@@ -1383,7 +1383,6 @@ MonoBehaviour:
   _canvasGroup: {fileID: 354049930}
   _loginpanel: {fileID: 1847213902}
   _leaderboardpanel: {fileID: 1165789971}
-  _isPlayerAuthorized: 0
 --- !u!225 &354049930
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -3944,7 +3943,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1104118502}
-  - component: {fileID: 1104118503}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -3971,18 +3969,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1104118503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1104118501}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1e7a13669f625548b04c5893864d522, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1154181664
 GameObject:
   m_ObjectHideFlags: 0
@@ -7370,7 +7356,6 @@ MonoBehaviour:
   _canvasGroup: {fileID: 0}
   _accept: {fileID: 2033062136}
   _decline: {fileID: 1028184438}
-  _score: {fileID: 1104118503}
 --- !u!114 &1847213903
 MonoBehaviour:
   m_ObjectHideFlags: 0

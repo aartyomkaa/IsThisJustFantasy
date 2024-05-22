@@ -9,7 +9,7 @@ namespace Assets.Scripts.UI
     {
         [SerializeField] private Button _accept;
         [SerializeField] private Button _decline;
-        [SerializeField] private Score _score;
+        //[SerializeField] private Score _score;
 
         public event Action Decline;
         public event Action Accept;
