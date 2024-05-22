@@ -20,7 +20,7 @@ namespace Assets.Scripts.BuildingSystem.System
         [SerializeField] private ChestSpawnerPointsContainer _chestSpawnPoints;
 
         private BuildingSpawner _buildingSpawner;
-        private Transform _currentPlayersTransform;
+        private Transform _playersTransform;
         private PlayerWallet _currentPlayersWallet;
         private int _currentCostToBuild;
         private int _currentBuildPointIndex;
@@ -56,7 +56,7 @@ namespace Assets.Scripts.BuildingSystem.System
         {  
             for (int i = 0; i < _buildPoints.Count; i++)
             {
-                if (_buildPoints[i].SpotToPlaceBuilding != null && _buildPoints[i].IsOccupied == false && _currentPlayersTransform == _buildPoints[i].transform)
+                if (_buildPoints[i].SpotToPlaceBuilding != null && _buildPoints[i].IsOccupied == false && _playersTransform == _buildPoints[i].transform)
                 {
                         if(_buildPoints[i].CostToBuild <= wallet.Coins)
                         {
@@ -106,7 +106,7 @@ namespace Assets.Scripts.BuildingSystem.System
 
         private void OnPlayerWentIn(Transform spotOfPlayer, PlayerWallet wallet)  
         {
-            _currentPlayersTransform = spotOfPlayer;
+            _playersTransform = spotOfPlayer;
             _canBuild = true;
 
             for (int i = 0; i < _buildPoints.Count; i++)
@@ -129,7 +129,3 @@ namespace Assets.Scripts.BuildingSystem.System
         }
     }
 }
-
-   
-
-   

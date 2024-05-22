@@ -19,6 +19,7 @@ namespace Assets.Scripts.PlayerComponents
         public float Health => _value;
 
         public event Action<float> ValueChanged;
+        public event Action Diead;
 
         public override void Init(PlayerData data, PlayerSFX sfx)
         {
@@ -45,7 +46,10 @@ namespace Assets.Scripts.PlayerComponents
             }
 
             if (_value <= 0)
+            {
                 gameObject.SetActive(false);
+                Diead?.Invoke();
+            }
         }
 
         public void Heal(float importHealValue)

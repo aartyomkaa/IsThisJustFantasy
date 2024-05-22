@@ -29,7 +29,7 @@ namespace Assets.Scripts.BuildingSystem
 
         public float Health => _strength;
 
-        public event Action<Transform> Destroyed;
+        public event Action Destroyed;
         public event Action<ColliderPanelEventer> BuildWithEventorWasMade;
 
         private void Awake()
@@ -88,7 +88,7 @@ namespace Assets.Scripts.BuildingSystem
         protected void Destroy()
         { 
             Instantiate(_particleOfDestroy, _spotOfDestroyEffects.position, Quaternion.identity);
-            Destroyed?.Invoke(transform.parent);
+            Destroyed?.Invoke();
             gameObject.SetActive(false);
             RefreshStrength();    
         }

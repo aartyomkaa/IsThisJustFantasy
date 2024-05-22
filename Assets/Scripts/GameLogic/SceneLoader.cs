@@ -1,5 +1,5 @@
-﻿using UnityEngine.SceneManagement;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using Assets.Scripts.Constants;
 using Assets.Scripts.UI;
 
@@ -9,27 +9,20 @@ namespace Assets.Scripts.GameLogic
     {
         private PausePanel _currentPausePanel;
 
-        private int _currentScene;
-        private int _nextLevelNumber = 1;
-        private NextLevelZone _currentNextLevelZone;
+        private int _totalScenes;
+        private int _firstLevelIndex = 2;
 
-        private void OnEnable()
+        private void Start()
         {
-            //LoadMenuScene();
+            _totalScenes = SceneManager.sceneCountInBuildSettings;
         }
 
         private void OnDisable()
         {
-            
             if (_currentPausePanel != null)
             {
                 _currentPausePanel.MainMenuButtonClicked -= LoadMenuScene;
                 _currentPausePanel.RestartSceneButtonClicked -= RestartCurrentScene;
-            } 
-
-            if(_currentNextLevelZone != null)
-            {
-                _currentNextLevelZone.GameLevelUped -= IncreaseLevel;
             }
         }
 
@@ -50,33 +43,17 @@ namespace Assets.Scripts.GameLogic
             SceneManager.LoadSceneAsync(SceneNames.Menu, LoadSceneMode.Single);
         }
 
-        private void RestartCurrentScene()
+        public void LoadNextScene()
+        {
+            if (SceneManager.GetActiveScene().buildIndex + _firstLevelIndex <= _totalScenes)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + _firstLevelIndex, LoadSceneMode.Single);
+            }
+        }
+
+        public void RestartCurrentScene()
         {
             SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name, LoadSceneMode.Single);          
-        }
-
-        private void IncreaseLevel()   // вызывать в момент первого показа панельки о прохождении уровня
-        {
-            _currentScene = SceneManager.GetActiveScene().buildIndex;
-
-            Debug.Log("нынешний уровень вот такой - " + _currentScene);
-
-            
-            PlayerPrefs.SetInt(SceneNames.LastAvailableLevel, _currentScene += _nextLevelNumber);
-
-            Debug.Log("Повысил уровень на такой - " + PlayerPrefs.GetInt(SceneNames.LastAvailableLevel));
-        }
-
-        public void LoadNextMap()
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + _nextLevelNumber, LoadSceneMode.Single);
-        }
-
-       
-        public void SignToNextLevelPanelToZone(NextLevelZone nextLevelZone)
-        {
-            _currentNextLevelZone = nextLevelZone;
-            _currentNextLevelZone.GameLevelUped += IncreaseLevel;
-        }      
+        }    
     }
 }

@@ -83,9 +83,9 @@ namespace Assets.Scripts.BuildingSystem
             }           
         }
 
-        private void FreeSpotToBuild(Transform buidingTransform)
+        private void FreeSpotToBuild()
         {
-            if (_isOccupied == true && buidingTransform.position == _spotToPlaceBuilding.position) 
+            if (_isOccupied == true && _currentBuilding.transform.position == _spotToPlaceBuilding.position) 
             {     
                 _isOccupied = false;
                 ActiveIconOfBuildPoint();

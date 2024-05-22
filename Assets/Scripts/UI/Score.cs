@@ -4,43 +4,82 @@ using System;
 using UnityEngine;
 using Agava.YandexGames;
 using Agava.WebUtility;
+using Assets.Scripts.GameLogic;
 
 namespace Assets.Scripts.UI
 {
     internal class Score : MonoBehaviour
     {
+        [SerializeField] private ScorePanel _endGamePanel;
+
         private int _totalScore;
         private int _levelScore;
 
+        private Pauser _pauser;
         private PlayerWallet _wallet;
+        private PlayerHealth _health;
+        private SceneLoader _sceneLoader;
         private int _scoreMultiplier = 3;
 
-        public int TotalScore => _totalScore;
-        public int LevelScore => _levelScore;
-
-        public void Init(PlayerWallet wallet)
+        private void OnEnable()
         {
-            _wallet = wallet;
+            _endGamePanel.BackButtonPressed += OnMenuButtonPressed;
+            _endGamePanel.ContinueButtonPressed += OnRestartButtonPressed;
+        }
+
+        private void OnDisable()
+        {
+            _endGamePanel.ContinueButtonPressed -= OnRestartButtonPressed;
+            _endGamePanel.ContinueButtonPressed -= OnRestartButtonPressed;
+
+            _health.Diead -= OpenEndGamePanel;
+        }
+
+        public void Init(Player player, Pauser pauser, SceneLoader sceneLoader)
+        {
+            _wallet = player.Wallet;
+            _health = player.GetComponent<PlayerHealth>();
+            _pauser = pauser;
+            _sceneLoader = sceneLoader;
+
+            _health.Diead += OpenEndGamePanel;
 
             LoadScore();
         }
 
         public void UpdateTotalScore()
         {
-            IncreaseTotalScore();
+            _totalScore += _levelScore;
 
             SaveScore(_totalScore);
             SaveLeaderboardScore(_totalScore);
         }
 
-        public void UpdateLevelScore()
+        public int GetLevelScore()
         {
-            _levelScore += _wallet.Coins * _scoreMultiplier;
+            _levelScore = _wallet.Coins * _scoreMultiplier;
+
+            return _levelScore;
         }
 
-        private void IncreaseTotalScore()
+        public void OpenEndGamePanel()
         {
-            _totalScore += _levelScore;
+            _endGamePanel.gameObject.SetActive(true);
+            _pauser.Pause();
+        }
+
+        private void OnRestartButtonPressed()
+        {
+            _endGamePanel.gameObject.SetActive(false);
+            _sceneLoader.RestartCurrentScene();
+            _pauser.Resume();
+        }
+
+        private void OnMenuButtonPressed()
+        {
+            _endGamePanel.gameObject.SetActive(false);
+            _sceneLoader.LoadMenuScene();
+            _pauser.Resume();
         }
 
         private void LoadScore()

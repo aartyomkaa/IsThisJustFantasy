@@ -1,22 +1,24 @@
-﻿using Assets.Scripts.CameraComponents;
-using Assets.Scripts.PlayerInput;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Agava.WebUtility;
-using Assets.Scripts.UI;
-using Assets.Scripts.EnemyComponents;
 using Assets.Scripts.Audio;
-using Assets.Scripts.YandexSDK;
-using Assets.Scripts.GameLogic;
+using Assets.Scripts.BuildingSystem.Buildings;
 using Assets.Scripts.BuildingSystem.System;
-using UnityEngine.UI;
+using Assets.Scripts.CameraComponents;
+using Assets.Scripts.EnemyComponents;
+using Assets.Scripts.GameLogic;
+using Assets.Scripts.PlayerInput;
+using Assets.Scripts.YandexSDK;
+using Assets.Scripts.UI;
 
 namespace Assets.Scripts.PlayerComponents
 {
     internal class PlayerSceneInitializer : MonoBehaviour
     {
         [SerializeField] private Player _player;
+        [SerializeField] private MainBuilding _mainBuilding;
         [SerializeField] private TargetFollower _targetFollower;
         [SerializeField] private DesktopInput _desktopInput;
         [SerializeField] private MobileInput _mobileInput;
@@ -31,18 +33,25 @@ namespace Assets.Scripts.PlayerComponents
         private void OnEnable()
         {
             SceneManager.sceneLoaded += OnSceneLoaded;
+
             _buildingSystem.EventerWithAdButtonWasMade += OnEventerWithAdButtonWasMade;
+
             _enemyFactory.FinalWaveCleared += _nextLevelZone.OnAllWavesDefeated;
+
+            _mainBuilding.Destroyed += _score.OpenEndGamePanel;
         }
 
         private void OnDisable()
         {
             SceneManager.sceneLoaded -= OnSceneLoaded;
+
             _buildingSystem.EventerWithAdButtonWasMade -= OnEventerWithAdButtonWasMade;
+
             _enemyFactory.FinalWaveCleared -= _nextLevelZone.OnAllWavesDefeated;
             _enemyFactory.WaveStarted -= _globalUI.OnWaveStarted;
             _enemyFactory.WaveSpawnAmountChanged -= _globalUI.OnWaveSpawnAmountChanged;
-            _globalUI.NextLevelButtonClicked -= _sceneLoader.LoadNextMap;
+
+            _mainBuilding.Destroyed -= _score.OpenEndGamePanel;
         }
 
         private void OnEventerWithAdButtonWasMade(Button button)
@@ -72,7 +81,7 @@ namespace Assets.Scripts.PlayerComponents
         private void InitializeInput(Player player)
         {
 //#if UNITY_WEBGL && !UNITY_EDITOR
-            if (1 == 1)
+            if (1 == 2)
             {
                 MobileInput input = Instantiate(_mobileInput, transform);
                 input.Init(player);
@@ -88,8 +97,10 @@ namespace Assets.Scripts.PlayerComponents
         private void InitializeUI(Player player)
         {
             Pauser pauser = new Pauser(_audioMixer, _mobileInput);
-           
-            _globalUI.Init(player, _nextLevelZone, _score, pauser, _sceneLoader, _audioMixer);
+
+            _score.Init(player, pauser, _sceneLoader);
+            _nextLevelZone.Init(_score, _sceneLoader, player);
+            _globalUI.Init(player, _nextLevelZone, _sceneLoader, _audioMixer);
             _enemyFactory.WaveStarted += _globalUI.OnWaveStarted;
             _enemyFactory.WaveSpawnAmountChanged += _globalUI.OnWaveSpawnAmountChanged;
         }

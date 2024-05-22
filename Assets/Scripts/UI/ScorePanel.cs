@@ -11,8 +11,8 @@ namespace Assets.Scripts.UI
         [SerializeField] private Button _backButton;
         [SerializeField] private TMP_Text _textScore;
 
-        public event Action BackButtonClicked;
-        public event Action ContinueButtonClicked;
+        public event Action BackButtonPressed;
+        public event Action ContinueButtonPressed;
 
         private void OnEnable()
         {
@@ -33,12 +33,12 @@ namespace Assets.Scripts.UI
 
         private void OnBackButtonClicked()
         {
-            BackButtonClicked?.Invoke();
+            BackButtonPressed?.Invoke();
         }
 
         private void OnContinueButtonClicked()
         {
-            ContinueButtonClicked?.Invoke();
+            ContinueButtonPressed?.Invoke();
         }
     }  
 }
