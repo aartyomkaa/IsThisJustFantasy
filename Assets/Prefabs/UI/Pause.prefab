@@ -184,9 +184,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 723fd52e039fcda4aa4d40b56dacc4be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _openButton: {fileID: 1198289742303865659}
-  _closeButton: {fileID: 7424415828111570915}
+  _restartSceneButton: {fileID: 0}
+  _exitToMainMenuButton: {fileID: 0}
   _panel: {fileID: 1516006054262259382}
+  OpenButton: {fileID: 0}
+  CloseButton: {fileID: 0}
 --- !u!1 &271291796136657613
 GameObject:
   m_ObjectHideFlags: 0
