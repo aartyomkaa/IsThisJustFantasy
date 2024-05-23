@@ -10,7 +10,7 @@ namespace Assets.Scripts.UI
 {
     internal class Score : MonoBehaviour
     {
-        [SerializeField] private ScorePanel _endGamePanel;
+        private ScorePanel _endGamePanel;
 
         private int _totalScore;
         private int _levelScore;
@@ -21,11 +21,6 @@ namespace Assets.Scripts.UI
         private SceneLoader _sceneLoader;
         private int _scoreMultiplier = 3;
 
-        private void OnEnable()
-        {
-            _endGamePanel.BackButtonPressed += OnMenuButtonPressed;
-            _endGamePanel.ContinueButtonPressed += OnRestartButtonPressed;
-        }
 
         private void OnDisable()
         {
@@ -35,8 +30,12 @@ namespace Assets.Scripts.UI
             _health.Diead -= OpenEndGamePanel;
         }
 
-        public void Init(Player player, Pauser pauser, SceneLoader sceneLoader)
+        public void Init(Player player, Pauser pauser, SceneLoader sceneLoader, ScorePanel endGamePanel)
         {
+            _endGamePanel = endGamePanel;
+            _endGamePanel.BackButtonPressed += OnMenuButtonPressed;
+            _endGamePanel.ContinueButtonPressed += OnRestartButtonPressed;
+           
             _wallet = player.Wallet;
             _health = player.GetComponent<PlayerHealth>();
             _pauser = pauser;
