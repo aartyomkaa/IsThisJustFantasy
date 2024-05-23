@@ -6,6 +6,7 @@ using Assets.Scripts.UI;
 
 namespace Assets.Scripts.BuildingSystem
 {
+    [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(AudioSource))]
 
@@ -44,6 +45,7 @@ namespace Assets.Scripts.BuildingSystem
                 _audiosourse.Play();
             }
         }
+
 
         private void Start()
         {   

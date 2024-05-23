@@ -20,7 +20,7 @@ MonoBehaviour:
   Speed: 6
   Damage: 5
   AttackSpeed: 2
-  AttackRange: 2.5
-  AggroRange: 9
+  AttackRange: 2
+  AggroRange: 8
   Prefab: {fileID: 5404321608083313800, guid: 27d6b7249ada844a99a360ebf69cff0b, type: 3}
   Weapon: {fileID: 0}

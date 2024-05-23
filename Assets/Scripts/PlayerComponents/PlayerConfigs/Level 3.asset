@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Speed>k__BackingField: 7
   <AttackMoveSpeed>k__BackingField: 1
+  <RotationSpeed>k__BackingField: 5
   <RecoverTime>k__BackingField: 1
-  <Health>k__BackingField: 140
-  <WeaponAttackSpeedLevelUpAmount>k__BackingField: 0.2
-  <WeaponDamageLevelUpAmount>k__BackingField: 2
+  <Health>k__BackingField: 100

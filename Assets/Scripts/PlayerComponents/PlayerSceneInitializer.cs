@@ -100,7 +100,7 @@ namespace Assets.Scripts.PlayerComponents
 
             _score.Init(player, pauser, _sceneLoader);
             _nextLevelZone.Init(_score, _sceneLoader, player);
-            _globalUI.Init(player, _sceneLoader, _audioMixer);
+            _globalUI.Init(player, _nextLevelZone, _sceneLoader, _audioMixer);
             _enemyFactory.WaveStarted += _globalUI.OnWaveStarted;
             _enemyFactory.WaveSpawnAmountChanged += _globalUI.OnWaveSpawnAmountChanged;
         }
