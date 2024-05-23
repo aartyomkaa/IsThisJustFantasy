@@ -5400,7 +5400,7 @@ Material:
     - _ColorMask: 15
     - _CullMode: 0
     - _Diffuse: 0.5
-    - _FaceDilate: 0
+    - _FaceDilate: 0.32
     - _FaceUVSpeedX: 0
     - _FaceUVSpeedY: 0
     - _GlowInner: 0.05
@@ -5411,17 +5411,12 @@ Material:
     - _LightAngle: 3.1416
     - _MaskSoftnessX: 0
     - _MaskSoftnessY: 0
-    - _OutlineSoftness: 0
+    - _OutlineSoftness: 0.588
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
     - _OutlineWidth: 0.2
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
-<<<<<<< HEAD
-    - _ScaleRatioA: 1
-    - _ScaleRatioB: 1
-    - _ScaleRatioC: 1
-=======
 <<<<<<< HEAD
 <<<<<<< HEAD
     - _ScaleRatioA: 1
@@ -5437,7 +5432,6 @@ Material:
     - _ScaleRatioB: 0.6770833
     - _ScaleRatioC: 0.6770833
 >>>>>>> parent of 9507ec1f (a)
->>>>>>> 32d72a9175369db3d9eb48e493fd9c327f76e2fb
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0

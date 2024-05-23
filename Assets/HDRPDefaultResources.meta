@@ -1,8 +1,5 @@
 fileFormatVersion: 2
 <<<<<<< HEAD:Assets/Import/KayKit Medieval Builder Pack 1.0/Models/objects/gltf/barracks.gltf.glb.meta
-guid: df3c773b9f05a03469bd746fe4aab787
-=======
-<<<<<<< HEAD:Assets/Import/KayKit Medieval Builder Pack 1.0/Models/objects/gltf/barracks.gltf.glb.meta
 <<<<<<<< HEAD:Assets/Import/KayKit Medieval Builder Pack 1.0/Models/objects/gltf/barracks.gltf.glb.meta
 guid: df3c773b9f05a03469bd746fe4aab787
 ========
@@ -12,7 +9,6 @@ guid: 2e5045860cf6048708b8984423266a8e
 guid: fdc3c7677d1624847b0e3b2072ccf56f
 folderAsset: yes
 >>>>>>> parent of 9507ec1f (a):Assets/HDRPDefaultResources.meta
->>>>>>> 32d72a9175369db3d9eb48e493fd9c327f76e2fb:Assets/HDRPDefaultResources.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
