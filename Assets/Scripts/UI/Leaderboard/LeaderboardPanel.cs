@@ -28,9 +28,9 @@ namespace Assets.Scripts.UI
         {
             Open();
 
-            // ClearViews(); закомментил ДО билда, в билде раскомментить
+            ClearViews();
 
-            // LoadEntries();  закомментил ДО билда, в билде раскомментить
+            LoadEntries();
         }
 
         private void LoadEntries()
@@ -51,7 +51,6 @@ namespace Assets.Scripts.UI
 
         private void OnClose()
         {
-           // ButtonAudio.Play();
             Closed?.Invoke();
             Close();
         }

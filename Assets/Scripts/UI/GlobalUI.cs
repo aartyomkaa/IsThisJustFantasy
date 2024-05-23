@@ -15,7 +15,6 @@ namespace Assets.Scripts.UI
         [SerializeField] private TMP_Text _waves;
 
         private SceneLoader _sceneLoader;
-        private NextLevelZone _nextLevelZone;
         private AudioMixer _audioMixer;
         private Player _player;
 
@@ -26,10 +25,9 @@ namespace Assets.Scripts.UI
             _player.LevelChanged -= _playerUI.OnLevelChanged;
         }
 
-        public void Init(Player player, NextLevelZone zone, SceneLoader loader, AudioMixer mixer)
+        public void Init(Player player, SceneLoader loader, AudioMixer mixer)
         {
             _sceneLoader = loader;
-            _nextLevelZone = zone;
             _player = player;
             _audioMixer = mixer;
 

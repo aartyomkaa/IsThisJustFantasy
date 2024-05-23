@@ -29,7 +29,7 @@ namespace Assets.Scripts.UI
 
         private void OnDisable()
         {
-            _displayable.HealthValueChanged += OnHealthChanged;
+            _displayable.HealthValueChanged -= OnHealthChanged;
         }
 
         private void OnHealthChanged(float health)

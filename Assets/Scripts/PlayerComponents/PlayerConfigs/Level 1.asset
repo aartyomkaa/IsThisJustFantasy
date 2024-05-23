@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b82b933e306ee87449c750418bc85d86, type: 3}
   m_Name: Level 1
   m_EditorClassIdentifier: 
-  <Speed>k__BackingField: 7
+  <Speed>k__BackingField: 6
   <AttackMoveSpeed>k__BackingField: 1
   <RecoverTime>k__BackingField: 1
   <Health>k__BackingField: 100

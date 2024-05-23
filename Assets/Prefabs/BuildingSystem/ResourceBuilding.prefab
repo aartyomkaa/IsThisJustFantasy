@@ -1669,6 +1669,10 @@ PrefabInstance:
         Useage:
         To create a chest, click on the button in the pop-up window.'
       objectReference: {fileID: 0}
+    - target: {fileID: 7104536003519519982, guid: a9237970a81ae5948b18dec59a387b24, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 7a9506cbcaba4e6488a923ba4bde5925, type: 3}
     - target: {fileID: 7925530684692225479, guid: a9237970a81ae5948b18dec59a387b24, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 1
