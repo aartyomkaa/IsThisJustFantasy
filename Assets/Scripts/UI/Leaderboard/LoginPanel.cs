@@ -28,13 +28,17 @@ namespace Assets.Scripts.UI
 
         private void OnAccept()
         {
-            PlayerAccount.Authorize();
+            // PlayerAccount.Authorize();  закомментил ДО билда, в билде раскомментить
 
+            // _score.SetScore(); закомментил ДО билда, в билде раскомментить
+
+            // Accept?.Invoke(); закомментил ДО билда, в билде раскомментить
             Close();
         }
 
         private void OnDecline()
         {
+            // Decline?.Invoke(); закомментил ДО билда, в билде раскомментить
             Close();
         }
     }

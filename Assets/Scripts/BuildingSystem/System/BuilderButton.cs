@@ -25,6 +25,7 @@ namespace Assets.Scripts.BuildingSystem
         private void OnEnable()
         {
             _build.onClick.AddListener(OnBuildButtonClicked);
+            
         }
 
         private void OnDisable()
@@ -34,10 +35,8 @@ namespace Assets.Scripts.BuildingSystem
 
         private void SetButtonText(int builPointIndex, int costToBuy)
         {
-#if UNITY_WEBGL && !UNITY_EDITOR
-            _building.SetValue(_translator.GetTranslation(builPointIndex));
-            _cost.SetValue(costToBuy);
-#endif
+            //_building.SetValue(_translator.GetTranslation(builPointIndex));
+            //_cost.SetValue(costToBuy);
         }
            
         private void OnBuildButtonClicked()

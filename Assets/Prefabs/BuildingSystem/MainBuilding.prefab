@@ -17,7 +17,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!224 &4959365880205513217
 RectTransform:
@@ -137,7 +137,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 0
 --- !u!224 &3920672817738192098
 RectTransform:
@@ -214,7 +214,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4105798065628977326
 Transform:
@@ -290,7 +290,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!224 &4244865045744946671
 RectTransform:
@@ -425,10 +425,10 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-<<<<<<< HEAD
   m_StaticEditorFlags: 0
 <<<<<<< HEAD
   m_IsActive: 0
+<<<<<<< HEAD
 =======
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
@@ -436,6 +436,8 @@ GameObject:
 =======
   m_IsActive: 1
 >>>>>>> parent of dbc7300c (towtower)
+=======
+>>>>>>> parent of 108ecf49 (a)
 --- !u!224 &4831825574148144559
 RectTransform:
   m_ObjectHideFlags: 0
@@ -519,6 +521,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -615,6 +618,8 @@ MeshRenderer:
 >>>>>>> Dev
 =======
 >>>>>>> parent of dbc7300c (towtower)
+=======
+>>>>>>> parent of 108ecf49 (a)
 --- !u!1 &4475065055934021614
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,7 +642,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &7410638966486012694
 Transform:
@@ -925,7 +930,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!224 &4310191551923681160
 RectTransform:
@@ -1046,6 +1051,7 @@ MonoBehaviour:
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> parent of dbc7300c (towtower)
@@ -1140,6 +1146,8 @@ MeshRenderer:
 >>>>>>> Dev
 =======
 >>>>>>> parent of dbc7300c (towtower)
+=======
+>>>>>>> parent of 108ecf49 (a)
 --- !u!1 &6961291900133425068
 GameObject:
   m_ObjectHideFlags: 0
@@ -1154,7 +1162,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4720294941917349488
 Transform:
@@ -1188,7 +1196,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!224 &9085123144680127013
 RectTransform:
@@ -1297,6 +1305,7 @@ GameObject:
   m_ObjectHideFlags: 0
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1321,6 +1330,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9010125431138812595}
 >>>>>>> Dev
+=======
+>>>>>>> parent of 108ecf49 (a)
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
@@ -1481,10 +1492,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4105798065628977326}
     m_Modifications:
-    - target: {fileID: 1794922466974124358, guid: a9237970a81ae5948b18dec59a387b24, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 4509801477385779870, guid: a9237970a81ae5948b18dec59a387b24, type: 3}
       propertyPath: FallbackText
       value: "\u042D\u0442\u043E \u0433\u043B\u0430\u0432\u043D\u043E\u0435 \u0437\u0434\u0430\u043D\u0438\u0435\r\n\r\n\u0424\u0443\u043D\u043A\u0446\u0438\u044F:
@@ -1554,10 +1561,6 @@ PrefabInstance:
     - target: {fileID: 6601895349941818949, guid: a9237970a81ae5948b18dec59a387b24, type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6601895349941818949, guid: a9237970a81ae5948b18dec59a387b24, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6785846221476032690, guid: a9237970a81ae5948b18dec59a387b24, type: 3}
       propertyPath: m_Pivot.x
@@ -1646,17 +1649,9 @@ PrefabInstance:
         of your main building, if it is destroyed you will lose.\r\n\r\nUse: To restore
         the hero\u2019s health, click on the button in the pop-up window."
       objectReference: {fileID: 0}
-    - target: {fileID: 7104536003519519982, guid: a9237970a81ae5948b18dec59a387b24, type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: 7a9506cbcaba4e6488a923ba4bde5925, type: 3}
     - target: {fileID: 7925530684692225479, guid: a9237970a81ae5948b18dec59a387b24, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8809205567475966023, guid: a9237970a81ae5948b18dec59a387b24, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1687,14 +1682,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4105798065628977326}
     m_Modifications:
-    - target: {fileID: 1318406958537084, guid: dfab0a93488749a45af5bf09de130ed7, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 1458544620052062, guid: dfab0a93488749a45af5bf09de130ed7, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 1707556563962366, guid: dfab0a93488749a45af5bf09de130ed7, type: 3}
       propertyPath: m_Name
       value: LootRingRed
@@ -1702,10 +1689,6 @@ PrefabInstance:
     - target: {fileID: 1707556563962366, guid: dfab0a93488749a45af5bf09de130ed7, type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1707556563962366, guid: dfab0a93488749a45af5bf09de130ed7, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4782054331896854, guid: dfab0a93488749a45af5bf09de130ed7, type: 3}
       propertyPath: m_LocalScale.x

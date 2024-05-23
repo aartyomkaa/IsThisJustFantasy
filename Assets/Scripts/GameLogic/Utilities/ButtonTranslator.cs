@@ -14,10 +14,8 @@ namespace Assets.Scripts.GameLogic.Utilities
         private Dictionary<int, string> _buildings = new Dictionary<int, string>();
 
         public ButtonTranslator() 
-        {
-#if UNITY_WEBGL && !UNITY_EDITOR
-            SetTranslationDictionary(YandexGamesSdk.Environment.i18n.lang);
-#endif
+        { 
+            //SetTranslationDictionary(YandexGamesSdk.Environment.i18n.lang);
         }
 
         public string GetTranslation(int buildingIndex)

@@ -2,6 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> parent of dbc7300c (towtower)
@@ -96,6 +97,8 @@ MeshRenderer:
 >>>>>>> Dev
 =======
 >>>>>>> parent of dbc7300c (towtower)
+=======
+>>>>>>> parent of 108ecf49 (a)
 --- !u!1 &527878841398491072
 GameObject:
   m_ObjectHideFlags: 0
@@ -110,7 +113,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &6724451649403741235
 Transform:
@@ -147,7 +150,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &5111766953552526547
 Transform:
@@ -379,6 +382,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of 108ecf49 (a)
   m_GameObject: {fileID: 757757806888675700}
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -390,6 +396,7 @@ GameObject:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> parent of dbc7300c (towtower)
@@ -443,6 +450,8 @@ MeshRenderer:
 >>>>>>> Dev
 =======
 >>>>>>> parent of dbc7300c (towtower)
+=======
+>>>>>>> parent of 108ecf49 (a)
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -492,7 +501,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &6329686451557555710
 Transform:
@@ -509,6 +518,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5111766953552526547}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -605,6 +615,8 @@ MeshRenderer:
 >>>>>>> Dev
 =======
 >>>>>>> parent of dbc7300c (towtower)
+=======
+>>>>>>> parent of 108ecf49 (a)
 --- !u!1 &8871706899741376528
 GameObject:
   m_ObjectHideFlags: 0
@@ -621,7 +633,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4279007877362130887
 Transform:
@@ -698,25 +710,13 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1103121671024242, guid: 0d5fa37d01d5dd2438b02c98b1a78ef5, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 1650476624769746, guid: 0d5fa37d01d5dd2438b02c98b1a78ef5, type: 3}
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
-    - target: {fileID: 1650476624769746, guid: 0d5fa37d01d5dd2438b02c98b1a78ef5, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 1895562383769798, guid: 0d5fa37d01d5dd2438b02c98b1a78ef5, type: 3}
       propertyPath: m_Layer
       value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 1895562383769798, guid: 0d5fa37d01d5dd2438b02c98b1a78ef5, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4663487787256026, guid: 0d5fa37d01d5dd2438b02c98b1a78ef5, type: 3}
       propertyPath: m_LocalScale.x
