@@ -14,11 +14,15 @@ namespace Assets.Scripts.UI
         [SerializeField] private SoundToggler _soundToggler;
         [SerializeField] private GameObject _waves;
         [SerializeField] private TMP_Text _wavesNumber;
+        [SerializeField] private ScorePanel _nextLevelPanel;
+        [SerializeField] private ScorePanel _endGamePanel;
 
         private SceneLoader _sceneLoader;
-        private NextLevelZone _nextLevelZone;
         private AudioMixer _audioMixer;
         private Player _player;
+
+        public ScorePanel NextLevelPanel => _nextLevelPanel;
+        public ScorePanel EndGamePanel => _endGamePanel;
 
         private void OnDisable()
         {
@@ -27,10 +31,9 @@ namespace Assets.Scripts.UI
             _player.LevelChanged -= _playerUI.OnLevelChanged;
         }
 
-        public void Init(Player player, NextLevelZone zone, SceneLoader loader, AudioMixer mixer)
+        public void Init(Player player, SceneLoader loader, AudioMixer mixer) 
         {
             _sceneLoader = loader;
-            _nextLevelZone = zone;
             _player = player;
             _audioMixer = mixer;
 
