@@ -21,7 +21,13 @@ namespace Assets.Scripts.UI
         private SceneLoader _sceneLoader;
         private int _scoreMultiplier = 3;
 
+<<<<<<< HEAD
         private void OnEnable()
+=======
+        public event Action<int> ScoreChanged;
+
+        public void Init(PlayerWallet wallet)
+>>>>>>> parent of 7089f0a4 (scorePanel)
         {
             _endGamePanel.BackButtonPressed += OnMenuButtonPressed;
             _endGamePanel.ContinueButtonPressed += OnRestartButtonPressed;

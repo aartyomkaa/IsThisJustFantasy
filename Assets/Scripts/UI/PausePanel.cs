@@ -14,7 +14,7 @@ namespace Assets.Scripts.UI
 
         private  Pauser _currentPauser;
 
-       // public Pauser CurrentPauser => _currentPauser;
+        public Pauser CurrentPauser => _currentPauser;
 
         public Button OpenButton;
         public Button CloseButton;

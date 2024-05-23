@@ -28,7 +28,13 @@ namespace Assets.Scripts.PlayerComponents
         [SerializeField] private SceneLoader _sceneLoader;
         [SerializeField] private BuildingService _buildingSystem;
         [SerializeField] private NextLevelZone _nextLevelZone;
+<<<<<<< HEAD
         [SerializeField] private Score _score;
+=======
+
+        private Pauser _pauser;
+        private Player _currentPlayer;
+>>>>>>> parent of 7089f0a4 (scorePanel)
 
         private void OnEnable()
         {
@@ -50,8 +56,11 @@ namespace Assets.Scripts.PlayerComponents
             _enemyFactory.FinalWaveCleared -= _nextLevelZone.OnAllWavesDefeated;
             _enemyFactory.WaveStarted -= _globalUI.OnWaveStarted;
             _enemyFactory.WaveSpawnAmountChanged -= _globalUI.OnWaveSpawnAmountChanged;
+<<<<<<< HEAD
 
             _mainBuilding.Destroyed -= _score.OpenEndGamePanel;
+=======
+>>>>>>> parent of 7089f0a4 (scorePanel)
         }
 
         private void OnEventerWithAdButtonWasMade(Button button)
@@ -96,11 +105,22 @@ namespace Assets.Scripts.PlayerComponents
 
         private void InitializeUI(Player player)
         {
+<<<<<<< HEAD
             Pauser pauser = new Pauser(_audioMixer, _mobileInput);
 
             _score.Init(player, pauser, _sceneLoader);
             _nextLevelZone.Init(_score, _sceneLoader, player);
             _globalUI.Init(player, _sceneLoader, _audioMixer);
+=======
+            _pauser = new Pauser(_audioMixer, _mobileInput);
+           
+            _globalUI.PlayerUI.SignToPlayersValuesChanges(player.GetComponent<PlayerHealth>(), player.Wallet, player.CurrentLevel);
+            _globalUI.PausePanel.SignToPauserEvents(_pauser);
+            _globalUI.SignSoundTogglerToAudio(_audioMixer);
+            _globalUI.SignToNextLevelPanelToZone(_nextLevelZone);
+            _sceneLoader.SignToPausePanelEvents(_globalUI.PausePanel);
+            _sceneLoader.SignToNextLevelPanelToZone(_nextLevelZone);
+>>>>>>> parent of 7089f0a4 (scorePanel)
             _enemyFactory.WaveStarted += _globalUI.OnWaveStarted;
             _enemyFactory.WaveSpawnAmountChanged += _globalUI.OnWaveSpawnAmountChanged;
         }

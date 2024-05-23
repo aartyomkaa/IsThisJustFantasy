@@ -1,4 +1,5 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Music and SFX/Buttons.meta
 guid: 4829fb16c2363d24790eaa6fd010b3dd
 folderAsset: yes
 DefaultImporter:
@@ -6,3 +7,6 @@ DefaultImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+=======
+guid: fdc3c7677d1624847b0e3b2072ccf56f
+>>>>>>> parent of 7089f0a4 (scorePanel):Assets/HDRPDefaultResources.meta

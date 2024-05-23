@@ -54,6 +54,28 @@ namespace Assets.Scripts.GameLogic
         public void RestartCurrentScene()
         {
             SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name, LoadSceneMode.Single);          
+<<<<<<< HEAD
         }    
+=======
+        }
+
+        private void IncreaseLevel()   // вызывать в момент первого показа панельки о прохождении уровня
+        {
+            _currentScene = SceneManager.GetActiveScene().buildIndex;
+
+            Debug.Log("нынешний уровень вот такой - " + _currentScene);
+
+            
+            PlayerPrefs.SetInt(SceneNames.LastAvailableLevel, _currentScene += _nextLevelNumber);
+
+            Debug.Log("Повысил уровень на такой - " + PlayerPrefs.GetInt(SceneNames.LastAvailableLevel));
+        }
+
+        public void SignToNextLevelPanelToZone(NextLevelZone nextLevelZone)
+        {
+            _currentNextLevelZone = nextLevelZone;
+            _currentNextLevelZone.GameLevelUped += IncreaseLevel;
+        }      
+>>>>>>> parent of 7089f0a4 (scorePanel)
     }
 }
