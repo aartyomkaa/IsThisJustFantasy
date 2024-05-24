@@ -16,6 +16,8 @@ namespace Assets.Scripts.UI
         [SerializeField] private TMP_Text _wavesNumber;
         [SerializeField] private ScorePanel _nextLevelPanel;
         [SerializeField] private ScorePanel _endGamePanel;
+        [SerializeField] private ScorePanel _winGamePanel;
+
 
         private SceneLoader _sceneLoader;
         private AudioMixer _audioMixer;
