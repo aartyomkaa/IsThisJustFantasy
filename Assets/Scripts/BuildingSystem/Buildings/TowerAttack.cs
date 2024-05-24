@@ -1,8 +1,8 @@
+using System.Collections.Generic;
+using UnityEngine;
 using Assets.Scripts.GameLogic.Interfaces;
 using Assets.Scripts.PlayerComponents.Weapons;
 using Assets.Scripts.PlayerComponents.Weapons.Bows;
-using System.Collections.Generic;
-using UnityEngine;
 
 namespace Assets.Scripts.BuildingSystem
 {
@@ -38,31 +38,12 @@ namespace Assets.Scripts.BuildingSystem
             {
                 if (target.Health > 0 && _currentDelay >= _delayOfShoot)
                 {
-                    Debug.Log(target.Health);
                     Shoot(target);
                     _currentDelay = 0;
                 }
             }
 
             _currentDelay += Time.deltaTime;
-        }
-
-        private void Shoot(IDamageable target)
-        {
-            Arrow arrow = _poolOfArrows.GetArrow();
-            arrow.transform.position = _shootPoint.position;
-            arrow.Fly(target.Transform);
-        }
-
-        private void CleanTargets(List<IDamageable> targets)
-        {
-            for (int i = 0; i < _targets.Count; i++)
-            {
-                if (targets[i] == null || targets[i].Transform.gameObject.activeSelf == false)
-                { 
-                    _targets.RemoveAt(i);
-                }
-            }
         }
 
         private void OnTriggerEnter(Collider other)
@@ -82,6 +63,24 @@ namespace Assets.Scripts.BuildingSystem
             if (other.gameObject.TryGetComponent(out IDamageable target) && mask == _targetlayerMask)
             {
                 _targets.Remove(target);
+            }
+        }
+
+        private void Shoot(IDamageable target)
+        {
+            Arrow arrow = _poolOfArrows.GetArrow();
+            arrow.transform.position = _shootPoint.position;
+            arrow.Fly(target.Transform);
+        }
+
+        private void CleanTargets(List<IDamageable> targets)
+        {
+            for (int i = 0; i < _targets.Count; i++)
+            {
+                if (targets[i] == null || targets[i].Transform.gameObject.activeSelf == false)
+                {
+                    _targets.RemoveAt(i);
+                }
             }
         }
     }

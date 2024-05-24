@@ -85,7 +85,7 @@ namespace Assets.Scripts.UI
             if (_audioSource != null)
                 _audioSource.Play();
 
-            FirstButtonClicked?.Invoke(_currentPlayer, _costToBuy,UiHash.CoinsButtonIndex);
+            FirstButtonClicked?.Invoke(_currentPlayer, _costToBuy, UiHash.CoinsButtonIndex);
         }
 
         public void OnSecondButtonClicked()

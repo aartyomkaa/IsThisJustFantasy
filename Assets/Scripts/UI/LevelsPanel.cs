@@ -12,7 +12,6 @@ namespace Assets.Scripts.UI
         [SerializeField] private List<LevelButton> _levelButtons;
         [SerializeField] private SceneLoader _sceneLoader;
 
-
         private int _lastAvailableLevel = 1;
 
         private void OnDisable()
@@ -42,8 +41,6 @@ namespace Assets.Scripts.UI
             if (PlayerPrefs.GetInt(SceneNames.LastAvailableLevel) > _lastAvailableLevel)
             {
                 _lastAvailableLevel = PlayerPrefs.GetInt(SceneNames.LastAvailableLevel);
-
-                Debug.Log("последний доступный уровень вот такой -  " + _lastAvailableLevel);
             }
         }
 

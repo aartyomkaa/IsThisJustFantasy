@@ -10831,6 +10831,7 @@ MonoBehaviour:
   _secondButton: {fileID: 7553490101763586457}
   _extraButton: {fileID: 1237907380459547599}
   _tutorial: {fileID: 2881969356811363601}
+  _audioSource: {fileID: 0}
 --- !u!135 &1692088072880972811
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -20675,6 +20676,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 9207235321170850431}
     m_Modifications:
     - target: {fileID: 4509801477385779870, guid: a9237970a81ae5948b18dec59a387b24, type: 3}
+      propertyPath: FallbackText
+      value: 'This is an altar for manipulating enemy waves
+
+
+
+        Function:
+        Allows you to control enemy attack waves.
+
+
+
+        Use: Adjust the parameters
+        of attack waves to prepare for enemy attacks or launch a counterattack when
+        advantageous.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4509801477385779870, guid: a9237970a81ae5948b18dec59a387b24, type: 3}
       propertyPath: translationName
       value: EnemyBuilding
       objectReference: {fileID: 0}
@@ -20825,6 +20841,10 @@ PrefabInstance:
         of attack waves to prepare for enemy attacks or launch a counterattack when
         advantageous.'
       objectReference: {fileID: 0}
+    - target: {fileID: 7104536003519519982, guid: a9237970a81ae5948b18dec59a387b24, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 7a9506cbcaba4e6488a923ba4bde5925, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -10,7 +10,7 @@ namespace Assets.Scripts.GameLogic
         private PausePanel _currentPausePanel;
 
         private int _totalScenes;
-        private int _firstLevelIndex = 2;
+        private int _oneLevelIndex = 1;
 
         private void Start()
         {
@@ -45,9 +45,9 @@ namespace Assets.Scripts.GameLogic
 
         public void LoadNextScene()
         {
-            if (SceneManager.GetActiveScene().buildIndex + _firstLevelIndex <= _totalScenes)
+            if (SceneManager.GetActiveScene().buildIndex + _oneLevelIndex <= _totalScenes)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + _firstLevelIndex, LoadSceneMode.Single);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + _oneLevelIndex, LoadSceneMode.Single); 
             }
         }
 
