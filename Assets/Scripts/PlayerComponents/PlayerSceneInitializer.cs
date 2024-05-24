@@ -98,7 +98,7 @@ namespace Assets.Scripts.PlayerComponents
         {
             Pauser pauser = new Pauser(_audioMixer, _mobileInput);
        
-            _globalUI.Init(player,_sceneLoader, _audioMixer); 
+            _globalUI.Init(player,_sceneLoader, _audioMixer, pauser); 
             _score.Init(player, pauser, _sceneLoader, _globalUI.EndGamePanel);
             _nextLevelZone.Init(_score, _sceneLoader, player, pauser, _globalUI.NextLevelPanel); 
             _enemyFactory.WaveStarted += _globalUI.OnWaveStarted;

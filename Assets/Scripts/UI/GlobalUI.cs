@@ -20,6 +20,7 @@ namespace Assets.Scripts.UI
         private SceneLoader _sceneLoader;
         private AudioMixer _audioMixer;
         private Player _player;
+        
 
         public ScorePanel NextLevelPanel => _nextLevelPanel;
         public ScorePanel EndGamePanel => _endGamePanel;
@@ -31,7 +32,7 @@ namespace Assets.Scripts.UI
             _player.LevelChanged -= _playerUI.OnLevelChanged;
         }
 
-        public void Init(Player player, SceneLoader loader, AudioMixer mixer) 
+        public void Init(Player player, SceneLoader loader, AudioMixer mixer, Pauser pauser) 
         {
             _sceneLoader = loader;
             _player = player;
@@ -39,6 +40,7 @@ namespace Assets.Scripts.UI
 
             _player.LevelChanged += _playerUI.OnLevelChanged;
             _playerUI.SignToPlayerValuesChanges(player);
+            _pausePanel.SignToPauserEvents(pauser);
 
             _audioMixer.SignSoundValuesChanges(_soundToggler);
             _audioMixer.VolumeValueChanged += _soundToggler.SetCurrentStatus;
