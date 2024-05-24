@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4563965175963669075}
   - component: {fileID: 1041400259058759367}
   m_Layer: 0
-  m_Name: CastleModel
+  m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
