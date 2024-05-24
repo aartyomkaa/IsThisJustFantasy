@@ -122,6 +122,7 @@ namespace Assets.Scripts.EnemyComponents
             yield return new WaitForSeconds(time);
 
             _health = _data.Health;
+            HealthValueChanged?.Invoke(_health);
             gameObject.SetActive(false);
         }
     }
