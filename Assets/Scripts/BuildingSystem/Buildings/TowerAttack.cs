@@ -38,7 +38,6 @@ namespace Assets.Scripts.BuildingSystem
             {
                 if (target.Health > 0 && _currentDelay >= _delayOfShoot)
                 {
-                    Debug.Log(target.Health);
                     Shoot(target);
                     _currentDelay = 0;
                 }
