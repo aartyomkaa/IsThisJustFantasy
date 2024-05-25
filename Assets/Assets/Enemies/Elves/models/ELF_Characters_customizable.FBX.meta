@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 4d96a0eecc83e2e4bab3541489dacb4d
 ModelImporter:
-  serializedVersion: 26
+  serializedVersion: 22200
   internalIDToNameTable:
   - first:
       1: 100000
@@ -2614,7 +2614,7 @@ ModelImporter:
       name: ELF_WoodElf_Standard_Units
     second: {fileID: 2100000, guid: 8c10d0579a1faa547b0825e1e3a93c76, type: 2}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 1
     materialSearch: 1
     materialLocation: 1
@@ -2623,6 +2623,7 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
@@ -2644,33 +2645,42 @@ ModelImporter:
   meshes:
     lODScreenPercentages: []
     globalScale: 1
-    meshCompression: 0
+    meshCompression: 2
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
+    importPhysicalCameras: 1
     importVisibility: 0
     importBlendShapes: 0
     importCameras: 0
     importLights: 0
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
     preserveHierarchy: 0
     skinWeightsMode: 0
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
+    optimizeBones: 1
     meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
+    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 0
+    normalImportMode: 1
     tangentImportMode: 3
     normalCalculationMode: 4
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
@@ -2678,7 +2688,6 @@ ModelImporter:
     normalSmoothingSource: 0
   referencedClips: []
   importAnimation: 0
-  copyAvatar: 0
   humanDescription:
     serializedVersion: 3
     human:
@@ -2946,26 +2955,22 @@ ModelImporter:
     - name: ELF_weapon_bow
       parentName: L_hand_container
       position: {x: 0.000000006055832, y: 0, z: 0}
-      rotation: {x: 0.000000029802326, y: 0.000000011175873, z: -0.00000003911556,
-        w: 1}
+      rotation: {x: 0.000000029802326, y: 0.000000011175873, z: -0.00000003911556, w: 1}
       scale: {x: 0.9999999, y: 0.99999994, z: 1}
     - name: ELF_weapon_staff_A
       parentName: L_hand_container
       position: {x: -0.000000024223327, y: 0, z: 0}
-      rotation: {x: 0.000000044703476, y: -0.000000040978197, z: 0.000000065192594,
-        w: 1}
+      rotation: {x: 0.000000044703476, y: -0.000000040978197, z: 0.000000065192594, w: 1}
       scale: {x: 0.9999998, y: 1.0000001, z: 1.0000001}
     - name: ELF_weapon_staff_B
       parentName: L_hand_container
       position: {x: -0.000000036334992, y: 0, z: -0.00000024223328}
-      rotation: {x: 0.000000044703476, y: -0.000000040978197, z: 0.000000065192594,
-        w: 1}
+      rotation: {x: 0.000000044703476, y: -0.000000040978197, z: 0.000000065192594, w: 1}
       scale: {x: 0.9999998, y: 1.0000001, z: 1.0000001}
     - name: ELF_weapon_staff_C
       parentName: L_hand_container
       position: {x: -0.000000024223327, y: 0, z: 0}
-      rotation: {x: 0.000000044703476, y: -0.000000040978197, z: 0.000000065192594,
-        w: 1}
+      rotation: {x: 0.000000044703476, y: -0.000000040978197, z: 0.000000065192594, w: 1}
       scale: {x: 0.9999998, y: 1.0000001, z: 1.0000001}
     - name: L_shield_container
       parentName: Bip001 L Hand
@@ -2975,20 +2980,17 @@ ModelImporter:
     - name: ELF_shield_A
       parentName: L_shield_container
       position: {x: 0.0000007751465, y: 0.00000009689331, z: -0.00000019378662}
-      rotation: {x: -0.00000013411041, y: 0.00000004284089, z: -0.000000024214408,
-        w: 1}
+      rotation: {x: -0.00000013411041, y: 0.00000004284089, z: -0.000000024214408, w: 1}
       scale: {x: 0.99999887, y: 1.0000002, z: 1.0000008}
     - name: ELF_shield_B
       parentName: L_shield_container
       position: {x: -0.00000038757324, y: -0.000000024223327, z: 0}
-      rotation: {x: -0.00000013411041, y: 0.00000004284089, z: -0.000000024214408,
-        w: 1}
+      rotation: {x: -0.00000013411041, y: 0.00000004284089, z: -0.000000024214408, w: 1}
       scale: {x: 0.99999887, y: 1.0000002, z: 1.0000008}
     - name: ELF_shield_C
       parentName: L_shield_container
       position: {x: -0, y: 0.00000009689331, z: 0}
-      rotation: {x: -0.00000013411041, y: 0.00000004284089, z: -0.000000024214408,
-        w: 1}
+      rotation: {x: -0.00000013411041, y: 0.00000004284089, z: -0.000000024214408, w: 1}
       scale: {x: 0.99999887, y: 1.0000002, z: 1.0000008}
     - name: Bip001 Neck
       parentName: Bip001 Spine
@@ -3033,38 +3035,32 @@ ModelImporter:
     - name: ELF_weapon_axe
       parentName: R_hand_container
       position: {x: -0, y: -0.00000038757324, z: 0}
-      rotation: {x: 0.000000074505785, y: -0.000000055879354, z: -0.000000020489093,
-        w: 1}
+      rotation: {x: 0.000000074505785, y: -0.000000055879354, z: -0.000000020489093, w: 1}
       scale: {x: 0.9999999, y: 1.0000002, z: 1.0000002}
     - name: ELF_weapon_dagger
       parentName: R_hand_container
       position: {x: -0.000000048446655, y: 0, z: 0}
-      rotation: {x: 0.000000074505785, y: -0.000000055879354, z: -0.000000020489093,
-        w: 1}
+      rotation: {x: 0.000000074505785, y: -0.000000055879354, z: -0.000000020489093, w: 1}
       scale: {x: 0.9999999, y: 1.0000002, z: 1.0000002}
     - name: ELF_weapon_hammer
       parentName: R_hand_container
       position: {x: -0.000000006055832, y: -0.00000038757324, z: 0.00000038757324}
-      rotation: {x: 0.000000074505785, y: -0.000000055879354, z: -0.000000020489093,
-        w: 1}
+      rotation: {x: 0.000000074505785, y: -0.000000055879354, z: -0.000000020489093, w: 1}
       scale: {x: 0.9999999, y: 1.0000002, z: 1.0000002}
     - name: ELF_weapon_spear
       parentName: R_hand_container
       position: {x: 0.000000042390823, y: -0.0000007751465, z: -0.00000019378662}
-      rotation: {x: 0.00000001490115, y: -0.00000009126963, z: -0.00000006705523,
-        w: 1}
+      rotation: {x: 0.00000001490115, y: -0.00000009126963, z: -0.00000006705523, w: 1}
       scale: {x: 0.9999998, y: 1.0000002, z: 1.0000002}
     - name: ELF_weapon_sword_A
       parentName: R_hand_container
       position: {x: -0.000000006055832, y: 0, z: 0.00000019378662}
-      rotation: {x: 0.000000074505785, y: -0.000000055879354, z: -0.000000020489093,
-        w: 1}
+      rotation: {x: 0.000000074505785, y: -0.000000055879354, z: -0.000000020489093, w: 1}
       scale: {x: 0.9999999, y: 1.0000002, z: 1.0000002}
     - name: ELF_weapon_sword_B
       parentName: R_hand_container
       position: {x: -0.000000048446655, y: -0.00000038757324, z: 0}
-      rotation: {x: 0.000000074505785, y: -0.000000055879354, z: -0.000000020489093,
-        w: 1}
+      rotation: {x: 0.000000074505785, y: -0.000000055879354, z: -0.000000020489093, w: 1}
       scale: {x: 0.9999999, y: 1.0000002, z: 1.0000002}
     - name: Bone_bag
       parentName: Bip001 Spine
@@ -3094,8 +3090,7 @@ ModelImporter:
     - name: ELF_Xtra_quiver
       parentName: Quiver_container
       position: {x: 0.00000009689331, y: -0.000000024223327, z: 0.00000009689331}
-      rotation: {x: 0.000000041408136, y: -0.000000029802326, z: -0.00000003230531,
-        w: 1}
+      rotation: {x: 0.000000041408136, y: -0.000000029802326, z: -0.00000003230531, w: 1}
       scale: {x: 1, y: 0.99999964, z: 0.99999976}
     - name: ELF_Units_Arms_A
       parentName: ELF_Characters_customizable(Clone)
@@ -3265,8 +3260,13 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  importBlendShapeDeformPercent: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
