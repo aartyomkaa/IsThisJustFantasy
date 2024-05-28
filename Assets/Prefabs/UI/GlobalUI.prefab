@@ -2971,6 +2971,7 @@ MonoBehaviour:
   _wavesNumber: {fileID: 3980064801853297633}
   _nextLevelPanel: {fileID: 3154916298772380710}
   _endGamePanel: {fileID: 2089717337005751399}
+  _winGamePanel: {fileID: 0}
 --- !u!1 &3066615613737739857
 GameObject:
   m_ObjectHideFlags: 0
