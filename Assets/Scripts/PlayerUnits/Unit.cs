@@ -34,9 +34,6 @@ namespace Assets.Scripts.PlayerUnits
 
         private void Start()
         {
-            if (_health <= 0)
-                return;
-
             _animator = GetComponent<Animator>();
             _agent = GetComponent<NavMeshAgent>();
             _unitSFX = GetComponentInChildren<UnitSFX>();
@@ -48,6 +45,9 @@ namespace Assets.Scripts.PlayerUnits
 
         public void Update() 
         {
+            if (_health <= 0)
+                return;
+
             _fsm.Update();
         }
 
@@ -93,12 +93,14 @@ namespace Assets.Scripts.PlayerUnits
         private IEnumerator Death(float time)
         {
             _unitSFX.PlayDeathSound();
+            _fsm.SetTarget(null);
             _agent.ResetPath();
             _animator.SetTrigger(AnimatorHash.Death);
 
             yield return new WaitForSeconds(time);
 
             _health = _data.Health;
+            HealthValueChanged?.Invoke(_health);
             gameObject.SetActive(false);
         }
     }

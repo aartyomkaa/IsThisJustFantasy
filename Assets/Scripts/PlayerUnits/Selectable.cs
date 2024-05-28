@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 namespace Assets.Scripts.PlayerUnits
 {
-    internal class Selectable : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+    internal class Selectable : MonoBehaviour
     {
         [SerializeField] private ParticleSystem _ring;
 
@@ -33,20 +33,9 @@ namespace Assets.Scripts.PlayerUnits
             Deselected?.Invoke(this);
         }
 
-        public void OnPointerEnter(PointerEventData eventData)
+        private void OnMouseDown()
         {
-            _ring.Play();
-        }
-
-        public void OnPointerExit(PointerEventData eventData)
-        {
-            if (_isSelected == false)
-                _ring.Stop();
-        }
-
-        public void OnPointerClick(PointerEventData eventData)
-        {
-            if (_isSelected) 
+            if (_isSelected)
             {
                 _isSelected = false;
                 _ring.Stop();

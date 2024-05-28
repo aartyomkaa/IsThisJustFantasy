@@ -25,6 +25,8 @@ namespace Assets.Scripts.GameLogic.Utilities
 
             foreach (RaycastResult result in _results)
             {
+                Debug.Log(result);
+
                 if (result.gameObject.layer == _ui || result.gameObject.GetComponent<Selectable>() != null)
                 {
                     return true;

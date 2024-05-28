@@ -26,11 +26,14 @@ namespace Assets.Scripts.GameLogic
                     => Vector3.Distance(currentPosition, x.transform.position)
                     .CompareTo(Vector3.Distance(currentPosition, y.transform.position)));
 
-                if (_hitColliders[0].TryGetComponent<IDamageable>(out IDamageable enemy))
+                foreach (var hit in _hitColliders)
                 {
-                    target = enemy;
+                    if (hit.TryGetComponent<IDamageable>(out IDamageable enemy) && enemy.Health > 0)
+                    {
+                        target = enemy;
 
-                    return true;
+                        return true;
+                    }
                 }
             }
 

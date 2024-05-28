@@ -456,7 +456,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 30.499542, y: 0.09155798, z: 39.37899}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 19209224241790067}
@@ -1154,6 +1154,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5426231435700227310}
     m_Modifications:
+    - target: {fileID: 2762438330383451536, guid: a3e69961184192849bd761a6ffb920f8, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -36.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 2762438330383451536, guid: a3e69961184192849bd761a6ffb920f8, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -6.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 2762438330383451536, guid: a3e69961184192849bd761a6ffb920f8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1.6500015
+      objectReference: {fileID: 0}
+    - target: {fileID: 2762438330383451536, guid: a3e69961184192849bd761a6ffb920f8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4088140916701779905, guid: a3e69961184192849bd761a6ffb920f8, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7612930954031204126, guid: a3e69961184192849bd761a6ffb920f8, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1161,6 +1181,10 @@ PrefabInstance:
     - target: {fileID: 7612930954031204126, guid: a3e69961184192849bd761a6ffb920f8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7874605421604219913, guid: a3e69961184192849bd761a6ffb920f8, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7899464490875058333, guid: a3e69961184192849bd761a6ffb920f8, type: 3}
       propertyPath: m_Name
@@ -1250,7 +1274,8 @@ PrefabInstance:
       propertyPath: _unit
       value: 
       objectReference: {fileID: 3030303930352175095}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4084882467321464778, guid: a3e69961184192849bd761a6ffb920f8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

@@ -312,7 +312,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4279007877362130887}
-  - component: {fileID: 5172209894036213398}
   - component: {fileID: 1635978982423999873}
   m_Layer: 11
   m_Name: AttackRadius
@@ -336,27 +335,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5111766953552526547}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &5172209894036213398
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8871706899741376528}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 13.288124
-  m_Center: {x: -0.93514824, y: -3.3961754, z: -0.80900574}
 --- !u!114 &1635978982423999873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,6 +351,7 @@ MonoBehaviour:
   _arrowPrefab: {fileID: 4306390963386993369, guid: a495a43c4ec10aa4c98ca79951eaacf3, type: 3}
   _delayOfShoot: 2
   _damage: 15
+  _range: 15
   _targetlayerMask:
     serializedVersion: 2
     m_Bits: 64
