@@ -1,5 +1,7 @@
 using Assets.Scripts.Constants;
 using Assets.Scripts.PlayerComponents;
+using Assets.Scripts.YandexSDK;
+using Lean.Localization;
 using System;
 using TMPro;
 using UnityEngine;
@@ -16,6 +18,8 @@ namespace Assets.Scripts.UI
         [SerializeField] private Button _extraButton;   // кнопка начала новой волны, пока не знаю как назвать
         [SerializeField] private TutorialPanel _tutorial;
         [SerializeField] private AudioSource _audioSource;
+        [SerializeField] private LeanToken _cost;
+        [SerializeField] private InterstitialAdShower _interstitialAd;
         
         private Player _currentPlayer;
         private bool _currentStatus;
@@ -77,7 +81,7 @@ namespace Assets.Scripts.UI
 
         private void SetCostToButtonText(Button activeButton, int costToBuy)
         {
-            activeButton.GetComponentInChildren<TMP_Text>().text += costToBuy;
+            _cost.SetValue(costToBuy);
         }
 
         public void OnFirsttButtonClicked()
@@ -90,6 +94,8 @@ namespace Assets.Scripts.UI
 
         public void OnSecondButtonClicked()
         {
+            _interstitialAd.Show();
+
             SecondButtonClicked?.Invoke(_currentPlayer, _costToBuy, UiHash.AdButtonIndex);
         }
 
