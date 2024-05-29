@@ -15,7 +15,6 @@ namespace Assets.Scripts.BuildingSystem
         [SerializeField] private float _strength;
         [SerializeField] private float _valueOfScaleOfParticleOfDestroy;
         [SerializeField] private Transform _spotOfDestroyEffects;
-        [SerializeField] private TutorialPanel _tutorialPanel;
 
         private AudioSource _audiosourse;
         private Vector3 _scaleOfParticleOfDestroy;
