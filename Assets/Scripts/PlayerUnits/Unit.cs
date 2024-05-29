@@ -12,7 +12,7 @@ namespace Assets.Scripts.PlayerUnits
 {
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(NavMeshAgent))]
-    internal class Unit : Selectable, IDamageable, IFSMControllable, IHealthDisplayable
+    internal abstract class Unit : Selectable, IDamageable, IFSMControllable, IHealthDisplayable
     {
         [SerializeField] private AudioSource _audioSource;
 

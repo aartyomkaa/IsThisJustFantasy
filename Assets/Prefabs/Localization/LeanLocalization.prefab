@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 806f0696300aeac44a0e17efee222854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLanguage: Japanese
+  currentLanguage: Russian
   detectLanguage: 1
   defaultLanguage: English
   saveLoad: 1
@@ -79,3 +79,27 @@ MonoBehaviour:
   - Root: {fileID: 6283882256625339181, guid: 75bae2701a1af8947a7a032da4a31972, type: 3}
     sources:
     - {fileID: 3469671815210071272, guid: 75bae2701a1af8947a7a032da4a31972, type: 3}
+  - Root: {fileID: 4609407673877320781, guid: 111f96e838939844f872936ccf628fa2, type: 3}
+    sources:
+    - {fileID: 104431203255281535, guid: 111f96e838939844f872936ccf628fa2, type: 3}
+  - Root: {fileID: 4609407673877320781, guid: 37628517c65eba848871cb7736cf3848, type: 3}
+    sources:
+    - {fileID: 104431203255281535, guid: 37628517c65eba848871cb7736cf3848, type: 3}
+  - Root: {fileID: 4609407673877320781, guid: ac7ffa1ea4144474f98153f9f8d79602, type: 3}
+    sources:
+    - {fileID: 104431203255281535, guid: ac7ffa1ea4144474f98153f9f8d79602, type: 3}
+  - Root: {fileID: 4609407673877320781, guid: 73a89bc5dc0a16c40979a000abcabe2b, type: 3}
+    sources:
+    - {fileID: 104431203255281535, guid: 73a89bc5dc0a16c40979a000abcabe2b, type: 3}
+  - Root: {fileID: 4609407673877320781, guid: 9a9a038a9c459004fa9cf8b1d579bd0f, type: 3}
+    sources:
+    - {fileID: 104431203255281535, guid: 9a9a038a9c459004fa9cf8b1d579bd0f, type: 3}
+  - Root: {fileID: 4609407673877320781, guid: 9bc4ad9fad863514786c515a1259a6ed, type: 3}
+    sources:
+    - {fileID: 104431203255281535, guid: 9bc4ad9fad863514786c515a1259a6ed, type: 3}
+  - Root: {fileID: 4609407673877320781, guid: 3b24a999698f1fd4a8ebc732196c33a8, type: 3}
+    sources:
+    - {fileID: 104431203255281535, guid: 3b24a999698f1fd4a8ebc732196c33a8, type: 3}
+  - Root: {fileID: 4609407673877320781, guid: bc86dcbc8b4ae1944b230109bbd31d86, type: 3}
+    sources:
+    - {fileID: 104431203255281535, guid: bc86dcbc8b4ae1944b230109bbd31d86, type: 3}
