@@ -457,7 +457,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Continue exploring
+  m_Text: "\u041F\u0440\u043E\u0434\u043E\u043B\u0436\u0438\u0442\u044C \u0438\u0437\u0443\u0447\u0435\u043D\u0438\u0435"
 --- !u!114 &1441056588689855540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -471,7 +471,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   translationName: Continue exploring
-  FallbackText: 
+  FallbackText: Continue exploring
 --- !u!1 &459105383063577362
 GameObject:
   m_ObjectHideFlags: 0
@@ -1730,7 +1730,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Your score
+  m_Text: "\u0412\u0430\u0448 \u0441\u0447\u0435\u0442"
 --- !u!114 &1827145938815879122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1744,7 +1744,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   translationName: Your Score
-  FallbackText: 
+  FallbackText: Your score
 --- !u!1 &1957145894229681104
 GameObject:
   m_ObjectHideFlags: 0
@@ -2578,7 +2578,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: VICTORY
+  m_Text: "\u041F\u041E\u0411\u0415\u0414\u0410"
 --- !u!114 &4701346650029883678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2592,7 +2592,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   translationName: Victory
-  FallbackText: 
+  FallbackText: VICTORY
 --- !u!1 &2735488398167865405
 GameObject:
   m_ObjectHideFlags: 0
@@ -2729,7 +2729,7 @@ MonoBehaviour:
   _wavesNumber: {fileID: 3980064801853297633}
   _nextLevelPanel: {fileID: 3154916298772380710}
   _endGamePanel: {fileID: 2089717337005751399}
-  _winGamePanel: {fileID: 0}
+  _winGamePanel: {fileID: 1557019676776747151}
 --- !u!1 &3066615613737739857
 GameObject:
   m_ObjectHideFlags: 0
@@ -4933,9 +4933,9 @@ RectTransform:
   m_Father: {fileID: 2969166792897240393}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.17415386, y: 0.25}
-  m_AnchorMax: {x: 0.61, y: 0.84000003}
-  m_AnchoredPosition: {x: -14, y: -9}
-  m_SizeDelta: {x: 17.709991, y: -36}
+  m_AnchorMax: {x: 0.83100003, y: 0.77000004}
+  m_AnchoredPosition: {x: -14, y: -7}
+  m_SizeDelta: {x: 7.619507, y: 16.4378}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &5967039924673773845
 CanvasRenderer:
@@ -4978,7 +4978,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Main menu
+  m_Text: "\u0413\u043B\u0430\u0432\u043D\u043E\u0435 \u043C\u0435\u043D\u044E"
 --- !u!114 &6891122989978957824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4992,7 +4992,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   translationName: Main Menu
-  FallbackText: 
+  FallbackText: Main menu
 --- !u!1 &6798073909482597520
 GameObject:
   m_ObjectHideFlags: 0
@@ -6946,7 +6946,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4278107626557089041, guid: 6b30856bca0c68c4c91e6abff3a3af8c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.27767754
+      value: 0.27767944
       objectReference: {fileID: 0}
     - target: {fileID: 4278107626787119450, guid: 6b30856bca0c68c4c91e6abff3a3af8c, type: 3}
       propertyPath: m_AnchorMax.x

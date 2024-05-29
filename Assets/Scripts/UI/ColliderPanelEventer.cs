@@ -94,8 +94,8 @@ namespace Assets.Scripts.UI
 
         public void OnSecondButtonClicked()
         {
+            Debug.Log("Показываю рекламу");
             _interstitialAd.Show();
-
             SecondButtonClicked?.Invoke(_currentPlayer, _costToBuy, UiHash.AdButtonIndex);
         }
 

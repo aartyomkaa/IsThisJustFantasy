@@ -10,16 +10,22 @@ namespace Assets.Scripts.GameLogic
     internal class NextLevelZone : MonoBehaviour
     {
         private ScorePanel _nextLevelPanel;
+        private ScorePanel _winPanel;
 
         private Score _score;
         private SceneLoader _sceneLoader;
         private Player _player;
         private Pauser _pauser;
 
+        private bool _isLastLevelReached = false;
+
         private void OnDisable()
         {
             _nextLevelPanel.BackButtonPressed -= OnBackButtonPressed;
-            _nextLevelPanel.ContinueButtonPressed -= OnContinueButtonPressed;
+            _nextLevelPanel.ContinueButtonPressed -= OnContinueLevelButtonPressed;
+            _sceneLoader.LastLevelReached -= OnLastLevelReached;
+            _winPanel.BackButtonPressed -= OnMenuButtonPressed;
+            _winPanel.ContinueButtonPressed -= OnBackButtonPressed;
         }
 
         private void OnTriggerEnter(Collider other)
@@ -38,17 +44,21 @@ namespace Assets.Scripts.GameLogic
             }
         }
 
-        public void Init(Score score, SceneLoader sceneLoader, Player player, Pauser pauser, ScorePanel nextLevelPanel)
+        public void Init(Score score, SceneLoader sceneLoader, Player player, Pauser pauser, ScorePanel nextLevelPanel, ScorePanel winPanel)
         {
             _pauser = pauser;
             _nextLevelPanel = nextLevelPanel;
+            _winPanel = winPanel;
             _player = player;
 
             _nextLevelPanel.BackButtonPressed += OnBackButtonPressed;
-            _nextLevelPanel.ContinueButtonPressed += OnContinueButtonPressed;
+            _nextLevelPanel.ContinueButtonPressed += OnContinueLevelButtonPressed;
+            _winPanel.BackButtonPressed += OnMenuButtonPressed;                   
+            _winPanel.ContinueButtonPressed += OnBackButtonPressed;
 
             _score = score;
             _sceneLoader = sceneLoader;
+            _sceneLoader.LastLevelReached += OnLastLevelReached;
         }
 
         public void OnAllWavesDefeated()
@@ -58,12 +68,21 @@ namespace Assets.Scripts.GameLogic
 
         private void OpenNextLevelPanel()
         {
-            _nextLevelPanel.SetTextScore(_score.GetLevelScore().ToString());
-            _nextLevelPanel.gameObject.SetActive(true);
-            _pauser.Pause();
+            if (_isLastLevelReached == false)
+            {
+                _nextLevelPanel.SetTextScore(_score.GetLevelScore().ToString());
+                _nextLevelPanel.gameObject.SetActive(true);
+                _pauser.Pause();
+            }
+            else
+            {
+                _winPanel.SetTextScore(_score.GetLevelScore().ToString());
+                _winPanel.gameObject.SetActive(true);
+                _pauser.Pause();
+            }      
         }
 
-        private void OnContinueButtonPressed()
+        private void OnContinueLevelButtonPressed()
         {
             _player.LevelUp();
             _nextLevelPanel.gameObject.SetActive(false);
@@ -72,10 +91,30 @@ namespace Assets.Scripts.GameLogic
             _sceneLoader.LoadNextScene();
         }
 
+        private void OnMenuButtonPressed()
+        {
+            _winPanel.gameObject.SetActive(false);
+            _sceneLoader.LoadMenuScene();
+            _pauser.Resume();
+        }
+
+        private void OnLastLevelReached(bool isLastLevelReached)
+        {
+            _isLastLevelReached = isLastLevelReached;
+        }
+
         private void OnBackButtonPressed()
         {
-            _nextLevelPanel.gameObject.SetActive(false);
-            _pauser.Resume();
+            if(_isLastLevelReached == false)
+            {
+                _nextLevelPanel.gameObject.SetActive(false);
+                _pauser.Resume();
+            }
+            else
+            {
+                _winPanel.gameObject.SetActive(false);
+                _pauser.Resume();
+            }   
         }
     }
 }

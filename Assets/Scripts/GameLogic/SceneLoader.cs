@@ -2,6 +2,7 @@
 using UnityEngine.SceneManagement;
 using Assets.Scripts.Constants;
 using Assets.Scripts.UI;
+using System;
 
 namespace Assets.Scripts.GameLogic
 {
@@ -11,10 +12,19 @@ namespace Assets.Scripts.GameLogic
 
         private int _totalScenes;
         private int _oneLevelIndex = 1;
+        private bool _isLastLevelReached;
+
+        public event Action<bool> LastLevelReached;
 
         private void Start()
         {
             _totalScenes = SceneManager.sceneCountInBuildSettings;
+
+            if (SceneManager.GetActiveScene().buildIndex + _oneLevelIndex == _totalScenes)
+            {
+                _isLastLevelReached = true;
+                LastLevelReached?.Invoke(_isLastLevelReached);
+            }
         }
 
         private void OnDisable()
@@ -48,7 +58,7 @@ namespace Assets.Scripts.GameLogic
             if (SceneManager.GetActiveScene().buildIndex + _oneLevelIndex <= _totalScenes)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + _oneLevelIndex, LoadSceneMode.Single); 
-            }
+            }  
         }
 
         public void RestartCurrentScene()

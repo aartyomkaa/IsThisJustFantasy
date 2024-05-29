@@ -26,6 +26,7 @@ namespace Assets.Scripts.UI
 
         public ScorePanel NextLevelPanel => _nextLevelPanel;
         public ScorePanel EndGamePanel => _endGamePanel;
+        public ScorePanel WinGamePanel => _winGamePanel;
 
         private void OnDisable()
         {
