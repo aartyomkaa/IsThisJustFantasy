@@ -1,4 +1,3 @@
-using Assets.Scripts.GameLogic;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,21 +6,17 @@ namespace Assets.Scripts.UI
 {
     internal class PausePanel : MonoBehaviour
     {
-      
         [SerializeField] private Button _restartSceneButton;
         [SerializeField] private Button _exitToMainMenuButton;
         [SerializeField] private GameObject _panel;
 
-        private  Pauser _currentPauser;
-
-       // public Pauser CurrentPauser => _currentPauser;
+        private Pauser _currentPauser;
 
         public Button OpenButton;
         public Button CloseButton;
        
         public event Action MainMenuButtonClicked;
         public event Action RestartSceneButtonClicked;
-
 
         public void SignToPauserEvents(Pauser pauser)
         {
@@ -31,7 +26,6 @@ namespace Assets.Scripts.UI
             _exitToMainMenuButton.onClick.AddListener(OnMainMenuButtonClicked);
             _restartSceneButton.onClick.AddListener(OnRestartSceneButtonClicked);
         }
-
 
         private void OnDisable()
         {

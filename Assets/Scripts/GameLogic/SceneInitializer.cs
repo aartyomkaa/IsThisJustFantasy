@@ -6,16 +6,16 @@ using Agava.WebUtility;
 using Assets.Scripts.Audio;
 using Assets.Scripts.BuildingSystem.Buildings;
 using Assets.Scripts.BuildingSystem.System;
+using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.CameraComponents;
 using Assets.Scripts.EnemyComponents;
-using Assets.Scripts.GameLogic;
 using Assets.Scripts.PlayerInput;
 using Assets.Scripts.YandexSDK;
 using Assets.Scripts.UI;
 
-namespace Assets.Scripts.PlayerComponents
+namespace Assets.Scripts.GameLogic
 {
-    internal class PlayerSceneInitializer : MonoBehaviour
+    internal class SceneInitializer : MonoBehaviour
     {
         [SerializeField] private Player _player;
         [SerializeField] private MainBuilding _mainBuilding;
@@ -28,6 +28,8 @@ namespace Assets.Scripts.PlayerComponents
         [SerializeField] private SceneLoader _sceneLoader;
         [SerializeField] private BuildingService _buildingSystem;
         [SerializeField] private NextLevelZone _nextLevelZone;
+        [SerializeField] private InterstitialAdShower _interstitialAd;
+        [SerializeField] private VideoAdShower _videoAd;
         [SerializeField] private Score _score;
 
         private void OnEnable()
@@ -56,7 +58,7 @@ namespace Assets.Scripts.PlayerComponents
 
         private void OnEventerWithAdButtonWasMade(Button button)
         {
-            Debug.Log(button.name); // ?????
+            button.onClick.AddListener(_interstitialAd.Show);
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -65,6 +67,7 @@ namespace Assets.Scripts.PlayerComponents
 
             InitializeInput(player);
             InitializeUI(player);
+            InitializeAd();
         }
 
         private Player InitializePlayer()
@@ -98,11 +101,17 @@ namespace Assets.Scripts.PlayerComponents
         {
             Pauser pauser = new Pauser(_audioMixer, _mobileInput);
        
-            _globalUI.Init(player,_sceneLoader, _audioMixer, pauser); 
+            _globalUI.Init(player,_sceneLoader, _audioMixer, pauser, _videoAd); 
             _score.Init(player, pauser, _sceneLoader, _globalUI.EndGamePanel);
             _nextLevelZone.Init(_score, _sceneLoader, player, pauser, _globalUI.NextLevelPanel); 
             _enemyFactory.WaveStarted += _globalUI.OnWaveStarted;
             _enemyFactory.WaveSpawnAmountChanged += _globalUI.OnWaveSpawnAmountChanged;
+        }
+
+        private void InitializeAd()
+        {
+            _interstitialAd.Init(_audioMixer);
+            _videoAd.Init(_audioMixer);
         }
     }
 }

@@ -22,4 +22,4 @@ MonoBehaviour:
   AttackSpeed: 2
   AttackRange: 2
   AggroRange: 5
-  Prefab: {fileID: -1230271623890824326, guid: fe5d0b40303882c43a7e9de4698ea63a, type: 3}
+  Prefab: {fileID: 2730463041631273973, guid: fe5d0b40303882c43a7e9de4698ea63a, type: 3}

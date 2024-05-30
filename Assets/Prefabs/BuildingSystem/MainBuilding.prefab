@@ -252,9 +252,7 @@ MonoBehaviour:
   _secondButton: {fileID: 2326959115535464510}
   _extraButton: {fileID: 0}
   _tutorial: {fileID: 2330977652713121068}
-  _audioSource: {fileID: 0}
   _cost: {fileID: 3469671815210071272, guid: 75bae2701a1af8947a7a032da4a31972, type: 3}
-  _interstitialAd: {fileID: 0}
 --- !u!135 &7511716510800338889
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -555,7 +553,6 @@ MonoBehaviour:
   _strength: 150
   _valueOfScaleOfParticleOfDestroy: 3.5
   _spotOfDestroyEffects: {fileID: 4720294941917349488}
-  _tutorialPanel: {fileID: 2330977652713121068}
   IndexOfBuilding: 0
 --- !u!95 &2308016168629507532
 Animator:

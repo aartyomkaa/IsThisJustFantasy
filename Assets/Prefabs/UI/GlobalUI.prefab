@@ -2729,7 +2729,7 @@ MonoBehaviour:
   _wavesNumber: {fileID: 3980064801853297633}
   _nextLevelPanel: {fileID: 3154916298772380710}
   _endGamePanel: {fileID: 2089717337005751399}
-  _winGamePanel: {fileID: 0}
+  _winGamePanel: {fileID: 1557019676776747151}
 --- !u!1 &3066615613737739857
 GameObject:
   m_ObjectHideFlags: 0
@@ -6946,7 +6946,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4278107626557089041, guid: 6b30856bca0c68c4c91e6abff3a3af8c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.27767754
+      value: 0.27767944
       objectReference: {fileID: 0}
     - target: {fileID: 4278107626787119450, guid: 6b30856bca0c68c4c91e6abff3a3af8c, type: 3}
       propertyPath: m_AnchorMax.x

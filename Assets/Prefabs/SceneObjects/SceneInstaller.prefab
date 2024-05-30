@@ -44,8 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6ba0d4d09289f746b116a650e014aae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _adButtons: []
-  _audioMixer: {fileID: 7059007590806085919}
 --- !u!1 &2578964702437934285
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,22 +136,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 3530900179752792374}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44b32b139ad687047a29843acdc810d7, type: 3}
+  m_Script: {fileID: 11500000, guid: c754170a5ab780849860c7c67c8d4137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 246054152294843149, guid: 393504f7d3743e24faa618876404812d, type: 3}
+  _mainBuilding: {fileID: 0}
   _targetFollower: {fileID: 0}
-  _desktopInput: {fileID: 7767014089020145184, guid: ba64e974c8fe44847a99348e16c3f64c, type: 3}
-  _mobileInput: {fileID: 5832144339058954635, guid: 3903a6270cd3a7545b95508df2ff462e, type: 3}
+  _desktopInput: {fileID: 0}
+  _mobileInput: {fileID: 0}
   _audioMixer: {fileID: 7059007590806085919}
   _globalUI: {fileID: 5269537694327506808}
   _enemyFactory: {fileID: 0}
-  _interstitialAd: {fileID: 1431303192100847473}
-  _videoAd: {fileID: 8854807450515014847}
   _sceneLoader: {fileID: 4299264880780254435}
-  _buildingSystem: {fileID: 7116155157839635873, guid: 37634fbf9195e3c4c81be6023467b355, type: 3}
+  _buildingSystem: {fileID: 0}
   _nextLevelZone: {fileID: 0}
-  _playerScore: {fileID: 6451387315579997552}
+  _interstitialAd: {fileID: 1431303192100847473}
+  _videoAd: {fileID: 4308893278489417286}
+  _score: {fileID: 6451387315579997552}
 --- !u!1 &6182744578163918658
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,7 +162,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6151143577104518035}
-  - component: {fileID: 8854807450515014847}
+  - component: {fileID: 4308893278489417286}
   m_Layer: 0
   m_Name: VideoAd
   m_TagString: Untagged
@@ -186,7 +185,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7012923045867581616}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8854807450515014847
+--- !u!114 &4308893278489417286
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -198,8 +197,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4571299399751894fb1c922819ba03a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _adButtons: []
-  _audioMixer: {fileID: 7059007590806085919}
 --- !u!1001 &844717100824199904
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -354,6 +351,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7012923045867581616}
     m_Modifications:
+    - target: {fileID: 1441056588689855540, guid: 4fec0f9392d9fa34e9856d23e10214c4, type: 3}
+      propertyPath: FallbackText
+      value: Continue exploring
+      objectReference: {fileID: 0}
+    - target: {fileID: 1556591217078494195, guid: 4fec0f9392d9fa34e9856d23e10214c4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1659986489879644552, guid: 4fec0f9392d9fa34e9856d23e10214c4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 37.899437
@@ -394,6 +399,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1827145938815879122, guid: 4fec0f9392d9fa34e9856d23e10214c4, type: 3}
+      propertyPath: FallbackText
+      value: Your score
+      objectReference: {fileID: 0}
     - target: {fileID: 1858561639911013442, guid: 4fec0f9392d9fa34e9856d23e10214c4, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -406,6 +415,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GlobalUI
       objectReference: {fileID: 0}
+    - target: {fileID: 3294894141918240729, guid: 4fec0f9392d9fa34e9856d23e10214c4, type: 3}
+      propertyPath: FallbackText
+      value: Your score
+      objectReference: {fileID: 0}
     - target: {fileID: 3570684940059162440, guid: 4fec0f9392d9fa34e9856d23e10214c4, type: 3}
       propertyPath: _sceneLoader
       value: 
@@ -413,6 +426,38 @@ PrefabInstance:
     - target: {fileID: 3780478547546657053, guid: 4fec0f9392d9fa34e9856d23e10214c4, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -26.397583
+      objectReference: {fileID: 0}
+    - target: {fileID: 4701346650029883678, guid: 4fec0f9392d9fa34e9856d23e10214c4, type: 3}
+      propertyPath: FallbackText
+      value: VICTORY
+      objectReference: {fileID: 0}
+    - target: {fileID: 4870835328534250357, guid: 4fec0f9392d9fa34e9856d23e10214c4, type: 3}
+      propertyPath: FallbackText
+      value: Restart level
+      objectReference: {fileID: 0}
+    - target: {fileID: 5133138667613479414, guid: 4fec0f9392d9fa34e9856d23e10214c4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6891122989978957824, guid: 4fec0f9392d9fa34e9856d23e10214c4, type: 3}
+      propertyPath: FallbackText
+      value: Main menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7012992098365985753, guid: 4fec0f9392d9fa34e9856d23e10214c4, type: 3}
+      propertyPath: FallbackText
+      value: Main menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7149543213818063569, guid: 4fec0f9392d9fa34e9856d23e10214c4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.27767944
+      objectReference: {fileID: 0}
+    - target: {fileID: 8619729675534346300, guid: 4fec0f9392d9fa34e9856d23e10214c4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8706832792548156531, guid: 4fec0f9392d9fa34e9856d23e10214c4, type: 3}
+      propertyPath: FallbackText
+      value: ADVENTURE IS OVER
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

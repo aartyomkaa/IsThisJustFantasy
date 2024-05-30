@@ -2201,6 +2201,22 @@ PrefabInstance:
       propertyPath: m_FontData.m_Font
       value: 
       objectReference: {fileID: 12800000, guid: 7a9506cbcaba4e6488a923ba4bde5925, type: 3}
+    - target: {fileID: 2221723396680498438, guid: f29dcd3e471ffe345a6388edfc4cca32, type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 37
+      objectReference: {fileID: 0}
+    - target: {fileID: 2221723396680498438, guid: f29dcd3e471ffe345a6388edfc4cca32, type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2221723396680498438, guid: f29dcd3e471ffe345a6388edfc4cca32, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 37
+      objectReference: {fileID: 0}
+    - target: {fileID: 2221723396680498438, guid: f29dcd3e471ffe345a6388edfc4cca32, type: 3}
+      propertyPath: m_FontData.m_FontStyle
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4801807007348008863, guid: f29dcd3e471ffe345a6388edfc4cca32, type: 3}
       propertyPath: m_Enabled
       value: 1

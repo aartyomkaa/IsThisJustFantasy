@@ -76,7 +76,6 @@ MonoBehaviour:
   _secondButton: {fileID: 7615797959785786439}
   _extraButton: {fileID: 0}
   _tutorial: {fileID: 8653127893016834204}
-  _audioSource: {fileID: 422001695853681467}
   _cost: {fileID: 3469671815210071272, guid: 75bae2701a1af8947a7a032da4a31972, type: 3}
 --- !u!82 &422001695853681467
 AudioSource:
@@ -406,7 +405,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6070848939082308125
 RectTransform:
   m_ObjectHideFlags: 0
@@ -672,7 +671,6 @@ MonoBehaviour:
   _strength: 100
   _valueOfScaleOfParticleOfDestroy: 3
   _spotOfDestroyEffects: {fileID: 2134497963125540113}
-  _tutorialPanel: {fileID: 8653127893016834204}
   IndexOfBuilding: 3
   _prefabOfChest: {fileID: 6472579799652719637, guid: 4605d85942dc7964caee25f9377b9a9b, type: 3}
 --- !u!95 &3433262904813694332
@@ -908,7 +906,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Buy a chest for 1 coins
+  m_Text: Buy a chest for 20 coins
 --- !u!114 &2189517358784867027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -972,7 +970,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &780179332670133903
 RectTransform:
   m_ObjectHideFlags: 0

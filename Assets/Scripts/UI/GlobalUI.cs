@@ -4,6 +4,7 @@ using TMPro;
 using Assets.Scripts.Audio;
 using Assets.Scripts.GameLogic;
 using Assets.Scripts.PlayerComponents;
+using Assets.Scripts.YandexSDK;
 
 namespace Assets.Scripts.UI
 {
@@ -18,11 +19,10 @@ namespace Assets.Scripts.UI
         [SerializeField] private ScorePanel _endGamePanel;
         [SerializeField] private ScorePanel _winGamePanel;
 
-
         private SceneLoader _sceneLoader;
         private AudioMixer _audioMixer;
         private Player _player;
-        
+        private VideoAdShower _videoAdShower;
 
         public ScorePanel NextLevelPanel => _nextLevelPanel;
         public ScorePanel EndGamePanel => _endGamePanel;
@@ -32,13 +32,19 @@ namespace Assets.Scripts.UI
             _audioMixer.VolumeValueChanged -= _soundToggler.SetCurrentStatus;
 
             _player.LevelChanged -= _playerUI.OnLevelChanged;
+
+            _nextLevelPanel.ContinueButtonPressed -= _videoAdShower.Show;
+            _endGamePanel.ContinueButtonPressed -= _videoAdShower.Show;
+            _endGamePanel.BackButtonPressed -= _videoAdShower.Show;
+            _winGamePanel.BackButtonPressed -= _videoAdShower.Show;
         }
 
-        public void Init(Player player, SceneLoader loader, AudioMixer mixer, Pauser pauser) 
+        public void Init(Player player, SceneLoader loader, AudioMixer mixer, Pauser pauser, VideoAdShower videoAdShower) 
         {
             _sceneLoader = loader;
             _player = player;
             _audioMixer = mixer;
+            _videoAdShower = videoAdShower;
 
             _player.LevelChanged += _playerUI.OnLevelChanged;
             _playerUI.SignToPlayerValuesChanges(player);
@@ -48,6 +54,11 @@ namespace Assets.Scripts.UI
             _audioMixer.VolumeValueChanged += _soundToggler.SetCurrentStatus;
 
             _sceneLoader.SignToPausePanelEvents(_pausePanel);
+
+            _nextLevelPanel.ContinueButtonPressed += _videoAdShower.Show;
+            _endGamePanel.ContinueButtonPressed += _videoAdShower.Show;
+            _endGamePanel.BackButtonPressed += _videoAdShower.Show;
+            _winGamePanel.BackButtonPressed += _videoAdShower.Show;
         }
 
         public void OnWaveStarted(int amount)
