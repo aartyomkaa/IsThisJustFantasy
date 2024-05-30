@@ -1,66 +1,47 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Assets.Scripts.Audio;
+using Assets.Scripts.UI;
 
 namespace Assets.Scripts.YandexSDK
 {
     internal abstract class AdShower : MonoBehaviour
     {
-        private AudioMixer _audioMixer;
         private List<Button> _adButtons;
-
-        private bool _isCurrentSoundOff;
+        private Pauser _pauser;
 
         public abstract void Show();
 
-        public void Init(AudioMixer mixer)
+        public void Init(Pauser pauser)
         {
-            _audioMixer = mixer;
+            _pauser = pauser;
         }
 
         protected void OnOpenCallBack()
         {
-            Time.timeScale = 0;
-
-            _isCurrentSoundOff = _audioMixer.IsMuted;
+            _pauser.Pause();
 
             foreach (Button button in _adButtons)
-                button.interactable = false;
-
-            if (!_isCurrentSoundOff)
-            {
-                _audioMixer.Mute();
-            }               
+                button.interactable = false;              
         }
 
         protected void OnCloseCallBack()
         {
-            Time.timeScale = 1;
+            _pauser.Resume();
 
             foreach (Button button in _adButtons)
-                button.interactable = true;
-
-            if (!_isCurrentSoundOff)
-            {
-                _audioMixer.Unmute();
-            }   
+                button.interactable = true;  
         }
 
         protected void OnCloseCallBack(bool wasShown)
         {
+            _pauser.Resume();
+
             if (wasShown == false)
                 return;
 
-            Time.timeScale = 1;
-
             foreach (Button button in _adButtons)
                 button.interactable = true;
-
-            if (!_isCurrentSoundOff)
-            {
-                _audioMixer.Unmute();
-            }
         }
     }
 }

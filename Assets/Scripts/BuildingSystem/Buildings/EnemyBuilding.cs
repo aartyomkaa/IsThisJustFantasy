@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using Assets.Scripts.Constants;
 using Assets.Scripts.EnemyComponents;
+using UnityEngine.UI;
 using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.UI;
 
@@ -13,6 +14,8 @@ namespace Assets.Scripts.BuildingSystem.Buildings
         private EnemyFactory _enemyFactory;
 
         private bool _isIncrease;
+
+        public Button AdButton => _eventer.SecondButton;
 
         private void OnEnable()
         {
