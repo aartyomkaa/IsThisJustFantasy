@@ -23,8 +23,10 @@ namespace Assets.Scripts.PlayerComponents
         {
             _wallet = new PlayerWallet();
             PlayerSFX sfx = GetComponentInChildren<PlayerSFX>();
-            
+
+#if !UNITY_WEBGL && UNITY_EDITOR            
             _currentLevel = 0;
+#endif
 
             for (int i =  0; i < _levels.Length; i++)
             {

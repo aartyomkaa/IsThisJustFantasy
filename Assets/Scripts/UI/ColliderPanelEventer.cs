@@ -11,9 +11,9 @@ namespace Assets.Scripts.UI
     {
         [SerializeField] private int _costToBuy;
         [SerializeField] GameObject _panelToShow;
-        [SerializeField] private Button _firstButton;    //+ один выброс за игровые деньги   
-        [SerializeField] private Button _secondButton;   // - минус один выброс за рекламу
-        [SerializeField] private Button _extraButton;   // кнопка начала новой волны, пока не знаю как назвать
+        [SerializeField] private Button _firstButton;  
+        [SerializeField] private Button _secondButton;
+        [SerializeField] private Button _extraButton;
         [SerializeField] private TutorialPanel _tutorial;
         [SerializeField] private LeanToken _cost;
         
