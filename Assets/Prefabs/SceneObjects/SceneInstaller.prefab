@@ -153,6 +153,7 @@ MonoBehaviour:
   _interstitialAd: {fileID: 1431303192100847473}
   _videoAd: {fileID: 4308893278489417286}
   _score: {fileID: 6451387315579997552}
+  _enemyBuilding: {fileID: 4567958583755813144, guid: d78597ae17d16174487573108082e2d9, type: 3}
 --- !u!1 &6182744578163918658
 GameObject:
   m_ObjectHideFlags: 0

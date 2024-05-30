@@ -1,8 +1,8 @@
-using Assets.Scripts.BuildingSystem.Buildings;
 using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using Assets.Scripts.BuildingSystem.Buildings;
 
 namespace Assets.Scripts.EnemyComponents
 {

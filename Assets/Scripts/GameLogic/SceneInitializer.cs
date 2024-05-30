@@ -31,6 +31,7 @@ namespace Assets.Scripts.GameLogic
         [SerializeField] private InterstitialAdShower _interstitialAd;
         [SerializeField] private VideoAdShower _videoAd;
         [SerializeField] private Score _score;
+        [SerializeField] private EnemyBuilding _enemyBuilding;
 
         private void OnEnable()
         {
@@ -39,6 +40,7 @@ namespace Assets.Scripts.GameLogic
             _buildingSystem.EventerWithAdButtonWasMade += OnEventerWithAdButtonWasMade;
 
             _enemyFactory.FinalWaveCleared += _nextLevelZone.OnAllWavesDefeated;
+            _enemyBuilding.AdButton.onClick.AddListener(_interstitialAd.Show);
 
             _mainBuilding.Destroyed += _score.OpenEndGamePanel;
         }
@@ -52,6 +54,7 @@ namespace Assets.Scripts.GameLogic
             _enemyFactory.FinalWaveCleared -= _nextLevelZone.OnAllWavesDefeated;
             _enemyFactory.WaveStarted -= _globalUI.OnWaveStarted;
             _enemyFactory.WaveSpawnAmountChanged -= _globalUI.OnWaveSpawnAmountChanged;
+            _enemyBuilding.AdButton.onClick.RemoveListener(_interstitialAd.Show);
 
             _mainBuilding.Destroyed -= _score.OpenEndGamePanel;
         }
@@ -67,7 +70,6 @@ namespace Assets.Scripts.GameLogic
 
             InitializeInput(player);
             InitializeUI(player);
-            InitializeAd();
         }
 
         private Player InitializePlayer()
@@ -83,8 +85,8 @@ namespace Assets.Scripts.GameLogic
 
         private void InitializeInput(Player player)
         {
-//#if UNITY_WEBGL && !UNITY_EDITOR
-            if (1 == 2)
+#if UNITY_WEBGL && !UNITY_EDITOR
+            if (Device.IsMobile)
             {
                 MobileInput input = Instantiate(_mobileInput, transform);
                 input.Init(player);
@@ -94,7 +96,7 @@ namespace Assets.Scripts.GameLogic
                 DesktopInput input = Instantiate(_desktopInput, transform);
                 input.Init(player);
             }
-//#endif
+#endif
         }
 
         private void InitializeUI(Player player)
@@ -106,12 +108,9 @@ namespace Assets.Scripts.GameLogic
             _nextLevelZone.Init(_score, _sceneLoader, player, pauser, _globalUI.NextLevelPanel); 
             _enemyFactory.WaveStarted += _globalUI.OnWaveStarted;
             _enemyFactory.WaveSpawnAmountChanged += _globalUI.OnWaveSpawnAmountChanged;
-        }
 
-        private void InitializeAd()
-        {
-            _interstitialAd.Init(_audioMixer);
-            _videoAd.Init(_audioMixer);
+            _interstitialAd.Init(pauser);
+            _videoAd.Init(pauser);
         }
     }
 }

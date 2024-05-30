@@ -30,15 +30,15 @@ namespace Assets.Scripts.BuildingSystem.System
 
         public event Action<Button> EventerWithAdButtonWasMade;
 
-        private void Start()
-        {
-            _buildingSpawner = new BuildingSpawner(_tower, _barracks, _resoorceBuilding);
-        }
-
         private void OnEnable()
         {
             SignToBuildingsPointEvents();
             _builder.BuildButtonClicked += Build;
+        }
+
+        private void Start()
+        {
+            _buildingSpawner = new BuildingSpawner(_tower, _barracks, _resoorceBuilding);
         }
 
         private void OnDisable()
