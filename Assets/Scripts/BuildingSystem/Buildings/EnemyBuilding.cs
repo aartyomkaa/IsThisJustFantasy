@@ -1,8 +1,8 @@
-﻿using Assets.Scripts.Constants;
+﻿using UnityEngine;
+using Assets.Scripts.Constants;
 using Assets.Scripts.EnemyComponents;
 using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.UI;
-using UnityEngine;
 
 namespace Assets.Scripts.BuildingSystem.Buildings
 {

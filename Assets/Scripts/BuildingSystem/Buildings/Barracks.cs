@@ -1,21 +1,15 @@
 using Assets.Scripts.Constants;
 using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.PlayerUnits;
-using Assets.Scripts.UI;
-using UnityEngine;
 
 namespace Assets.Scripts.BuildingSystem.Buildings
 {
     internal class Barracks : Building
     {
         private UnitsFactory _unitsFactory;
-       // private ColliderPanelEventer _eventer;
-
-        //public ColliderPanelEventer Eventer => _eventer;
 
         private void OnEnable()
         {
-           // _eventer = GetComponentInChildren<ColliderPanelEventer>();
             _unitsFactory = GetComponentInChildren<UnitsFactory>();
             Eventer.FirstButtonClicked += SpawnUnit;
             Eventer.SecondButtonClicked += SpawnUnit;

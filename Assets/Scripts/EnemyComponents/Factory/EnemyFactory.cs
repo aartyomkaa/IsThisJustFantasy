@@ -71,8 +71,6 @@ namespace Assets.Scripts.EnemyComponents
 
             int currentWaveSpawnAmount = wave.SpawnAmount;
 
-            //float coolDown = new WaitForSeconds(wave.SpawnDelay);
-
             for (int i = 0; i < wave.SpawnAmount; i++)
             {
                 for (int j = 0; j < wave.MeleeAmount; j++)
@@ -87,7 +85,7 @@ namespace Assets.Scripts.EnemyComponents
                    
                 _spawnPointIndex = (i + 1) % _spawnPoints.Length;
 
-                yield return new WaitForSeconds(wave.SpawnDelay);   // тут можно закешировать этот WaitForSeconds, забыл как 
+                yield return new WaitForSeconds(wave.SpawnDelay);
 
                 currentWaveSpawnAmount--;
                 WaveSpawnAmountChanged?.Invoke(currentWaveSpawnAmount);

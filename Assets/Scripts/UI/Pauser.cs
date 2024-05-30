@@ -16,7 +16,6 @@ namespace Assets.Scripts.UI
         {
             _audioMixer = audioMixer;
             _mobileInput = mobileInput;
-            
         }
 
         public void Pause()

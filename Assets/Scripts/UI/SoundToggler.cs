@@ -8,7 +8,7 @@ namespace Assets.Scripts.UI
     {
         [SerializeField] private Sprite _ckekMarkOn;
         [SerializeField] private Sprite _ckekMarkOff;
-        [SerializeField] private Button _soundButton;
+        [SerializeField] private Button _muteButton;
 
         private bool _isMuted;
 
@@ -16,37 +16,20 @@ namespace Assets.Scripts.UI
         
         private void OnEnable()
         {
-            _soundButton.onClick.AddListener(OnSoundValueChanged); 
+            _muteButton.onClick.AddListener(OnMuteButtonPressed); 
         }
 
         private void OnDisable()
         {
-            _soundButton.onClick.RemoveListener(OnSoundValueChanged);
+            _muteButton.onClick.RemoveListener(OnMuteButtonPressed);
         }
 
-        private void OnSoundValueChanged()
+        private void OnMuteButtonPressed()
         {
-            if (_isMuted == true)
-            {   
-                TurnOn();
-            }
-            else
-            {
-                Turnoff();   
-            }
+            _isMuted = !_isMuted;
            
             SoundValueChanged?.Invoke(_isMuted);
             SetCurrentImage();
-        }
-
-        private void TurnOn()
-        {
-            _isMuted = false;
-        }
-
-        private void Turnoff()
-        {
-            _isMuted = true;
         }
 
         public void SetCurrentStatus(bool isMuted)
@@ -59,11 +42,11 @@ namespace Assets.Scripts.UI
         {
             if(_isMuted)
             {
-                _soundButton.image.sprite = _ckekMarkOff;
+                _muteButton.image.sprite = _ckekMarkOff;
             }
             else
             {
-                _soundButton.image.sprite = _ckekMarkOn;
+                _muteButton.image.sprite = _ckekMarkOn;
             }
         }
     }

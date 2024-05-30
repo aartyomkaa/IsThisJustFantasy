@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.Audio;
 using Assets.Scripts.Constants;
 using Assets.Scripts.UI;
-using Unity.VisualScripting;
 
 namespace Assets.Scripts.Audio
 {
@@ -17,15 +16,6 @@ namespace Assets.Scripts.Audio
         public bool IsMuted => _isMuted;
 
         public event Action<bool> VolumeValueChanged;
-
-        //public void ChangeVolume(float volume)
-        //{
-        //    _mixer.audioMixer.SetFloat(PlayerConfigs.MusicVolume, volume);
-        //    PlayerPrefs.SetFloat(PlayerConfigs.MusicVolume, volume);        ???????
-
-        //    _isMuted = false;
-        //    VolumeValueChanged?.Invoke(_isMuted);
-        //}
 
         private void Start()
         {      
@@ -68,7 +58,6 @@ namespace Assets.Scripts.Audio
 
         public void Unmute()
         {
-
             _mixer.audioMixer.SetFloat(PlayerConfigs.MusicVolume, PlayerConfigs.MaxVolume);
             PlayerPrefs.SetFloat(PlayerConfigs.MusicVolume, PlayerConfigs.MaxVolume);
             _isMuted = false;

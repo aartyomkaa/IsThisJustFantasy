@@ -1,11 +1,9 @@
-using Assets.Scripts.Constants;
-using Assets.Scripts.PlayerComponents;
-using Assets.Scripts.YandexSDK;
-using Lean.Localization;
 using System;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Lean.Localization;
+using Assets.Scripts.Constants;
+using Assets.Scripts.PlayerComponents;
 
 namespace Assets.Scripts.UI
 {
@@ -17,9 +15,7 @@ namespace Assets.Scripts.UI
         [SerializeField] private Button _secondButton;   // - минус один выброс за рекламу
         [SerializeField] private Button _extraButton;   // кнопка начала новой волны, пока не знаю как назвать
         [SerializeField] private TutorialPanel _tutorial;
-        [SerializeField] private AudioSource _audioSource;
         [SerializeField] private LeanToken _cost;
-        [SerializeField] private InterstitialAdShower _interstitialAd;
         
         private Player _currentPlayer;
         private bool _currentStatus;
@@ -34,7 +30,7 @@ namespace Assets.Scripts.UI
 
         private void Start()
         {
-            SetCostToButtonText(_firstButton, _costToBuy);
+            _cost.SetValue(_costToBuy);
         }
        
         private void OnEnable()
@@ -79,23 +75,13 @@ namespace Assets.Scripts.UI
             }
         }
 
-        private void SetCostToButtonText(Button activeButton, int costToBuy)
-        {
-            _cost.SetValue(costToBuy);
-        }
-
         public void OnFirsttButtonClicked()
         {
-            if (_audioSource != null)
-                _audioSource.Play();
-
             FirstButtonClicked?.Invoke(_currentPlayer, _costToBuy, UiHash.CoinsButtonIndex);
         }
 
         public void OnSecondButtonClicked()
         {
-            Debug.Log("ѕоказываю рекламу");
-            _interstitialAd.Show();
             SecondButtonClicked?.Invoke(_currentPlayer, _costToBuy, UiHash.AdButtonIndex);
         }
 
