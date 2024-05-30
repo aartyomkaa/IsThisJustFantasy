@@ -2183,7 +2183,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2221723396680498438, guid: f29dcd3e471ffe345a6388edfc4cca32, type: 3}
       propertyPath: m_Text
-      value: 
+      value: "\u041F\u043E\u0441\u0442\u0440\u043E\u0438\u0442\u044C Barracks \u0437\u0430
+        50 \u043C\u043E\u043D\u0435\u0442"
       objectReference: {fileID: 0}
     - target: {fileID: 2221723396680498438, guid: f29dcd3e471ffe345a6388edfc4cca32, type: 3}
       propertyPath: m_Color.b
