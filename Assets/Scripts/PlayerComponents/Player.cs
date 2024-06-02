@@ -1,7 +1,7 @@
-using Assets.Scripts.Constants;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets.Scripts.Constants;
 
 namespace Assets.Scripts.PlayerComponents
 {
