@@ -1,5 +1,5 @@
-﻿using Assets.Scripts.PlayerComponents;
-using UnityEngine;
+﻿using UnityEngine;
+using Assets.Scripts.PlayerComponents;
 
 namespace Assets.Scripts.UI
 {
