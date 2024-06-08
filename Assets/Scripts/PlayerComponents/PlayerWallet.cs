@@ -4,7 +4,7 @@ namespace Assets.Scripts.PlayerComponents
 {
     internal class PlayerWallet 
     {
-        private int _coins = 0;
+        private int _coins = 100;
 
         public int Coins => _coins;
 
