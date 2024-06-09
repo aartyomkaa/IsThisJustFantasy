@@ -1,7 +1,7 @@
-﻿using Assets.Scripts.Constants;
-using System;
+﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
+using Assets.Scripts.Constants;
 
 namespace Assets.Scripts.UI
 {

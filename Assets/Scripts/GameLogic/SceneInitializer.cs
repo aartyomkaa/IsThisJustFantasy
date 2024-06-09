@@ -12,6 +12,7 @@ using Assets.Scripts.EnemyComponents;
 using Assets.Scripts.PlayerInput;
 using Assets.Scripts.YandexSDK;
 using Assets.Scripts.UI;
+using Lean.Localization;
 
 namespace Assets.Scripts.GameLogic
 {
@@ -32,6 +33,7 @@ namespace Assets.Scripts.GameLogic
         [SerializeField] private VideoAdShower _videoAd;
         [SerializeField] private Score _score;
         [SerializeField] private EnemyBuilding _enemyBuilding;
+        [SerializeField] private BackgraoundPauser _backgroundPauser;
 
         private void OnEnable()
         {
@@ -97,9 +99,6 @@ namespace Assets.Scripts.GameLogic
                 input.Init(player);
             }
 #endif
-
-            DesktopInput input = Instantiate(_desktopInput, transform);
-            input.Init(player);
         }
 
         private void InitializeUI(Player player)
@@ -114,6 +113,8 @@ namespace Assets.Scripts.GameLogic
 
             _interstitialAd.Init(pauser);
             _videoAd.Init(pauser);
+
+            _backgroundPauser.Init(pauser);
         }
     }
 }

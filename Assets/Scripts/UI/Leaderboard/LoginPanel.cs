@@ -30,11 +30,15 @@ namespace Assets.Scripts.UI
             PlayerAccount.Authorize();
 
             Close();
+
+            Accept?.Invoke();
         }
 
         private void OnDecline()
         {
             Close();
+
+            Decline?.Invoke();
         }
     }
 }

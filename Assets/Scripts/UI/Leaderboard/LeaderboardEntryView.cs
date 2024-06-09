@@ -20,15 +20,22 @@ namespace Assets.Scripts.UI
 
         private Coroutine _setImage;
 
+        private void Awake()
+        {
+            gameObject.SetActive(true);
+        }
+
         public void SetData(LeaderboardEntryResponse entry)
         {
             if (entry == null)
                 return;
 
-            if (_setImage != null)
-                StopCoroutine(_setImage);
-            else
-                _setImage = StartCoroutine(SetImage(entry.player.profilePicture));
+            Debug.Log("SETTING DATA");
+
+            //if (_setImage != null)
+                //StopCoroutine(_setImage);
+            //else
+                //_setImage = StartCoroutine(SetImage(entry.player.profilePicture));
 
             _playerName.text = SetName(entry.player.publicName);
             _rank.text = entry.rank.ToString();
@@ -38,6 +45,8 @@ namespace Assets.Scripts.UI
         private IEnumerator SetImage(string url)
         {
             UnityWebRequest request = UnityWebRequestTexture.GetTexture(url);
+
+            Debug.Log("SETTING IMAGE");
 
             yield return request.SendWebRequest();
 
@@ -56,6 +65,9 @@ namespace Assets.Scripts.UI
 
         private string SetName(string publicName)
         {
+            Debug.Log("SETTING NAME");
+
+
             string anon = AnonymousEn;
 
             if (YandexGamesSdk.Environment.i18n.lang == "ru")

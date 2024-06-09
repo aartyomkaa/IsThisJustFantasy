@@ -1,9 +1,8 @@
-﻿using Assets.Scripts.Constants;
-using Assets.Scripts.PlayerComponents;
-using System;
-using UnityEngine;
+﻿using UnityEngine;
 using Agava.YandexGames;
 using Agava.WebUtility;
+using Assets.Scripts.Constants;
+using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.GameLogic;
 
 namespace Assets.Scripts.UI

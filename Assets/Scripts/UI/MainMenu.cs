@@ -7,6 +7,7 @@ namespace Assets.Scripts.UI
 {
     internal class MainMenu : MonoBehaviour
     {
+        [SerializeField] private LeanLocalization _localization;
         [SerializeField] private LeaderboardScreen _leaderboardScreen;
         [SerializeField] private LevelsPanel _levelsPanel;
         [SerializeField] private Button _openLeaderboardScreenButton;
@@ -21,24 +22,29 @@ namespace Assets.Scripts.UI
             switch (YandexGamesSdk.Environment.i18n.lang)
             {
                 case "en":
-                    LeanLocalization.SetCurrentLanguageAll("English");
+                    _localization.SetCurrentLanguage("English");
                     break;
 
                 case "ru":
-                    LeanLocalization.SetCurrentLanguageAll("Russian");
+                    _localization.SetCurrentLanguage("Russian");
                     break;
 
                 case "tr":
-                    LeanLocalization.SetCurrentLanguageAll("Turkish");
+                    _localization.SetCurrentLanguage("Turkish");
                     break;
 
                 default:
-                    LeanLocalization.SetCurrentLanguageAll("English");
+                    _localization.SetCurrentLanguage("English");
                     break;
             }
 
             LeanLocalization.UpdateTranslations();
-#endif
+#endif  
+        }
+
+        private void Start()
+        {
+            Debug.Log(YandexGamesSdk.Environment.i18n.lang);
         }
 
         private void OnEnable()
