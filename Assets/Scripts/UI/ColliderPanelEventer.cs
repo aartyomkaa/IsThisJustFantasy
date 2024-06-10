@@ -18,7 +18,7 @@ namespace Assets.Scripts.UI
         [SerializeField] private LeanToken _cost;
         
         private Player _currentPlayer;
-        private bool _currentStatus;
+        private bool _isActive;
         private float _changeScaleSpeed = 0.15f;
         private int _panelMoveXValue = 228;
 
@@ -30,6 +30,7 @@ namespace Assets.Scripts.UI
 
         private void Start()
         {
+            //_isActive = false;
             _cost.SetValue(_costToBuy);
         }
        
@@ -60,7 +61,7 @@ namespace Assets.Scripts.UI
         {
             if (other.gameObject.TryGetComponent(out Player player))
             {
-                _currentStatus = true;
+                _isActive = true;
                 Open();
                 _currentPlayer = player;
             }
@@ -70,7 +71,7 @@ namespace Assets.Scripts.UI
         {
             if (other.gameObject.TryGetComponent(out Player player))
             {
-                _currentStatus = false;
+                
                 Close();
             }
         }
@@ -88,6 +89,7 @@ namespace Assets.Scripts.UI
         public void OnExtraButtonClicked()
         {
             ExtraButtonClicked?.Invoke();
+            Close();
         }
 
         private void Open()
@@ -102,7 +104,9 @@ namespace Assets.Scripts.UI
 
         private void Close()
         {
+            _isActive = false;
             LeanTween.moveX(_panelToShow.GetComponent<RectTransform>(), _panelMoveXValue, _changeScaleSpeed).setOnComplete(ChangeActiveStatus);
+            //ChangeActiveStatus();
 
             if (PlayerPrefs.GetInt(PlayerConfigs.HasPassedTutorial) == 0)
                 _tutorial.Close();
@@ -110,7 +114,7 @@ namespace Assets.Scripts.UI
 
         private void ChangeActiveStatus()
         {
-            _panelToShow.gameObject.SetActive(_currentStatus);
+            _panelToShow.gameObject.SetActive(_isActive);
         }
     }
 }
