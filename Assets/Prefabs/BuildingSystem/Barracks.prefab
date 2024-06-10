@@ -142,7 +142,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u041D\u0430\u043D\u044F\u0442\u044C \u0440\u044B\u0446\u0430\u0440\u044F
-    \u0437\u0430 50 \u043C\u043E\u043D\u0435\u0442"
+    \u0437\u0430 20 \u043C\u043E\u043D\u0435\u0442"
 --- !u!114 &3000969542163048988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -434,7 +434,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.04534268, y: 0.53787315}
   m_AnchorMax: {x: 0.9435431, y: 0.84400004}
-  m_AnchoredPosition: {x: 1.9750061, y: -117.54177}
+  m_AnchoredPosition: {x: 1.9749756, y: -117.54177}
   m_SizeDelta: {x: -3.9492, y: 25.545}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8021649782117361751
@@ -829,7 +829,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8077669750747915907}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -837,10 +837,10 @@ RectTransform:
   - {fileID: 3553220119116246869}
   m_Father: {fileID: 7700328349058069937}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.72529614}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -231.13611, y: -1.0473022}
-  m_SizeDelta: {x: 462.272, y: 2.0946999}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.73800004, y: 0.273}
+  m_AnchoredPosition: {x: -1, y: -8}
+  m_SizeDelta: {x: 4.272003, y: 4.0947266}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5743872039371680036
 CanvasRenderer:
@@ -916,7 +916,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.04534268, y: 0.54800004}
   m_AnchorMax: {x: 0.9435431, y: 0.8706954}
-  m_AnchoredPosition: {x: 1.9747925, y: -5.4000015}
+  m_AnchoredPosition: {x: 1.9747925, y: -5.399994}
   m_SizeDelta: {x: -3.9494, y: 12.091999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3841666228740564316
@@ -1279,17 +1279,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7104536003519519982, guid: a9237970a81ae5948b18dec59a387b24, type: 3}
       propertyPath: m_Text
-      value: 'This is a barracks building
-
-
-
-        Function: Create the units necessary
-        to defend your base and attack enemy targets.
-
-
-
-        Usage: To create
-        units, click on the button in the pop-up window.'
+      value: "\u042D\u0442\u043E \u0437\u0434\u0430\u043D\u0438\u0435 \u0431\u0430\u0440\u0430\u043A\u043E\u0432\n\n\u0424\u0443\u043D\u043A\u0446\u0438\u044F:
+        \u0421\u043E\u0437\u0434\u0430\u044E\u0442 \u044E\u043D\u0438\u0442\u043E\u0432,
+        \u043D\u0435\u043E\u0431\u0445\u043E\u0434\u0438\u043C\u044B\u0445 \u0434\u043B\u044F
+        \u0437\u0430\u0449\u0438\u0442\u044B \u0432\u0430\u0448\u0435\u0439 \u0431\u0430\u0437\u044B
+        \u0438 \u043D\u0430\u043F\u0430\u0434\u0435\u043D\u0438\u044F \u043D\u0430
+        \u0432\u0440\u0430\u0436\u0435\u0441\u043A\u0438\u0435 \u043E\u0431\u044A\u0435\u043A\u0442\u044B.\n\r\n\u0418\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435:
+        \u0427\u0442\u043E\u0431\u044B \u0441\u043E\u0437\u0434\u0430\u0442\u044C
+        \u044E\u043D\u0438\u0442\u043E\u0432, \u043D\u0430\u0436\u043C\u0438\u0442\u0435
+        \u043D\u0430 \u043A\u043D\u043E\u043F\u043A\u0443 \u0432\u043E \u0432\u0441\u043F\u043B\u044B\u0432\u0430\u044E\u0449\u0435\u043C
+        \u043E\u043A\u043D\u0435."
       objectReference: {fileID: 0}
     - target: {fileID: 7925530684692225479, guid: a9237970a81ae5948b18dec59a387b24, type: 3}
       propertyPath: m_PresetInfoIsWorld
