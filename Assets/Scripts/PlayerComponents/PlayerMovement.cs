@@ -10,6 +10,7 @@ namespace Assets.Scripts.PlayerComponents
         private PlayerData _data;
         private PlayerSFX _playerSFX;
         private NavMeshAgent _navMeshAgent;
+        private NavMeshPath _path;
         private PlayerAnimator _animator;
 
         private bool _isAttacking;
@@ -31,7 +32,9 @@ namespace Assets.Scripts.PlayerComponents
             Vector3 movePosition = transform.position + movementDirection;
 
             _navMeshAgent.speed = _isAttacking ? _data.AttackMoveSpeed : _data.Speed;
-            _navMeshAgent.SetDestination(movePosition);
+
+            _navMeshAgent.CalculatePath(movePosition, _path);
+            _navMeshAgent.SetPath(_path);
 
             _playerSFX.PlayWalkSound(_data.Speed);
         }

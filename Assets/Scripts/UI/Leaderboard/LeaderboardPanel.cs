@@ -37,7 +37,10 @@ namespace Assets.Scripts.UI
         {
             Agava.YandexGames.Leaderboard.GetEntries(PlayerConfigs.Leaderboard, (result) =>
             {
-                for (int i = 0; i < _topPlayers; i++)
+                int playerAmount = result.entries.Length;
+                playerAmount = Mathf.Clamp(playerAmount, 1, _topPlayers);
+
+                for(int i = 0; i < playerAmount; i++) 
                 {
                     _leaderboardView.Create(result.entries[i]);
                 }

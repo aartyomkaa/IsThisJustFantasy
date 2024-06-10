@@ -8,6 +8,8 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
 {
     internal class FSMStateChaseEnemy : FSMState
     {
+        private NavMeshPath _path;
+
         public FSMStateChaseEnemy(FiniteStateMachine fsm, IFSMControllable unit, NavMeshAgent navMesh, Animator animator, Data data, UnitSFX enemySFX)
             : base(fsm, unit, navMesh, animator, data, enemySFX)
         {
@@ -16,7 +18,8 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
         public override void Enter()
         {
             UnitSFX.PlayWalkSound();
-            UnitNavMesh.SetDestination(FSM.Target.Transform.position);
+            UnitNavMesh.CalculatePath(FSM.Target.Transform.position, _path);
+            UnitNavMesh.SetPath(_path);
             Animator.SetBool(AnimatorHash.Moving, true);
         }
 

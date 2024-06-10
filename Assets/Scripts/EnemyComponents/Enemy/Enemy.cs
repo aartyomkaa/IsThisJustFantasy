@@ -24,6 +24,7 @@ namespace Assets.Scripts.EnemyComponents
         private FiniteStateMachine _fsm;
         private Animator _animator;
         private NavMeshAgent _agent;
+        private NavMeshPath _path;
 
         private Coroutine _deathCoroutine;
         private float _deathDuration = 6f;
@@ -96,7 +97,8 @@ namespace Assets.Scripts.EnemyComponents
         {
             if (_agent.destination != position && _fsm.Target == null)
             {
-                _agent.SetDestination(position);
+                _agent.CalculatePath(position, _path);
+                _agent.SetPath(_path);
                 _animator.SetBool(AnimatorHash.Moving, true);
             }
         }

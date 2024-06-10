@@ -37,6 +37,9 @@ namespace Assets.Scripts.UI
             //else
                 //_setImage = StartCoroutine(SetImage(entry.player.profilePicture));
 
+            Debug.Log($"NAME: {entry.player.publicName}");
+            Debug.Log($"RANK: {entry.rank}");
+            Debug.Log($"Score: {entry.score}");
             _playerName.text = SetName(entry.player.publicName);
             _rank.text = entry.rank.ToString();
             _score.text = entry.score.ToString();
@@ -66,7 +69,6 @@ namespace Assets.Scripts.UI
         private string SetName(string publicName)
         {
             Debug.Log("SETTING NAME");
-
 
             string anon = AnonymousEn;
 

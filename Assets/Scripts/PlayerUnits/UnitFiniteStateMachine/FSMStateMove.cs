@@ -10,6 +10,7 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
     {
         private Vector3 _roundedUnitPos;
         private Vector3 _roundedTargetPos;
+        private NavMeshPath _path;
 
         public FSMStateMove(FiniteStateMachine fsm, IFSMControllable unit, NavMeshAgent navMesh, Animator animator, Data data, UnitSFX unitSFX)
             : base(fsm, unit, navMesh, animator, data, unitSFX)
@@ -20,7 +21,8 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
         {
             UnitSFX.PlayWalkSound();
             UnitNavMesh.speed = Data.Speed;
-            UnitNavMesh.SetDestination(FSM.MovePosition);
+            UnitNavMesh.CalculatePath(FSM.MovePosition, _path);
+            UnitNavMesh.SetPath(_path);
             Animator.SetBool(AnimatorHash.Moving, true);
         }
 

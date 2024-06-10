@@ -13,18 +13,19 @@ namespace Assets.Scripts.GameLogic
         private void OnEnable()
         {
             WebApplication.InBackgroundChangeEvent += OnInBackgroundChangeWeb;
-            Application.focusChanged += OnInBackgroundChangeApp;
+            //Application.focusChanged += OnInBackgroundChangeApp;
         }
 
         private void OnDisable()
         {
             WebApplication.InBackgroundChangeEvent -= OnInBackgroundChangeWeb;
-            Application.focusChanged -= OnInBackgroundChangeApp;
+            //Application.focusChanged -= OnInBackgroundChangeApp;
         }
 
-        public void Init(Pauser pauser)
+        public void Init(Pauser pauser, AudioMixer mixer)
         {
             _pauser = pauser;
+            _mixer = mixer;
         }
 
         private void OnInBackgroundChangeWeb(bool isBackground)

@@ -12,7 +12,6 @@ using Assets.Scripts.EnemyComponents;
 using Assets.Scripts.PlayerInput;
 using Assets.Scripts.YandexSDK;
 using Assets.Scripts.UI;
-using Lean.Localization;
 
 namespace Assets.Scripts.GameLogic
 {
@@ -63,7 +62,7 @@ namespace Assets.Scripts.GameLogic
 
         private void OnEventerWithAdButtonWasMade(Button button)
         {
-            button.onClick.AddListener(_interstitialAd.Show);
+            button.onClick.AddListener(_videoAd.Show);
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -99,6 +98,9 @@ namespace Assets.Scripts.GameLogic
                 input.Init(player);
             }
 #endif
+
+            DesktopInput input = Instantiate(_desktopInput, transform);
+            input.Init(player);
         }
 
         private void InitializeUI(Player player)
@@ -114,7 +116,7 @@ namespace Assets.Scripts.GameLogic
             _interstitialAd.Init(pauser);
             _videoAd.Init(pauser);
 
-            _backgroundPauser.Init(pauser);
+            _backgroundPauser.Init(pauser, _audioMixer);
         }
     }
 }
