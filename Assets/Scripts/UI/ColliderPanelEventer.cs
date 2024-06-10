@@ -30,7 +30,6 @@ namespace Assets.Scripts.UI
 
         private void Start()
         {
-            //_isActive = false;
             _cost.SetValue(_costToBuy);
         }
        
@@ -106,7 +105,6 @@ namespace Assets.Scripts.UI
         {
             _isActive = false;
             LeanTween.moveX(_panelToShow.GetComponent<RectTransform>(), _panelMoveXValue, _changeScaleSpeed).setOnComplete(ChangeActiveStatus);
-            //ChangeActiveStatus();
 
             if (PlayerPrefs.GetInt(PlayerConfigs.HasPassedTutorial) == 0)
                 _tutorial.Close();
