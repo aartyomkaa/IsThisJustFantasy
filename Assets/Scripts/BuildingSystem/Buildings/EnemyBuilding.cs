@@ -4,6 +4,7 @@ using Assets.Scripts.EnemyComponents;
 using UnityEngine.UI;
 using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.UI;
+using System;
 
 namespace Assets.Scripts.BuildingSystem.Buildings
 {
@@ -16,7 +17,16 @@ namespace Assets.Scripts.BuildingSystem.Buildings
         private bool _isIncrease;
 
         public Button AdButton => _eventer.SecondButton;
+        public ColliderPanelEventer EventerToSend => _eventer;
 
+        public event Action<ColliderPanelEventer> BuildWithEventorWasMade;
+
+
+        private void Awake()
+        {
+            AnnounceOfCreation();
+        }
+       
         private void OnEnable()
         {
             _enemyFactory = GetComponentInChildren<EnemyFactory>();
@@ -50,6 +60,15 @@ namespace Assets.Scripts.BuildingSystem.Buildings
             }
 
             _enemyFactory.ChangeSpawnAmount(_isIncrease);
+        }
+
+        public void AnnounceOfCreation()
+        {
+            if (_eventer != null)
+            {
+                BuildWithEventorWasMade?.Invoke(_eventer);
+                // Debug.Log("Я - " + gameObject.name + " создал евентер, вот он - " + Eventer.name);
+            }
         }
 
         private void OnWaveStart(int spawnAmount)

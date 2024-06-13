@@ -28,7 +28,7 @@ namespace Assets.Scripts.BuildingSystem.System
         private Building _currentBuilding;
         private bool _isEventerExist = false;
 
-        public event Action<Button> EventerWithAdButtonWasMade;
+        public event Action<ColliderPanelEventer> EventerWithAdButtonWasMade;
 
         private void OnEnable()
         {
@@ -77,7 +77,7 @@ namespace Assets.Scripts.BuildingSystem.System
         {
             _currentBuilding = _buildingSpawner.CurrentBuilding;
             _currentBuilding.BuildWithEventorWasMade += OnBuildWithEventorWasMade;
-            _currentBuilding.AnnounceOfCreation();
+           // _currentBuilding.AnnounceOfCreation();
         }
 
         private void SignToBuildingsPointEvents()
@@ -90,8 +90,9 @@ namespace Assets.Scripts.BuildingSystem.System
         }
 
         private void OnBuildWithEventorWasMade(ColliderPanelEventer currentEventer)
-        {         
-            EventerWithAdButtonWasMade?.Invoke(currentEventer.SecondButton);
+        {
+           // Debug.Log("я евентер, вот моё имя - " + currentEventer.name);
+            EventerWithAdButtonWasMade?.Invoke(currentEventer);
             _isEventerExist = true;
         }
 

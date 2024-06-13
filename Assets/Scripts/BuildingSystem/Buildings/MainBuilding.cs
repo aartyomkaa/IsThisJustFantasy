@@ -1,4 +1,6 @@
 using Assets.Scripts.PlayerComponents;
+using UnityEngine;
+
 
 namespace Assets.Scripts.BuildingSystem.Buildings
 {
@@ -9,6 +11,8 @@ namespace Assets.Scripts.BuildingSystem.Buildings
         private void OnEnable()
         {
             Eventer.FirstButtonClicked += HealPlayer;
+            //Debug.Log("Я главное здание, вот мой евентер - " + Eventer.name);
+
         }
 
         private void OnDisable()

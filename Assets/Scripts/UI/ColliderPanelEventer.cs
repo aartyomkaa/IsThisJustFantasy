@@ -23,19 +23,24 @@ namespace Assets.Scripts.UI
         private float _changeScaleSpeed = 0.15f;
         private int _panelMoveXValue = 228;
 
-        private WaitForSeconds _delay;
-        private float _cooldownTime = 60.5f;
-        private bool _isOnCooldown = false;
+       // private WaitForSeconds _delay;
+       // private float _cooldownTime = 60.5f;
+       // private bool _isOnCooldown = false;
+        private bool _isSecondButtonActive = true;
+
+        public bool IsSecondButtonActive => _isSecondButtonActive;
 
         public Button SecondButton => _secondButton;
 
-        public Action<Player, int, int> FirstButtonClicked;
-        public Action<Player, int, int> SecondButtonClicked;
-        public Action ExtraButtonClicked;
+        public event Action<Player, int, int> FirstButtonClicked;
+        public event Action<Player, int, int> SecondButtonClicked;
+        public event Action ExtraButtonClicked;
+        public event Action AddButtonClicked;
+        public event Action AddButtonUnavailable;
 
         private void Start()
         {
-            _delay = new WaitForSeconds(_cooldownTime);
+           // _delay = new WaitForSeconds(_cooldownTime);
             _cost.SetValue(_costToBuy);
         }
        
@@ -87,17 +92,32 @@ namespace Assets.Scripts.UI
 
         public void OnSecondButtonClicked()
         {
-            if (_isOnCooldown == false)
+            if (_isSecondButtonActive == true)
             {
                 SecondButtonClicked?.Invoke(_currentPlayer, _costToBuy, UiHash.AdButtonIndex);
-                StartCoroutine(Timer());
+                DeActivateSecondButton();
+                AddButtonClicked?.Invoke();
             }
+            else
+            {
+                AddButtonUnavailable?.Invoke();
+            }          
         }
 
         public void OnExtraButtonClicked()
         {
             ExtraButtonClicked?.Invoke();
             Close();
+        }
+
+        public void ActivateSecondButton()
+        {
+            _isSecondButtonActive = true;
+        }
+
+        public void DeActivateSecondButton()
+        {
+            _isSecondButtonActive = false;
         }
 
         private void Open()
@@ -124,13 +144,13 @@ namespace Assets.Scripts.UI
             _panelToShow.gameObject.SetActive(_isActive);
         }
 
-        private IEnumerator Timer()
-        {
-            _isOnCooldown = true;
+        //private IEnumerator Timer()
+        //{
+        //    _isOnCooldown = true;
 
-            yield return _delay;
+        //    yield return _delay;
 
-            _isOnCooldown = false;
-        }
+        //    _isOnCooldown = false;
+        //}
     }
 }

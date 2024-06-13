@@ -126,6 +126,7 @@ Transform:
   - {fileID: 1564854793218301972}
   - {fileID: 6151143577104518035}
   - {fileID: 7356699497670689644}
+  - {fileID: 9057636332864965257}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1809623224601644584
@@ -156,6 +157,7 @@ MonoBehaviour:
   _score: {fileID: 6451387315579997552}
   _enemyBuilding: {fileID: 4567958583755813144, guid: d78597ae17d16174487573108082e2d9, type: 3}
   _backgroundPauser: {fileID: 8044151400866745403}
+  _interstitialAdTimer: {fileID: 3124805320412498736}
 --- !u!1 &6182744578163918658
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,6 +200,50 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4571299399751894fb1c922819ba03a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &6958859655780766259
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9057636332864965257}
+  - component: {fileID: 3124805320412498736}
+  m_Layer: 11
+  m_Name: InterstitialAdTimer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9057636332864965257
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6958859655780766259}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7012923045867581616}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3124805320412498736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6958859655780766259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19e5591bc4691874194ec0d8d4b9222a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &844717100824199904

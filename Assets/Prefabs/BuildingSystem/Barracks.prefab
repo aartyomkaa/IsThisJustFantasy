@@ -243,6 +243,7 @@ MonoBehaviour:
   _strength: 100
   _valueOfScaleOfParticleOfDestroy: 4
   _spotOfDestroyEffects: {fileID: 178295802140744155}
+  Eventer: {fileID: 8444019166520336635}
   IndexOfBuilding: 2
 --- !u!95 &1054973193750157762
 Animator:

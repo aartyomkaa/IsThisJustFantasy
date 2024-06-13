@@ -15,15 +15,17 @@ namespace Assets.Scripts.BuildingSystem
         [SerializeField] private float _strength;
         [SerializeField] private float _valueOfScaleOfParticleOfDestroy;
         [SerializeField] private Transform _spotOfDestroyEffects;
+        [SerializeField] protected ColliderPanelEventer Eventer;   
 
         private AudioSource _audiosourse;
         private Vector3 _scaleOfParticleOfDestroy;
-        protected ColliderPanelEventer Eventer;
+       // protected ColliderPanelEventer Eventer;
 
         public int IndexOfBuilding; 
         private float _startStrength;
 
         public Transform Transform => transform;
+        public ColliderPanelEventer EventerToSend => Eventer;
 
         public float Health => _strength;
 
@@ -33,7 +35,15 @@ namespace Assets.Scripts.BuildingSystem
         private void Awake()
         {
             _audiosourse = GetComponent<AudioSource>();
-            Eventer = GetComponentInChildren<ColliderPanelEventer>();
+            AnnounceOfCreation();
+           // Eventer = GetComponentInChildren<ColliderPanelEventer>();
+            //Debug.Log("у меня есть евентер, вот - " + Eventer.name);
+        }
+
+        private void Start()
+        {
+            _startStrength = _strength;
+            SetScaleOfParticleOfDestroy();
         }
 
         private void OnEnable()
@@ -44,11 +54,6 @@ namespace Assets.Scripts.BuildingSystem
             }
         }
 
-        private void Start()
-        {   
-            _startStrength = _strength;
-            SetScaleOfParticleOfDestroy();
-        }
 
         private void SetScaleOfParticleOfDestroy()
         {
@@ -79,6 +84,7 @@ namespace Assets.Scripts.BuildingSystem
             if(Eventer != null)
             {
                 BuildWithEventorWasMade?.Invoke(Eventer);
+               // Debug.Log("Я - " + gameObject.name + " создал евентер, вот он - " + Eventer.name);
             }
         }
 
