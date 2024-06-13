@@ -5,6 +5,7 @@ using Assets.Scripts.Audio;
 using Assets.Scripts.GameLogic;
 using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.YandexSDK;
+using Agava.YandexGames;
 
 namespace Assets.Scripts.UI
 {
@@ -18,15 +19,18 @@ namespace Assets.Scripts.UI
         [SerializeField] private ScorePanel _nextLevelPanel;
         [SerializeField] private ScorePanel _endGamePanel;
         [SerializeField] private ScorePanel _winGamePanel;
+        [SerializeField] private InterstitialAdPopup _interstitialAdPopup;
 
         private SceneLoader _sceneLoader;
         private AudioMixer _audioMixer;
         private Player _player;
         private VideoAdShower _videoAdShower;
 
+
         public ScorePanel NextLevelPanel => _nextLevelPanel;
         public ScorePanel EndGamePanel => _endGamePanel;
         public ScorePanel WinGamePanel => _winGamePanel;
+
 
         private void OnDisable()
         {
@@ -40,12 +44,14 @@ namespace Assets.Scripts.UI
             _winGamePanel.BackButtonPressed -= _videoAdShower.Show;
         }
 
-        public void Init(Player player, SceneLoader loader, AudioMixer mixer, Pauser pauser, VideoAdShower videoAdShower) 
+        public void Init(Player player, SceneLoader loader, AudioMixer mixer, Pauser pauser, VideoAdShower videoAdShower, InterstitialAdShower interstitialAd) 
         {
             _sceneLoader = loader;
             _player = player;
             _audioMixer = mixer;
             _videoAdShower = videoAdShower;
+
+            _interstitialAdPopup.Init(interstitialAd);
 
             _player.LevelChanged += _playerUI.OnLevelChanged;
             _playerUI.SignToPlayerValuesChanges(player);

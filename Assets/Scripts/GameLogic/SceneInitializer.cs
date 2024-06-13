@@ -106,15 +106,17 @@ namespace Assets.Scripts.GameLogic
         private void InitializeUI(Player player)
         {
             Pauser pauser = new Pauser(_audioMixer, _mobileInput);
-       
-            _globalUI.Init(player,_sceneLoader, _audioMixer, pauser, _videoAd); 
+
+            _interstitialAd.Init(pauser);
+            _videoAd.Init(pauser);
+            
+            _globalUI.Init(player,_sceneLoader, _audioMixer, pauser, _videoAd, _interstitialAd); 
             _score.Init(player, pauser, _sceneLoader, _globalUI.EndGamePanel);
             _nextLevelZone.Init(_score, _sceneLoader, player, pauser, _globalUI.NextLevelPanel, _globalUI.WinGamePanel); 
             _enemyFactory.WaveStarted += _globalUI.OnWaveStarted;
             _enemyFactory.WaveSpawnAmountChanged += _globalUI.OnWaveSpawnAmountChanged;
 
-            _interstitialAd.Init(pauser);
-            _videoAd.Init(pauser);
+            
 
             _backgroundPauser.Init(pauser, _audioMixer);
         }
