@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using Lean.Localization;
@@ -22,14 +23,19 @@ namespace Assets.Scripts.UI
         private float _changeScaleSpeed = 0.15f;
         private int _panelMoveXValue = 228;
 
+        private WaitForSeconds _delay;
+        private float _cooldownTime = 60.5f;
+        private bool _isOnCooldown = false;
+
         public Button SecondButton => _secondButton;
 
         public Action<Player, int, int> FirstButtonClicked;
-        public Action<Player, int,int> SecondButtonClicked;
+        public Action<Player, int, int> SecondButtonClicked;
         public Action ExtraButtonClicked;
 
         private void Start()
         {
+            _delay = new WaitForSeconds(_cooldownTime);
             _cost.SetValue(_costToBuy);
         }
        
@@ -70,7 +76,6 @@ namespace Assets.Scripts.UI
         {
             if (other.gameObject.TryGetComponent(out Player player))
             {
-                
                 Close();
             }
         }
@@ -82,7 +87,11 @@ namespace Assets.Scripts.UI
 
         public void OnSecondButtonClicked()
         {
-            SecondButtonClicked?.Invoke(_currentPlayer, _costToBuy, UiHash.AdButtonIndex);
+            if (_isOnCooldown == false)
+            {
+                SecondButtonClicked?.Invoke(_currentPlayer, _costToBuy, UiHash.AdButtonIndex);
+                StartCoroutine(Timer());
+            }
         }
 
         public void OnExtraButtonClicked()
@@ -113,6 +122,15 @@ namespace Assets.Scripts.UI
         private void ChangeActiveStatus()
         {
             _panelToShow.gameObject.SetActive(_isActive);
+        }
+
+        private IEnumerator Timer()
+        {
+            _isOnCooldown = true;
+
+            yield return _delay;
+
+            _isOnCooldown = false;
         }
     }
 }
