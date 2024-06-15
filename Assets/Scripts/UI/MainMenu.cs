@@ -42,11 +42,6 @@ namespace Assets.Scripts.UI
 #endif  
         }
 
-        private void Start()
-        {
-            Debug.Log(YandexGamesSdk.Environment.i18n.lang);
-        }
-
         private void OnEnable()
         {
             _openLeaderboardScreenButton.onClick.AddListener(OpenLeaderboardScreen);

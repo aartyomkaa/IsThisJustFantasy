@@ -52,6 +52,7 @@ namespace Assets.Scripts.EnemyComponents
                     throw new Exception("Set the data!");
             }
 
+            _path = new NavMeshPath();
             _fsm = new FiniteStateMachine(_animator, _agent, this, _data, _unitSFX);
 
             _fsm.SetState<FSMStateIdle>();

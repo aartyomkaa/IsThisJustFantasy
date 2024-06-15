@@ -99,8 +99,10 @@ namespace Assets.Scripts.GameLogic
             }
 #endif
 
-            DesktopInput input = Instantiate(_desktopInput, transform);
-            input.Init(player);
+#if UNITY_EDITOR
+                DesktopInput input = Instantiate(_desktopInput, transform);
+                input.Init(player);
+#endif
         }
 
         private void InitializeUI(Player player)

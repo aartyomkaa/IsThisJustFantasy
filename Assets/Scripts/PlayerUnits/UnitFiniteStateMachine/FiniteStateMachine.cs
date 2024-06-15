@@ -10,7 +10,6 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
 {
     internal class FiniteStateMachine
     {
-        private IFSMControllable _a;
         private FSMState _currentState;
         private Dictionary<Type, FSMState> _states = new Dictionary<Type, FSMState>();
 
@@ -23,8 +22,6 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
             AddState(new FSMStateMove(this, unit, agent, animator, data, unitSFX));
             AddState(new FSMStateChaseEnemy(this, unit, agent, animator, data, unitSFX));
             AddState(new FSMStateAttack(this, unit, agent, animator, data, unitSFX));
-
-            _a = unit;
         }
 
         public void AddState(FSMState state)

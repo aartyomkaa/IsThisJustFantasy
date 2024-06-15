@@ -15,6 +15,7 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
         public FSMStateMove(FiniteStateMachine fsm, IFSMControllable unit, NavMeshAgent navMesh, Animator animator, Data data, UnitSFX unitSFX)
             : base(fsm, unit, navMesh, animator, data, unitSFX)
         {
+            _path = new NavMeshPath();
         }
 
         public override void Enter()

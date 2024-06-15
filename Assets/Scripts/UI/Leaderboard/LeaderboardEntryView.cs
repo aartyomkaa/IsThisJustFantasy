@@ -1,5 +1,7 @@
 ﻿using Agava.YandexGames;
+using System;
 using System.Collections;
+using System.Net;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -20,26 +22,16 @@ namespace Assets.Scripts.UI
 
         private Coroutine _setImage;
 
-        private void Awake()
-        {
-            gameObject.SetActive(true);
-        }
-
         public void SetData(LeaderboardEntryResponse entry)
         {
             if (entry == null)
                 return;
 
-            Debug.Log("SETTING DATA");
-
             //if (_setImage != null)
-                //StopCoroutine(_setImage);
+            //    StopCoroutine(_setImage);
             //else
-                //_setImage = StartCoroutine(SetImage(entry.player.profilePicture));
+            //    _setImage = StartCoroutine(SetImage(entry.player.profilePicture));
 
-            Debug.Log($"NAME: {entry.player.publicName}");
-            Debug.Log($"RANK: {entry.rank}");
-            Debug.Log($"Score: {entry.score}");
             _playerName.text = SetName(entry.player.publicName);
             _rank.text = entry.rank.ToString();
             _score.text = entry.score.ToString();
@@ -49,14 +41,28 @@ namespace Assets.Scripts.UI
         {
             UnityWebRequest request = UnityWebRequestTexture.GetTexture(url);
 
-            Debug.Log("SETTING IMAGE");
-
             yield return request.SendWebRequest();
 
             if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError
                 || request.result == UnityWebRequest.Result.DataProcessingError)
             {
-                throw new System.Exception();
+                string[] pages = url.Split('/');
+                int page = pages.Length - 1;
+
+                switch (request.result)
+                {
+                    case UnityWebRequest.Result.ConnectionError:
+                        throw new System.Exception();
+                    case UnityWebRequest.Result.DataProcessingError:
+                        Debug.LogError(pages[page] + ": Error: " + request.error);
+                        break;
+                    case UnityWebRequest.Result.ProtocolError:
+                        Debug.LogError(pages[page] + ": HTTP Error: " + request.error);
+                        break;
+                    case UnityWebRequest.Result.Success:
+                        Debug.Log(pages[page] + ":\nReceived: " + request.downloadHandler.text);
+                        break;
+                }
             }
             else
             {
@@ -68,8 +74,6 @@ namespace Assets.Scripts.UI
 
         private string SetName(string publicName)
         {
-            Debug.Log("SETTING NAME");
-
             string anon = AnonymousEn;
 
             if (YandexGamesSdk.Environment.i18n.lang == "ru")
