@@ -35,7 +35,7 @@ namespace Assets.Scripts.BuildingSystem
         private void Awake()
         {
             _audiosourse = GetComponent<AudioSource>();
-            AnnounceOfCreation();
+           
            // Eventer = GetComponentInChildren<ColliderPanelEventer>();
             //Debug.Log("у меня есть евентер, вот - " + Eventer.name);
         }
@@ -48,6 +48,8 @@ namespace Assets.Scripts.BuildingSystem
 
         private void OnEnable()
         {
+            //AnnounceOfCreation();
+
             if (_audiosourse.clip != null)
             {
                 _audiosourse.Play();

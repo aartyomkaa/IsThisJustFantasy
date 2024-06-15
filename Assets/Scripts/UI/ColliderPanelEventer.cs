@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using Lean.Localization;
 using Assets.Scripts.Constants;
 using Assets.Scripts.PlayerComponents;
+using Assets.Scripts.YandexSDK;
 
 namespace Assets.Scripts.UI
 {
@@ -22,22 +23,32 @@ namespace Assets.Scripts.UI
         private bool _isActive;
         private float _changeScaleSpeed = 0.15f;
         private int _panelMoveXValue = 228;
+        private InterstitialAdTimer _timer;
 
-       // private WaitForSeconds _delay;
-       // private float _cooldownTime = 60.5f;
-       // private bool _isOnCooldown = false;
-        private bool _isSecondButtonActive = true;
+        // private WaitForSeconds _delay;
+        // private float _cooldownTime = 60.5f;
+        private bool _isSecondButtonOnCooldown = false;
+       // private bool _isSecondButtonActive = true;
 
-        public bool IsSecondButtonActive => _isSecondButtonActive;
+       // public bool IsSecondButtonActive => _isSecondButtonActive;
 
         public Button SecondButton => _secondButton;
 
         public event Action<Player, int, int> FirstButtonClicked;
         public event Action<Player, int, int> SecondButtonClicked;
         public event Action ExtraButtonClicked;
-        public event Action AddButtonClicked;
-        public event Action AddButtonUnavailable;
+       // public event Action AddButtonClicked;
+       // public event Action AddButtonUnavailable;
 
+       public void TakeTimer(InterstitialAdTimer timer)
+        {
+            _timer = timer;
+            Debug.Log("взял таймер, вот его имя - " + timer.name + "а вот мои координаты - " + gameObject.transform);
+            _timer.CooldownStarted += TurnSecondButton;
+            _timer.BecomeAvailable += TurnSecondButton;
+        }
+        
+        
         private void Start()
         {
            // _delay = new WaitForSeconds(_cooldownTime);
@@ -59,12 +70,20 @@ namespace Assets.Scripts.UI
             _firstButton.onClick.RemoveListener(OnFirsttButtonClicked);
             _secondButton.onClick.RemoveListener(OnSecondButtonClicked);
 
+            if (gameObject.activeSelf && _timer != null)
+            {
+                _timer.CooldownStarted -= TurnSecondButton;
+                _timer.BecomeAvailable -= TurnSecondButton;
+            }
+            
+            
+
             if (_extraButton != null)
             {
                 _extraButton.onClick.RemoveListener(OnExtraButtonClicked);
             }
-            
-            Close();
+
+            Close();  
         }
        
         private void OnTriggerEnter(Collider other)
@@ -92,15 +111,16 @@ namespace Assets.Scripts.UI
 
         public void OnSecondButtonClicked()
         {
-            if (_isSecondButtonActive == true)
+            if (_isSecondButtonOnCooldown == false)
             {
                 SecondButtonClicked?.Invoke(_currentPlayer, _costToBuy, UiHash.AdButtonIndex);
-                DeActivateSecondButton();
-                AddButtonClicked?.Invoke();
+                _timer.StartСountDown();
+               // DeActivateSecondButton();
+               // AddButtonClicked?.Invoke();
             }
             else
             {
-                AddButtonUnavailable?.Invoke();
+               // AddButtonUnavailable?.Invoke();
             }          
         }
 
@@ -110,15 +130,21 @@ namespace Assets.Scripts.UI
             Close();
         }
 
-        public void ActivateSecondButton()
+       private void TurnSecondButton(bool isSecondButtonActive)
         {
-            _isSecondButtonActive = true;
+            _isSecondButtonOnCooldown = isSecondButtonActive;
         }
+        
+        
+        //public void ActivateSecondButton()
+        //{
+        //    _isSecondButtonActive = true;
+        //}
 
-        public void DeActivateSecondButton()
-        {
-            _isSecondButtonActive = false;
-        }
+        //public void DeActivateSecondButton()
+        //{
+        //    _isSecondButtonActive = false;
+        //}
 
         private void Open()
         {

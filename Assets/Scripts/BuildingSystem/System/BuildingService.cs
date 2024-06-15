@@ -77,7 +77,7 @@ namespace Assets.Scripts.BuildingSystem.System
         {
             _currentBuilding = _buildingSpawner.CurrentBuilding;
             _currentBuilding.BuildWithEventorWasMade += OnBuildWithEventorWasMade;
-           // _currentBuilding.AnnounceOfCreation();
+            _currentBuilding.AnnounceOfCreation();
         }
 
         private void SignToBuildingsPointEvents()

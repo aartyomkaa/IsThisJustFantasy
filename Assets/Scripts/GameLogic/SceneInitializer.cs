@@ -39,7 +39,7 @@ namespace Assets.Scripts.GameLogic
 
        // private List<ColliderPanelEventer> _eventers;
 
-        public event Action<ColliderPanelEventer> EventerWasAdded;
+       // public event Action<ColliderPanelEventer> EventerWasAdded;
 
         private void OnEnable()
         {
@@ -56,12 +56,14 @@ namespace Assets.Scripts.GameLogic
             //_eventers.Add(_mainBuilding.EventerToSend);
             //_eventers.Add(_enemyBuilding.EventerToSend);
 
-            EventerWasAdded += _interstitialAdTimer.AddEventer;
+           // EventerWasAdded += _interstitialAdTimer.AddEventer;
+
+            _enemyBuilding.EventerToSend.TakeTimer(_interstitialAdTimer);
         }
 
         private void Start()
         {
-            InitializeAdTimer();
+           // InitializeAdTimer();
         }
 
         private void OnDisable()
@@ -76,7 +78,9 @@ namespace Assets.Scripts.GameLogic
             _enemyBuilding.AdButton.onClick.RemoveListener(_interstitialAd.Show);
             _mainBuilding.BuildWithEventorWasMade -= OnEventerWasMade;
             _mainBuilding.Destroyed -= _score.OpenEndGamePanel;
-            EventerWasAdded -= _interstitialAdTimer.AddEventer;
+           // EventerWasAdded -= _interstitialAdTimer.AddEventer;
+
+            
 
         }
 
@@ -84,17 +88,19 @@ namespace Assets.Scripts.GameLogic
         {
 
             Debug.Log("я евентер, вот моё имя - " + currentEventer.name);
-            EventerWasAdded?.Invoke(currentEventer);
+            currentEventer.TakeTimer(_interstitialAdTimer);
+
+           // EventerWasAdded?.Invoke(currentEventer);
             // button.onClick.AddListener(_videoAd.Show);
             //_interstitialAdTimer.AddEventer(currentEventer);
-            _interstitialAdTimer.SignToAdButtons();
+           // _interstitialAdTimer.SignToAdButtons();
 
            
 
-            if(_interstitialAdTimer.IsOnCooldown == true)
-            {
-                currentEventer.DeActivateSecondButton();
-            }
+            //if(_interstitialAdTimer.IsOnCooldown == true)
+            //{
+            //    currentEventer.DeActivateSecondButton();
+            //}
            // currentEventer.AddButtonClicked +=
         }
 
@@ -149,10 +155,11 @@ namespace Assets.Scripts.GameLogic
 
             _interstitialAd.Init(pauser);
             _videoAd.Init(pauser);
-           // _interstitialAdTimer.Init(_interstitialAd);
+            _interstitialAdTimer.Init(_interstitialAd);
+            // _interstitialAdTimer.Init(_interstitialAd);
             //_interstitialAdTimer.AddEventer(_mainBuilding.EventerToSend);
-           // _interstitialAdTimer.AddEventer(_enemyBuilding.EventerToSend);
-           // _interstitialAdTimer.SignToAdButtons();
+            // _interstitialAdTimer.AddEventer(_enemyBuilding.EventerToSend);
+            // _interstitialAdTimer.SignToAdButtons();
 
 
             _globalUI.Init(player,_sceneLoader, _audioMixer, pauser, _videoAd, _interstitialAd); 
@@ -168,7 +175,7 @@ namespace Assets.Scripts.GameLogic
 
         private void InitializeAdTimer()
         {
-            _interstitialAdTimer.Init(_interstitialAd);
+            //_interstitialAdTimer.Init(_interstitialAd);
             //_interstitialAdTimer.AddEventer(_mainBuilding.EventerToSend);   
             //_interstitialAdTimer.AddEventer(_enemyBuilding.EventerToSend);   
            // _interstitialAdTimer.SignToAdButtons();  
