@@ -91,7 +91,6 @@ namespace Assets.Scripts.BuildingSystem.System
 
         private void OnBuildWithEventorWasMade(ColliderPanelEventer currentEventer)
         {
-           // Debug.Log("я евентер, вот моё имя - " + currentEventer.name);
             EventerWithAdButtonWasMade?.Invoke(currentEventer);
             _isEventerExist = true;
         }

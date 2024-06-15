@@ -19,7 +19,6 @@ namespace Assets.Scripts.BuildingSystem
 
         private AudioSource _audiosourse;
         private Vector3 _scaleOfParticleOfDestroy;
-       // protected ColliderPanelEventer Eventer;
 
         public int IndexOfBuilding; 
         private float _startStrength;
@@ -35,9 +34,6 @@ namespace Assets.Scripts.BuildingSystem
         private void Awake()
         {
             _audiosourse = GetComponent<AudioSource>();
-           
-           // Eventer = GetComponentInChildren<ColliderPanelEventer>();
-            //Debug.Log("у меня есть евентер, вот - " + Eventer.name);
         }
 
         private void Start()
@@ -48,8 +44,6 @@ namespace Assets.Scripts.BuildingSystem
 
         private void OnEnable()
         {
-            //AnnounceOfCreation();
-
             if (_audiosourse.clip != null)
             {
                 _audiosourse.Play();
@@ -68,6 +62,13 @@ namespace Assets.Scripts.BuildingSystem
             _strength = _startStrength;
         }
 
+        protected void Destroy()
+        { 
+            Instantiate(_particleOfDestroy, _spotOfDestroyEffects.position, Quaternion.identity);
+            Destroyed?.Invoke();
+            gameObject.SetActive(false);
+            RefreshStrength();    
+        }
         public void TakeDamage(float damage)
         {
             if (_strength > 0 && damage > 0)
@@ -76,26 +77,17 @@ namespace Assets.Scripts.BuildingSystem
 
                 if (_strength <= 0)
                 {
-                    Destroy();       
+                    Destroy();
                 }
             }
         }
 
         public void AnnounceOfCreation()
         {
-            if(Eventer != null)
+            if (Eventer != null)
             {
                 BuildWithEventorWasMade?.Invoke(Eventer);
-               // Debug.Log("Я - " + gameObject.name + " создал евентер, вот он - " + Eventer.name);
             }
-        }
-
-        protected void Destroy()
-        { 
-            Instantiate(_particleOfDestroy, _spotOfDestroyEffects.position, Quaternion.identity);
-            Destroyed?.Invoke();
-            gameObject.SetActive(false);
-            RefreshStrength();    
         }
     }
 }

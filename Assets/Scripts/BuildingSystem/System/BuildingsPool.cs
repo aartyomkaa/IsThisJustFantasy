@@ -23,7 +23,6 @@ namespace Assets.Scripts.BuildingSystem.System
             CreateResoorceBuilding(resoorceBuilding);
         }
 
-
         private void CreateTowerPool(Tower tower)
         {
             _towerPool = new List<Tower>();

@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using Agava.WebUtility;
 using Assets.Scripts.Audio;
 using Assets.Scripts.BuildingSystem.Buildings;
 using Assets.Scripts.BuildingSystem.System;
@@ -12,8 +10,6 @@ using Assets.Scripts.EnemyComponents;
 using Assets.Scripts.PlayerInput;
 using Assets.Scripts.YandexSDK;
 using Assets.Scripts.UI;
-using System.Collections.Generic;
-using System;
 
 namespace Assets.Scripts.GameLogic
 {
@@ -37,33 +33,15 @@ namespace Assets.Scripts.GameLogic
         [SerializeField] private BackgraoundPauser _backgroundPauser;
         [SerializeField] private InterstitialAdTimer _interstitialAdTimer;
 
-       // private List<ColliderPanelEventer> _eventers;
-
-       // public event Action<ColliderPanelEventer> EventerWasAdded;
-
         private void OnEnable()
         {
             SceneManager.sceneLoaded += OnSceneLoaded;
 
             _buildingSystem.EventerWithAdButtonWasMade += OnEventerWasMade;
-
             _enemyFactory.FinalWaveCleared += _nextLevelZone.OnAllWavesDefeated;
-            _enemyBuilding.AdButton.onClick.AddListener(_interstitialAd.Show);
-
-            _mainBuilding.BuildWithEventorWasMade += OnEventerWasMade;
-            _mainBuilding.Destroyed += _score.OpenEndGamePanel;
-
-            //_eventers.Add(_mainBuilding.EventerToSend);
-            //_eventers.Add(_enemyBuilding.EventerToSend);
-
-           // EventerWasAdded += _interstitialAdTimer.AddEventer;
-
             _enemyBuilding.EventerToSend.TakeTimer(_interstitialAdTimer);
-        }
-
-        private void Start()
-        {
-           // InitializeAdTimer();
+            _mainBuilding.BuildWithEventorWasMade += OnEventerWasMade;
+            _mainBuilding.Destroyed += _score.OpenEndGamePanel;  
         }
 
         private void OnDisable()
@@ -78,43 +56,19 @@ namespace Assets.Scripts.GameLogic
             _enemyBuilding.AdButton.onClick.RemoveListener(_interstitialAd.Show);
             _mainBuilding.BuildWithEventorWasMade -= OnEventerWasMade;
             _mainBuilding.Destroyed -= _score.OpenEndGamePanel;
-           // EventerWasAdded -= _interstitialAdTimer.AddEventer;
-
-            
-
         }
 
         private void OnEventerWasMade(ColliderPanelEventer currentEventer)
         {
-
-            Debug.Log("я евентер, вот моё имя - " + currentEventer.name);
             currentEventer.TakeTimer(_interstitialAdTimer);
-
-           // EventerWasAdded?.Invoke(currentEventer);
-            // button.onClick.AddListener(_videoAd.Show);
-            //_interstitialAdTimer.AddEventer(currentEventer);
-           // _interstitialAdTimer.SignToAdButtons();
-
-           
-
-            //if(_interstitialAdTimer.IsOnCooldown == true)
-            //{
-            //    currentEventer.DeActivateSecondButton();
-            //}
-           // currentEventer.AddButtonClicked +=
         }
-
-
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
             Player player = InitializePlayer();
 
             InitializeInput(player);
-            InitializeUI(player);
-           
-
-
+            InitializeUI(player);    
         }
 
         private Player InitializePlayer()
@@ -153,16 +107,9 @@ namespace Assets.Scripts.GameLogic
         {
             Pauser pauser = new Pauser(_audioMixer, _mobileInput);
 
-            // InitializeAd(pauser);
-
             _interstitialAd.Init(pauser);
             _videoAd.Init(pauser);
             _interstitialAdTimer.Init(_interstitialAd);
-            // _interstitialAdTimer.Init(_interstitialAd);
-            //_interstitialAdTimer.AddEventer(_mainBuilding.EventerToSend);
-            // _interstitialAdTimer.AddEventer(_enemyBuilding.EventerToSend);
-            // _interstitialAdTimer.SignToAdButtons();
-
 
             _globalUI.Init(player,_sceneLoader, _audioMixer, pauser, _videoAd, _interstitialAd); 
             _score.Init(player, pauser, _sceneLoader, _globalUI.EndGamePanel);
@@ -170,17 +117,7 @@ namespace Assets.Scripts.GameLogic
             _enemyFactory.WaveStarted += _globalUI.OnWaveStarted;
             _enemyFactory.WaveSpawnAmountChanged += _globalUI.OnWaveSpawnAmountChanged;
 
-            
-
             _backgroundPauser.Init(pauser, _audioMixer);
-        }
-
-        private void InitializeAdTimer()
-        {
-            //_interstitialAdTimer.Init(_interstitialAd);
-            //_interstitialAdTimer.AddEventer(_mainBuilding.EventerToSend);   
-            //_interstitialAdTimer.AddEventer(_enemyBuilding.EventerToSend);   
-           // _interstitialAdTimer.SignToAdButtons();  
         }
     }
 }

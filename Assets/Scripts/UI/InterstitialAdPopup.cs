@@ -13,8 +13,12 @@ namespace Assets.Scripts.UI
         [SerializeField] private GameObject _popupPanel;
         [SerializeField] private TMP_Text _secondsUntilAvailable;
 
-        private float _timeToShow = 3;
+        private WaitForSeconds _timeToShow;
 
+        private void Start()
+        {
+            _timeToShow = new WaitForSeconds(3);
+        }
 
         private void OnDisable()
         {
@@ -26,11 +30,11 @@ namespace Assets.Scripts.UI
             //подписаться на событие interstitialAd, должно принимать float
         }
 
-        private IEnumerator ShowPanel()  //изменить название
+        public IEnumerator Show()  //изменить название
         {
             _popupPanel.SetActive(true);
 
-             yield return new WaitForSeconds(_timeToShow); 
+            yield return _timeToShow;              //new WaitForSeconds(_timeToShow); 
 
             _popupPanel.SetActive(false);
         }

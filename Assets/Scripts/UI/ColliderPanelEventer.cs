@@ -18,32 +18,26 @@ namespace Assets.Scripts.UI
         [SerializeField] private Button _extraButton;
         [SerializeField] private TutorialPanel _tutorial;
         [SerializeField] private LeanToken _cost;
-        
+        [SerializeField] private InterstitialAdPopup _popupPanel;
+
         private Player _currentPlayer;
         private bool _isActive;
         private float _changeScaleSpeed = 0.15f;
         private int _panelMoveXValue = 228;
         private InterstitialAdTimer _timer;
-
-        // private WaitForSeconds _delay;
-        // private float _cooldownTime = 60.5f;
         private bool _isSecondButtonOnCooldown = false;
-       // private bool _isSecondButtonActive = true;
-
-       // public bool IsSecondButtonActive => _isSecondButtonActive;
 
         public Button SecondButton => _secondButton;
 
         public event Action<Player, int, int> FirstButtonClicked;
         public event Action<Player, int, int> SecondButtonClicked;
         public event Action ExtraButtonClicked;
-       // public event Action AddButtonClicked;
-       // public event Action AddButtonUnavailable;
+
 
        public void TakeTimer(InterstitialAdTimer timer)
         {
             _timer = timer;
-            Debug.Log("взял таймер, вот его имя - " + timer.name + "а вот мои координаты - " + gameObject.transform);
+            _isSecondButtonOnCooldown = _timer.IsOnCooldown;
             _timer.CooldownStarted += TurnSecondButton;
             _timer.BecomeAvailable += TurnSecondButton;
         }
@@ -51,8 +45,9 @@ namespace Assets.Scripts.UI
         
         private void Start()
         {
-           // _delay = new WaitForSeconds(_cooldownTime);
             _cost.SetValue(_costToBuy);
+            Debug.Log("я сейчас на кулдауне? " + _isSecondButtonOnCooldown);
+           
         }
        
         private void OnEnable()
@@ -75,9 +70,7 @@ namespace Assets.Scripts.UI
                 _timer.CooldownStarted -= TurnSecondButton;
                 _timer.BecomeAvailable -= TurnSecondButton;
             }
-            
-            
-
+              
             if (_extraButton != null)
             {
                 _extraButton.onClick.RemoveListener(OnExtraButtonClicked);
@@ -104,48 +97,11 @@ namespace Assets.Scripts.UI
             }
         }
 
-        public void OnFirsttButtonClicked()
+       private void TurnSecondButton(bool isOnCooldown)
         {
-            FirstButtonClicked?.Invoke(_currentPlayer, _costToBuy, UiHash.CoinsButtonIndex);
-        }
-
-        public void OnSecondButtonClicked()
-        {
-            if (_isSecondButtonOnCooldown == false)
-            {
-                SecondButtonClicked?.Invoke(_currentPlayer, _costToBuy, UiHash.AdButtonIndex);
-                _timer.StartСountDown();
-               // DeActivateSecondButton();
-               // AddButtonClicked?.Invoke();
-            }
-            else
-            {
-               // AddButtonUnavailable?.Invoke();
-            }          
-        }
-
-        public void OnExtraButtonClicked()
-        {
-            ExtraButtonClicked?.Invoke();
-            Close();
-        }
-
-       private void TurnSecondButton(bool isSecondButtonActive)
-        {
-            _isSecondButtonOnCooldown = isSecondButtonActive;
+            _isSecondButtonOnCooldown = isOnCooldown;
         }
         
-        
-        //public void ActivateSecondButton()
-        //{
-        //    _isSecondButtonActive = true;
-        //}
-
-        //public void DeActivateSecondButton()
-        //{
-        //    _isSecondButtonActive = false;
-        //}
-
         private void Open()
         {
             ChangeActiveStatus();
@@ -170,13 +126,29 @@ namespace Assets.Scripts.UI
             _panelToShow.gameObject.SetActive(_isActive);
         }
 
-        //private IEnumerator Timer()
-        //{
-        //    _isOnCooldown = true;
+        public void OnFirsttButtonClicked()
+        {
+            FirstButtonClicked?.Invoke(_currentPlayer, _costToBuy, UiHash.CoinsButtonIndex);
+        }
 
-        //    yield return _delay;
+        public void OnSecondButtonClicked()
+        {
+            if (_isSecondButtonOnCooldown == false)
+            {
+                SecondButtonClicked?.Invoke(_currentPlayer, _costToBuy, UiHash.AdButtonIndex);
+                _timer.StartСountDown();
+            }
+            else
+            {
+                Debug.Log("сейчас кулдаун");
+                StartCoroutine(_popupPanel.Show());
+            }
+        }
 
-        //    _isOnCooldown = false;
-        //}
+        public void OnExtraButtonClicked()
+        {
+            ExtraButtonClicked?.Invoke();
+            Close();
+        }
     }
 }

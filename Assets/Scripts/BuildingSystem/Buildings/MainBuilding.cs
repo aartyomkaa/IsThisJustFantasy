@@ -9,16 +9,9 @@ namespace Assets.Scripts.BuildingSystem.Buildings
         private int _valueToHeal = 50;
 
 
-        private void Awake()
-        {
-            AnnounceOfCreation();
-        }
-
         private void OnEnable()
         {
             Eventer.FirstButtonClicked += HealPlayer;
-            //Debug.Log("Я главное здание, вот мой евентер - " + Eventer.name);
-
         }
 
         private void OnDisable()
