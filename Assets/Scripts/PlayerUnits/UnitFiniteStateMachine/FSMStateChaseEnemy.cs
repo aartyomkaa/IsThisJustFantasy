@@ -13,6 +13,7 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
         public FSMStateChaseEnemy(FiniteStateMachine fsm, IFSMControllable unit, NavMeshAgent navMesh, Animator animator, Data data, UnitSFX enemySFX)
             : base(fsm, unit, navMesh, animator, data, enemySFX)
         {
+            _path = new NavMeshPath();
         }
 
         public override void Enter()

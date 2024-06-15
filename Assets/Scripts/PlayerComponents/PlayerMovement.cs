@@ -19,6 +19,8 @@ namespace Assets.Scripts.PlayerComponents
         {
             _navMeshAgent = GetComponent<NavMeshAgent>();
             _animator = GetComponent<PlayerAnimator>();
+
+            _path = new NavMeshPath();
         }
 
         public void Move(Vector2 direction)

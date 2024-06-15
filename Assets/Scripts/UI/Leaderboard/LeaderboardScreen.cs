@@ -30,22 +30,14 @@ namespace Assets.Scripts.UI
 
         public override void Open()
         {
-            base.Open();
-
-            Debug.Log("LEADERBOARD SCREEN OPEN");
-
             if (PlayerAccount.IsAuthorized)
             {
-                Debug.Log("PLAYER AUTHORIZED");
-
                 PlayerAccount.RequestPersonalProfileDataPermission();
 
                 _leaderboardpanel.Init();
             }
             else
             {
-                Debug.Log("PLAYER NOT AUTHORIZED");
-
                 _loginpanel.Open();
             }
         }
