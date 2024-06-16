@@ -111,7 +111,7 @@ namespace Assets.Scripts.GameLogic
             _videoAd.Init(pauser);
             _interstitialAdTimer.Init(_interstitialAd);
 
-            _globalUI.Init(player,_sceneLoader, _audioMixer, pauser, _videoAd, _interstitialAd); 
+            _globalUI.Init(player,_sceneLoader, _audioMixer, pauser, _videoAd); 
             _score.Init(player, pauser, _sceneLoader, _globalUI.EndGamePanel);
             _nextLevelZone.Init(_score, _sceneLoader, player, pauser, _globalUI.NextLevelPanel, _globalUI.WinGamePanel); 
             _enemyFactory.WaveStarted += _globalUI.OnWaveStarted;

@@ -18,8 +18,7 @@ namespace Assets.Scripts.UI
         [SerializeField] private TMP_Text _wavesNumber;
         [SerializeField] private ScorePanel _nextLevelPanel;
         [SerializeField] private ScorePanel _endGamePanel;
-        [SerializeField] private ScorePanel _winGamePanel;
-        [SerializeField] private InterstitialAdPopup _interstitialAdPopup;
+        [SerializeField] private ScorePanel _winGamePanel;      
 
         private SceneLoader _sceneLoader;
         private AudioMixer _audioMixer;
@@ -44,14 +43,12 @@ namespace Assets.Scripts.UI
             _winGamePanel.BackButtonPressed -= _videoAdShower.Show;
         }
 
-        public void Init(Player player, SceneLoader loader, AudioMixer mixer, Pauser pauser, VideoAdShower videoAdShower, InterstitialAdShower interstitialAd) 
+        public void Init(Player player, SceneLoader loader, AudioMixer mixer, Pauser pauser, VideoAdShower videoAdShower) 
         {
             _sceneLoader = loader;
             _player = player;
             _audioMixer = mixer;
             _videoAdShower = videoAdShower;
-
-            _interstitialAdPopup.Init(interstitialAd);
 
             _player.LevelChanged += _playerUI.OnLevelChanged;
             _playerUI.SignToPlayerValuesChanges(player);

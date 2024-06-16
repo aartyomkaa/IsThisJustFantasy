@@ -10,7 +10,7 @@ namespace Assets.Scripts.UI
         [SerializeField] private Button _exitToMainMenuButton;
         [SerializeField] private GameObject _panel;
 
-        private Pauser _currentPauser;
+        private Pauser _pauser;
 
         public Button OpenButton;
         public Button CloseButton;
@@ -20,7 +20,7 @@ namespace Assets.Scripts.UI
 
         public void SignToPauserEvents(Pauser pauser)
         {
-            _currentPauser = pauser;
+            _pauser = pauser;
             OpenButton.onClick.AddListener(OnOpenButtonClicked);
             CloseButton.onClick.AddListener(OnCloseButtonClicked);
             _exitToMainMenuButton.onClick.AddListener(OnMainMenuButtonClicked);
@@ -37,26 +37,26 @@ namespace Assets.Scripts.UI
 
         private void OnMainMenuButtonClicked()
         {
-            _currentPauser.Resume();
+            _pauser.Resume();
             MainMenuButtonClicked?.Invoke();
         }
 
         private void OnRestartSceneButtonClicked()
         {
             RestartSceneButtonClicked?.Invoke();
-            _currentPauser.Resume();
+            _pauser.Resume();
         }
 
         private void OnOpenButtonClicked()
         {
             _panel.SetActive(true);
-            _currentPauser.Pause();
+            _pauser.Pause();
         }
 
         private void OnCloseButtonClicked()
         {
             _panel.SetActive(false);
-            _currentPauser.Resume();
+            _pauser.Resume();
         }
     }
 }
