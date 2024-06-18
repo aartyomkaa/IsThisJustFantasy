@@ -20127,7 +20127,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 7a9506cbcaba4e6488a923ba4bde5925, type: 3}
-    m_FontSize: 33
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 3
@@ -20172,7 +20172,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6538883944361714018
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20765,6 +20765,10 @@ PrefabInstance:
     - target: {fileID: 1078914373299480080, guid: 06b4f79bb6b0704428b150c07a93c4f0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474004401075765197, guid: 06b4f79bb6b0704428b150c07a93c4f0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1.0082016
       objectReference: {fileID: 0}
     - target: {fileID: 3904990787536778496, guid: 06b4f79bb6b0704428b150c07a93c4f0, type: 3}
       propertyPath: m_Name

@@ -17,17 +17,15 @@ namespace Assets.Scripts.YandexSDK
 
         private void Start()
         {
-            _cooldown = new WaitForSeconds(25.5f);
+            _cooldown = new WaitForSeconds(60.5f);
         }
 
         private IEnumerator СountDown()
         {
-            Debug.Log("Кулдаун начался");
             yield return _cooldown;
 
             _isOnCooldown = false;
             BecomeAvailable?.Invoke(_isOnCooldown);
-            Debug.Log("Кулдаун прошёл");  
         }
 
         public void Init(InterstitialAdShower interstitialAd)
