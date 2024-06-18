@@ -150,6 +150,7 @@ GameObject:
   - component: {fileID: 3017288805688565037}
   - component: {fileID: 6267358003876926125}
   - component: {fileID: 6359836708194397914}
+  - component: {fileID: 5925365731810875928}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -242,6 +243,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!225 &5925365731810875928
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5384582936022115829}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &6971918160815949854
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,6 +382,7 @@ MonoBehaviour:
   _ground:
     serializedVersion: 2
     m_Bits: 131072
+  _canvasGroup: {fileID: 5925365731810875928}
 --- !u!1001 &2821200738310592667
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -460,6 +474,10 @@ PrefabInstance:
     - target: {fileID: 2929252283123773939, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
       propertyPath: m_Name
       value: Fixed Joystick
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929252283123773939, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

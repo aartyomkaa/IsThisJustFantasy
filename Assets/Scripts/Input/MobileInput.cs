@@ -16,6 +16,7 @@ namespace Assets.Scripts.PlayerInput
         [SerializeField] private Button _changeWeapon;
         [SerializeField] private SelectedUnitsHandler _selectedUnitsHandler;
         [SerializeField] private LayerMask _ground;
+        [SerializeField] private CanvasGroup _canvasGroup;
 
         private PlayerMovement _playerMover;
         private PlayerAttacker _playerAttacker;
@@ -74,6 +75,13 @@ namespace Assets.Scripts.PlayerInput
 
             _attack.onClick.AddListener(OnAttackInput);
             _changeWeapon.onClick.AddListener(OnChangeWeaponInput);
+        }
+
+        public void SetVisibility(bool isVisible)
+        {
+            _canvasGroup.alpha = isVisible ? 1 : 0;
+            _canvasGroup.interactable = isVisible;
+            _canvasGroup.blocksRaycasts = isVisible;
         }
 
         private void OnMoveInput(Vector2 direction)

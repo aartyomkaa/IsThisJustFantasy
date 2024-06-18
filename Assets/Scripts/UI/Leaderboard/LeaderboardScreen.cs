@@ -30,6 +30,8 @@ namespace Assets.Scripts.UI
 
         public override void Open()
         {
+            base.Open();
+
             if (PlayerAccount.IsAuthorized)
             {
                 PlayerAccount.RequestPersonalProfileDataPermission();

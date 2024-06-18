@@ -30,7 +30,6 @@ namespace Assets.Scripts.UI
         public ScorePanel EndGamePanel => _endGamePanel;
         public ScorePanel WinGamePanel => _winGamePanel;
 
-
         private void OnDisable()
         {
             _audioMixer.VolumeValueChanged -= _soundToggler.SetCurrentStatus;
@@ -52,7 +51,7 @@ namespace Assets.Scripts.UI
 
             _player.LevelChanged += _playerUI.OnLevelChanged;
             _playerUI.SignToPlayerValuesChanges(player);
-            _pausePanel.SignToPauserEvents(pauser);
+            _pausePanel.Init(pauser);
 
             _audioMixer.SignSoundValuesChanges(_soundToggler);
             _audioMixer.VolumeValueChanged += _soundToggler.SetCurrentStatus;

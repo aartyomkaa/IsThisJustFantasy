@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
+using Agava.WebUtility;
 using Assets.Scripts.Audio;
 using Assets.Scripts.BuildingSystem.Buildings;
 using Assets.Scripts.BuildingSystem.System;
@@ -67,8 +68,9 @@ namespace Assets.Scripts.GameLogic
         {
             Player player = InitializePlayer();
 
-            InitializeInput(player);
-            InitializeUI(player);    
+            Pauser pauser = new Pauser(_audioMixer, InitializeInput(player));
+
+            InitializeUI(player, pauser);    
         }
 
         private Player InitializePlayer()
@@ -82,31 +84,35 @@ namespace Assets.Scripts.GameLogic
             return player;
         }
 
-        private void InitializeInput(Player player)
+        private MobileInput InitializeInput(Player player)
         {
 #if UNITY_WEBGL && !UNITY_EDITOR
             if (Device.IsMobile)
             {
                 MobileInput input = Instantiate(_mobileInput, transform);
                 input.Init(player);
+
+                return input;
             }
             else
             {
                 DesktopInput input = Instantiate(_desktopInput, transform);
                 input.Init(player);
             }
+
+            return null;
 #endif
 
 #if UNITY_EDITOR
-                DesktopInput input = Instantiate(_desktopInput, transform);
-                input.Init(player);
+            MobileInput input = Instantiate(_mobileInput, transform);
+            input.Init(player);
+
+            return input;
 #endif
         }
 
-        private void InitializeUI(Player player)
+        private void InitializeUI(Player player, Pauser pauser)
         {
-            Pauser pauser = new Pauser(_audioMixer, _mobileInput);
-
             _interstitialAd.Init(pauser);
             _videoAd.Init(pauser);
             _interstitialAdTimer.Init(_interstitialAd);

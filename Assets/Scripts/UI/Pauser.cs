@@ -2,7 +2,6 @@ using UnityEngine;
 using Assets.Scripts.Audio;
 using Assets.Scripts.PlayerInput;
 
-
 namespace Assets.Scripts.UI
 {
     internal class Pauser
@@ -21,9 +20,9 @@ namespace Assets.Scripts.UI
         {
             _isCurrentSoundOff = _audioMixer.IsMuted;
 
-            if (_mobileInput != null && Application.isMobilePlatform)
+            if (_mobileInput != null)
             {
-              _mobileInput.gameObject.SetActive(false);
+                _mobileInput.SetVisibility(false);
             }
 
             if (!_isCurrentSoundOff)
@@ -36,9 +35,9 @@ namespace Assets.Scripts.UI
 
         public void Resume()
         {
-            if (_mobileInput != null && Application.isMobilePlatform)
+            if (_mobileInput != null)
             {
-                _mobileInput.gameObject.SetActive(true);
+                _mobileInput.SetVisibility(true);
             }
 
             if (!_isCurrentSoundOff)

@@ -18,9 +18,8 @@ namespace Assets.Scripts.UI
         public event Action MainMenuButtonClicked;
         public event Action RestartSceneButtonClicked;
 
-        public void SignToPauserEvents(Pauser pauser)
+        private void OnEnable()
         {
-            _pauser = pauser;
             OpenButton.onClick.AddListener(OnOpenButtonClicked);
             CloseButton.onClick.AddListener(OnCloseButtonClicked);
             _exitToMainMenuButton.onClick.AddListener(OnMainMenuButtonClicked);
@@ -33,6 +32,11 @@ namespace Assets.Scripts.UI
             CloseButton.onClick.RemoveListener(OnCloseButtonClicked);
             _exitToMainMenuButton.onClick.RemoveListener(OnMainMenuButtonClicked);
             _restartSceneButton.onClick.RemoveListener(OnRestartSceneButtonClicked);
+        }
+
+        public void Init(Pauser pauser)
+        {
+            _pauser = pauser;
         }
 
         private void OnMainMenuButtonClicked()
