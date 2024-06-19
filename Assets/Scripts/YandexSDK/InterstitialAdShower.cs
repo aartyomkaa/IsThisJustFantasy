@@ -9,8 +9,7 @@ namespace Assets.Scripts.YandexSDK
     {
         public override void Show()
         {
-            Debug.Log("Реклама включилась");
-            //InterstitialAd.Show(OnOpenCallBack, OnCloseCallBack);
+            InterstitialAd.Show(OnOpenCallBack, OnCloseCallBack);
         }
     }
 }
