@@ -1,10 +1,5 @@
-using Assets.Scripts.EnemyComponents;
-using Assets.Scripts.YandexSDK;
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Assets.Scripts.UI
 {
@@ -12,11 +7,13 @@ namespace Assets.Scripts.UI
     {
         [SerializeField] private GameObject _popupPanel;
 
+        private float _seconds = 3;
+
         private WaitForSeconds _timeToShow;
 
         private void Start()
         {
-            _timeToShow = new WaitForSeconds(3);
+            _timeToShow = new WaitForSeconds(_seconds);
         }
 
         public IEnumerator Show()  

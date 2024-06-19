@@ -11,6 +11,7 @@ using Assets.Scripts.EnemyComponents;
 using Assets.Scripts.PlayerInput;
 using Assets.Scripts.YandexSDK;
 using Assets.Scripts.UI;
+using Assets.Scripts.UI.Tutorial;
 
 namespace Assets.Scripts.GameLogic
 {
@@ -33,6 +34,7 @@ namespace Assets.Scripts.GameLogic
         [SerializeField] private EnemyBuilding _enemyBuilding;
         [SerializeField] private BackgraoundPauser _backgroundPauser;
         [SerializeField] private InterstitialAdTimer _interstitialAdTimer;
+        [SerializeField] private ChestArrow _chestArrow;
 
         private void OnEnable()
         {
@@ -70,7 +72,12 @@ namespace Assets.Scripts.GameLogic
 
             Pauser pauser = new Pauser(_audioMixer, InitializeInput(player));
 
-            InitializeUI(player, pauser);    
+            InitializeUI(player, pauser);
+
+            if (_chestArrow != null)
+            {
+                _chestArrow.Init(player.transform);
+            }
         }
 
         private Player InitializePlayer()
@@ -104,10 +111,10 @@ namespace Assets.Scripts.GameLogic
 #endif
 
 #if UNITY_EDITOR
-            MobileInput input = Instantiate(_mobileInput, transform);
+            DesktopInput input = Instantiate(_desktopInput, transform);
             input.Init(player);
 
-            return input;
+            return null;
 #endif
         }
 

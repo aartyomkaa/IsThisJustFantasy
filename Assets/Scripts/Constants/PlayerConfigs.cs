@@ -7,6 +7,7 @@
         public static string MusicVolume = "MasterVolume";
         public static string Score = "Score";
         public static string Leaderboard = "leader";
+        public static int LevelsCleared = 1;
         public const int MinVolume = -80;
         public const int MaxVolume = 0;
 

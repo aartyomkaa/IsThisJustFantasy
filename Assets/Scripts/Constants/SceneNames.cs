@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Assets.Scripts.Constants
+﻿namespace Assets.Scripts.Constants
 {
     internal class SceneNames
     {
@@ -13,8 +11,5 @@ namespace Assets.Scripts.Constants
         public static string Level5 = "Level5";
         public static string Level6 = "Level6";
         public static string LastAvailableLevel = "LastAvailableLevel";
-        public static string Test = "ArtjomScene";
-
-       
     }
 }

@@ -1,9 +1,7 @@
+using System.Collections.Generic;
+using UnityEngine;
 using Assets.Scripts.Constants;
 using Assets.Scripts.GameLogic;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEngine;
 
 namespace Assets.Scripts.UI
 {
@@ -26,7 +24,6 @@ namespace Assets.Scripts.UI
             ActiveAvailableLevels();
             SignToButtons();
         }
-
 
         private void ActiveAvailableLevels()
         {

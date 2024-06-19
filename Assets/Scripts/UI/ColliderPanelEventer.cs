@@ -46,8 +46,6 @@ namespace Assets.Scripts.UI
         private void Start()
         {
             _cost.SetValue(_costToBuy);
-            Debug.Log("я сейчас на кулдауне? " + _isSecondButtonOnCooldown);
-           
         }
        
         private void OnEnable()

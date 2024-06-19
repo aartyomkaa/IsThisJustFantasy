@@ -1,8 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using Assets.Scripts.Constants;
 using Assets.Scripts.UI;
-using System;
 
 namespace Assets.Scripts.GameLogic
 {

@@ -18,8 +18,7 @@ namespace Assets.Scripts.UI
         private PlayerWallet _wallet;
         private PlayerHealth _health;
         private SceneLoader _sceneLoader;
-        private int _scoreMultiplier = 3;
-
+        private int _scoreMultiplier = 2;
 
         private void OnDisable()
         {
