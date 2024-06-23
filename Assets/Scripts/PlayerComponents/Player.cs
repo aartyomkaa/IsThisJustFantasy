@@ -24,6 +24,8 @@ namespace Assets.Scripts.PlayerComponents
             _wallet = new PlayerWallet();
             PlayerSFX sfx = GetComponentInChildren<PlayerSFX>();
 
+            _currentLevel = PlayerPrefs.GetInt(PlayerConfigs.PlayerLevel);
+
 #if !UNITY_WEBGL && UNITY_EDITOR            
             _currentLevel = 0;
 #endif

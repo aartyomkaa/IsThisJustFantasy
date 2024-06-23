@@ -34,7 +34,7 @@ namespace Assets.Scripts.GameLogic
         [SerializeField] private EnemyBuilding _enemyBuilding;
         [SerializeField] private BackgraoundPauser _backgroundPauser;
         [SerializeField] private InterstitialAdTimer _interstitialAdTimer;
-        [SerializeField] private ChestArrow _chestArrow;
+        [SerializeField] private Tutorial _tutorial;
 
         private void OnEnable()
         {
@@ -74,9 +74,9 @@ namespace Assets.Scripts.GameLogic
 
             InitializeUI(player, pauser);
 
-            if (_chestArrow != null)
+            if (_tutorial != null)
             {
-                _chestArrow.Init(player.transform);
+                _tutorial.Init(player.transform);
             }
         }
 

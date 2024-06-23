@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.ProBuilder;
 
 namespace Assets.Scripts.UI.Tutorial
 {
@@ -10,21 +9,17 @@ namespace Assets.Scripts.UI.Tutorial
         [SerializeField] private TutorialPanel[] _panels;
 
         private int _tutorialIndex = 0;
-        private float _nextTutorialDelay = 15f;
+        private float _nextTutorialDelay = 10f;
         private Coroutine _nextTutorial;
 
         private void OnEnable()
         {
-            foreach (var arrow in _arrows)
-            {
-                arrow.gameObject.SetActive(false);
-                arrow.Collected += StartTutorialCoroutine;
-            }
+
         }
 
         private void Start()
         {
-            ShowNextTutorial();
+            _arrows[0].gameObject.SetActive(true);
         }
 
         private void OnDisable()
@@ -35,6 +30,16 @@ namespace Assets.Scripts.UI.Tutorial
             }
         }
 
+        public void Init(Transform player)
+        {
+            foreach (var arrow in _arrows)
+            {
+                arrow.gameObject.SetActive(false);
+                arrow.Init(player);
+                arrow.Collected += StartTutorialCoroutine;
+            }
+        }
+
         private void StartTutorialCoroutine()
         {
             _nextTutorial = StartCoroutine(NextTutorialDelay());
@@ -42,6 +47,9 @@ namespace Assets.Scripts.UI.Tutorial
 
         private IEnumerator NextTutorialDelay()
         {
+            if (_panels[_tutorialIndex] != null)
+                _panels[_tutorialIndex].Open();
+
             yield return new WaitForSeconds(_nextTutorialDelay);
 
             ShowNextTutorial();
@@ -49,14 +57,11 @@ namespace Assets.Scripts.UI.Tutorial
 
         private void ShowNextTutorial()
         {
-            if (_tutorialIndex < _arrows.Length)
+            if (_tutorialIndex < _arrows.Length - 1)
             {
-                _arrows[_tutorialIndex].gameObject.SetActive(true);
-
-                if (_panels[_tutorialIndex] != null)
-                    _panels[_tutorialIndex].Open();
-
                 _tutorialIndex++;
+
+                _arrows[_tutorialIndex].gameObject.SetActive(true);
             }
         }
     }

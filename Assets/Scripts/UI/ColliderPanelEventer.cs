@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using Lean.Localization;
@@ -138,7 +137,6 @@ namespace Assets.Scripts.UI
             }
             else
             {
-                Debug.Log("сейчас кулдаун");
                 StartCoroutine(_popupPanel.Show());
             }
         }

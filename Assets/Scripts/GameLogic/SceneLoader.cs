@@ -13,6 +13,7 @@ namespace Assets.Scripts.GameLogic
         private int _totalScenes;
         private int _oneLevelIndex = 1;
         private bool _isLastLevelReached;
+        private int _secondLevelIndex = 3;
 
         public event Action<bool> LastLevelReached;
 
@@ -24,6 +25,10 @@ namespace Assets.Scripts.GameLogic
             {
                 _isLastLevelReached = true;
                 LastLevelReached?.Invoke(_isLastLevelReached);
+            }
+            else if (SceneManager.GetActiveScene().buildIndex == _secondLevelIndex)
+            {
+                PlayerPrefs.SetInt(PlayerConfigs.HasPassedTutorial, 1);
             }
         }
 
