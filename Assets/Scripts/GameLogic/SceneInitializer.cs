@@ -110,12 +110,14 @@ namespace Assets.Scripts.GameLogic
             return null;
 #endif
 
-#if UNITY_EDITOR
+#if UNITY_EDITOR && !UNITY_WEBGL
             DesktopInput input = Instantiate(_desktopInput, transform);
             input.Init(player);
 
             return null;
 #endif
+
+            return null;
         }
 
         private void InitializeUI(Player player, Pauser pauser)
