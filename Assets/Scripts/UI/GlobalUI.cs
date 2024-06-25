@@ -25,7 +25,6 @@ namespace Assets.Scripts.UI
         private Player _player;
         private VideoAdShower _videoAdShower;
 
-
         public ScorePanel NextLevelPanel => _nextLevelPanel;
         public ScorePanel EndGamePanel => _endGamePanel;
         public ScorePanel WinGamePanel => _winGamePanel;

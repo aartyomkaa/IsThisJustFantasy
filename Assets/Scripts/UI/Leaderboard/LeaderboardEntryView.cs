@@ -1,8 +1,8 @@
-﻿using Agava.YandexGames;
-using System;
-using TMPro;
+﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using Agava.YandexGames;
 
 namespace Assets.Scripts.UI
 {

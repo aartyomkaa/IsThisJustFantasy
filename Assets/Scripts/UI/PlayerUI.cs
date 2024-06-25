@@ -18,6 +18,7 @@ namespace Assets.Scripts.UI
         public void SignToPlayerValuesChanges(Player player)
         {
             _health = player.GetComponent<PlayerHealth>();
+            _slider.maxValue = _health.Health;
             _slider.value = _health.Health;
 
             OnLevelChanged(player.CurrentLevel);

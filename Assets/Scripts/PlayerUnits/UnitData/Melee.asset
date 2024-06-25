@@ -17,9 +17,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   Health: 100
-  Speed: 3.5
+  Speed: 6.5
   Damage: 10
   AttackSpeed: 2
   AttackRange: 2
-  AggroRange: 5
+  AggroRange: 10
   Prefab: {fileID: 2730463041631273973, guid: fe5d0b40303882c43a7e9de4698ea63a, type: 3}

@@ -243,7 +243,7 @@ MonoBehaviour:
   _rank: {fileID: 5611584090810321146}
   _playerName: {fileID: 854998454260113221}
   _score: {fileID: 1908196645708222543}
-  _avatar: {fileID: 0}
+  _avatar: {fileID: 1150874317767523157}
 --- !u!1 &1873481467741049459
 GameObject:
   m_ObjectHideFlags: 0
