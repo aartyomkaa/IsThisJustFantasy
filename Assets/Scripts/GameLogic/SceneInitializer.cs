@@ -125,7 +125,7 @@ namespace Assets.Scripts.GameLogic
             _enemyFactory.WaveStarted += _globalUI.OnWaveStarted;
             _enemyFactory.WaveSpawnAmountChanged += _globalUI.OnWaveSpawnAmountChanged;
 
-            _backgroundPauser.Init(pauser, _audioMixer);
+            _backgroundPauser.Init(pauser);
         }
     }
 }

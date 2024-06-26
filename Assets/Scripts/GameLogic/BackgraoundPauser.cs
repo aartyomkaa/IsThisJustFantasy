@@ -8,13 +8,6 @@ namespace Assets.Scripts.GameLogic
     internal class BackgraoundPauser : MonoBehaviour
     {
         private Pauser _pauser;
-        private AudioMixer _mixer;
-
-        private void OnEnable()
-        {
-            WebApplication.InBackgroundChangeEvent += OnInBackgroundChangeWeb;
-            Application.focusChanged += OnInBackgroundChangeApp;
-        }
 
         private void OnDisable()
         {
@@ -22,22 +15,22 @@ namespace Assets.Scripts.GameLogic
             Application.focusChanged -= OnInBackgroundChangeApp;
         }
 
-        public void Init(Pauser pauser, AudioMixer mixer)
+        public void Init(Pauser pauser)
         {
             _pauser = pauser;
-            _mixer = mixer;
+
+            WebApplication.InBackgroundChangeEvent += OnInBackgroundChangeWeb;
+            Application.focusChanged += OnInBackgroundChangeApp;
         }
 
         private void OnInBackgroundChangeWeb(bool isBackground)
         {
             if (isBackground)
             {
-                _mixer.Mute();
                 _pauser.Pause();
             }
             else
             {
-                _mixer.Unmute();
                 _pauser.Resume();
             }
         }
@@ -46,12 +39,10 @@ namespace Assets.Scripts.GameLogic
         {
             if (!inApp)
             {
-                _mixer.Mute();
                 _pauser.Pause();
             }
             else
             {
-                _mixer.Unmute();
                 _pauser.Resume();
             }
         }
