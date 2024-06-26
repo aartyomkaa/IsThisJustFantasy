@@ -10,12 +10,6 @@ namespace Assets.Scripts.UI.Tutorial
 
         private int _tutorialIndex = 0;
         private float _nextTutorialDelay = 10f;
-        private Coroutine _nextTutorial;
-
-        private void OnEnable()
-        {
-
-        }
 
         private void Start()
         {
@@ -42,7 +36,7 @@ namespace Assets.Scripts.UI.Tutorial
 
         private void StartTutorialCoroutine()
         {
-            _nextTutorial = StartCoroutine(NextTutorialDelay());
+            StartCoroutine(NextTutorialDelay());
         }
 
         private IEnumerator NextTutorialDelay()

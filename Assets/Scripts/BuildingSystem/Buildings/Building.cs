@@ -50,7 +50,6 @@ namespace Assets.Scripts.BuildingSystem
             }
         }
 
-
         private void SetScaleOfParticleOfDestroy()
         {
             _scaleOfParticleOfDestroy = new Vector3(_valueOfScaleOfParticleOfDestroy, _valueOfScaleOfParticleOfDestroy, _valueOfScaleOfParticleOfDestroy);
@@ -69,6 +68,7 @@ namespace Assets.Scripts.BuildingSystem
             gameObject.SetActive(false);
             RefreshStrength();    
         }
+
         public void TakeDamage(float damage)
         {
             if (_strength > 0 && damage > 0)
