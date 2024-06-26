@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Assets.Scripts.UI;
-using Agava.WebUtility;
 using Assets.Scripts.Audio;
+using Agava.WebUtility;
 
 namespace Assets.Scripts.GameLogic
 {
@@ -13,13 +13,13 @@ namespace Assets.Scripts.GameLogic
         private void OnEnable()
         {
             WebApplication.InBackgroundChangeEvent += OnInBackgroundChangeWeb;
-            //Application.focusChanged += OnInBackgroundChangeApp;
+            Application.focusChanged += OnInBackgroundChangeApp;
         }
 
         private void OnDisable()
         {
             WebApplication.InBackgroundChangeEvent -= OnInBackgroundChangeWeb;
-            //Application.focusChanged -= OnInBackgroundChangeApp;
+            Application.focusChanged -= OnInBackgroundChangeApp;
         }
 
         public void Init(Pauser pauser, AudioMixer mixer)

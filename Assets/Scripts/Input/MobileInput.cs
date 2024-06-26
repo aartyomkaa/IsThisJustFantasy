@@ -24,13 +24,15 @@ namespace Assets.Scripts.PlayerInput
         private SpriteChanger _spriteChanger;
 
         private WorldPointFinder _worldPointFinder;
+        private PointerSelectableChecker _poinerChecker;
 
-        private float _doubleTapThreshold = 0.5f;
+        private float _doubleTapThreshold = 1f;
         private float _lastTapTime;
 
         private void Start()
         {
             _spriteChanger = _changeWeapon.GetComponent<SpriteChanger>();
+            SetVisibility(true);
         }
 
         private void FixedUpdate()
@@ -72,6 +74,7 @@ namespace Assets.Scripts.PlayerInput
             _playerAttacker = player.GetComponent<PlayerAttacker>();
 
             _worldPointFinder = new WorldPointFinder(_ground);
+            _poinerChecker = new PointerSelectableChecker();
 
             _attack.onClick.AddListener(OnAttackInput);
             _changeWeapon.onClick.AddListener(OnChangeWeaponInput);
@@ -102,7 +105,8 @@ namespace Assets.Scripts.PlayerInput
 
         private void OnMoveUnits(Vector3 position)
         {
-            _selectedUnitsHandler.MoveUnits(position);
+            if (_poinerChecker.IsPointerOverSelectableObject(position) == false)
+                _selectedUnitsHandler.MoveUnits(position);
         }
     }
 }

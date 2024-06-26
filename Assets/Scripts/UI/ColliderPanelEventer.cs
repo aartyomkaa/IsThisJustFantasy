@@ -32,15 +32,13 @@ namespace Assets.Scripts.UI
         public event Action<Player, int, int> SecondButtonClicked;
         public event Action ExtraButtonClicked;
 
-
-       public void TakeTimer(InterstitialAdTimer timer)
+        public void TakeTimer(InterstitialAdTimer timer)
         {
             _timer = timer;
             _isSecondButtonOnCooldown = _timer.IsOnCooldown;
             _timer.CooldownStarted += TurnSecondButton;
             _timer.BecomeAvailable += TurnSecondButton;
         }
-        
         
         private void Start()
         {
@@ -57,6 +55,7 @@ namespace Assets.Scripts.UI
                 _extraButton.onClick.AddListener(OnExtraButtonClicked);
             }  
         }
+
         private void OnDisable()
         {
             _firstButton.onClick.RemoveListener(OnFirsttButtonClicked);
@@ -94,7 +93,7 @@ namespace Assets.Scripts.UI
             }
         }
 
-       private void TurnSecondButton(bool isOnCooldown)
+        private void TurnSecondButton(bool isOnCooldown)
         {
             _isSecondButtonOnCooldown = isOnCooldown;
         }
