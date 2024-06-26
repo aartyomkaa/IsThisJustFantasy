@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Agava.YandexGames;
+using System.Collections;
 
 namespace Assets.Scripts.UI
 {
@@ -17,34 +18,34 @@ namespace Assets.Scripts.UI
         [SerializeField] private TMP_Text _score;
         [SerializeField] private RawImage _avatar;
 
-        private bool _avatarDownloaded;
-
         public void SetData(LeaderboardEntryResponse entry)
         {
             if (entry == null)
                 throw new ArgumentNullException((nameof(entry)));
 
 
-            DownloadAvatar(entry.player.profilePicture);
+            StartCoroutine(DownloadAvatar(entry.player.profilePicture));
             _playerName.text = SetName(entry.player.publicName);
             _rank.text = entry.rank.ToString();
             _score.text = entry.score.ToString();
         }
 
-        private void DownloadAvatar(string avatarUrl)
+        private IEnumerator DownloadAvatar(string avatarUrl)
         {
-            if (_avatarDownloaded == false)
-            {
-                RemoteImage remoteImage = new(avatarUrl);
-                remoteImage.Download(SetAvatar);
-            }
+            RemoteImage remoteImage = new(avatarUrl);
+            remoteImage.Download();
+
+            while (!remoteImage.IsDownloadFinished)
+                yield return null;
+
+            if (remoteImage.IsDownloadSuccessful)
+                SetAvatar(remoteImage.Texture);
         }
 
         private void SetAvatar(Texture2D texture)
         {
             _avatar.enabled = true;
             _avatar.texture = texture;
-            _avatarDownloaded = true;
         }
 
         private string SetName(string publicName)
