@@ -368,9 +368,9 @@ RectTransform:
   m_Father: {fileID: 8335060722091544772}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.22632404, y: 0.48700002}
-  m_AnchoredPosition: {x: 1.2801208, y: -3.8050003}
-  m_SizeDelta: {x: 2.0479965, y: 13.610001}
+  m_AnchorMax: {x: 0.22632404, y: 0.44763064}
+  m_AnchoredPosition: {x: 1.2801208, y: -12}
+  m_SizeDelta: {x: 2.0479965, y: 22.61}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &4120733028278986378
 PrefabInstance:
