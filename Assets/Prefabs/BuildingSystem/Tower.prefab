@@ -116,7 +116,7 @@ MonoBehaviour:
   _strength: 50
   _valueOfScaleOfParticleOfDestroy: 2
   _spotOfDestroyEffects: {fileID: 6329686451557555710}
-  _tutorialPanel: {fileID: 0}
+  Eventer: {fileID: 0}
   IndexOfBuilding: 1
 --- !u!95 &2482931808722549246
 Animator:
@@ -350,8 +350,8 @@ MonoBehaviour:
   _shootPoint: {fileID: 6724451649403741235}
   _arrowPrefab: {fileID: 4306390963386993369, guid: a495a43c4ec10aa4c98ca79951eaacf3, type: 3}
   _delayOfShoot: 2
-  _damage: 15
-  _range: 15
+  _damage: 13
+  _range: 14
   _targetlayerMask:
     serializedVersion: 2
     m_Bits: 64
