@@ -29,7 +29,8 @@ namespace Assets.Scripts.BuildingSystem
         {
             if (_currentDelay >= _delayOfShoot && _targetFinder.TryFindTarget(transform.position, out IDamageable target))
             {
-                Shoot(target);
+                if (target.Health > 0)
+                    Shoot(target);
 
                 _currentDelay = 0;
             }
