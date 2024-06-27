@@ -20,8 +20,12 @@ namespace Assets.Scripts.PlayerComponents.Weapons
         private ArrowsPool _pool;
         private ClosestTargetFinder _closestTargetFinder;
         private IDamageable _closestTarget;
+        private bool _haveTarget;
 
-        public Transform Target => _closestTarget.Transform;
+        public Transform Target
+        {
+            get =>  _haveTarget ? _closestTarget.Transform : null;
+        }
 
         private void Start()
         {
@@ -35,11 +39,13 @@ namespace Assets.Scripts.PlayerComponents.Weapons
         {
             if (_closestTargetFinder.TryFindTarget(transform.position, out _closestTarget) && _closestTarget.Health > 0)
             {
+                _haveTarget = true;
                 _mark.MarkEnemy(_closestTarget);
                 CanAttack = !_isOnCooldown;
             }
             else
             {
+                _haveTarget = false;
                 _mark.UnMarkEnemy();
                 CanAttack = false;
             }

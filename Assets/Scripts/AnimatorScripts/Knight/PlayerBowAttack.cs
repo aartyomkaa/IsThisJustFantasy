@@ -25,7 +25,8 @@ namespace Assets.Scripts.AnimatorScripts
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            _movement.RotateTowards(_bow.Target, _rotationOffset);
+            if (_bow.Target != null)
+                _movement.RotateTowards(_bow.Target, _rotationOffset);
         }
 
         public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
