@@ -141,7 +141,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Hire a knight for
+  m_Text: "\u041D\u0430\u043D\u044F\u0442\u044C \u0440\u044B\u0446\u0430\u0440\u044F
+    \u0437\u0430 50 \u043C\u043E\u043D\u0435\u0442"
 --- !u!114 &3000969542163048988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -803,7 +804,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Hire a knight for watching ads
+  m_Text: "\u041D\u0430\u043D\u044F\u0442\u044C \u0440\u044B\u0446\u0430\u0440\u044F
+    \u0437\u0430 \u043F\u0440\u043E\u0441\u043C\u043E\u0442\u0440 \u0440\u0435\u043A\u043B\u0430\u043C\u044B"
 --- !u!114 &6489804984465011784
 MonoBehaviour:
   m_ObjectHideFlags: 0

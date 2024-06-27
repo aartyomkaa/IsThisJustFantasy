@@ -9,6 +9,9 @@ namespace Assets.Scripts.UI
         private AudioMixer _audioMixer;
         private MobileInput _mobileInput;
         private bool _isCurrentSoundOff;
+        private bool _isOnPause;
+
+        public bool IsOnPause => _isOnPause;
 
         public Pauser(AudioMixer audioMixer, MobileInput mobileInput)
         {
@@ -19,6 +22,7 @@ namespace Assets.Scripts.UI
         public void Pause()
         {
             _isCurrentSoundOff = _audioMixer.IsMuted;
+            _isOnPause = true;
 
             if (_mobileInput != null)
             {
@@ -35,17 +39,20 @@ namespace Assets.Scripts.UI
 
         public void Resume()
         {
+            _isOnPause = false;
+            
             if (_mobileInput != null)
-            {
-                _mobileInput.SetVisibility(true);
-            }
+             {
+                    _mobileInput.SetVisibility(true);
+             }
 
-            if (!_isCurrentSoundOff)
-            {
-                _audioMixer.Unmute();
-            }
+             if (!_isCurrentSoundOff)
+             {
+                    _audioMixer.Unmute();
+             }
 
-            Time.timeScale = 1;
+             Time.timeScale = 1;
+ 
         }
     }
 }

@@ -24,12 +24,13 @@ namespace Assets.Scripts.GameLogic
         }
 
         private void OnInBackgroundChangeWeb(bool isBackground)
-        {
-            if (isBackground)
+        {     
+            if (isBackground && !_pauser.IsOnPause)
             {
                 _pauser.Pause();
             }
-            else
+
+            if (!isBackground && _pauser.IsOnPause)
             {
                 _pauser.Resume();
             }

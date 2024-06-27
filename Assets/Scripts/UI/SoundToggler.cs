@@ -26,10 +26,10 @@ namespace Assets.Scripts.UI
 
         private void OnMuteButtonPressed()
         {
-            _isMuted = !_isMuted;
-           
-            SoundValueChanged?.Invoke(_isMuted);
-            SetCurrentImage();
+                _isMuted = !_isMuted;
+
+                SoundValueChanged?.Invoke(_isMuted);
+                SetCurrentImage();    
         }
 
         public void SetCurrentStatus(bool isMuted)

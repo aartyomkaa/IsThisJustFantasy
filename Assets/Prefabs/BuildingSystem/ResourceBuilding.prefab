@@ -483,7 +483,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Buy chest for
+  m_Text: "\u041A\u0443\u043F\u0438\u0442\u044C \u0441\u0443\u043D\u0434\u0443\u043A
+    \u0437\u0430 \u0440\u0435\u043A\u043B\u0430\u043C\u0443"
 --- !u!114 &5159213553304097213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1017,7 +1018,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Buy chest for
+  m_Text: "\u041A\u0443\u043F\u0438\u0442\u044C \u0441\u0443\u043D\u0434\u0443\u043A
+    \u0437\u0430 50 \u043C\u043E\u043D\u0435\u0442"
 --- !u!114 &2189517358784867027
 MonoBehaviour:
   m_ObjectHideFlags: 0

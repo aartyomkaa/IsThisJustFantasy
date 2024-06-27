@@ -7,7 +7,7 @@ namespace Assets.Scripts.YandexSDK
 {
     internal abstract class AdShower : MonoBehaviour
     {
-        private List<Button> _adButtons;
+        private List<Button> _buttonsToDeactivate;
         private Pauser _pauser;
 
         public abstract void Show();
@@ -21,7 +21,7 @@ namespace Assets.Scripts.YandexSDK
         {
             _pauser.Pause();
 
-            foreach (Button button in _adButtons)
+            foreach (Button button in _buttonsToDeactivate)
                 button.interactable = false;              
         }
 
@@ -29,7 +29,7 @@ namespace Assets.Scripts.YandexSDK
         {
             _pauser.Resume();
 
-            foreach (Button button in _adButtons)
+            foreach (Button button in _buttonsToDeactivate)
                 button.interactable = true;  
         }
 
@@ -40,7 +40,7 @@ namespace Assets.Scripts.YandexSDK
             if (wasShown == false)
                 return;
 
-            foreach (Button button in _adButtons)
+            foreach (Button button in _buttonsToDeactivate)
                 button.interactable = true;
         }
     }

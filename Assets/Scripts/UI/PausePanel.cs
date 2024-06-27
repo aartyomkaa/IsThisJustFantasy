@@ -52,9 +52,9 @@ namespace Assets.Scripts.UI
         }
 
         private void OnOpenButtonClicked()
-        {
-            _panel.SetActive(true);
-            _pauser.Pause();
+        {   
+                _panel.SetActive(true);
+                _pauser.Pause(); 
         }
 
         private void OnCloseButtonClicked()
