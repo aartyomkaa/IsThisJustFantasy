@@ -141,8 +141,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u041D\u0430\u043D\u044F\u0442\u044C \u0440\u044B\u0446\u0430\u0440\u044F
-    \u0437\u0430 20 \u043C\u043E\u043D\u0435\u0442"
+  m_Text: Hire a knight for
 --- !u!114 &3000969542163048988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -804,8 +803,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u041D\u0430\u043D\u044F\u0442\u044C \u0440\u044B\u0446\u0430\u0440\u044F
-    \u0437\u0430 \u043F\u0440\u043E\u0441\u043C\u043E\u0442\u0440 \u0440\u0435\u043A\u043B\u0430\u043C\u044B"
+  m_Text: Hire a knight for watching ads
 --- !u!114 &6489804984465011784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1072,7 +1070,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.48419747, y: 0}
   m_AnchorMax: {x: 0.74460536, y: 0.30400002}
-  m_AnchoredPosition: {x: -0.015396118, y: -4.392456}
+  m_AnchoredPosition: {x: -0.015380859, y: -4.392456}
   m_SizeDelta: {x: 11.824902, y: 11.3097}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5743872039371680036
@@ -1150,7 +1148,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.04534268, y: 0.54800004}
   m_AnchorMax: {x: 0.9435431, y: 0.8706954}
-  m_AnchoredPosition: {x: 1.9747925, y: -5.399994}
+  m_AnchoredPosition: {x: 1.9747925, y: 1}
   m_SizeDelta: {x: -3.9494, y: 12.091999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3841666228740564316

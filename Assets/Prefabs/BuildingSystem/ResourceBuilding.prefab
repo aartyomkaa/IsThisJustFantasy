@@ -483,8 +483,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u041A\u0443\u043F\u0438\u0442\u044C \u0441\u0443\u043D\u0434\u0443\u043A
-    \u0437\u0430 \u0440\u0435\u043A\u043B\u0430\u043C\u0443"
+  m_Text: Buy chest for
 --- !u!114 &5159213553304097213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -533,10 +532,10 @@ RectTransform:
   - {fileID: 2106277784001199813}
   m_Father: {fileID: 780179332670133903}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.48873037, y: 0}
-  m_AnchorMax: {x: 0.75000006, y: 0.30900002}
-  m_AnchoredPosition: {x: 0.8699951, y: -1.4199829}
-  m_SizeDelta: {x: 13.827099, y: 11.254799}
+  m_AnchorMin: {x: 0.47811934, y: 0}
+  m_AnchorMax: {x: 0.7663211, y: 0.32766613}
+  m_AnchoredPosition: {x: -4.5848083, y: -1.3894043}
+  m_SizeDelta: {x: 10.528702, y: 11.315901}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3357357769630831048
 CanvasRenderer:
@@ -1018,8 +1017,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u041A\u0443\u043F\u0438\u0442\u044C \u0441\u0443\u043D\u0434\u0443\u043A
-    \u0437\u0430 20 \u043C\u043E\u043D\u0435\u0442"
+  m_Text: Buy chest for
 --- !u!114 &2189517358784867027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1881,15 +1879,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7104536003519519982, guid: a9237970a81ae5948b18dec59a387b24, type: 3}
       propertyPath: m_Text
-      value: 'This is a resource building
-
-
-        Function: Creates a chest on
-        the map containing additional gold, increasing your economic power.
-
-
-        Useage:
-        To create a chest, click on the button in the pop-up window.'
+      value: "\u042D\u0442\u043E \u0437\u0434\u0430\u043D\u0438\u0435 \u0440\u0435\u0441\u0443\u0440\u0441\u043E\u0432\r\n\r\n\u0424\u0443\u043D\u043A\u0446\u0438\u044F:
+        \u0421\u043E\u0437\u0434\u0430\u0435\u0442 \u0441\u0443\u043D\u0434\u0443\u043A
+        \u043D\u0430 \u043A\u0430\u0440\u0442\u0435, \u0441\u043E\u0434\u0435\u0440\u0436\u0430\u0449\u0438\u0439
+        \u0434\u043E\u043F\u043E\u043B\u043D\u0438\u0442\u0435\u043B\u044C\u043D\u043E\u0435
+        \u0437\u043E\u043B\u043E\u0442\u043E, \u0443\u0432\u0435\u043B\u0438\u0447\u0438\u0432\u0430\u044E\u0449\u0435\u0435
+        \u0432\u0430\u0448\u0443 \u044D\u043A\u043E\u043D\u043E\u043C\u0438\u0447\u0435\u0441\u043A\u0443\u044E
+        \u043C\u043E\u0449\u044C.\r\n\r\n\u0418\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435:
+        \u0427\u0442\u043E\u0431\u044B \u0441\u043E\u0437\u0434\u0430\u0442\u044C
+        \u0441\u0443\u043D\u0434\u0443\u043A, \u043D\u0430\u0436\u043C\u0438\u0442\u0435
+        \u043D\u0430 \u043A\u043D\u043E\u043F\u043A\u0443 \u0432\u043E \u0432\u0441\u043F\u043B\u044B\u0432\u0430\u044E\u0449\u0435\u043C
+        \u043E\u043A\u043D\u0435."
       objectReference: {fileID: 0}
     - target: {fileID: 7925530684692225479, guid: a9237970a81ae5948b18dec59a387b24, type: 3}
       propertyPath: m_PresetInfoIsWorld
