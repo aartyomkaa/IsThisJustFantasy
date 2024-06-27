@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Assets.Scripts.UI;
+using System;
 
 namespace Assets.Scripts.YandexSDK
 {
@@ -9,6 +10,9 @@ namespace Assets.Scripts.YandexSDK
     {
         private List<Button> _buttonsToDeactivate;
         private Pauser _pauser;
+        private bool _isPaused;
+
+        public event Action<bool> ChangedPauseStatus;
 
         public abstract void Show();
 
@@ -20,6 +24,8 @@ namespace Assets.Scripts.YandexSDK
         protected void OnOpenCallBack()
         {
             _pauser.Pause();
+            _isPaused = true;
+            ChangedPauseStatus?.Invoke(_isPaused);
 
             foreach (Button button in _buttonsToDeactivate)
                 button.interactable = false;              
@@ -28,6 +34,8 @@ namespace Assets.Scripts.YandexSDK
         protected void OnCloseCallBack()
         {
             _pauser.Resume();
+            _isPaused = false;
+            ChangedPauseStatus?.Invoke(_isPaused);
 
             foreach (Button button in _buttonsToDeactivate)
                 button.interactable = true;  
@@ -36,6 +44,8 @@ namespace Assets.Scripts.YandexSDK
         protected void OnCloseCallBack(bool wasShown)
         {
             _pauser.Resume();
+            _isPaused = false;
+            ChangedPauseStatus?.Invoke(_isPaused);
 
             if (wasShown == false)
                 return;
