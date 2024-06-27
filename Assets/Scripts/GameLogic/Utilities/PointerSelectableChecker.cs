@@ -17,27 +17,10 @@ namespace Assets.Scripts.GameLogic.Utilities
             _results = new List<RaycastResult>();
         }
 
-        public bool IsPointerOverSelectableObject()
+        public bool IsPointerOverSelectableObject(Vector2 screenPosition)
         {
             _results.Clear();
-            _pointerEventData.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-            EventSystem.current.RaycastAll(_pointerEventData, _results);
-
-            foreach (RaycastResult result in _results)
-            {
-                if (result.gameObject.layer == _ui || result.gameObject.GetComponent<Selectable>() != null)
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        public bool IsPointerOverSelectableObject(Vector3 touch)
-        {
-            _results.Clear();
-            _pointerEventData.position = new Vector2(touch.x, touch.y);
+            _pointerEventData.position = screenPosition;
             EventSystem.current.RaycastAll(_pointerEventData, _results);
 
             foreach (RaycastResult result in _results)

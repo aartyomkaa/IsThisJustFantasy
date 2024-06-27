@@ -51,7 +51,7 @@ namespace Assets.Scripts.EnemyComponents
 
         public void ChangeSpawnAmount(bool isIncrease)
         {
-            if (_waveIndex + 1 < _waves.Length)
+            if (_waveIndex + 1 < _waves.Length && _waves[_waveIndex].SpawnAmount > 1)
             {
                 _waves[_waveIndex].ChangeSpawnAmount(isIncrease);
             }        

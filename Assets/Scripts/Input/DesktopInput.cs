@@ -19,7 +19,7 @@ namespace Assets.Scripts.PlayerInput
 
         private Vector2 _moveDirection;
 
-        private void FixedUpdate()
+        private void Update()
         {
             _moveDirection = _inputActions.Player.Move.ReadValue<Vector2>();
 
@@ -56,7 +56,7 @@ namespace Assets.Scripts.PlayerInput
 
         private void OnAttackInput()
         {
-            if (_poinerChecker.IsPointerOverSelectableObject() == false)
+            if (_poinerChecker.IsPointerOverSelectableObject(Input.mousePosition) == false)
             {
                 _playerAttacker.Attack();
             }

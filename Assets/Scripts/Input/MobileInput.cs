@@ -26,7 +26,7 @@ namespace Assets.Scripts.PlayerInput
         private WorldPointFinder _worldPointFinder;
         private PointerSelectableChecker _poinerChecker;
 
-        private float _doubleTapThreshold = 1f;
+        private float _doubleTapThreshold = 0.4f;
         private float _lastTapTime;
 
         private void Start()
@@ -35,31 +35,10 @@ namespace Assets.Scripts.PlayerInput
             SetVisibility(true);
         }
 
-        private void FixedUpdate()
+        private void Update()
         {
-            if (Input.touchCount == 1)
-            {
-                Touch touch = Input.GetTouch(0);
-
-                if (touch.phase == TouchPhase.Began)
-                {
-                    if (Time.time - _lastTapTime <= _doubleTapThreshold)
-                    {
-                        _lastTapTime = 0;
-                        OnMoveUnits(_worldPointFinder.GetPosition(touch.position));
-                    }
-                    else
-                    {
-                        _lastTapTime = Time.time;
-                    }
-                }
-            }
-
-            Vector3 direction = Vector3.forward * _joystick.Vertical + Vector3.right * _joystick.Horizontal;
-
-            _moveDirection = new Vector2(direction.x, direction.z);
-
-            OnMoveInput(_moveDirection);
+            HandleTouchInput();
+            HandleJoystickInput();
         }
 
         private void OnDisable()
@@ -87,6 +66,40 @@ namespace Assets.Scripts.PlayerInput
             _canvasGroup.blocksRaycasts = isVisible;
         }
 
+        private void HandleJoystickInput()
+        {
+            Vector3 direction = Vector3.forward * _joystick.Vertical + Vector3.right * _joystick.Horizontal;
+
+            _moveDirection = new Vector2(direction.x, direction.z);
+
+            OnMoveInput(_moveDirection);
+        }
+
+        private void HandleTouchInput()
+        {
+            if (Input.touchCount == 1)
+            {
+                Touch touch = Input.GetTouch(0);
+
+                if (touch.phase == TouchPhase.Began)
+                {
+                    if (Time.time - _lastTapTime <= _doubleTapThreshold)
+                    {
+                        _lastTapTime = 0;
+
+                        Vector3 position = _worldPointFinder.GetPosition(touch.position);
+
+                        if (_poinerChecker.IsPointerOverSelectableObject(touch.position) == false)
+                            OnMoveUnits(position);
+                    }
+                    else
+                    {
+                        _lastTapTime = Time.time;
+                    }
+                }
+            }
+        }
+
         private void OnMoveInput(Vector2 direction)
         {
             _playerMover.Move(direction);
@@ -105,8 +118,7 @@ namespace Assets.Scripts.PlayerInput
 
         private void OnMoveUnits(Vector3 position)
         {
-            if (_poinerChecker.IsPointerOverSelectableObject(position) == false)
-                _selectedUnitsHandler.MoveUnits(position);
+            _selectedUnitsHandler.MoveUnits(position);
         }
     }
 }
