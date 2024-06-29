@@ -10,7 +10,7 @@ namespace Assets.Scripts.PlayerComponents
         [SerializeField] private List<PlayerComponent> _components;
         [SerializeField] private PlayerData[] _levels;
 
-        private int _currentLevel;
+        private int _currentLevel = 1;
         private int _maxLevel = 6;
         private PlayerWallet _wallet;
 
@@ -24,7 +24,8 @@ namespace Assets.Scripts.PlayerComponents
             _wallet = new PlayerWallet();
             PlayerSFX sfx = GetComponentInChildren<PlayerSFX>();
 
-            _currentLevel = PlayerPrefs.GetInt(PlayerConfigs.PlayerLevel);
+            if (PlayerPrefs.GetInt(PlayerConfigs.PlayerLevel) > 0)
+                _currentLevel = PlayerPrefs.GetInt(PlayerConfigs.PlayerLevel);
 
 #if !UNITY_WEBGL && UNITY_EDITOR            
             _currentLevel = 0;
@@ -32,7 +33,7 @@ namespace Assets.Scripts.PlayerComponents
 
             for (int i =  0; i < _levels.Length; i++)
             {
-                if (i == _currentLevel)
+                if (i == _currentLevel - 1)
                 {
                     foreach (PlayerComponent component in _components)
                     {

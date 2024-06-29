@@ -21,7 +21,9 @@ namespace Assets.Scripts.BuildingSystem.Buildings
 
         private void HealPlayer(Player player, int costToBuy, int buttonIndex)
         {
-            if(player.Wallet.Coins >= costToBuy)
+            PlayerHealth playerHealth = player.gameObject.GetComponent<PlayerHealth>();
+
+            if (player.Wallet.Coins >= costToBuy && playerHealth.Health < playerHealth.MaxHealth)
             {
                 player.GetComponent<PlayerHealth>().Heal(_valueToHeal);
                 player.Wallet.SpendCoins(costToBuy);

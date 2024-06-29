@@ -17,6 +17,7 @@ namespace Assets.Scripts.PlayerComponents
 
         public Transform Transform => transform;
         public float Health => _value;
+        public float MaxHealth => _maxHealth;
 
         public event Action<float> ValueChanged;
         public event Action Diead;
