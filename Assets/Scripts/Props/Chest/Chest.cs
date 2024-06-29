@@ -1,7 +1,5 @@
 using Assets.Scripts.Constants;
 using Assets.Scripts.PlayerComponents;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.Props.Chest
@@ -36,15 +34,15 @@ namespace Assets.Scripts.Props.Chest
             }
         }
 
+        public void SetCountOfCoins(int coins)
+        {
+            _coins = coins;
+        }
+
         private void GiveCoins(Player player)
         {
             _isEmpty = true;
             player.Wallet.AddCoins(_coins);
-        }
-
-        public void SetCountOfCoins(int coins)
-        {
-            _coins = coins;
         }
     }
 }

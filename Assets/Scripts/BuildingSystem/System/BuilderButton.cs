@@ -32,20 +32,7 @@ namespace Assets.Scripts.BuildingSystem
             _build.onClick.RemoveListener(OnBuildButtonClicked);
         }
 
-        private void SetButtonText(int builPointIndex, int costToBuy)
-        {
-#if UNITY_WEBGL && !UNITY_EDITOR
-            _building.SetValue(_translator.GetTranslation(builPointIndex));
-            _cost.SetValue(costToBuy);
-#endif
-        }
-           
-        private void OnBuildButtonClicked()
-        {
-            BuildButtonClicked?.Invoke(_currentPlayersWallet);   
-        }
-
-        public void ToggleButton(PlayerWallet wallet, int builPointIndex, int costToBuy, bool isPlayerIn)   
+        public void ToggleButton(PlayerWallet wallet, int builPointIndex, int costToBuy, bool isPlayerIn)
         {
             _currentPlayersWallet = wallet;
             _currentStatus = isPlayerIn;
@@ -62,10 +49,19 @@ namespace Assets.Scripts.BuildingSystem
             }
         }
 
+        private void SetButtonText(int builPointIndex, int costToBuy)
+        {
+#if UNITY_WEBGL && !UNITY_EDITOR
+            _building.SetValue(_translator.GetTranslation(builPointIndex));
+            _cost.SetValue(costToBuy);
+#endif
+        }
+           
         private void Close()
         {
             LeanTween.scale(_build.gameObject, _closeValues, _changeScaleSpeed).setOnComplete(ChangeStatus);
         }
+      
         private void Open()
         {
             LeanTween.scale(_build.gameObject, _openValues, _changeScaleSpeed); 
@@ -75,5 +71,10 @@ namespace Assets.Scripts.BuildingSystem
         {
             _build.gameObject.SetActive(_currentStatus);
         }
+
+        private void OnBuildButtonClicked()
+        {
+            BuildButtonClicked?.Invoke(_currentPlayersWallet);
+        }      
     }
 }

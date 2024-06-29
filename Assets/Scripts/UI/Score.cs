@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using Agava.YandexGames;
-using Agava.WebUtility;
 using Assets.Scripts.Constants;
 using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.GameLogic;
@@ -13,7 +11,6 @@ namespace Assets.Scripts.UI
 
         private int _totalScore;
         private int _levelScore;
-
         private Pauser _pauser;
         private PlayerWallet _wallet;
         private PlayerHealth _health;
@@ -65,20 +62,6 @@ namespace Assets.Scripts.UI
             _pauser.Pause();
         }
 
-        private void OnRestartButtonPressed()
-        {
-            _endGamePanel.gameObject.SetActive(false);
-            _sceneLoader.RestartCurrentScene();
-            _pauser.Resume();
-        }
-
-        private void OnMenuButtonPressed()
-        {
-            _endGamePanel.gameObject.SetActive(false);
-            _sceneLoader.LoadMenuScene();
-            _pauser.Resume();
-        }
-
         private void LoadScore()
         {
             if (PlayerPrefs.HasKey(PlayerConfigs.Score))
@@ -104,6 +87,20 @@ namespace Assets.Scripts.UI
                 });
             }
 #endif
+        }
+
+        private void OnRestartButtonPressed()
+        {
+            _endGamePanel.gameObject.SetActive(false);
+            _sceneLoader.RestartCurrentScene();
+            _pauser.Resume();
+        }
+
+        private void OnMenuButtonPressed()
+        {
+            _endGamePanel.gameObject.SetActive(false);
+            _sceneLoader.LoadMenuScene();
+            _pauser.Resume();
         }
     }
 }

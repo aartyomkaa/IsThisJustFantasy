@@ -8,7 +8,6 @@ namespace Assets.Scripts.UI
         [SerializeField] private GameObject _popupPanel;
 
         private float _seconds = 3;
-
         private WaitForSeconds _timeToShow;
 
         private void Start()

@@ -1,7 +1,6 @@
 using UnityEngine;
 using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.UI;
-using Assets.Scripts.Constants;
 
 namespace Assets.Scripts.GameLogic
 {
@@ -9,22 +8,11 @@ namespace Assets.Scripts.GameLogic
     {
         private ScorePanel _nextLevelPanel;
         private ScorePanel _winPanel;
-
         private Score _score;
         private SceneLoader _sceneLoader;
         private Player _player;
         private Pauser _pauser;
-
         private bool _isLastLevelReached = false;
-
-        private void OnDisable()
-        {
-            _nextLevelPanel.BackButtonPressed -= OnBackButtonPressed;
-            _nextLevelPanel.ContinueButtonPressed -= OnContinueLevelButtonPressed;
-            _sceneLoader.LastLevelReached -= OnLastLevelReached;
-            _winPanel.BackButtonPressed -= OnMenuButtonPressed;
-            _winPanel.ContinueButtonPressed -= OnBackButtonPressed;
-        }
 
         private void OnTriggerEnter(Collider other)
         {
@@ -40,6 +28,15 @@ namespace Assets.Scripts.GameLogic
             {
                 _nextLevelPanel.gameObject.SetActive(false);
             }
+        }
+
+        private void OnDisable()
+        {
+            _nextLevelPanel.BackButtonPressed -= OnBackButtonPressed;
+            _nextLevelPanel.ContinueButtonPressed -= OnContinueLevelButtonPressed;
+            _sceneLoader.LastLevelReached -= OnLastLevelReached;
+            _winPanel.BackButtonPressed -= OnMenuButtonPressed;
+            _winPanel.ContinueButtonPressed -= OnBackButtonPressed;
         }
 
         public void Init(Score score, SceneLoader sceneLoader, Player player, Pauser pauser, ScorePanel nextLevelPanel, ScorePanel winPanel)

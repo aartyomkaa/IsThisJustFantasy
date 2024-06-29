@@ -1,11 +1,8 @@
 using Assets.Scripts.BuildingSystem.Buildings;
 using Assets.Scripts.Constants;
 using Assets.Scripts.Props.Chest;
-using Assets.Scripts.UI;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-
 
 namespace Assets.Scripts.BuildingSystem.System
 {
@@ -21,6 +18,46 @@ namespace Assets.Scripts.BuildingSystem.System
             CreateTowerPool(tower);
             CreateBarracks(barracks);
             CreateResoorceBuilding(resoorceBuilding);
+        }
+
+        public Building GetBuilding(int buildingPointIndex, ChestSpawnerPointsContainer chestSpawnPoints)
+        {
+            switch (buildingPointIndex)
+            {
+                case BuildingsHash.TowerIndex:
+
+                    foreach (Tower tower in _towerPool)
+                    {
+                        if (tower.gameObject.activeSelf == false)
+                        {
+                            tower.gameObject.SetActive(true);
+
+                            return tower;
+                        }
+                    }
+                    break;
+
+                case BuildingsHash.BarracksIndex:
+
+                    if (_barracks.gameObject.activeSelf == false)
+                    {
+                        _barracks.gameObject.SetActive(true);
+                        return _barracks;
+                    }
+
+                    break;
+
+                case BuildingsHash.ResoorceBuildingIndex:
+
+                    if (_resoorceBuilding.gameObject.activeSelf == false)
+                    {
+                        _resoorceBuilding.gameObject.SetActive(true);
+                        _resoorceBuilding.SetChestsSpawnPoints(chestSpawnPoints);
+                        return _resoorceBuilding;
+                    }
+                    break;
+            }
+            return null;
         }
 
         private void CreateTowerPool(Tower tower)
@@ -45,46 +82,6 @@ namespace Assets.Scripts.BuildingSystem.System
         {
             _resoorceBuilding = GameObject.Instantiate(resoorceBuilding);
             _resoorceBuilding.gameObject.SetActive(false);
-        }
-
-        public Building GetBuilding(int buildingPointIndex, ChestSpawnerPointsContainer chestSpawnPoints)  
-        {
-            switch (buildingPointIndex) 
-            {
-                case BuildingsHash.TowerIndex:
-
-                    foreach (Tower tower in _towerPool)
-                    {
-                            if (tower.gameObject.activeSelf == false)
-                            {
-                                tower.gameObject.SetActive(true);
-                                
-                            return tower;
-                            }    
-                    }   
-                     break;
-               
-                case BuildingsHash.BarracksIndex:
-                    
-                    if(_barracks.gameObject.activeSelf == false)
-                    {
-                        _barracks.gameObject.SetActive(true);
-                        return _barracks;
-                    }
-
-                    break;
-               
-                case BuildingsHash.ResoorceBuildingIndex:
-                   
-                    if (_resoorceBuilding.gameObject.activeSelf == false)
-                    {
-                        _resoorceBuilding.gameObject.SetActive(true);
-                        _resoorceBuilding.SetChestsSpawnPoints(chestSpawnPoints);
-                        return _resoorceBuilding;
-                    }
-                    break;
-            }
-            return null;
         }
     }
 }

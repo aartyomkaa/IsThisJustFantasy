@@ -24,14 +24,6 @@ namespace Assets.Scripts.UI
             _muteButton.onClick.RemoveListener(OnMuteButtonPressed);
         }
 
-        private void OnMuteButtonPressed()
-        {
-                _isMuted = !_isMuted;
-
-                SoundValueChanged?.Invoke(_isMuted);
-                SetCurrentImage();    
-        }
-
         public void SetCurrentStatus(bool isMuted)
         {
             _isMuted = isMuted;
@@ -48,6 +40,14 @@ namespace Assets.Scripts.UI
             {
                 _muteButton.image.sprite = _ckekMarkOn;
             }
+        }
+
+        private void OnMuteButtonPressed()
+        {
+            _isMuted = !_isMuted;
+
+            SoundValueChanged?.Invoke(_isMuted);
+            SetCurrentImage();
         }
     }
 }

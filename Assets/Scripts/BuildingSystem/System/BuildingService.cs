@@ -1,12 +1,10 @@
 using Assets.Scripts.BuildingSystem.Buildings;
-using Assets.Scripts.Constants;
 using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.Props.Chest;
 using Assets.Scripts.UI;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Assets.Scripts.BuildingSystem.System
 {
@@ -89,12 +87,6 @@ namespace Assets.Scripts.BuildingSystem.System
             }
         }
 
-        private void OnBuildWithEventorWasMade(ColliderPanelEventer currentEventer)
-        {
-            EventerWithAdButtonWasMade?.Invoke(currentEventer);
-            _isEventerExist = true;
-        }
-
         private void UnSignToBuildingsPointEvents()
         {
             for (int i = 0; i < _buildPoints.Count; i++)
@@ -126,6 +118,12 @@ namespace Assets.Scripts.BuildingSystem.System
             _canBuild = false;
             _currentPlayersWallet = wallet;
             _builder.ToggleButton(_currentPlayersWallet, _currentBuildPointIndex, _currentCostToBuild, _canBuild);
+        }
+
+        private void OnBuildWithEventorWasMade(ColliderPanelEventer currentEventer)
+        {
+            EventerWithAdButtonWasMade?.Invoke(currentEventer);
+            _isEventerExist = true;
         }
     }
 }

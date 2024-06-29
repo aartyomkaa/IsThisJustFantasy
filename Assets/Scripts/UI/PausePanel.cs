@@ -20,7 +20,6 @@ namespace Assets.Scripts.UI
         public event Action RestartSceneButtonClicked;
         public event Action<bool> ChangedPauseStatus;
 
-
         private void OnEnable()
         {
             OpenButton.onClick.AddListener(OnOpenButtonClicked);

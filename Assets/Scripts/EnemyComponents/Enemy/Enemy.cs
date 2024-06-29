@@ -19,20 +19,16 @@ namespace Assets.Scripts.EnemyComponents
         [SerializeField] private EnemyData _data;
 
         private float _health;
-
         private UnitSFX _unitSFX;
         private FiniteStateMachine _fsm;
         private Animator _animator;
         private NavMeshAgent _agent;
         private NavMeshPath _path;
-
         private Coroutine _deathCoroutine;
         private float _deathDuration = 6f;
-
         private MainBuilding _building;
 
         public Transform Transform => transform;
-
         public float Health => _health;
 
         public event Action<Enemy> Died;
@@ -54,7 +50,6 @@ namespace Assets.Scripts.EnemyComponents
 
             _path = new NavMeshPath();
             _fsm = new FiniteStateMachine(_animator, _agent, this, _data, _unitSFX);
-
             _fsm.SetState<FSMStateIdle>();
         }
 

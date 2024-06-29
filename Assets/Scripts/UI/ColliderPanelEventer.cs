@@ -26,20 +26,12 @@ namespace Assets.Scripts.UI
         private InterstitialAdTimer _timer;
         private bool _isSecondButtonOnCooldown = false;
 
-        public Button SecondButton => _secondButton;
-
         public event Action<Player, int, int> FirstButtonClicked;
         public event Action<Player, int, int> SecondButtonClicked;
         public event Action ExtraButtonClicked;
 
-        public void TakeTimer(InterstitialAdTimer timer)
-        {
-            _timer = timer;
-            _isSecondButtonOnCooldown = _timer.IsOnCooldown;
-            _timer.CooldownStarted += TurnSecondButton;
-            _timer.BecomeAvailable += TurnSecondButton;
-        }
-        
+        public Button SecondButton => _secondButton;
+       
         private void Start()
         {
             _cost.SetValue(_costToBuy);
@@ -54,6 +46,23 @@ namespace Assets.Scripts.UI
             {
                 _extraButton.onClick.AddListener(OnExtraButtonClicked);
             }  
+        }
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.TryGetComponent(out Player player))
+            {
+                _isActive = true;
+                Open();
+                _currentPlayer = player;
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.gameObject.TryGetComponent(out Player player))
+            {
+                Close();
+            }
         }
 
         private void OnDisable()
@@ -75,22 +84,12 @@ namespace Assets.Scripts.UI
             Close();  
         }
        
-        private void OnTriggerEnter(Collider other)
+        public void TakeTimer(InterstitialAdTimer timer)
         {
-            if (other.gameObject.TryGetComponent(out Player player))
-            {
-                _isActive = true;
-                Open();
-                _currentPlayer = player;
-            }
-        }
-
-        private void OnTriggerExit(Collider other)
-        {
-            if (other.gameObject.TryGetComponent(out Player player))
-            {
-                Close();
-            }
+            _timer = timer;
+            _isSecondButtonOnCooldown = _timer.IsOnCooldown;
+            _timer.CooldownStarted += TurnSecondButton;
+            _timer.BecomeAvailable += TurnSecondButton;
         }
 
         private void TurnSecondButton(bool isOnCooldown)
