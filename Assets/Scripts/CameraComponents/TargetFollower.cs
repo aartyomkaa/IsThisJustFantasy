@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using Assets.Scripts.PlayerComponents;
 
 namespace Assets.Scripts.CameraComponents
 {
@@ -21,11 +20,6 @@ namespace Assets.Scripts.CameraComponents
 
         private int QuaternionWValue = 15;
        
-        private void Start()
-        {
-            //SetRotation();
-        }
-
         private void LateUpdate()
         {
             SetPosition();
@@ -37,11 +31,10 @@ namespace Assets.Scripts.CameraComponents
             _target = tartget;
         }
 
-
         private void SetPosition()
         {
             transform.position = new Vector3(_target.transform.position.x + _offsetPositionX,
-                _target.transform.position.y + _offsetPositionY, _target.transform.position.z + _offsetPositionZ);
+            _target.transform.position.y + _offsetPositionY, _target.transform.position.z + _offsetPositionZ);
         }
 
         private void SetRotation()

@@ -15,6 +15,12 @@ namespace Assets.Scripts.UI
         private PlayerWallet _wallet;
         private int _playerLevel;
 
+        private void OnDisable()
+        {
+            _health.ValueChanged -= OnHealthChanged;
+            _wallet.CoinsChanged -= OnCoinsChanged;
+        }
+       
         public void SignToPlayerValuesChanges(Player player)
         {
             _health = player.GetComponent<PlayerHealth>();
@@ -34,12 +40,6 @@ namespace Assets.Scripts.UI
         {
             _playerLevel = newPlayerLevel;
             _level.text = _playerLevel.ToString();
-        }
-
-        private void OnDisable()
-        {
-            _health.ValueChanged -= OnHealthChanged;
-            _wallet.CoinsChanged -= OnCoinsChanged;
         }
 
         private void OnHealthChanged(float health)

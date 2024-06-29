@@ -13,14 +13,12 @@ namespace Assets.Scripts.BuildingSystem.Buildings
         [SerializeField] private ColliderPanelEventer _eventer;
 
         private EnemyFactory _enemyFactory;
-
         private bool _isIncrease;
 
         public Button AdButton => _eventer.SecondButton;
+       
         public ColliderPanelEventer EventerToSend => _eventer;
-
         public event Action<ColliderPanelEventer> BuildWithEventorWasMade;
-
 
         private void Awake()
         {
@@ -46,6 +44,14 @@ namespace Assets.Scripts.BuildingSystem.Buildings
             _eventer.ExtraButtonClicked -= _enemyFactory.StartWave;
         }
 
+        public void AnnounceOfCreation()
+        {
+            if (_eventer != null)
+            {
+                BuildWithEventorWasMade?.Invoke(_eventer);
+            }
+        }
+
         private void ChangeSpawnAmount(Player player, int costToBuy, int buttonIndex)
         {
             if (buttonIndex == UiHash.CoinsButtonIndex && player.Wallet.Coins >= costToBuy)
@@ -60,15 +66,6 @@ namespace Assets.Scripts.BuildingSystem.Buildings
             }
 
             _enemyFactory.ChangeSpawnAmount(_isIncrease);
-        }
-
-        public void AnnounceOfCreation()
-        {
-            if (_eventer != null)
-            {
-                BuildWithEventorWasMade?.Invoke(_eventer);
-                // Debug.Log("Я - " + gameObject.name + " создал евентер, вот он - " + Eventer.name);
-            }
         }
 
         private void OnWaveStart(int spawnAmount)

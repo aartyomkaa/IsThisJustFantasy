@@ -1,11 +1,9 @@
-using System;
 using UnityEngine;
 using TMPro;
 using Assets.Scripts.Audio;
 using Assets.Scripts.GameLogic;
 using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.YandexSDK;
-using Agava.YandexGames;
 
 namespace Assets.Scripts.UI
 {

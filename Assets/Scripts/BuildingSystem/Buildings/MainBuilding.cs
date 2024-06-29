@@ -1,13 +1,10 @@
 using Assets.Scripts.PlayerComponents;
-using UnityEngine;
-
 
 namespace Assets.Scripts.BuildingSystem.Buildings
 {
     internal class MainBuilding : Building
     {
         private int _valueToHeal = 50;
-
 
         private void OnEnable()
         {

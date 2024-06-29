@@ -10,22 +10,14 @@ namespace Assets.Scripts.YandexSDK
         private WaitForSeconds _cooldown; 
         private bool _isOnCooldown;
         
-        public bool IsOnCooldown => _isOnCooldown;
-
         public event Action<bool> CooldownStarted;
         public event Action<bool> BecomeAvailable;
+
+        public bool IsOnCooldown => _isOnCooldown;
 
         private void Start()
         {
             _cooldown = new WaitForSeconds(60.5f);
-        }
-
-        private IEnumerator ÑountDown()
-        {
-            yield return _cooldown;
-
-            _isOnCooldown = false;
-            BecomeAvailable?.Invoke(_isOnCooldown);
         }
 
         public void Init(InterstitialAdShower interstitialAd)
@@ -38,7 +30,15 @@ namespace Assets.Scripts.YandexSDK
             _isOnCooldown = true;
             CooldownStarted?.Invoke(_isOnCooldown);
             _interstitialAd.Show();
-            StartCoroutine(ÑountDown());     
+            StartCoroutine(ÑountDown());
+        }
+
+        private IEnumerator ÑountDown()
+        {
+            yield return _cooldown;
+
+            _isOnCooldown = false;
+            BecomeAvailable?.Invoke(_isOnCooldown);
         }
     }
 }

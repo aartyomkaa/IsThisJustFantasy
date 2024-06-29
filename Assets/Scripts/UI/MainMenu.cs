@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using Agava.YandexGames;
 using Lean.Localization;
 
 namespace Assets.Scripts.UI

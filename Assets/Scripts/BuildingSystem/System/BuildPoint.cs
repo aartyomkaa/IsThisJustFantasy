@@ -16,46 +16,26 @@ namespace Assets.Scripts.BuildingSystem
         private Building _currentBuilding;
         private int _numberToSetRaiseValue = 5;
 
+        public Action<Transform, PlayerWallet> PlayerWentIn;
+        public Action<PlayerWallet> PlayerWentOut;
+       
         public Transform SpotToPlaceBuilding => _spotToPlaceBuilding;
         public int Index => _index;
         public bool IsOccupied => _isOccupied;
         public int CostToBuild => _costToBuild;
-
-        public Action<Transform,PlayerWallet> PlayerWentIn;
-        public Action<PlayerWallet> PlayerWentOut;
 
         private void Update()
         {
             RotateIconOfBuildingPoint();
         }
 
-        private void RotateIconOfBuildingPoint()
-        {
-             _iconOfBuildPoint.transform.Rotate(0, speedOfRotateVisualObject * Time.deltaTime, 0);
-        }
-
-        private void RaiseCostForNextBuilding()
-        {
-
-            int valueToRaise = _costToBuild / _numberToSetRaiseValue;
-            _costToBuild += valueToRaise;
-        }
-
-        private void OnDisable()
-        {
-           if(_currentBuilding != null)
-            {
-                _currentBuilding.Destroyed -= FreeSpotToBuild;
-            }  
-        }
-
         private void OnTriggerEnter(Collider other)
         {
             if (other != null && other.gameObject.TryGetComponent(out Player player))
             {
-                if (_isOccupied == false) 
+                if (_isOccupied == false)
                 {
-                    PlayerWentIn?.Invoke(transform, player.Wallet);   
+                    PlayerWentIn?.Invoke(transform, player.Wallet);
                 }
             }
         }
@@ -64,7 +44,15 @@ namespace Assets.Scripts.BuildingSystem
         {
             if (other != null && other.gameObject.TryGetComponent(out Player player))
             {
-                PlayerWentOut?.Invoke(player.Wallet);     
+                PlayerWentOut?.Invoke(player.Wallet);
+            }
+        }
+
+        private void OnDisable()
+        {
+            if (_currentBuilding != null)
+            {
+                _currentBuilding.Destroyed -= FreeSpotToBuild;
             }
         }
 
@@ -82,17 +70,7 @@ namespace Assets.Scripts.BuildingSystem
                 _currentBuilding.Destroyed += FreeSpotToBuild;
             }           
         }
-
-        private void FreeSpotToBuild()
-        {
-            if (_isOccupied == true && _currentBuilding.transform.position == _spotToPlaceBuilding.position) 
-            {     
-                _isOccupied = false;
-                ActiveIconOfBuildPoint();
-                RaiseCostForNextBuilding();
-            }
-        }
-       
+     
         public void ActiveIconOfBuildPoint()
         {
             _iconOfBuildPoint.SetActive(true);
@@ -103,6 +81,27 @@ namespace Assets.Scripts.BuildingSystem
             if (_iconOfBuildPoint.gameObject.activeSelf == true)
             {
                 _iconOfBuildPoint.SetActive(false);
+            }
+        }
+
+        private void RotateIconOfBuildingPoint()
+        {
+            _iconOfBuildPoint.transform.Rotate(0, speedOfRotateVisualObject * Time.deltaTime, 0);
+        }
+
+        private void RaiseCostForNextBuilding()
+        {
+            int valueToRaise = _costToBuild / _numberToSetRaiseValue;
+            _costToBuild += valueToRaise;
+        }
+
+        private void FreeSpotToBuild()
+        {
+            if (_isOccupied == true && _currentBuilding.transform.position == _spotToPlaceBuilding.position)
+            {
+                _isOccupied = false;
+                ActiveIconOfBuildPoint();
+                RaiseCostForNextBuilding();
             }
         }
     }

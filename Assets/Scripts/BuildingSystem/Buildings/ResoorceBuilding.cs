@@ -1,8 +1,6 @@
 using Assets.Scripts.Constants;
 using Assets.Scripts.PlayerComponents;
-using Assets.Scripts.PlayerUnits;
 using Assets.Scripts.Props.Chest;
-using Assets.Scripts.UI;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -14,20 +12,11 @@ namespace Assets.Scripts.BuildingSystem.Buildings
         [SerializeField] private Chest _prefabOfChest;
 
         private int _currentIndexOfChestSpawnPoint;
-        //private ColliderPanelEventer _eventer;
         private int _firstChestSpawnPoint = 0;
         private List<ChestSpawnPoint> _currentSpawnPoints;
 
-       // public ColliderPanelEventer Eventer => _eventer;
-
-        public void SetChestsSpawnPoints(ChestSpawnerPointsContainer chestSpawnPoints)
-        {
-            _currentSpawnPoints = chestSpawnPoints.SpawnPoints;     
-        }
-
         private void OnEnable()
         {
-            //_eventer = GetComponentInChildren<ColliderPanelEventer>();
             Eventer.FirstButtonClicked += SpawnChest;
             Eventer.SecondButtonClicked += SpawnChest;
         }
@@ -36,6 +25,11 @@ namespace Assets.Scripts.BuildingSystem.Buildings
         {
             Eventer.FirstButtonClicked -= SpawnChest;
             Eventer.SecondButtonClicked -= SpawnChest;
+        }
+
+        public void SetChestsSpawnPoints(ChestSpawnerPointsContainer chestSpawnPoints)
+        {
+            _currentSpawnPoints = chestSpawnPoints.SpawnPoints;
         }
 
         private void SpawnChest(Player player, int costToBuy, int buttonIndex)   

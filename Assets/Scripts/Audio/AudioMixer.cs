@@ -22,17 +22,31 @@ namespace Assets.Scripts.Audio
             SetVolumeValue();  
         }
 
-        public void SignSoundValuesChanges(SoundToggler soundToggler)
-        {
-            _soundToggler = soundToggler;
-            _soundToggler.SoundValueChanged += ToggleMusic;
-        }
-
         private void OnDisable()
         {
             _soundToggler.SoundValueChanged -= ToggleMusic;
         }
 
+        private void SetVolumeValue()
+        {
+            float value = PlayerPrefs.GetFloat(PlayerConfigs.MusicVolume);
+
+            if (value == PlayerConfigs.MinVolume)
+            {
+                Mute();
+            }
+            else
+            {
+                Unmute();
+            }
+        }
+
+        public void SignSoundValuesChanges(SoundToggler soundToggler)
+        {
+            _soundToggler = soundToggler;
+            _soundToggler.SoundValueChanged += ToggleMusic;
+        }
+     
         public void ToggleMusic(bool isMuted)
         {
             _isMuted = isMuted;
@@ -63,20 +77,6 @@ namespace Assets.Scripts.Audio
             _isMuted = false;
             VolumeValueChanged?.Invoke(_isMuted);
 
-        }
-
-        private void SetVolumeValue()
-        {
-            float value = PlayerPrefs.GetFloat(PlayerConfigs.MusicVolume);
-
-            if (value == PlayerConfigs.MinVolume)
-            {
-                Mute();
-            }     
-            else
-            {
-                Unmute();
-            }       
         }
     }
 }

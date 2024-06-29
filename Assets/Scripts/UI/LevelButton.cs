@@ -8,8 +8,7 @@ namespace Assets.Scripts.UI
     {
         [SerializeField] private Button _button;
         [SerializeField] private string _level;
-
-          
+         
         public event Action<string> Clicked;
 
         private void OnEnable()
@@ -22,19 +21,14 @@ namespace Assets.Scripts.UI
             _button.onClick.RemoveListener(OnClicked);
         }
 
-        private void OnClicked()
-        {
-            Clicked?.Invoke(_level);
-        }
-
         public void Active()
         {
             _button.gameObject.SetActive(true);
         }
-
-        public void Deactive()   // этот метод не нужен
+       
+        private void OnClicked()
         {
-            _button.gameObject.SetActive(false);
+            Clicked?.Invoke(_level);
         }
     }
 }

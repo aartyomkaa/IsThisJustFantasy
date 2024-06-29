@@ -15,21 +15,20 @@ namespace Assets.Scripts.BuildingSystem
         [SerializeField] private float _strength;
         [SerializeField] private float _valueOfScaleOfParticleOfDestroy;
         [SerializeField] private Transform _spotOfDestroyEffects;
-        [SerializeField] protected ColliderPanelEventer Eventer;   
+        [SerializeField] protected ColliderPanelEventer Eventer;
+
+        public int IndexOfBuilding;
 
         private AudioSource _audiosourse;
         private Vector3 _scaleOfParticleOfDestroy;
-
-        public int IndexOfBuilding; 
         private float _startStrength;
-
-        public Transform Transform => transform;
-        public ColliderPanelEventer EventerToSend => Eventer;
-
-        public float Health => _strength;
 
         public event Action Destroyed;
         public event Action<ColliderPanelEventer> BuildWithEventorWasMade;
+
+        public Transform Transform => transform;
+        public ColliderPanelEventer EventerToSend => Eventer;
+        public float Health => _strength;
 
         private void Awake()
         {
@@ -48,25 +47,6 @@ namespace Assets.Scripts.BuildingSystem
             {
                 _audiosourse.Play();
             }
-        }
-
-        private void SetScaleOfParticleOfDestroy()
-        {
-            _scaleOfParticleOfDestroy = new Vector3(_valueOfScaleOfParticleOfDestroy, _valueOfScaleOfParticleOfDestroy, _valueOfScaleOfParticleOfDestroy);
-            _particleOfDestroy.transform.localScale = _scaleOfParticleOfDestroy;
-        }
-
-        private void RefreshStrength()
-        {
-            _strength = _startStrength;
-        }
-
-        protected void Destroy()
-        { 
-            Instantiate(_particleOfDestroy, _spotOfDestroyEffects.position, Quaternion.identity);
-            Destroyed?.Invoke();
-            gameObject.SetActive(false);
-            RefreshStrength();    
         }
 
         public void TakeDamage(float damage)
@@ -88,6 +68,25 @@ namespace Assets.Scripts.BuildingSystem
             {
                 BuildWithEventorWasMade?.Invoke(Eventer);
             }
+        }
+
+        private void SetScaleOfParticleOfDestroy()
+        {
+            _scaleOfParticleOfDestroy = new Vector3(_valueOfScaleOfParticleOfDestroy, _valueOfScaleOfParticleOfDestroy, _valueOfScaleOfParticleOfDestroy);
+            _particleOfDestroy.transform.localScale = _scaleOfParticleOfDestroy;
+        }
+
+        private void RefreshStrength()
+        {
+            _strength = _startStrength;
+        }
+
+        protected void Destroy()
+        {
+            Instantiate(_particleOfDestroy, _spotOfDestroyEffects.position, Quaternion.identity);
+            Destroyed?.Invoke();
+            gameObject.SetActive(false);
+            RefreshStrength();
         }
     }
 }
