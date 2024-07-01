@@ -155,10 +155,10 @@ RectTransform:
   - {fileID: 4959365880205513217}
   m_Father: {fileID: 4831825574148144559}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.4822404, y: 0}
-  m_AnchorMax: {x: 0.7534784, y: 0.18380746}
-  m_AnchoredPosition: {x: -2.2502136, y: -3.776062}
-  m_SizeDelta: {x: 2.166603, y: 15.5423}
+  m_AnchorMin: {x: 0.5036465, y: 0}
+  m_AnchorMax: {x: 0.7534784, y: 0.15974246}
+  m_AnchoredPosition: {x: -5, y: -4.6619873}
+  m_SizeDelta: {x: 19.69, y: 6.731}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4652306998750025404
 CanvasRenderer:
@@ -779,19 +779,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 7a9506cbcaba4e6488a923ba4bde5925, type: 3}
-    m_FontSize: 35
+    m_FontSize: 32
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 3
-    m_MaxSize: 40
+    m_MaxSize: 300
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u041A\u0443\u043F\u0438\u0442\u044C \u0437\u0434\u043E\u0440\u043E\u0432\u044C\u0435
-    \u0437\u0430 1 \u043C\u043E\u043D\u0435\u0442"
+  m_Text: Buy health for
 --- !u!114 &742508044028939596
 MonoBehaviour:
   m_ObjectHideFlags: 0

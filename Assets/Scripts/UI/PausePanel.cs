@@ -18,7 +18,7 @@ namespace Assets.Scripts.UI
      
         public event Action MainMenuButtonClicked;
         public event Action RestartSceneButtonClicked;
-        public event Action<bool> ChangedPauseStatus;
+        public event Action<bool> PauseStatusChanged;
 
         private void OnEnable()
         {
@@ -44,8 +44,7 @@ namespace Assets.Scripts.UI
         private void OnMainMenuButtonClicked()
         {
             _pauser.Resume();
-            _isPaused = false;
-            ChangedPauseStatus?.Invoke(_isPaused);
+            ChangeStatusToUnPause();
             MainMenuButtonClicked?.Invoke();
         }
 
@@ -53,24 +52,34 @@ namespace Assets.Scripts.UI
         {
             RestartSceneButtonClicked?.Invoke();
             _pauser.Resume();
-            _isPaused = false;
-            ChangedPauseStatus?.Invoke(_isPaused);
+            ChangeStatusToUnPause();
         }
 
         private void OnOpenButtonClicked()
         {   
             _panel.SetActive(true);
             _pauser.Pause();
-            _isPaused = true;
-            ChangedPauseStatus?.Invoke(_isPaused);
+            ChangeStatusToPause();
         }
 
         private void OnCloseButtonClicked()
         {
             _panel.SetActive(false);
             _pauser.Resume();
+            ChangeStatusToUnPause();
+
+
+        }
+
+        private void ChangeStatusToPause()
+        {
+            _isPaused = true;
+            PauseStatusChanged?.Invoke(_isPaused);
+        }
+        private void ChangeStatusToUnPause()
+        {
             _isPaused = false;
-            ChangedPauseStatus?.Invoke(_isPaused);
+            PauseStatusChanged?.Invoke(_isPaused);
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Assets.Scripts.YandexSDK
         private Pauser _pauser;
         private bool _isPaused;
 
-        public event Action<bool> ChangedPauseStatus;
+        public event Action<bool> PauseStatusChanged;
 
         public abstract void Show();
 
@@ -24,8 +24,7 @@ namespace Assets.Scripts.YandexSDK
         protected void OnOpenCallBack()
         {
             _pauser.Pause();
-            _isPaused = true;
-            ChangedPauseStatus?.Invoke(_isPaused);
+            ChangeStatusToPause();
 
             foreach (Button button in _buttonsToDeactivate)
                 button.interactable = false;              
@@ -34,8 +33,7 @@ namespace Assets.Scripts.YandexSDK
         protected void OnCloseCallBack()
         {
             _pauser.Resume();
-            _isPaused = false;
-            ChangedPauseStatus?.Invoke(_isPaused);
+            ChangeStatusToUnPause();
 
             foreach (Button button in _buttonsToDeactivate)
                 button.interactable = true;  
@@ -44,14 +42,24 @@ namespace Assets.Scripts.YandexSDK
         protected void OnCloseCallBack(bool wasShown)
         {
             _pauser.Resume();
-            _isPaused = false;
-            ChangedPauseStatus?.Invoke(_isPaused);
+            ChangeStatusToUnPause();
 
             if (wasShown == false)
                 return;
 
             foreach (Button button in _buttonsToDeactivate)
                 button.interactable = true;
+        }
+
+        private void ChangeStatusToPause()
+        {
+            _isPaused = true;
+            PauseStatusChanged?.Invoke(_isPaused);
+        }
+        private void ChangeStatusToUnPause()
+        {
+            _isPaused = false;
+            PauseStatusChanged?.Invoke(_isPaused);
         }
     }
 }

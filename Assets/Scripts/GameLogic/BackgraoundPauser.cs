@@ -12,16 +12,16 @@ namespace Assets.Scripts.GameLogic
         private PausePanel _pausePanel;
         private VideoAdShower _videoAd;
         private InterstitialAdShower _interstitialAd;
-        private bool _cantPause;
+        private bool _isOnPause;
 
         private void OnDisable()
         {
-            _pausePanel.ChangedPauseStatus -= ChangeCapableToPause;
-            _videoAd.ChangedPauseStatus -= ChangeCapableToPause;
-            _interstitialAd.ChangedPauseStatus -= ChangeCapableToPause;
+            _pausePanel.PauseStatusChanged -= ChangeCapableToPause;
+            _videoAd.PauseStatusChanged -= ChangeCapableToPause;
+            _interstitialAd.PauseStatusChanged -= ChangeCapableToPause;
 
             WebApplication.InBackgroundChangeEvent -= OnInBackgroundChangeWeb;
-            Application.focusChanged -= OnInBackgroundChangeApp;
+          //  Application.focusChanged -= OnInBackgroundChangeApp;
         }
 
         public void Init(Pauser pauser, PausePanel pausePanel, VideoAdShower videoAd, InterstitialAdShower interstitialAd)
@@ -31,24 +31,24 @@ namespace Assets.Scripts.GameLogic
             _videoAd = videoAd;
             _interstitialAd = interstitialAd;
 
-            _pausePanel.ChangedPauseStatus += ChangeCapableToPause;
-            _videoAd.ChangedPauseStatus += ChangeCapableToPause;
-            _interstitialAd.ChangedPauseStatus += ChangeCapableToPause;
+            _pausePanel.PauseStatusChanged += ChangeCapableToPause;
+            _videoAd.PauseStatusChanged += ChangeCapableToPause;
+            _interstitialAd.PauseStatusChanged += ChangeCapableToPause;
 
             WebApplication.InBackgroundChangeEvent += OnInBackgroundChangeWeb;
-            Application.focusChanged += OnInBackgroundChangeApp;
+           // Application.focusChanged += OnInBackgroundChangeApp;
         }
 
        
-        private void ChangeCapableToPause(bool cantPause)
+        private void ChangeCapableToPause(bool isAllowedToPause)
         {
-            _cantPause = cantPause;
+            _isOnPause = isAllowedToPause;
         }
         
 
         private void OnInBackgroundChangeWeb(bool isBackground)
         {
-            if (!_cantPause)
+            if (!_isOnPause)
             {
                 if (isBackground)
                 {
@@ -63,7 +63,7 @@ namespace Assets.Scripts.GameLogic
 
         private void OnInBackgroundChangeApp(bool inApp)
         {
-            if (!_cantPause)
+            if (!_isOnPause)
             {
                 if (!inApp)
                 {
