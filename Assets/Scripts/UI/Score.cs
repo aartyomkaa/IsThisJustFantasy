@@ -2,6 +2,7 @@
 using Assets.Scripts.Constants;
 using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.GameLogic;
+using Agava.YandexGames;
 
 namespace Assets.Scripts.UI
 {

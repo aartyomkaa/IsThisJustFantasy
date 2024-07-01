@@ -1,6 +1,7 @@
 using UnityEngine;
 using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.UI;
+using Assets.Scripts.Constants;
 
 namespace Assets.Scripts.GameLogic
 {
@@ -79,7 +80,6 @@ namespace Assets.Scripts.GameLogic
 
         private void OnContinueLevelButtonPressed()
         {
-
 #if UNITY_WEBGL && !UNITY_EDITOR
             PlayerPrefs.SetInt(SceneNames.LastAvailableLevel, PlayerConfigs.LevelsCleared += 1);
 #endif
