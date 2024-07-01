@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.PlayerComponents.Weapons;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +13,8 @@ namespace Assets.Scripts.PlayerComponents
         private PlayerSFX _playerSFX;
         private PlayerAnimator _animator;
         private Weapon _currentWeapon;
+
+        public event Action WeaponChanged;
 
         private void Start()
         {
@@ -43,6 +46,8 @@ namespace Assets.Scripts.PlayerComponents
 
             _animator.SetAnimatorChangeWeaponTrigger(_currentWeapon);
             _playerSFX.PlayChangeWeaponSound();
+
+            WeaponChanged?.Invoke();
         }
 
         public override void Init(PlayerData level, PlayerSFX sfx)
