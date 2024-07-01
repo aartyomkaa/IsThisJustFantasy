@@ -8,6 +8,12 @@ namespace Assets.Scripts.GameLogic
     {
         private Pauser _pauser;
 
+        private void OnEnable()
+        {
+            WebApplication.InBackgroundChangeEvent += OnInBackgroundChangeWeb;
+            Application.focusChanged += OnInBackgroundChangeApp;
+        }
+
         private void OnDisable()
         {
             WebApplication.InBackgroundChangeEvent -= OnInBackgroundChangeWeb;
@@ -17,9 +23,6 @@ namespace Assets.Scripts.GameLogic
         public void Init(Pauser pauser)
         {
             _pauser = pauser;
-
-            WebApplication.InBackgroundChangeEvent += OnInBackgroundChangeWeb;
-            Application.focusChanged += OnInBackgroundChangeApp;
         }
 
         private void OnInBackgroundChangeWeb(bool isBackground)
