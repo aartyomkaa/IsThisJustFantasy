@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Assets.Scripts.UI;
-using System;
+using Assets.Scripts.GameLogic;
 
 namespace Assets.Scripts.YandexSDK
 {
@@ -10,22 +10,20 @@ namespace Assets.Scripts.YandexSDK
     {
         private List<Button> _buttonsToDeactivate;
         private Pauser _pauser;
-        private bool _isPaused;
-
-        public event Action<bool> ChangedPauseStatus;
+        private BackgraoundPauser _backgraoundPauser;
 
         public abstract void Show();
 
-        public void Init(Pauser pauser)
+        public void Init(Pauser pauser, BackgraoundPauser backgraoundPauser)
         {
             _pauser = pauser;
+            _backgraoundPauser = backgraoundPauser;
         }
 
         protected void OnOpenCallBack()
         {
+            _backgraoundPauser.gameObject.SetActive(false);
             _pauser.Pause();
-            _isPaused = true;
-            ChangedPauseStatus?.Invoke(_isPaused);
 
             foreach (Button button in _buttonsToDeactivate)
                 button.interactable = false;              
@@ -34,8 +32,7 @@ namespace Assets.Scripts.YandexSDK
         protected void OnCloseCallBack()
         {
             _pauser.Resume();
-            _isPaused = false;
-            ChangedPauseStatus?.Invoke(_isPaused);
+            _backgraoundPauser.gameObject.SetActive(true);
 
             foreach (Button button in _buttonsToDeactivate)
                 button.interactable = true;  
@@ -44,8 +41,7 @@ namespace Assets.Scripts.YandexSDK
         protected void OnCloseCallBack(bool wasShown)
         {
             _pauser.Resume();
-            _isPaused = false;
-            ChangedPauseStatus?.Invoke(_isPaused);
+            _backgraoundPauser.gameObject.SetActive(true);
 
             if (wasShown == false)
                 return;

@@ -27,6 +27,47 @@ namespace Assets.Scripts.Audio
             _soundToggler.SoundValueChanged -= ToggleMusic;
         }
 
+        public void SignSoundValuesChanges(SoundToggler soundToggler)
+        {
+            _soundToggler = soundToggler;
+            _soundToggler.SoundValueChanged += ToggleMusic;
+        }
+     
+        public void ToggleMusic(bool isMute)
+        {
+            bool isPlayer = true;
+
+            if (isMute)
+            {
+                Mute(isPlayer);
+               
+            }
+            else
+            {
+                Unmute(isPlayer);
+            } 
+        }
+
+        public void Mute(bool isPlayer = false)
+        {
+            _mixer.audioMixer.SetFloat(PlayerConfigs.MusicVolume, PlayerConfigs.MinVolume);
+            PlayerPrefs.SetFloat(PlayerConfigs.MusicVolume,PlayerConfigs.MinVolume);
+            VolumeValueChanged?.Invoke(true);
+
+            if (isPlayer)
+                _isMuted = true;
+        }
+
+        public void Unmute(bool isPlayer = false)
+        {
+            _mixer.audioMixer.SetFloat(PlayerConfigs.MusicVolume, PlayerConfigs.MaxVolume);
+            PlayerPrefs.SetFloat(PlayerConfigs.MusicVolume, PlayerConfigs.MaxVolume);
+            VolumeValueChanged?.Invoke(false);
+
+            if (isPlayer)
+                _isMuted = false;
+        }
+
         private void SetVolumeValue()
         {
             float value = PlayerPrefs.GetFloat(PlayerConfigs.MusicVolume);
@@ -39,43 +80,6 @@ namespace Assets.Scripts.Audio
             {
                 Unmute();
             }
-        }
-
-        public void SignSoundValuesChanges(SoundToggler soundToggler)
-        {
-            _soundToggler = soundToggler;
-            _soundToggler.SoundValueChanged += ToggleMusic;
-        }
-     
-        public void ToggleMusic(bool isMuted)
-        {
-            _isMuted = isMuted;
-
-            if (_isMuted)
-            {
-                Mute();
-               
-            }
-            else
-            {
-                Unmute();
-            } 
-        }
-
-        public void Mute()
-        {
-            _mixer.audioMixer.SetFloat(PlayerConfigs.MusicVolume, PlayerConfigs.MinVolume);
-            PlayerPrefs.SetFloat(PlayerConfigs.MusicVolume,PlayerConfigs.MinVolume);
-            _isMuted = true;
-            VolumeValueChanged?.Invoke(_isMuted);
-        }
-
-        public void Unmute()
-        {
-            _mixer.audioMixer.SetFloat(PlayerConfigs.MusicVolume, PlayerConfigs.MaxVolume);
-            PlayerPrefs.SetFloat(PlayerConfigs.MusicVolume, PlayerConfigs.MaxVolume);
-            _isMuted = false;
-            VolumeValueChanged?.Invoke(_isMuted);
         }
     }
 }

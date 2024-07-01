@@ -70,7 +70,7 @@ namespace Assets.Scripts.GameLogic
         {
             Player player = InitializePlayer();
 
-            Pauser pauser = new Pauser(_audioMixer, InitializeInput(player));
+            Pauser pauser = new Pauser(_audioMixer, InitializeInput(player), _globalUI.GetComponentInChildren<PausePanel>());
 
             InitializeUI(player, pauser);
 
@@ -115,8 +115,8 @@ namespace Assets.Scripts.GameLogic
 
         private void InitializeUI(Player player, Pauser pauser)
         {
-            _interstitialAd.Init(pauser);
-            _videoAd.Init(pauser);
+            _interstitialAd.Init(pauser, _backgroundPauser);
+            _videoAd.Init(pauser, _backgroundPauser);
             _interstitialAdTimer.Init(_interstitialAd);
 
             _globalUI.Init(player,_sceneLoader, _audioMixer, pauser, _interstitialAd); 
@@ -125,7 +125,7 @@ namespace Assets.Scripts.GameLogic
             _enemyFactory.WaveStarted += _globalUI.OnWaveStarted;
             _enemyFactory.WaveSpawnAmountChanged += _globalUI.OnWaveSpawnAmountChanged;
 
-            _backgroundPauser.Init(pauser, _globalUI.PausePanel, _videoAd, _interstitialAd);
+            _backgroundPauser.Init(pauser);
         }
     }
 }
