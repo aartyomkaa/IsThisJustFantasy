@@ -23,7 +23,7 @@ namespace Assets.Scripts.UI
         private SceneLoader _sceneLoader;
         private AudioMixer _audioMixer;
         private Player _player;
-        private VideoAdShower _videoAdShower;
+        private InterstitialAdShower _interstitialAd;
 
         public ScorePanel NextLevelPanel => _nextLevelPanel;
         public ScorePanel EndGamePanel => _endGamePanel;
@@ -36,18 +36,18 @@ namespace Assets.Scripts.UI
 
             _player.LevelChanged -= _playerUI.OnLevelChanged;
 
-            _nextLevelPanel.ContinueButtonPressed -= _videoAdShower.Show;
-            _endGamePanel.ContinueButtonPressed -= _videoAdShower.Show;
-            _endGamePanel.BackButtonPressed -= _videoAdShower.Show;
-            _winGamePanel.BackButtonPressed -= _videoAdShower.Show;
+            _nextLevelPanel.ContinueButtonPressed -= _interstitialAd.Show;
+            _endGamePanel.ContinueButtonPressed -= _interstitialAd.Show;
+            _endGamePanel.BackButtonPressed -= _interstitialAd.Show;
+            _winGamePanel.BackButtonPressed -= _interstitialAd.Show;
         }
 
-        public void Init(Player player, SceneLoader loader, AudioMixer mixer, Pauser pauser, VideoAdShower videoAdShower) 
+        public void Init(Player player, SceneLoader loader, AudioMixer mixer, Pauser pauser, InterstitialAdShower adShower) 
         {
             _sceneLoader = loader;
             _player = player;
             _audioMixer = mixer;
-            _videoAdShower = videoAdShower;
+            _interstitialAd = adShower;
 
             _player.LevelChanged += _playerUI.OnLevelChanged;
             _playerUI.SignToPlayerValuesChanges(player);
@@ -58,10 +58,10 @@ namespace Assets.Scripts.UI
 
             _sceneLoader.SignToPausePanelEvents(_pausePanel);
 
-            _nextLevelPanel.ContinueButtonPressed += _videoAdShower.Show;
-            _endGamePanel.ContinueButtonPressed += _videoAdShower.Show;
-            _endGamePanel.BackButtonPressed += _videoAdShower.Show;
-            _winGamePanel.BackButtonPressed += _videoAdShower.Show;
+            _nextLevelPanel.ContinueButtonPressed += _interstitialAd.Show;
+            _endGamePanel.ContinueButtonPressed += _interstitialAd.Show;
+            _endGamePanel.BackButtonPressed += _interstitialAd.Show;
+            _winGamePanel.BackButtonPressed += _interstitialAd.Show;
         }
 
         public void OnWaveStarted(int amount)
