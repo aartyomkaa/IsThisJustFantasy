@@ -76,7 +76,6 @@ namespace Assets.Scripts.Audio
             PlayerPrefs.SetFloat(PlayerConfigs.MusicVolume, PlayerConfigs.MaxVolume);
             _isMuted = false;
             VolumeValueChanged?.Invoke(_isMuted);
-
         }
     }
 }
