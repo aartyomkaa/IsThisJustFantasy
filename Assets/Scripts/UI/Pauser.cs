@@ -10,7 +10,7 @@ namespace Assets.Scripts.UI
         private AudioMixer _audioMixer;
         private MobileInput _mobileInput;
 
-        public Pauser(AudioMixer audioMixer, MobileInput mobileInput, PausePanel pausePanel)
+        public Pauser(AudioMixer audioMixer, PausePanel pausePanel, MobileInput mobileInput = null)
         {
             _audioMixer = audioMixer;
             _mobileInput = mobileInput;

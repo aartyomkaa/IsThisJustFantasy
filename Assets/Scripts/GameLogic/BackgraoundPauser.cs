@@ -27,26 +27,26 @@ namespace Assets.Scripts.GameLogic
 
         private void OnInBackgroundChangeWeb(bool isBackground)
         {
-                if (isBackground)
-                {
-                    _pauser.Pause();
-                }
-                else
-                {
-                    _pauser.Resume();
-                }
+            if (isBackground)
+            {
+                _pauser.Pause();
+            }
+            else
+            {
+                _pauser.Resume();
+            }
         }
 
         private void OnInBackgroundChangeApp(bool inApp)
         {
-                if (!inApp)
-                {
-                    _pauser.Pause();
-                }
-                else
-                {
-                    _pauser.Resume();
-                }
+            if (!inApp)
+            {
+                _pauser.Pause();
+            }
+            else
+            {
+                _pauser.Resume();
+            }
         }
     }
 }
