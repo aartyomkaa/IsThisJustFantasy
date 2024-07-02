@@ -5873,6 +5873,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 776ae4a83ba61ed4981133b968541de9, type: 3}
     - target: {fileID: 6274449716085618512, guid: 373e745bf4567f54f881ad1de60d16d7, type: 3}
+      propertyPath: _damage
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6274449716085618512, guid: 373e745bf4567f54f881ad1de60d16d7, type: 3}
       propertyPath: _radius
       value: 8
       objectReference: {fileID: 0}
@@ -6159,6 +6163,10 @@ PrefabInstance:
     - target: {fileID: -8114856957699922300, guid: afd1c7c6e1349714eb3781cbf7666f55, type: 3}
       propertyPath: rolloffCustomCurve.m_Curve.Array.data[0].value
       value: 1.0052338
+      objectReference: {fileID: 0}
+    - target: {fileID: 133498023857193100, guid: afd1c7c6e1349714eb3781cbf7666f55, type: 3}
+      propertyPath: _attackSpeed
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 133498023857193100, guid: afd1c7c6e1349714eb3781cbf7666f55, type: 3}
       propertyPath: EnemyLayerMask.m_Bits

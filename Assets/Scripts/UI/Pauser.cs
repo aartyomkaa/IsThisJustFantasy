@@ -10,7 +10,7 @@ namespace Assets.Scripts.UI
         private MobileInput _mobileInput;
         private bool _isCurrentSoundOff;
 
-        public Pauser(AudioMixer audioMixer, MobileInput mobileInput)
+        public Pauser(AudioMixer audioMixer, MobileInput mobileInput = null)
         {
             _audioMixer = audioMixer;
             _mobileInput = mobileInput;

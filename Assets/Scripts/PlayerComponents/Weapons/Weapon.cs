@@ -19,7 +19,7 @@ namespace Assets.Scripts.PlayerComponents.Weapons
 
         public float AttackSpeed => _attackSpeed;
 
-        private void Awake()
+        private void OnEnable()
         {
             CanAttack = true;
         }
