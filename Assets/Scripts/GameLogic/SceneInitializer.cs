@@ -70,7 +70,9 @@ namespace Assets.Scripts.GameLogic
         {
             Player player = InitializePlayer();
 
-            Pauser pauser = new Pauser(_audioMixer, InitializeInput(player));
+            MobileInput input = InitializeInput(player);
+
+            Pauser pauser = new Pauser(_audioMixer, input);
 
             InitializeUI(player, pauser);
 
@@ -105,10 +107,15 @@ namespace Assets.Scripts.GameLogic
             {
                 DesktopInput input = Instantiate(_desktopInput, transform);
                 input.Init(player);
+
+                return null;
             }
 
-            return null;
+            throw new System.Exception("What is Device");
 #endif
+
+            DesktopInput input = Instantiate(_desktopInput, transform);
+            input.Init(player);
 
             return null;
         }
