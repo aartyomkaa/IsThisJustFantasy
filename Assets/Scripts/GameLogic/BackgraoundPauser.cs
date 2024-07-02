@@ -12,13 +12,10 @@ namespace Assets.Scripts.GameLogic
         private PausePanel _pausePanel;
         private VideoAdShower _videoAd;
         private InterstitialAdShower _interstitialAd;
-        private bool _isOnPause;
+        private bool _isGameOnPause;
 
         private void OnDisable()
         {
-            _pausePanel.PauseStatusChanged -= ChangeCapableToPause;
-            _videoAd.PauseStatusChanged -= ChangeCapableToPause;
-            _interstitialAd.PauseStatusChanged -= ChangeCapableToPause;
             Application.focusChanged -= OnInBackgroundChangeApp;
         }
 
@@ -28,23 +25,27 @@ namespace Assets.Scripts.GameLogic
             _pausePanel = pausePanel;
             _videoAd = videoAd;
             _interstitialAd = interstitialAd;
-
-            _pausePanel.PauseStatusChanged += ChangeCapableToPause;
-            _videoAd.PauseStatusChanged += ChangeCapableToPause;
-            _interstitialAd.PauseStatusChanged += ChangeCapableToPause;
-
+           
             Application.focusChanged += OnInBackgroundChangeApp;
         }
   
-        private void ChangeCapableToPause(bool isOnPause)
+        private void CheckCapableToPause()
         {
-            _isOnPause = isOnPause;
+           if(_pausePanel.IsPaused || _videoAd.IsPaused || _interstitialAd.IsPaused)
+            {
+                _isGameOnPause = true;
+            }
+            else
+            {
+                _isGameOnPause = false;
+            }   
         }
         
-
         private void OnInBackgroundChangeApp(bool inApp)
         {
-            if (!_isOnPause)
+            CheckCapableToPause();
+
+            if (!_isGameOnPause)
             {
                 if (!inApp)
                 {

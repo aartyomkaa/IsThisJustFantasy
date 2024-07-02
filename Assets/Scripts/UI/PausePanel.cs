@@ -11,14 +11,14 @@ namespace Assets.Scripts.UI
         [SerializeField] private GameObject _panel;
 
         private Pauser _pauser;
-        private bool _isPaused;
 
         public Button OpenButton;
         public Button CloseButton;
      
         public event Action MainMenuButtonClicked;
         public event Action RestartSceneButtonClicked;
-        public event Action<bool> PauseStatusChanged;
+
+        public bool IsPaused { get; private set; }
 
         private void OnEnable()
         {
@@ -44,7 +44,7 @@ namespace Assets.Scripts.UI
         private void OnMainMenuButtonClicked()
         {
             _pauser.Resume();
-            ChangeStatusToUnPause();
+            IsPaused = false;
             MainMenuButtonClicked?.Invoke();
         }
 
@@ -52,34 +52,21 @@ namespace Assets.Scripts.UI
         {
             RestartSceneButtonClicked?.Invoke();
             _pauser.Resume();
-            ChangeStatusToUnPause();
+            IsPaused = false;
         }
 
         private void OnOpenButtonClicked()
         {   
             _panel.SetActive(true);
             _pauser.Pause();
-            ChangeStatusToPause();
+            IsPaused = true;
         }
 
         private void OnCloseButtonClicked()
         {
             _panel.SetActive(false);
             _pauser.Resume();
-            ChangeStatusToUnPause();
-
-
-        }
-
-        private void ChangeStatusToPause()
-        {
-            _isPaused = true;
-            PauseStatusChanged?.Invoke(_isPaused);
-        }
-        private void ChangeStatusToUnPause()
-        {
-            _isPaused = false;
-            PauseStatusChanged?.Invoke(_isPaused);
+            IsPaused = false;
         }
     }
 }

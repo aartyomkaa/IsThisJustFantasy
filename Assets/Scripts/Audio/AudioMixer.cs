@@ -13,9 +13,9 @@ namespace Assets.Scripts.Audio
         private SoundToggler _soundToggler;
         private bool _isMuted = false;
 
-        public bool IsMuted => _isMuted;
-
         public event Action<bool> VolumeValueChanged;
+
+        public bool IsMuted => _isMuted;
 
         private void Start()
         {      
@@ -26,21 +26,7 @@ namespace Assets.Scripts.Audio
         {
             _soundToggler.SoundValueChanged -= ToggleMusic;
         }
-
-        private void SetVolumeValue()
-        {
-            float value = PlayerPrefs.GetFloat(PlayerConfigs.MusicVolume);
-
-            if (value == PlayerConfigs.MinVolume)
-            {
-                Mute();
-            }
-            else
-            {
-                Unmute();
-            }
-        }
-
+     
         public void SignSoundValuesChanges(SoundToggler soundToggler)
         {
             _soundToggler = soundToggler;
@@ -76,6 +62,20 @@ namespace Assets.Scripts.Audio
             PlayerPrefs.SetFloat(PlayerConfigs.MusicVolume, PlayerConfigs.MaxVolume);
             _isMuted = false;
             VolumeValueChanged?.Invoke(_isMuted);
+        }
+
+        private void SetVolumeValue()
+        {
+            float value = PlayerPrefs.GetFloat(PlayerConfigs.MusicVolume);
+
+            if (value == PlayerConfigs.MinVolume)
+            {
+                Mute();
+            }
+            else
+            {
+                Unmute();
+            }
         }
     }
 }

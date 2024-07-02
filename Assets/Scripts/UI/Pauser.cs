@@ -29,6 +29,7 @@ namespace Assets.Scripts.UI
             {
                 _audioMixer.Mute();
             }
+           
             Time.timeScale = 0;
         }
 
