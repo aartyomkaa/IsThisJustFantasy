@@ -25,19 +25,19 @@ namespace Assets.Scripts.UI
             SignToButtons();
         }
 
-        private void ActiveAvailableLevels()
-        {
-            for (int i = 0; i < _lastAvailableLevel; i++)
-            {
-                _levelButtons[i].Active();
-            }
-        }
-
         private void SetLastAvailableLevel()
         {
             if (PlayerPrefs.GetInt(SceneNames.LastAvailableLevel) > _lastAvailableLevel)
             {
                 _lastAvailableLevel = PlayerPrefs.GetInt(SceneNames.LastAvailableLevel);
+            }
+        }
+       
+        private void ActiveAvailableLevels()
+        {
+            for (int i = 0; i < _lastAvailableLevel; i++)
+            {
+                _levelButtons[i].Active();
             }
         }
 

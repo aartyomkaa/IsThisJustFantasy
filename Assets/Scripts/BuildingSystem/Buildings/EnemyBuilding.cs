@@ -14,11 +14,11 @@ namespace Assets.Scripts.BuildingSystem.Buildings
 
         private EnemyFactory _enemyFactory;
         private bool _isIncrease;
-
-        public Button AdButton => _eventer.SecondButton;
        
         public ColliderPanelEventer EventerToSend => _eventer;
         public event Action<ColliderPanelEventer> BuildWithEventorWasMade;
+
+        public Button AdButton => _eventer.AdButton;
 
         private void Awake()
         {

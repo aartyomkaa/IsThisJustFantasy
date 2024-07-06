@@ -19,7 +19,7 @@ namespace Assets.Scripts.BuildingSystem.System
 
         private BuildingSpawner _buildingSpawner;
         private Transform _playersTransform;
-        private PlayerWallet _currentPlayersWallet;
+        private PlayerWallet _playersWallet;
         private int _currentCostToBuild;
         private int _currentBuildPointIndex;
         private bool _canBuild;
@@ -60,7 +60,7 @@ namespace Assets.Scripts.BuildingSystem.System
                         {
                             _buildingSpawner.Spawn(_buildPoints[i].Index, _buildPoints[i].SpotToPlaceBuilding, _chestSpawnPoints);
                             _buildPoints[i].TakeSpot();
-                            _buildPoints[i].SignToCurrentBuilding(_buildingSpawner.CurrentBuilding);
+                            _buildPoints[i].TryToFreeSpotToBuild(_buildingSpawner.CurrentBuilding);
                              SendEventer();
                             _canBuild = false;
                             _buildPoints[i].TryToDeActiveIconOfBuildPoint();
@@ -108,16 +108,17 @@ namespace Assets.Scripts.BuildingSystem.System
                     _currentCostToBuild = _buildPoints[i].CostToBuild;
                     _currentBuildPointIndex = _buildPoints[i].Index;
 
-                    _currentPlayersWallet = wallet;
-                    _builder.ToggleButton(_currentPlayersWallet, _currentBuildPointIndex, _currentCostToBuild, _canBuild);    
+                    _playersWallet = wallet;
+                    _builder.ToggleButton(_playersWallet, _currentBuildPointIndex, _currentCostToBuild, _canBuild);    
                 }
             }
         }
+       
         private void OnPlayerWentOut(PlayerWallet wallet) 
         {
             _canBuild = false;
-            _currentPlayersWallet = wallet;
-            _builder.ToggleButton(_currentPlayersWallet, _currentBuildPointIndex, _currentCostToBuild, _canBuild);
+            _playersWallet = wallet;
+            _builder.ToggleButton(_playersWallet, _currentBuildPointIndex, _currentCostToBuild, _canBuild);
         }
 
         private void OnBuildWithEventorWasMade(ColliderPanelEventer currentEventer)

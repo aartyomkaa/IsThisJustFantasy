@@ -8,13 +8,12 @@ namespace Assets.Scripts.UI
     {
         [SerializeField] private Button _restartSceneButton;
         [SerializeField] private Button _exitToMainMenuButton;
+        [SerializeField] private Button _openButton;
+        [SerializeField] private Button _closeButton;
         [SerializeField] private GameObject _panel;
 
         private Pauser _pauser;
 
-        public Button OpenButton;
-        public Button CloseButton;
-     
         public event Action MainMenuButtonClicked;
         public event Action RestartSceneButtonClicked;
 
@@ -22,16 +21,16 @@ namespace Assets.Scripts.UI
 
         private void OnEnable()
         {
-            OpenButton.onClick.AddListener(OnOpenButtonClicked);
-            CloseButton.onClick.AddListener(OnCloseButtonClicked);
+            _openButton.onClick.AddListener(OnOpenButtonClicked);
+            _closeButton.onClick.AddListener(OnCloseButtonClicked);
             _exitToMainMenuButton.onClick.AddListener(OnMainMenuButtonClicked);
             _restartSceneButton.onClick.AddListener(OnRestartSceneButtonClicked);
         }
 
         private void OnDisable()
         {
-            OpenButton.onClick.RemoveListener(OnOpenButtonClicked);
-            CloseButton.onClick.RemoveListener(OnCloseButtonClicked);
+            _openButton.onClick.RemoveListener(OnOpenButtonClicked);
+            _closeButton.onClick.RemoveListener(OnCloseButtonClicked);
             _exitToMainMenuButton.onClick.RemoveListener(OnMainMenuButtonClicked);
             _restartSceneButton.onClick.RemoveListener(OnRestartSceneButtonClicked);
         }

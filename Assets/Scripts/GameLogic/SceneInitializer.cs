@@ -23,7 +23,7 @@ namespace Assets.Scripts.GameLogic
         [SerializeField] private DesktopInput _desktopInput;
         [SerializeField] private MobileInput _mobileInput;
         [SerializeField] private AudioMixer _audioMixer;
-        [SerializeField] private GlobalUI _globalUI;
+        [SerializeField] private UiService _globalUI;
         [SerializeField] private EnemyFactory _enemyFactory;
         [SerializeField] private SceneLoader _sceneLoader;
         [SerializeField] private BuildingService _buildingSystem;

@@ -4,10 +4,11 @@ using Assets.Scripts.Audio;
 using Assets.Scripts.GameLogic;
 using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.YandexSDK;
+using Unity.VisualScripting;
 
 namespace Assets.Scripts.UI
 {
-    internal class GlobalUI : MonoBehaviour
+    internal class UiService : MonoBehaviour
     {
         [SerializeField] private PlayerUI _playerUI;
         [SerializeField] private PausePanel _pausePanel;
@@ -31,13 +32,9 @@ namespace Assets.Scripts.UI
         private void OnDisable()
         {
             _audioMixer.VolumeValueChanged -= _soundToggler.SetCurrentStatus;
+            _player.LevelChanged -= _playerUI.SetNumberOfLevel;
 
-            _player.LevelChanged -= _playerUI.OnLevelChanged;
-
-            _nextLevelPanel.ContinueButtonPressed -= _interstitialAd.Show;
-            _endGamePanel.ContinueButtonPressed -= _interstitialAd.Show;
-            _endGamePanel.BackButtonPressed -= _interstitialAd.Show;
-            _winGamePanel.BackButtonPressed -= _interstitialAd.Show;
+            UnSignToPanels();
         }
 
         public void Init(Player player, SceneLoader loader, AudioMixer mixer, Pauser pauser, InterstitialAdShower adShower) 
@@ -47,7 +44,7 @@ namespace Assets.Scripts.UI
             _audioMixer = mixer;
             _interstitialAd = adShower;
 
-            _player.LevelChanged += _playerUI.OnLevelChanged;
+            _player.LevelChanged += _playerUI.SetNumberOfLevel;
             _playerUI.SignToPlayerValuesChanges(player);
             _pausePanel.Init(pauser);
 
@@ -55,11 +52,8 @@ namespace Assets.Scripts.UI
             _audioMixer.VolumeValueChanged += _soundToggler.SetCurrentStatus;
 
             _sceneLoader.SignToPausePanelEvents(_pausePanel);
-
-            _nextLevelPanel.ContinueButtonPressed += _interstitialAd.Show;
-            _endGamePanel.ContinueButtonPressed += _interstitialAd.Show;
-            _endGamePanel.BackButtonPressed += _interstitialAd.Show;
-            _winGamePanel.BackButtonPressed += _interstitialAd.Show;
+           
+            SignToPanels();
         }
 
         public void OnWaveStarted(int amount)
@@ -78,6 +72,22 @@ namespace Assets.Scripts.UI
             {
                 _waves.gameObject.SetActive(false);
             }
+        }
+
+        private void SignToPanels()
+        {
+            _nextLevelPanel.ContinueButtonPressed += _interstitialAd.Show;
+            _endGamePanel.ContinueButtonPressed += _interstitialAd.Show;
+            _endGamePanel.BackButtonPressed += _interstitialAd.Show;
+            _winGamePanel.BackButtonPressed += _interstitialAd.Show;
+        }
+
+        private void UnSignToPanels()
+        {
+            _nextLevelPanel.ContinueButtonPressed -= _interstitialAd.Show;
+            _endGamePanel.ContinueButtonPressed -= _interstitialAd.Show;
+            _endGamePanel.BackButtonPressed -= _interstitialAd.Show;
+            _winGamePanel.BackButtonPressed -= _interstitialAd.Show;
         }
     }
 }

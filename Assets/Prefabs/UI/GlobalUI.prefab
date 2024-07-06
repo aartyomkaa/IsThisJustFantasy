@@ -4265,9 +4265,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _restartSceneButton: {fileID: 7295447394547399307}
   _exitToMainMenuButton: {fileID: 9158501409515801979}
+  _openButton: {fileID: 1530640795672595172}
+  _closeButton: {fileID: 7325929902953651295}
   _panel: {fileID: 512253158775910760}
-  OpenButton: {fileID: 1530640795672595172}
-  CloseButton: {fileID: 7325929902953651295}
 --- !u!1 &6043142583052006897
 GameObject:
   m_ObjectHideFlags: 0

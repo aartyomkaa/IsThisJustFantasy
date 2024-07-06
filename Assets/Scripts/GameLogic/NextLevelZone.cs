@@ -33,11 +33,8 @@ namespace Assets.Scripts.GameLogic
 
         private void OnDisable()
         {
-            _nextLevelPanel.BackButtonPressed -= OnBackButtonPressed;
-            _nextLevelPanel.ContinueButtonPressed -= OnContinueLevelButtonPressed;
             _sceneLoader.LastLevelReached -= OnLastLevelReached;
-            _winPanel.BackButtonPressed -= OnMenuButtonPressed;
-            _winPanel.ContinueButtonPressed -= OnBackButtonPressed;
+            UnSignToPanelsEvents();
         }
 
         public void Init(Score score, SceneLoader sceneLoader, Player player, Pauser pauser, ScorePanel nextLevelPanel, ScorePanel winPanel)
@@ -46,20 +43,32 @@ namespace Assets.Scripts.GameLogic
             _nextLevelPanel = nextLevelPanel;
             _winPanel = winPanel;
             _player = player;
-
-            _nextLevelPanel.BackButtonPressed += OnBackButtonPressed;
-            _nextLevelPanel.ContinueButtonPressed += OnContinueLevelButtonPressed;
-            _winPanel.BackButtonPressed += OnMenuButtonPressed;                   
-            _winPanel.ContinueButtonPressed += OnBackButtonPressed;
-
             _score = score;
             _sceneLoader = sceneLoader;
+
+            SignToPanelsEvents();
             _sceneLoader.LastLevelReached += OnLastLevelReached;
         }
 
         public void OnAllWavesDefeated()
         {
             gameObject.SetActive(true);
+        }
+
+        private void SignToPanelsEvents()
+        {
+            _nextLevelPanel.BackButtonPressed += OnBackButtonPressed;
+            _nextLevelPanel.ContinueButtonPressed += OnContinueLevelButtonPressed;
+            _winPanel.BackButtonPressed += OnMenuButtonPressed;
+            _winPanel.ContinueButtonPressed += OnBackButtonPressed;
+        }
+
+        private void UnSignToPanelsEvents()
+        {
+            _nextLevelPanel.BackButtonPressed -= OnBackButtonPressed;
+            _nextLevelPanel.ContinueButtonPressed -= OnContinueLevelButtonPressed;
+            _winPanel.BackButtonPressed -= OnMenuButtonPressed;
+            _winPanel.ContinueButtonPressed -= OnBackButtonPressed;
         }
 
         private void OpenNextLevelPanel()

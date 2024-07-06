@@ -24,7 +24,7 @@ namespace Assets.Scripts.UI
             _slider.maxValue = _health.Health;
             _slider.value = _health.Health;
 
-            OnLevelChanged(player.CurrentLevel);
+            SetNumberOfLevel(player.CurrentLevel);
 
             _wallet = player.Wallet;
             _coins.text = _wallet.Coins.ToString();
@@ -34,7 +34,7 @@ namespace Assets.Scripts.UI
             _wallet.CoinsChanged += OnCoinsChanged;
         }
 
-        public void OnLevelChanged(int newPlayerLevel)
+        public void SetNumberOfLevel(int newPlayerLevel)
         {
             _playerLevel = newPlayerLevel;
             _level.text = _playerLevel.ToString();

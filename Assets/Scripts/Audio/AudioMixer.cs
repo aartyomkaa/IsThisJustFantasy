@@ -39,8 +39,7 @@ namespace Assets.Scripts.Audio
 
             if (_isMuted)
             {
-                Mute();
-               
+                Mute();             
             }
             else
             {

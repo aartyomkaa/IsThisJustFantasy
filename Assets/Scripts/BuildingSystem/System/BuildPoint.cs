@@ -61,7 +61,7 @@ namespace Assets.Scripts.BuildingSystem
             _isOccupied = true;
         }
 
-        public void SignToCurrentBuilding(Building biulding)
+        public void TryToFreeSpotToBuild(Building biulding)
         {
             _currentBuilding = biulding;
 
