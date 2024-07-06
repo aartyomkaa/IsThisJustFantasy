@@ -1,5 +1,5 @@
-﻿using Assets.Scripts.GameLogic;
-using UnityEngine;
+﻿using UnityEngine;
+using Assets.Scripts.GameLogic;
 
 namespace Assets.Scripts.PlayerUnits
 {

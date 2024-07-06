@@ -8,12 +8,12 @@ namespace Assets.Scripts.PlayerUnits
 
         private int _capacity = 10;
 
-        public Unit[] MeleePool => _unitsPool;
-
         public UnitsPool(UnitData data, Vector3 position)
         {
             _unitsPool = CreateUnitsPool(data, position);
         }
+
+        public Unit[] MeleePool => _unitsPool;
 
         public Unit GetUnit()
         {

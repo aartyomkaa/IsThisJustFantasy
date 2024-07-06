@@ -1,6 +1,6 @@
-﻿using Assets.Scripts.GameLogic;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using Assets.Scripts.GameLogic;
 
 namespace Assets.Scripts.Audio
 {

@@ -22,8 +22,8 @@ namespace Assets.Scripts.PlayerUnits
                 int row = i / cols;
                 int col = i % cols;
 
-                Vector3 dest = startPos + new Vector3(col * _unitSpacing, 0, row * _unitSpacing);
-                destinations.Add(dest);
+                Vector3 destination = startPos + new Vector3(col * _unitSpacing, 0, row * _unitSpacing);
+                destinations.Add(destination);
             }
 
             return destinations.ToArray();

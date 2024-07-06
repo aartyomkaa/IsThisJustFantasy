@@ -1,7 +1,8 @@
-﻿using Assets.Scripts.Constants;
-using Assets.Scripts.PlayerComponents.Weapons;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Assets.Scripts.Constants;
+using Assets.Scripts.Weapons;
+using Assets.Scripts.Weapons.Bows;
 
 namespace Assets.Scripts.AnimatorScripts
 {
@@ -9,18 +10,6 @@ namespace Assets.Scripts.AnimatorScripts
     {
         private Dictionary<Type, int> _attackTriggers = new Dictionary<Type, int>();
         private Dictionary<Type, int> _changeWeaponTriggers = new Dictionary<Type, int>();
-
-        private int GetTrigger(Dictionary<Type, int> triggerMap, Type weaponType)
-        {
-            if (triggerMap.TryGetValue(weaponType, out int trigger))
-            {
-                return trigger;
-            }
-            else
-            {
-                throw new Exception("No such weapon map");
-            }
-        }
 
         public AnimatorTriggerConfiguration()
         {
@@ -39,6 +28,18 @@ namespace Assets.Scripts.AnimatorScripts
         public int GetChangeWeaponTrigger(Type weaponType)
         {
             return GetTrigger(_changeWeaponTriggers, weaponType);
+        }
+
+        private int GetTrigger(Dictionary<Type, int> triggerMap, Type weaponType)
+        {
+            if (triggerMap.TryGetValue(weaponType, out int trigger))
+            {
+                return trigger;
+            }
+            else
+            {
+                throw new Exception("No such weapon map");
+            }
         }
     }
 }

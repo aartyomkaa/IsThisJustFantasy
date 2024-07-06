@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Assets.Scripts.PlayerComponents.Weapons;
+using Assets.Scripts.Weapons;
 
 namespace Assets.Scripts.PlayerComponents
 {

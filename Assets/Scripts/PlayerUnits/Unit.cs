@@ -26,11 +26,11 @@ namespace Assets.Scripts.PlayerUnits
         private Coroutine _deathCoroutine;
         private float _deathDuration = 5f;
 
+        public event Action<float> HealthValueChanged;
+
         public Transform Transform => transform;
 
         public float Health => _health;
-
-        public event Action<float> HealthValueChanged;
 
         private void Start()
         {

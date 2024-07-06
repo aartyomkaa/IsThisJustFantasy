@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using Assets.Scripts.UI;
-using Agava.WebUtility;
 using Assets.Scripts.YandexSDK;
-
+using Agava.WebUtility;
 
 namespace Assets.Scripts.GameLogic
 {
@@ -31,7 +30,7 @@ namespace Assets.Scripts.GameLogic
   
         private void CheckCapableToPause()
         {
-           if(_pausePanel.IsPaused || _videoAd.IsPaused || _interstitialAd.IsPaused)
+            if(_pausePanel.IsPaused || _videoAd.IsPaused || _interstitialAd.IsPaused)
             {
                 _isGameOnPause = true;
             }

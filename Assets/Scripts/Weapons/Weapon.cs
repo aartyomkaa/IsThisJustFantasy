@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Assets.Scripts.PlayerComponents.Weapons
+namespace Assets.Scripts.Weapons
 {
     internal abstract class Weapon : MonoBehaviour
     {

@@ -1,6 +1,6 @@
-﻿using Assets.Scripts.GameLogic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+using Assets.Scripts.GameLogic;
 
 namespace Assets.Scripts.UI
 {
