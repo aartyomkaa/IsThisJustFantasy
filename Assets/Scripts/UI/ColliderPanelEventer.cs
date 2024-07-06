@@ -40,8 +40,12 @@ namespace Assets.Scripts.UI
         private void OnEnable()
         {
             _firstButton.onClick.AddListener(OnFirsttButtonClicked);
-            _adButton.onClick.AddListener(OnAdButtonClicked);
-           
+            
+           if(_adButton != null)
+            {
+                _adButton.onClick.AddListener(OnAdButtonClicked);
+            }
+             
             if(_extraButton != null)
             {
                 _extraButton.onClick.AddListener(OnExtraButtonClicked);
@@ -68,14 +72,18 @@ namespace Assets.Scripts.UI
         private void OnDisable()
         {
             _firstButton.onClick.RemoveListener(OnFirsttButtonClicked);
-            _adButton.onClick.RemoveListener(OnAdButtonClicked);
 
             if (gameObject.activeSelf && _timer != null)
             {
                 _timer.CooldownStarted -= TurnAdButton;
                 _timer.BecomeAvailable -= TurnAdButton;
             }
-              
+
+            if (_adButton != null)
+            {
+                _adButton.onClick.RemoveListener(OnAdButtonClicked);
+            }
+
             if (_extraButton != null)
             {
                 _extraButton.onClick.RemoveListener(OnExtraButtonClicked);

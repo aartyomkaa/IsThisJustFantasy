@@ -686,8 +686,8 @@ MonoBehaviour:
   _costToBuy: 15
   _panelToShow: {fileID: 8077669750747915907}
   _firstButton: {fileID: 2169441456550259160}
-  _secondButton: {fileID: 3915648209065908353}
-  _extraButton: {fileID: 0}
+  _adButton: {fileID: 0}
+  _extraButton: {fileID: 3915648209065908353}
   _tutorial: {fileID: 814378230377625133}
   _cost: {fileID: 3469671815210071272, guid: 75bae2701a1af8947a7a032da4a31972, type: 3}
   _popupPanel: {fileID: 4592742635948095715}
