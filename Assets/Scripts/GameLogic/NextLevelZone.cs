@@ -1,7 +1,7 @@
 using UnityEngine;
+using Assets.Scripts.Constants;
 using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.UI;
-using Assets.Scripts.Constants;
 
 namespace Assets.Scripts.GameLogic
 {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.PlayerComponents.Weapons.Bows
+namespace Assets.Scripts.Weapons.Bows
 {
     internal class ArrowsPool
     {

@@ -29,7 +29,7 @@ namespace Assets.Scripts.GameLogic
         private AudioClip GetRandomClip(List<AudioClip> clipList)
         {
             if (clipList.Count == 0)
-                throw new ArgumentException("There are no AudioClips!");
+                throw new ArgumentException("There is no AudioClips!");
 
             return clipList[_random.Next(clipList.Count)];
         }

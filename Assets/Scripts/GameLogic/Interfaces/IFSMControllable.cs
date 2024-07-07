@@ -1,5 +1,5 @@
-﻿using Assets.Scripts.GameLogic.Interfaces;
-using UnityEngine;
+﻿using UnityEngine;
+using Assets.Scripts.GameLogic.Interfaces;
 
 namespace Assets.Scripts.GameLogic
 {

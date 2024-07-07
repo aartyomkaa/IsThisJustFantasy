@@ -51,7 +51,7 @@ namespace Assets.Scripts.GameLogic.Utilities
                     break;
 
                 default:
-                    throw new Exception("No such laguage");
+                    throw new Exception("No such language");
             }
         }
     }

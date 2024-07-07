@@ -2,14 +2,14 @@
 using UnityEngine;
 using Assets.Scripts.AnimatorScripts;
 using Assets.Scripts.Constants;
-using Assets.Scripts.PlayerComponents.Weapons;
+using Assets.Scripts.Weapons;
 
 namespace Assets.Scripts.PlayerComponents
 {
     internal class PlayerAnimator : MonoBehaviour
     {
         private Animator _animator;
-        private AnimatorTriggerConfiguration _triggerConfig = new AnimatorTriggerConfiguration();
+        private AnimatorTriggerConfiguration _triggerConfig;
         private AnimatorClipInfo[] _currentClipInfo;
 
         private float _currentClipLength;
@@ -20,6 +20,7 @@ namespace Assets.Scripts.PlayerComponents
         private void Start()
         {
             _animator = GetComponent<Animator>();
+            _triggerConfig = new AnimatorTriggerConfiguration();
         }
 
         public void SetAnimatorSpeed(Vector3 movementVector, float moveSpeed)

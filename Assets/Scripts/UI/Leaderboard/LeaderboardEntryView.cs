@@ -1,9 +1,9 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Agava.YandexGames;
-using System.Collections;
 
 namespace Assets.Scripts.UI
 {

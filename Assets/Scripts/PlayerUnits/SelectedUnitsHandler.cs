@@ -7,10 +7,17 @@ namespace Assets.Scripts.PlayerUnits
     {
         [SerializeField] private LayerMask _groundMask;
 
-        private List<Selectable> _units = new List<Selectable>();
-        private List<Selectable> _selectedUnits = new List<Selectable>();
+        private List<Selectable> _units;
+        private List<Selectable> _selectedUnits;
 
-        private ArmyFormation _armyFormation = new ArmyFormation();
+        private ArmyFormation _armyFormation;
+
+        private void Start()
+        {
+            _units = new List<Selectable>();
+            _selectedUnits = new List<Selectable>();
+            _armyFormation = new ArmyFormation();
+        }
 
         private void OnDisable()
         {

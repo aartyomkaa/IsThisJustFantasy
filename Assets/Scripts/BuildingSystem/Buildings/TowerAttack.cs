@@ -1,8 +1,8 @@
 using UnityEngine;
-using Assets.Scripts.GameLogic.Interfaces;
-using Assets.Scripts.PlayerComponents.Weapons;
-using Assets.Scripts.PlayerComponents.Weapons.Bows;
 using Assets.Scripts.GameLogic;
+using Assets.Scripts.GameLogic.Interfaces;
+using Assets.Scripts.Weapons;
+using Assets.Scripts.Weapons.Bows;
 
 namespace Assets.Scripts.BuildingSystem
 {

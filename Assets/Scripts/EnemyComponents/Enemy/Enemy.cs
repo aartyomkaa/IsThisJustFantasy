@@ -28,11 +28,11 @@ namespace Assets.Scripts.EnemyComponents
         private float _deathDuration = 6f;
         private MainBuilding _building;
 
-        public Transform Transform => transform;
-        public float Health => _health;
-
         public event Action<Enemy> Died;
         public event Action<float> HealthValueChanged;
+
+        public Transform Transform => transform;
+        public float Health => _health;
 
         private void Start()
         {

@@ -1,12 +1,11 @@
-﻿using Assets.Scripts.BuildingSystem.Buildings;
-using UnityEngine;
+﻿using UnityEngine;
+using Assets.Scripts.BuildingSystem.Buildings;
 
 namespace Assets.Scripts.EnemyComponents
 {
     internal class EnemyPool
     {
         private Enemy[] _enemyPool;
-
         private int _capacity = 15;
 
         public EnemyPool(EnemyData data, MainBuilding building, Vector3 position)

@@ -1,8 +1,8 @@
-﻿using Assets.Scripts.GameLogic.Interfaces;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
+using Assets.Scripts.GameLogic.Interfaces;
 
-namespace Assets.Scripts.PlayerComponents.Weapons
+namespace Assets.Scripts.Weapons
 {
     [RequireComponent(typeof(AudioSource))]
     internal class Arrow : MonoBehaviour
@@ -70,7 +70,7 @@ namespace Assets.Scripts.PlayerComponents.Weapons
                 Vector3 relativePosition = _correctPosition - transform.position;
 
                 transform.rotation = Quaternion.LookRotation(relativePosition, Vector3.up);
-                transform.position = Vector3.MoveTowards(transform.position, _correctPosition, _speed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, _correctPosition, _speed * Time.fixedDeltaTime);
 
                 yield return null;
             }
