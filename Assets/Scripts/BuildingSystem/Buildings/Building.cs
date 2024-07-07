@@ -3,7 +3,6 @@ using UnityEngine;
 using Assets.Scripts.GameLogic.Interfaces;
 using Assets.Scripts.UI;
 
-
 namespace Assets.Scripts.BuildingSystem
 {
     [RequireComponent(typeof(Animator))]
@@ -11,13 +10,11 @@ namespace Assets.Scripts.BuildingSystem
 
     internal abstract class Building : MonoBehaviour, IDamageable
     {
+        [SerializeField] protected ColliderPanelEventer Eventer;
         [SerializeField] private ParticleSystem _particleOfDestroy;
         [SerializeField] private float _strength;
         [SerializeField] private float _valueOfScaleOfParticleOfDestroy;
-        [SerializeField] private Transform _spotOfDestroyEffects;
-        [SerializeField] protected ColliderPanelEventer Eventer;
-
-        public int IndexOfBuilding;
+        [SerializeField] private Transform _spotOfDestroyEffects;      
 
         private AudioSource _audiosourse;
         private Vector3 _scaleOfParticleOfDestroy;
