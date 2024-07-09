@@ -31,26 +31,27 @@ namespace Assets.Scripts.UI
         public event Action ExtraButtonClicked;
 
         public Button AdButton => _adButton;
-       
+
+        private void OnEnable()
+        {
+            _firstButton.onClick.AddListener(OnFirsttButtonClicked);
+
+            if (_adButton != null)
+            {
+                _adButton.onClick.AddListener(OnAdButtonClicked);
+            }
+
+            if (_extraButton != null)
+            {
+                _extraButton.onClick.AddListener(OnExtraButtonClicked);
+            }
+        }
+
         private void Start()
         {
             _cost.SetValue(_costToBuy);
         }
-       
-        private void OnEnable()
-        {
-            _firstButton.onClick.AddListener(OnFirsttButtonClicked);
-            
-           if(_adButton != null)
-            {
-                _adButton.onClick.AddListener(OnAdButtonClicked);
-            }
              
-            if(_extraButton != null)
-            {
-                _extraButton.onClick.AddListener(OnExtraButtonClicked);
-            }  
-        }
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.TryGetComponent(out Player player))
@@ -100,6 +101,30 @@ namespace Assets.Scripts.UI
             _timer.BecomeAvailable += TurnAdButton;
         }
 
+        private void OnFirsttButtonClicked()
+        {
+            FirstButtonClicked?.Invoke(_player, _costToBuy, UiHash.CoinsButtonIndex);
+        }
+
+        private void OnAdButtonClicked()
+        {
+            if (_isAdButtonOnCooldown == false)
+            {
+                SecondButtonClicked?.Invoke(_player, _costToBuy, UiHash.AdButtonIndex);
+                _timer.Start—ountDown();
+            }
+            else
+            {
+                StartCoroutine(_popupPanel.Show());
+            }
+        }
+
+        private void OnExtraButtonClicked()
+        {
+            ExtraButtonClicked?.Invoke();
+            Close();
+        }
+
         private void TurnAdButton(bool isOnCooldown)
         {
             _isAdButtonOnCooldown = isOnCooldown;
@@ -131,30 +156,6 @@ namespace Assets.Scripts.UI
         private void ChangeActiveStatus()
         {
             _panelToShow.gameObject.SetActive(_isActive);
-        }
-
-        public void OnFirsttButtonClicked()
-        {
-            FirstButtonClicked?.Invoke(_player, _costToBuy, UiHash.CoinsButtonIndex);
-        }
-
-        public void OnAdButtonClicked()
-        {
-            if (_isAdButtonOnCooldown == false)
-            {
-                SecondButtonClicked?.Invoke(_player, _costToBuy, UiHash.AdButtonIndex);
-                _timer.Start—ountDown();
-            }
-            else
-            {
-                StartCoroutine(_popupPanel.Show());
-            }
-        }
-
-        public void OnExtraButtonClicked()
-        {
-            ExtraButtonClicked?.Invoke();
-            Close();
         }
     }
 }
