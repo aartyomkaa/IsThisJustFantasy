@@ -6,9 +6,9 @@ namespace Assets.Scripts.PlayerComponents
     {
         private int _coins = 100;
 
-        public int Coins => _coins;
-
         public event Action<int> CoinsChanged;
+
+        public int Coins => _coins;
 
         public void SpendCoins(int amount)
         {

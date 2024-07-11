@@ -7,13 +7,13 @@ namespace Assets.Scripts.BuildingSystem.System
     internal class BuildingSpawner
     {
         private BuildingsPool _buildingsPool;
-       
-        public Building CurrentBuilding { get; private set; }   
-
+        
         public BuildingSpawner( Tower tower, Barracks barracks, ResoorceBuilding resoorceBuilding)
         {
             _buildingsPool = new BuildingsPool(tower, barracks, resoorceBuilding);
         }
+
+        public Building CurrentBuilding { get; private set; }
 
         public void Spawn(int SpawnPointIndex, Transform SpawnPointTransform, ChestSpawnerPointsContainer chestSpawnPoints)
         {

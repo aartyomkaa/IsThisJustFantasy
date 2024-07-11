@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Assets.Scripts.PlayerComponents.Weapons
+namespace Assets.Scripts.Weapons
 {
     internal abstract class Weapon : MonoBehaviour
     {
@@ -19,7 +19,7 @@ namespace Assets.Scripts.PlayerComponents.Weapons
 
         public float AttackSpeed => _attackSpeed;
 
-        private void Awake()
+        private void OnEnable()
         {
             CanAttack = true;
         }

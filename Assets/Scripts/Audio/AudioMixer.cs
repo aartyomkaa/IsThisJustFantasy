@@ -13,9 +13,9 @@ namespace Assets.Scripts.Audio
         private SoundToggler _soundToggler;
         private bool _isMuted = false;
 
-        public bool IsMuted => _isMuted;
-
         public event Action<bool> VolumeValueChanged;
+
+        public bool IsMuted => _isMuted;
 
         private void Start()
         {      
@@ -26,46 +26,41 @@ namespace Assets.Scripts.Audio
         {
             _soundToggler.SoundValueChanged -= ToggleMusic;
         }
-
+     
         public void SignSoundValuesChanges(SoundToggler soundToggler)
         {
             _soundToggler = soundToggler;
             _soundToggler.SoundValueChanged += ToggleMusic;
         }
      
-        public void ToggleMusic(bool isMute)
+        public void ToggleMusic(bool isMuted)
         {
-            bool isPlayer = true;
+            _isMuted = isMuted;
 
-            if (isMute)
+            if (_isMuted)
             {
-                Mute(isPlayer);
-               
+                Mute();             
             }
             else
             {
-                Unmute(isPlayer);
+                Unmute();
             } 
         }
 
-        public void Mute(bool isPlayer = false)
+        public void Mute()
         {
             _mixer.audioMixer.SetFloat(PlayerConfigs.MusicVolume, PlayerConfigs.MinVolume);
             PlayerPrefs.SetFloat(PlayerConfigs.MusicVolume,PlayerConfigs.MinVolume);
-            VolumeValueChanged?.Invoke(true);
-
-            if (isPlayer)
-                _isMuted = true;
+            _isMuted = true;
+            VolumeValueChanged?.Invoke(_isMuted);
         }
 
-        public void Unmute(bool isPlayer = false)
+        public void Unmute()
         {
             _mixer.audioMixer.SetFloat(PlayerConfigs.MusicVolume, PlayerConfigs.MaxVolume);
             PlayerPrefs.SetFloat(PlayerConfigs.MusicVolume, PlayerConfigs.MaxVolume);
-            VolumeValueChanged?.Invoke(false);
-
-            if (isPlayer)
-                _isMuted = false;
+            _isMuted = false;
+            VolumeValueChanged?.Invoke(_isMuted);
         }
 
         private void SetVolumeValue()

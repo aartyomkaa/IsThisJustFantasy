@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Assets.Scripts.UI;
+using Assets.Scripts.YandexSDK;
 using Agava.WebUtility;
 
 namespace Assets.Scripts.GameLogic
@@ -7,45 +8,52 @@ namespace Assets.Scripts.GameLogic
     internal class BackgraoundPauser : MonoBehaviour
     {
         private Pauser _pauser;
-
-        private void OnEnable()
-        {
-            WebApplication.InBackgroundChangeEvent += OnInBackgroundChangeWeb;
-            Application.focusChanged += OnInBackgroundChangeApp;
-        }
+        private PausePanel _pausePanel;
+        private VideoAdShower _videoAd;
+        private InterstitialAdShower _interstitialAd;
+        private bool _isGameOnPause;
 
         private void OnDisable()
         {
-            WebApplication.InBackgroundChangeEvent -= OnInBackgroundChangeWeb;
             Application.focusChanged -= OnInBackgroundChangeApp;
         }
 
-        public void Init(Pauser pauser)
+        public void Init(Pauser pauser, PausePanel pausePanel, VideoAdShower videoAd, InterstitialAdShower interstitialAd)
         {
             _pauser = pauser;
+            _pausePanel = pausePanel;
+            _videoAd = videoAd;
+            _interstitialAd = interstitialAd;
+           
+            Application.focusChanged += OnInBackgroundChangeApp;
         }
-
-        private void OnInBackgroundChangeWeb(bool isBackground)
+  
+        private void CheckCapableToPause()
         {
-            if (isBackground)
+            if(_pausePanel.IsPaused || _videoAd.IsPaused || _interstitialAd.IsPaused)
             {
-                _pauser.Pause();
+                _isGameOnPause = true;
             }
             else
             {
-                _pauser.Resume();
-            }
+                _isGameOnPause = false;
+            }   
         }
-
+        
         private void OnInBackgroundChangeApp(bool inApp)
         {
-            if (!inApp)
+            CheckCapableToPause();
+
+            if (!_isGameOnPause)
             {
-                _pauser.Pause();
-            }
-            else
-            {
-                _pauser.Resume();
+                if (!inApp)
+                {
+                    _pauser.Pause();
+                }
+                else
+                {
+                    _pauser.Resume();
+                }
             }
         }
     }

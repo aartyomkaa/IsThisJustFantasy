@@ -8,30 +8,29 @@ namespace Assets.Scripts.UI
     {
         [SerializeField] private Button _restartSceneButton;
         [SerializeField] private Button _exitToMainMenuButton;
+        [SerializeField] private Button _openButton;
+        [SerializeField] private Button _closeButton;
         [SerializeField] private GameObject _panel;
 
         private Pauser _pauser;
 
-        public bool IsOpen => _panel.activeSelf;
-
-        public Button OpenButton;
-        public Button CloseButton;
-     
         public event Action MainMenuButtonClicked;
         public event Action RestartSceneButtonClicked;
 
+        public bool IsPaused { get; private set; }
+
         private void OnEnable()
         {
-            OpenButton.onClick.AddListener(OnOpenButtonClicked);
-            CloseButton.onClick.AddListener(OnCloseButtonClicked);
+            _openButton.onClick.AddListener(OnOpenButtonClicked);
+            _closeButton.onClick.AddListener(OnCloseButtonClicked);
             _exitToMainMenuButton.onClick.AddListener(OnMainMenuButtonClicked);
             _restartSceneButton.onClick.AddListener(OnRestartSceneButtonClicked);
         }
 
         private void OnDisable()
         {
-            OpenButton.onClick.RemoveListener(OnOpenButtonClicked);
-            CloseButton.onClick.RemoveListener(OnCloseButtonClicked);
+            _openButton.onClick.RemoveListener(OnOpenButtonClicked);
+            _closeButton.onClick.RemoveListener(OnCloseButtonClicked);
             _exitToMainMenuButton.onClick.RemoveListener(OnMainMenuButtonClicked);
             _restartSceneButton.onClick.RemoveListener(OnRestartSceneButtonClicked);
         }
@@ -43,31 +42,30 @@ namespace Assets.Scripts.UI
 
         private void OnMainMenuButtonClicked()
         {
-            ClosePanel();
+            _pauser.Resume();
+            IsPaused = false;
             MainMenuButtonClicked?.Invoke();
         }
 
         private void OnRestartSceneButtonClicked()
         {
-            ClosePanel();
             RestartSceneButtonClicked?.Invoke();
+            _pauser.Resume();
+            IsPaused = false;
         }
 
         private void OnOpenButtonClicked()
         {   
             _panel.SetActive(true);
             _pauser.Pause();
+            IsPaused = true;
         }
 
         private void OnCloseButtonClicked()
         {
-            ClosePanel();
-        }
-
-        private void ClosePanel()
-        {
             _panel.SetActive(false);
             _pauser.Resume();
+            IsPaused = false;
         }
     }
 }

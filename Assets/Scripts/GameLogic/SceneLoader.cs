@@ -8,8 +8,7 @@ namespace Assets.Scripts.GameLogic
 {
     internal class SceneLoader : MonoBehaviour
     {
-        private PausePanel _currentPausePanel;
-
+        private PausePanel _pausePanel;
         private int _totalScenes;
         private int _oneLevelIndex = 1;
         private bool _isLastLevelReached;
@@ -34,18 +33,18 @@ namespace Assets.Scripts.GameLogic
 
         private void OnDisable()
         {
-            if (_currentPausePanel != null)
+            if (_pausePanel != null)
             {
-                _currentPausePanel.MainMenuButtonClicked -= LoadMenuScene;
-                _currentPausePanel.RestartSceneButtonClicked -= RestartCurrentScene;
+                _pausePanel.MainMenuButtonClicked -= LoadMenuScene;
+                _pausePanel.RestartSceneButtonClicked -= RestartCurrentScene;
             }
         }
 
         public void SignToPausePanelEvents(PausePanel pausePanel)
         {
-            _currentPausePanel = pausePanel;
-            _currentPausePanel.MainMenuButtonClicked += LoadMenuScene;
-            _currentPausePanel.RestartSceneButtonClicked += RestartCurrentScene;
+            _pausePanel = pausePanel;
+            _pausePanel.MainMenuButtonClicked += LoadMenuScene;
+            _pausePanel.RestartSceneButtonClicked += RestartCurrentScene;
         }
 
         public void LoadScene(string sceneName)

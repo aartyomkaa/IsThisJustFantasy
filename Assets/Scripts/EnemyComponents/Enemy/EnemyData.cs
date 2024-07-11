@@ -1,6 +1,6 @@
-﻿using Assets.Scripts.GameLogic;
-using Assets.Scripts.PlayerComponents.Weapons;
-using UnityEngine;
+﻿using UnityEngine;
+using Assets.Scripts.GameLogic;
+using Assets.Scripts.Weapons;
 
 namespace Assets.Scripts.EnemyComponents
 {

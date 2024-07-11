@@ -6,8 +6,6 @@ namespace Assets.Scripts.UI
 {
     internal class TutorialArrow : MonoBehaviour
     {
-        public event Action Collected;
-
         [SerializeField] private Transform _target;
 
         private Transform _player;
@@ -15,6 +13,8 @@ namespace Assets.Scripts.UI
         private Quaternion _rotationOffset = Quaternion.Euler(0, 90, 0);
         private Quaternion _rotationAtChest = Quaternion.Euler(0, 0, 90);
         private float _maxDistance = 5f;
+
+        public event Action Collected;
 
         private void LateUpdate()
         {

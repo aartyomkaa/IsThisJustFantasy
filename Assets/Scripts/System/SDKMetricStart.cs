@@ -1,5 +1,5 @@
-using Agava.YandexGames;
 using UnityEngine;
+using Agava.YandexGames;
 
 namespace Assets.Scripts.Yander
 {

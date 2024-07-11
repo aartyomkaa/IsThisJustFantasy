@@ -1,10 +1,9 @@
 ﻿using System.Collections;
 using UnityEngine;
-using Assets.Scripts.PlayerComponents.Weapons.Bows;
 using Assets.Scripts.GameLogic;
 using Assets.Scripts.GameLogic.Interfaces;
 
-namespace Assets.Scripts.PlayerComponents.Weapons
+namespace Assets.Scripts.Weapons.Bows
 {
     internal class PlayerBow : Weapon
     {

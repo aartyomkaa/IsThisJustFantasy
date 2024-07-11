@@ -14,10 +14,10 @@ namespace Assets.Scripts.PlayerComponents
         private int _maxLevel = 6;
         private PlayerWallet _wallet;
 
+        public event Action<int> LevelChanged;
+
         public int CurrentLevel => _currentLevel;
         public PlayerWallet Wallet => _wallet;
-
-        public event Action<int> LevelChanged;
 
         private void Awake()
         {

@@ -13,47 +13,52 @@ namespace Assets.Scripts.UI
         [SerializeField] private int _costToBuy;
         [SerializeField] GameObject _panelToShow;
         [SerializeField] private Button _firstButton;  
-        [SerializeField] private Button _secondButton;
+        [SerializeField] private Button _adButton;
         [SerializeField] private Button _extraButton;
         [SerializeField] private TutorialPanel _tutorial;
         [SerializeField] private LeanToken _cost;
         [SerializeField] private InterstitialAdPopup _popupPanel;
 
-        private Player _currentPlayer;
+        private Player _player;
         private bool _isActive;
         private float _changeScaleSpeed = 0.15f;
         private int _panelMoveXValue = 228;
         private InterstitialAdTimer _timer;
-        private bool _isSecondButtonOnCooldown = false;
+        private bool _isAdButtonOnCooldown = false;
 
         public event Action<Player, int, int> FirstButtonClicked;
         public event Action<Player, int, int> SecondButtonClicked;
         public event Action ExtraButtonClicked;
 
-        public Button SecondButton => _secondButton;
-       
+        public Button AdButton => _adButton;
+
+        private void OnEnable()
+        {
+            _firstButton.onClick.AddListener(OnFirsttButtonClicked);
+
+            if (_adButton != null)
+            {
+                _adButton.onClick.AddListener(OnAdButtonClicked);
+            }
+
+            if (_extraButton != null)
+            {
+                _extraButton.onClick.AddListener(OnExtraButtonClicked);
+            }
+        }
+
         private void Start()
         {
             _cost.SetValue(_costToBuy);
         }
-       
-        private void OnEnable()
-        {
-            _firstButton.onClick.AddListener(OnFirsttButtonClicked);
-            _secondButton.onClick.AddListener(OnSecondButtonClicked);
-           
-            if(_extraButton != null)
-            {
-                _extraButton.onClick.AddListener(OnExtraButtonClicked);
-            }  
-        }
+             
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.TryGetComponent(out Player player))
             {
                 _isActive = true;
                 Open();
-                _currentPlayer = player;
+                _player = player;
             }
         }
 
@@ -68,14 +73,18 @@ namespace Assets.Scripts.UI
         private void OnDisable()
         {
             _firstButton.onClick.RemoveListener(OnFirsttButtonClicked);
-            _secondButton.onClick.RemoveListener(OnSecondButtonClicked);
 
             if (gameObject.activeSelf && _timer != null)
             {
-                _timer.CooldownStarted -= TurnSecondButton;
-                _timer.BecomeAvailable -= TurnSecondButton;
+                _timer.CooldownStarted -= TurnAdButton;
+                _timer.BecomeAvailable -= TurnAdButton;
             }
-              
+
+            if (_adButton != null)
+            {
+                _adButton.onClick.RemoveListener(OnAdButtonClicked);
+            }
+
             if (_extraButton != null)
             {
                 _extraButton.onClick.RemoveListener(OnExtraButtonClicked);
@@ -87,14 +96,38 @@ namespace Assets.Scripts.UI
         public void TakeTimer(InterstitialAdTimer timer)
         {
             _timer = timer;
-            _isSecondButtonOnCooldown = _timer.IsOnCooldown;
-            _timer.CooldownStarted += TurnSecondButton;
-            _timer.BecomeAvailable += TurnSecondButton;
+            _isAdButtonOnCooldown = _timer.IsOnCooldown;
+            _timer.CooldownStarted += TurnAdButton;
+            _timer.BecomeAvailable += TurnAdButton;
         }
 
-        private void TurnSecondButton(bool isOnCooldown)
+        private void OnFirsttButtonClicked()
         {
-            _isSecondButtonOnCooldown = isOnCooldown;
+            FirstButtonClicked?.Invoke(_player, _costToBuy, UiHash.CoinsButtonIndex);
+        }
+
+        private void OnAdButtonClicked()
+        {
+            if (_isAdButtonOnCooldown == false)
+            {
+                SecondButtonClicked?.Invoke(_player, _costToBuy, UiHash.AdButtonIndex);
+                _timer.Start—ountDown();
+            }
+            else
+            {
+                StartCoroutine(_popupPanel.Show());
+            }
+        }
+
+        private void OnExtraButtonClicked()
+        {
+            ExtraButtonClicked?.Invoke();
+            Close();
+        }
+
+        private void TurnAdButton(bool isOnCooldown)
+        {
+            _isAdButtonOnCooldown = isOnCooldown;
         }
         
         private void Open()
@@ -104,7 +137,9 @@ namespace Assets.Scripts.UI
             LeanTween.moveX(_panelToShow.GetComponent<RectTransform>(), - _panelMoveXValue, _changeScaleSpeed);
 
             if (PlayerPrefs.GetInt(PlayerConfigs.HasPassedTutorial) == 0)
+            {
                 _tutorial.Open();
+            }       
         }
 
         private void Close()
@@ -113,36 +148,14 @@ namespace Assets.Scripts.UI
             LeanTween.moveX(_panelToShow.GetComponent<RectTransform>(), _panelMoveXValue, _changeScaleSpeed).setOnComplete(ChangeActiveStatus);
 
             if (PlayerPrefs.GetInt(PlayerConfigs.HasPassedTutorial) == 0)
+            {
                 _tutorial.Close();
+            }       
         }
 
         private void ChangeActiveStatus()
         {
             _panelToShow.gameObject.SetActive(_isActive);
-        }
-
-        public void OnFirsttButtonClicked()
-        {
-            FirstButtonClicked?.Invoke(_currentPlayer, _costToBuy, UiHash.CoinsButtonIndex);
-        }
-
-        public void OnSecondButtonClicked()
-        {
-            if (_isSecondButtonOnCooldown == false)
-            {
-                SecondButtonClicked?.Invoke(_currentPlayer, _costToBuy, UiHash.AdButtonIndex);
-                _timer.Start—ountDown();
-            }
-            else
-            {
-                StartCoroutine(_popupPanel.Show());
-            }
-        }
-
-        public void OnExtraButtonClicked()
-        {
-            ExtraButtonClicked?.Invoke();
-            Close();
         }
     }
 }

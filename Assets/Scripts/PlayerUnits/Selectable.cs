@@ -1,6 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace Assets.Scripts.PlayerUnits
 {
@@ -10,8 +9,6 @@ namespace Assets.Scripts.PlayerUnits
 
         private bool _isSelected;
         private float _offset = 0.1f;
-
-        public bool IsSelected => _isSelected;
 
         public event Action<Selectable> Selected;
         public event Action<Selectable> Deselected;
@@ -24,13 +21,6 @@ namespace Assets.Scripts.PlayerUnits
 
             _ring.Stop();
             _isSelected = false;
-        }
-
-        private void OnDisable()
-        {
-            _isSelected = false;
-            _ring.Stop();
-            Deselected?.Invoke(this);
         }
 
         private void OnMouseDown()
@@ -47,6 +37,13 @@ namespace Assets.Scripts.PlayerUnits
                 _ring.Play();
                 Selected?.Invoke(this);
             }
+        }
+
+        private void OnDisable()
+        {
+            _isSelected = false;
+            _ring.Stop();
+            Deselected?.Invoke(this);
         }
     }
 }

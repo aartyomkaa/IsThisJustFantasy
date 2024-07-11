@@ -18,7 +18,7 @@ namespace Assets.Scripts.BuildingSystem
         private Vector3 _closeValues = Vector3.zero;
         private Vector3 _openValues = new Vector3(1,1,1);
         private float _changeScaleSpeed = 0.1f;
-        private bool _currentStatus;
+        private bool _status;
 
         public  Action<PlayerWallet> BuildButtonClicked;
 
@@ -35,7 +35,7 @@ namespace Assets.Scripts.BuildingSystem
         public void ToggleButton(PlayerWallet wallet, int builPointIndex, int costToBuy, bool isPlayerIn)
         {
             _currentPlayersWallet = wallet;
-            _currentStatus = isPlayerIn;
+            _status = isPlayerIn;
 
             if (isPlayerIn)
             {
@@ -69,7 +69,7 @@ namespace Assets.Scripts.BuildingSystem
 
         private void ChangeStatus()
         {
-            _build.gameObject.SetActive(_currentStatus);
+            _build.gameObject.SetActive(_status);
         }
 
         private void OnBuildButtonClicked()

@@ -42,6 +42,7 @@ namespace Assets.Scripts.BuildingSystem.System
                     if (_barracks.gameObject.activeSelf == false)
                     {
                         _barracks.gameObject.SetActive(true);
+                        
                         return _barracks;
                     }
 
@@ -53,10 +54,12 @@ namespace Assets.Scripts.BuildingSystem.System
                     {
                         _resoorceBuilding.gameObject.SetActive(true);
                         _resoorceBuilding.SetChestsSpawnPoints(chestSpawnPoints);
+                       
                         return _resoorceBuilding;
                     }
                     break;
             }
+            
             return null;
         }
 

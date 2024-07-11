@@ -12,7 +12,6 @@ using Assets.Scripts.PlayerInput;
 using Assets.Scripts.YandexSDK;
 using Assets.Scripts.UI;
 using Assets.Scripts.UI.Tutorial;
-using UnityEngine.Windows;
 
 namespace Assets.Scripts.GameLogic
 {
@@ -24,7 +23,7 @@ namespace Assets.Scripts.GameLogic
         [SerializeField] private DesktopInput _desktopInput;
         [SerializeField] private MobileInput _mobileInput;
         [SerializeField] private AudioMixer _audioMixer;
-        [SerializeField] private GlobalUI _globalUI;
+        [SerializeField] private UiService _globalUI;
         [SerializeField] private EnemyFactory _enemyFactory;
         [SerializeField] private SceneLoader _sceneLoader;
         [SerializeField] private BuildingService _buildingSystem;
@@ -71,20 +70,9 @@ namespace Assets.Scripts.GameLogic
         {
             Player player = InitializePlayer();
 
-            InitializeInput(player);
+            MobileInput input = InitializeInput(player);
 
-            MobileInput input;
-            Pauser pauser;
-
-            if (Device.IsMobile)
-            {
-                input = gameObject.GetComponentInChildren<MobileInput>();
-                pauser = new Pauser(_audioMixer, _globalUI.GetComponentInChildren<PausePanel>(), input);
-            }
-            else
-            {
-                pauser = new Pauser(_audioMixer, _globalUI.GetComponentInChildren<PausePanel>());
-            }
+            Pauser pauser = new Pauser(_audioMixer, input);
 
             InitializeUI(player, pauser);
 
@@ -98,33 +86,41 @@ namespace Assets.Scripts.GameLogic
         {
             Player player = Instantiate(_player, transform.position, Quaternion.identity);
             NavMeshAgent agent = player.GetComponent<NavMeshAgent>();
-            agent.Warp(transform.position);
 
             _targetFollower.Init(player.transform);
+            agent.Warp(transform.position);
 
             return player;
         }
 
-        private void InitializeInput(Player player)
+        private MobileInput InitializeInput(Player player)
         {
 #if UNITY_WEBGL && !UNITY_EDITOR
             if (Device.IsMobile)
             {
                 MobileInput input = Instantiate(_mobileInput, transform);
                 input.Init(player);
+
+                return input;
             }
             else
             {
                 DesktopInput input = Instantiate(_desktopInput, transform);
                 input.Init(player);
+
+                return null;
             }
+
+            throw new System.Exception("What is Device");
 #endif
+
+            return null;
         }
 
         private void InitializeUI(Player player, Pauser pauser)
         {
-            _interstitialAd.Init(pauser, _backgroundPauser);
-            _videoAd.Init(pauser, _backgroundPauser);
+            _interstitialAd.Init(pauser);
+            _videoAd.Init(pauser);
             _interstitialAdTimer.Init(_interstitialAd);
 
             _globalUI.Init(player,_sceneLoader, _audioMixer, pauser, _interstitialAd); 
@@ -133,7 +129,7 @@ namespace Assets.Scripts.GameLogic
             _enemyFactory.WaveStarted += _globalUI.OnWaveStarted;
             _enemyFactory.WaveSpawnAmountChanged += _globalUI.OnWaveSpawnAmountChanged;
 
-            _backgroundPauser.Init(pauser);
+            _backgroundPauser.Init(pauser, _globalUI.PausePanel, _videoAd, _interstitialAd);
         }
     }
 }

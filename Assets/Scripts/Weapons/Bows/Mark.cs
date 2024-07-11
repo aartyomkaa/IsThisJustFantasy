@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Assets.Scripts.GameLogic.Interfaces;
 
-namespace Assets.Scripts.PlayerComponents.Weapons
+namespace Assets.Scripts.Weapons
 {
     internal class Mark : MonoBehaviour
     {

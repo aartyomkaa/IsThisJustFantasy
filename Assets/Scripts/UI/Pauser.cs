@@ -6,43 +6,41 @@ namespace Assets.Scripts.UI
 {
     internal class Pauser
     {
-        private PausePanel _pausePanel;
         private AudioMixer _audioMixer;
         private MobileInput _mobileInput;
+        private bool _isCurrentSoundOff;
 
-        public Pauser(AudioMixer audioMixer, PausePanel pausePanel, MobileInput mobileInput = null)
+        public Pauser(AudioMixer audioMixer, MobileInput mobileInput = null)
         {
             _audioMixer = audioMixer;
             _mobileInput = mobileInput;
-            _pausePanel = pausePanel;
         }
 
         public void Pause()
         { 
+            _isCurrentSoundOff = _audioMixer.IsMuted;
+
             if (_mobileInput != null)
             {
                 _mobileInput.SetVisibility(false);
             }
 
-            if (_audioMixer.IsMuted == false)
+            if (!_isCurrentSoundOff)
             {
                 _audioMixer.Mute();
             }
-
+           
             Time.timeScale = 0;
         }
 
         public void Resume()
         {
-            if (_pausePanel.IsOpen == true)
-                return;
-
             if (_mobileInput != null)
             {
                 _mobileInput.SetVisibility(true);
             }
 
-            if (_audioMixer.IsMuted == false)
+            if (!_isCurrentSoundOff)
             {
                 _audioMixer.Unmute();
             }
