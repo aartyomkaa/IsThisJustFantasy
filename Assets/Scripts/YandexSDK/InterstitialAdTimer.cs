@@ -9,6 +9,7 @@ namespace Assets.Scripts.YandexSDK
         private InterstitialAdShower _interstitialAd;
         private WaitForSeconds _cooldown; 
         private bool _isOnCooldown;
+        private float _timeToShow = 60.5f;
         
         public event Action<bool> CooldownStarted;
         public event Action<bool> BecomeAvailable;
@@ -17,7 +18,7 @@ namespace Assets.Scripts.YandexSDK
 
         private void Start()
         {
-            _cooldown = new WaitForSeconds(60.5f);
+            _cooldown = new WaitForSeconds(_timeToShow);
         }
 
         public void Init(InterstitialAdShower interstitialAd)

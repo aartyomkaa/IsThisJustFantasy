@@ -9,7 +9,7 @@ namespace Assets.Scripts.UI
 
         private void Start()
         {
-            Close(); 
+            OnPanelClosed(); 
         }
 
         public virtual void Open()
@@ -19,7 +19,7 @@ namespace Assets.Scripts.UI
             _canvasGroup.blocksRaycasts = true;
         }
 
-        public void Close()
+        public void OnPanelClosed()
         {
             _canvasGroup.alpha = 0f;
             _canvasGroup.interactable = false;

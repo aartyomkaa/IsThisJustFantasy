@@ -14,11 +14,11 @@ namespace Assets.Scripts.BuildingSystem.Buildings
 
         private EnemyFactory _enemyFactory;
         private bool _isIncrease;
-       
-        public ColliderPanelEventer EventerToSend => _eventer;
+              
         public event Action<ColliderPanelEventer> BuildWithEventorWasMade;
 
         public Button AdButton => _eventer.AdButton;
+        public ColliderPanelEventer EventerToSend => _eventer;
 
         private void Awake()
         {
@@ -30,18 +30,18 @@ namespace Assets.Scripts.BuildingSystem.Buildings
             _enemyFactory = GetComponentInChildren<EnemyFactory>();
             _enemyFactory.WaveStarted += OnWaveStart;
             _enemyFactory.WaveEnded += OnWaveEnd;
-            _eventer.FirstButtonClicked += ChangeSpawnAmount;
-            _eventer.SecondButtonClicked += ChangeSpawnAmount;
-            _eventer.ExtraButtonClicked += _enemyFactory.StartWave;
+            _eventer.FirstButtonClicked += OnPrimaryButtonClicked;
+            _eventer.SecondButtonClicked += OnPrimaryButtonClicked;
+            _eventer.ExtraButtonClicked += OnExtraButtonClicked;
         }
 
         private void OnDisable()
         {
             _enemyFactory.WaveStarted -= OnWaveStart;
             _enemyFactory.WaveEnded -= OnWaveEnd;
-            _eventer.FirstButtonClicked -= ChangeSpawnAmount;
-            _eventer.SecondButtonClicked -= ChangeSpawnAmount;
-            _eventer.ExtraButtonClicked -= _enemyFactory.StartWave;
+            _eventer.FirstButtonClicked -= OnPrimaryButtonClicked;
+            _eventer.SecondButtonClicked -= OnPrimaryButtonClicked;
+            _eventer.ExtraButtonClicked -= OnExtraButtonClicked;
         }
 
         public void AnnounceOfCreation()
@@ -52,7 +52,7 @@ namespace Assets.Scripts.BuildingSystem.Buildings
             }
         }
 
-        private void ChangeSpawnAmount(Player player, int costToBuy, int buttonIndex)
+        private void OnPrimaryButtonClicked(Player player, int costToBuy, int buttonIndex)
         {
             if (buttonIndex == UiHash.CoinsButtonIndex && player.Wallet.Coins >= costToBuy)
             {
@@ -66,6 +66,11 @@ namespace Assets.Scripts.BuildingSystem.Buildings
             }
 
             _enemyFactory.ChangeSpawnAmount(_isIncrease);
+        }
+
+        private void OnExtraButtonClicked()
+        {
+            _enemyFactory.StartWave();
         }
 
         private void OnWaveStart(int spawnAmount)

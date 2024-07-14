@@ -29,7 +29,7 @@ namespace Assets.Scripts.Props.Chest
                 _animator.SetBool(AnimatorHash.IsPlayerNear, true);
                 Instantiate(_particleOfGiveCoins, transform.position, Quaternion.identity);
                 _audiosourse.Play();    
-                GiveCoins(player);
+                GiveCoinsToPlayer(player);
                 _particleOfPosition.Stop();
             }
         }
@@ -39,7 +39,7 @@ namespace Assets.Scripts.Props.Chest
             _coins = coins;
         }
 
-        private void GiveCoins(Player player)
+        private void GiveCoinsToPlayer(Player player)
         {
             _isEmpty = true;
             player.Wallet.AddCoins(_coins);

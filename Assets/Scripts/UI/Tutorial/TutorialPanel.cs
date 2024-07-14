@@ -41,7 +41,7 @@ namespace Assets.Scripts.UI
         {
             yield return new WaitForSeconds(_fadeTime);
 
-            Close();
+            OnPanelClosed();
         }
     }
 }

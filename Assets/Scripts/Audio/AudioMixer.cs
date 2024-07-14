@@ -24,16 +24,16 @@ namespace Assets.Scripts.Audio
 
         private void OnDisable()
         {
-            _soundToggler.SoundValueChanged -= ToggleMusic;
+            _soundToggler.SoundValueChanged -= OnSoundValueChanged;
         }
      
         public void SignSoundValuesChanges(SoundToggler soundToggler)
         {
             _soundToggler = soundToggler;
-            _soundToggler.SoundValueChanged += ToggleMusic;
+            _soundToggler.SoundValueChanged += OnSoundValueChanged;
         }
      
-        public void ToggleMusic(bool isMuted)
+        public void OnSoundValueChanged(bool isMuted)
         {
             _isMuted = isMuted;
 

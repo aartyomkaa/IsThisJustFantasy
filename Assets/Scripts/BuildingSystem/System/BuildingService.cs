@@ -63,7 +63,7 @@ namespace Assets.Scripts.BuildingSystem.System
                             _buildPoints[i].TryToFreeSpotToBuild(_buildingSpawner.CurrentBuilding);
                              SendEventer();
                             _canBuild = false;
-                            _buildPoints[i].TryToDeActiveIconOfBuildPoint();
+                            _buildPoints[i].DeactivateIconOfBuildPoint();
                             _builder.ToggleButton(wallet, _currentBuildPointIndex, _currentCostToBuild, _canBuild);
                             wallet.SpendCoins(_buildPoints[i].CostToBuild);
                         }
