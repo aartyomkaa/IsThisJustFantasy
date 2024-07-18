@@ -16,8 +16,8 @@ namespace Assets.Scripts.BuildingSystem
         private Building _currentBuilding;
         private int _numberToSetRaiseValue = 5;
 
-        public Action<Transform, PlayerWallet> PlayerWentIn;
-        public Action<PlayerWallet> PlayerWentOut;
+        public event Action<Transform, PlayerWallet> PlayerWentIn;
+        public event Action<PlayerWallet> PlayerWentOut;
        
         public Transform SpotToPlaceBuilding => _spotToPlaceBuilding;
         public int Index => _index;
@@ -76,7 +76,7 @@ namespace Assets.Scripts.BuildingSystem
             _iconOfBuildPoint.SetActive(true);
         }
 
-        public void TryToDeActiveIconOfBuildPoint()
+        public void DeactivateIconOfBuildPoint()
         {
             if (_iconOfBuildPoint.gameObject.activeSelf == true)
             {

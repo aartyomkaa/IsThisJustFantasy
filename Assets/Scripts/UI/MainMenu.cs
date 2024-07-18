@@ -68,7 +68,7 @@ namespace Assets.Scripts.UI
 
         private void CloseLevelsPanel()
         {
-            _levelsPanel.Close();
+            _levelsPanel.OnPanelClosed();
         }
     }
 }

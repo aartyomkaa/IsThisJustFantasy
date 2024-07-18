@@ -32,7 +32,7 @@ namespace Assets.Scripts.EnemyComponents
             _meleePool = new EnemyPool(_melee, _building, transform.position);
             _rangePool = new EnemyPool(_range, _building, transform.position);
         }
-
+     
         public void StartWave()
         {
             if (_waves.Length > _waveIndex)

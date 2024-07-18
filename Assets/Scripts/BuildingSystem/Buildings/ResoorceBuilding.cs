@@ -17,22 +17,23 @@ namespace Assets.Scripts.BuildingSystem.Buildings
 
         private void OnEnable()
         {
-            Eventer.FirstButtonClicked += VariousSpawnChest;
-            Eventer.SecondButtonClicked += VariousSpawnChest;
+            Eventer.FirstButtonClicked += OnPrimaryButtonClicked;
+            Eventer.SecondButtonClicked += OnPrimaryButtonClicked;
         }
 
         private void OnDisable()
         {
-            Eventer.FirstButtonClicked -= VariousSpawnChest;
-            Eventer.SecondButtonClicked -= VariousSpawnChest;
+            Eventer.FirstButtonClicked -= OnPrimaryButtonClicked;
+            Eventer.SecondButtonClicked -= OnPrimaryButtonClicked;
         }
 
         public void SetChestsSpawnPoints(ChestSpawnerPointsContainer chestSpawnPoints)
         {
             _currentSpawnPoints = chestSpawnPoints.SpawnPoints;
         }
-
-        private void VariousSpawnChest(Player player, int costToBuy, int buttonIndex)   
+    
+        
+        private void OnPrimaryButtonClicked(Player player, int costToBuy, int buttonIndex)   
         {
             if (_currentSpawnPoints.Count != 0)
             {

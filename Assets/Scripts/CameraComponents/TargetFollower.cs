@@ -18,7 +18,7 @@ namespace Assets.Scripts.CameraComponents
 
         private Transform _target;
 
-        private int QuaternionWValue = 15;
+        private int _quaternionWValue = 15;
        
         private void LateUpdate()
         {
@@ -39,7 +39,7 @@ namespace Assets.Scripts.CameraComponents
 
         private void SetRotation()
         {
-            transform.rotation = new Quaternion(_offsetRotationX, _offsetRotationY, _offsetRotationZ, QuaternionWValue);
+            transform.rotation = new Quaternion(_offsetRotationX, _offsetRotationY, _offsetRotationZ, _quaternionWValue);
         }
     }
 }

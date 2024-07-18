@@ -20,7 +20,7 @@ namespace Assets.Scripts.BuildingSystem
         private float _changeScaleSpeed = 0.1f;
         private bool _status;
 
-        public  Action<PlayerWallet> BuildButtonClicked;
+        public event Action<PlayerWallet> BuildButtonClicked;
 
         private void OnEnable()
         {

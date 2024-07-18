@@ -29,14 +29,14 @@ namespace Assets.Scripts.UI
         {
             PlayerAccount.Authorize();
 
-            Close();
+            OnPanelClosed();
 
             Accept?.Invoke();
         }
 
         private void OnDecline()
         {
-            Close();
+            OnPanelClosed();
 
             Decline?.Invoke();
         }

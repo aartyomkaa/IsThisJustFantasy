@@ -24,7 +24,6 @@ namespace Assets.Scripts.BuildingSystem
         public event Action<ColliderPanelEventer> BuildWithEventorWasMade;
 
         public Transform Transform => transform;
-        public ColliderPanelEventer EventerToSend => Eventer;
         public float Health => _strength;
 
         private void Awake()

@@ -42,7 +42,7 @@ namespace Assets.Scripts.UI
             //кэш
             yield return new WaitForSeconds(_fadeTime);
 
-            Close();
+            OnPanelClosed();
         }
     }
 }

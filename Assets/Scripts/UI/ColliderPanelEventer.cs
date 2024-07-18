@@ -76,8 +76,8 @@ namespace Assets.Scripts.UI
 
             if (gameObject.activeSelf && _timer != null)
             {
-                _timer.CooldownStarted -= TurnAdButton;
-                _timer.BecomeAvailable -= TurnAdButton;
+                _timer.CooldownStarted -= OnTimerStateChanged;
+                _timer.BecomeAvailable -= OnTimerStateChanged;
             }
 
             if (_adButton != null)
@@ -97,8 +97,8 @@ namespace Assets.Scripts.UI
         {
             _timer = timer;
             _isAdButtonOnCooldown = _timer.IsOnCooldown;
-            _timer.CooldownStarted += TurnAdButton;
-            _timer.BecomeAvailable += TurnAdButton;
+            _timer.CooldownStarted += OnTimerStateChanged;
+            _timer.BecomeAvailable += OnTimerStateChanged;
         }
 
         private void OnFirsttButtonClicked()
@@ -125,7 +125,7 @@ namespace Assets.Scripts.UI
             Close();
         }
 
-        private void TurnAdButton(bool isOnCooldown)
+        private void OnTimerStateChanged(bool isOnCooldown)
         {
             _isAdButtonOnCooldown = isOnCooldown;
         }
@@ -149,7 +149,7 @@ namespace Assets.Scripts.UI
 
             if (PlayerPrefs.GetInt(PlayerConfigs.HasPassedTutorial) == 0)
             {
-                _tutorial.Close();
+                _tutorial.OnPanelClosed();
             }       
         }
 

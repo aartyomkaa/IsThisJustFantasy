@@ -55,7 +55,7 @@ namespace Assets.Scripts.UI
         private void OnClose()
         {
             Closed?.Invoke();
-            Close();
+            OnPanelClosed();
         }
     }
 }
