@@ -1,8 +1,8 @@
 using System;
 using System.Collections;
+using Assets.Scripts.BuildingSystem.Buildings;
 using UnityEngine;
 using UnityEngine.AI;
-using Assets.Scripts.BuildingSystem.Buildings;
 
 namespace Assets.Scripts.EnemyComponents
 {
@@ -49,12 +49,20 @@ namespace Assets.Scripts.EnemyComponents
             }
         }
 
-        public void ChangeSpawnAmount(bool isIncrease)
+        public void IncreaseSpawnAmount()
         {
             if (_waveIndex + 1 < _waves.Length && _waves[_waveIndex].SpawnAmount > 1)
             {
-                _waves[_waveIndex].ChangeSpawnAmount(isIncrease);
+                _waves[_waveIndex].IncreaseSpawnAmount();
             }        
+        }
+
+        public void DecreaceSpawnAmount()
+        {
+            if (_waveIndex + 1 < _waves.Length && _waves[_waveIndex].SpawnAmount > 1)
+            {
+                _waves[_waveIndex].DecreaceSpawnAmount();
+            }
         }
 
         private void SpawnEnemy(EnemyPool pool, Vector3 position)

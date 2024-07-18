@@ -9,10 +9,16 @@ namespace Assets.Scripts.UI
 
         private Coroutine _fade;
         private float _fadeTime = 15f;
+        private WaitForSeconds _suspender;
 
         private void OnEnable()
         {
             transform.rotation = Rotation;
+        }
+
+        private void Start()
+        {
+            _suspender = new WaitForSeconds(_fadeTime);
         }
 
         private void OnDisable()
@@ -39,8 +45,7 @@ namespace Assets.Scripts.UI
 
         private IEnumerator Fade()
         {
-            //кэш
-            yield return new WaitForSeconds(_fadeTime);
+            yield return _suspender;
 
             OnPanelClosed();
         }

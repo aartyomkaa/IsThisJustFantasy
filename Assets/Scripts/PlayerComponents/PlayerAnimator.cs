@@ -1,8 +1,8 @@
 ﻿using System.Collections;
-using UnityEngine;
 using Assets.Scripts.AnimatorScripts;
 using Assets.Scripts.Constants;
 using Assets.Scripts.Weapons;
+using UnityEngine;
 
 namespace Assets.Scripts.PlayerComponents
 {
@@ -18,11 +18,13 @@ namespace Assets.Scripts.PlayerComponents
         private float _animationUpdateTime = 0.5f;
 
         private Coroutine _animatorUpdate;
+        private WaitForSeconds _suspender;
 
         private void Start()
         {
             _animator = GetComponent<Animator>();
             _triggerConfig = new AnimatorTriggerConfiguration();
+            _suspender = new WaitForSeconds(_animationUpdateTime);
         }
 
         public void SetAnimatorSpeed(Vector3 movementVector, float moveSpeed)
@@ -53,7 +55,7 @@ namespace Assets.Scripts.PlayerComponents
 
             _animator.Update(0);
 
-            yield return new WaitForSeconds(_animationUpdateTime);
+            yield return _suspender;
 
             SetCurrentClipInfo();
 

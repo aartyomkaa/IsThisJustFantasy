@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Assets.Scripts.UI;
@@ -31,8 +30,7 @@ namespace Assets.Scripts.YandexSDK
 
         protected void OnCloseCallBack()
         {
-            _pauser.Resume();
-            IsPaused = false;
+            Resume();
 
             foreach (Button button in _buttonsToDeactivate)
                 button.interactable = true;  
@@ -40,14 +38,19 @@ namespace Assets.Scripts.YandexSDK
 
         protected void OnCloseCallBack(bool wasShown)
         {
-            _pauser.Resume();
-            IsPaused = false;
+            Resume();
 
             if (wasShown == false)
                 return;
 
             foreach (Button button in _buttonsToDeactivate)
                 button.interactable = true;
+        }
+
+        private void Resume()
+        {
+            _pauser.Resume();
+            IsPaused = false;
         }
     }
 }

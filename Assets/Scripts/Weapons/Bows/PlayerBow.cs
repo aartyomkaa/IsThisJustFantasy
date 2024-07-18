@@ -1,7 +1,7 @@
 ﻿using System.Collections;
-using UnityEngine;
 using Assets.Scripts.GameLogic;
 using Assets.Scripts.GameLogic.Interfaces;
+using UnityEngine;
 
 namespace Assets.Scripts.Weapons.Bows
 {
@@ -16,6 +16,8 @@ namespace Assets.Scripts.Weapons.Bows
         private bool _isOnCooldown = false;
 
         private Coroutine _attackCoroutine;
+        private WaitForSeconds _shootSuspender;
+        private WaitForSeconds _animationSuspender;
         private ArrowsPool _pool;
         private ClosestTargetFinder _closestTargetFinder;
         private IDamageable _closestTarget;
@@ -27,6 +29,8 @@ namespace Assets.Scripts.Weapons.Bows
         {
             _closestTargetFinder = new ClosestTargetFinder(_radius, EnemyLayerMask);
             _pool = new ArrowsPool(_arrowPrefab, Damage, EnemyLayerMask);
+            _shootSuspender = new WaitForSeconds(AttackSpeed - _animationOffset);
+            _animationSuspender = new WaitForSeconds(_animationOffset);
 
             _mark.transform.SetParent(null);
         }
@@ -62,10 +66,10 @@ namespace Assets.Scripts.Weapons.Bows
                 StopCoroutine(_attackCoroutine);
             }
 
-            _attackCoroutine = StartCoroutine(AttackDelay(AttackSpeed));
+            _attackCoroutine = StartCoroutine(AttackDelay());
         }
 
-        private IEnumerator AttackDelay(float attackSpeed)
+        private IEnumerator AttackDelay()
         {
             Transform target = _closestTarget.Transform;
 
@@ -73,14 +77,14 @@ namespace Assets.Scripts.Weapons.Bows
 
             base.Attack();
 
-            yield return new WaitForSeconds(attackSpeed - _animationOffset);
+            yield return _shootSuspender;
 
             Arrow arrow = _pool.GetArrow();
 
             arrow.transform.position = _shootPoint.position;
             arrow.Fly(target);
 
-            yield return new WaitForSeconds(_animationOffset);
+            yield return _animationSuspender;
 
             _isOnCooldown = false;
         }

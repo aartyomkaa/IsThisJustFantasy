@@ -10,14 +10,21 @@ namespace Assets.Scripts.EnemyComponents
         [SerializeField] private int _rangeAmount;
         [SerializeField] private int _spawnAmount;
 
+        private int _spawnChangeValue = 1;
+
         public float SpawnDelay => _spawnDelay;
         public int MeleeAmount => _meleeAmount;
         public int RangeAmount => _rangeAmount;
         public int SpawnAmount => _spawnAmount;
 
-        public void ChangeSpawnAmount(bool increase)
+        public void IncreaseSpawnAmount()
         {
-            _spawnAmount += increase ? 1 : -1;
-        }  
+            _spawnAmount += _spawnChangeValue;
+        }
+
+        public void DecreaceSpawnAmount()
+        {
+            _spawnAmount -= _spawnChangeValue;
+        }
     }
 }

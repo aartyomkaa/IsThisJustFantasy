@@ -32,7 +32,7 @@ namespace Assets.Scripts.PlayerInput
         private void Start()
         {
             _spriteChanger = _changeWeapon.GetComponent<SpriteChanger>();
-            SetVisibility(true);
+            SetVisible();
         }
 
         private void Update()
@@ -59,11 +59,18 @@ namespace Assets.Scripts.PlayerInput
             _changeWeapon.onClick.AddListener(OnChangeWeaponInput);
         }
 
-        public void SetVisibility(bool isVisible)
+        public void SetVisible()
         {
-            _canvasGroup.alpha = isVisible ? 1 : 0;
-            _canvasGroup.interactable = isVisible;
-            _canvasGroup.blocksRaycasts = isVisible;
+            _canvasGroup.alpha = 1;
+            _canvasGroup.interactable = true;
+            _canvasGroup.blocksRaycasts = true;
+        }
+
+        public void SetInvisible()
+        {
+            _canvasGroup.alpha = 0;
+            _canvasGroup.interactable = false;
+            _canvasGroup.blocksRaycasts = false;
         }
 
         private void HandleJoystickInput()

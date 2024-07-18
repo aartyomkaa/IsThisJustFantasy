@@ -3,6 +3,7 @@ using Agava.WebUtility;
 using Assets.Scripts.PlayerUnits;
 using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.GameLogic.Utilities;
+using UnityEngine.InputSystem;
 
 namespace Assets.Scripts.PlayerInput
 {
@@ -44,11 +45,9 @@ namespace Assets.Scripts.PlayerInput
             _worldPointFinder = new WorldPointFinder(_ground);
             _poinerChecker = new PointerSelectableChecker();
 
-
-            //смотри дис
-            _inputActions.Player.Attack.performed += ctx => OnAttackInput();
-            _inputActions.Player.ChangeWeapon.performed += ctx => OnChangeWeaponInput();
-            _inputActions.Player.MoveUnits.performed += ctx => OnMoveUnits();
+            _inputActions.Player.Attack.performed += OnAttackInput;
+            _inputActions.Player.ChangeWeapon.performed += OnChangeWeaponInput;
+            _inputActions.Player.MoveUnits.performed += OnMoveUnits;
         }
 
         private void OnMoveInput(Vector2 direction)
@@ -56,7 +55,7 @@ namespace Assets.Scripts.PlayerInput
             _playerMover.Move(direction);
         }
 
-        private void OnAttackInput()
+        private void OnAttackInput(InputAction.CallbackContext context)
         {
             if (_poinerChecker.IsPointerOverSelectableObject(Input.mousePosition) == false)
             {
@@ -64,12 +63,12 @@ namespace Assets.Scripts.PlayerInput
             }
         }
         
-        private void OnChangeWeaponInput()
+        private void OnChangeWeaponInput(InputAction.CallbackContext context)
         {
             _playerAttacker.ChangeWeapon();
         }
 
-        private void OnMoveUnits()
+        private void OnMoveUnits(InputAction.CallbackContext context)
         {
             _selectedUnitsHandler.MoveUnits(_worldPointFinder.GetPosition(Input.mousePosition));
         }

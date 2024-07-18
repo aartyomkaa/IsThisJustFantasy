@@ -22,7 +22,7 @@ namespace Assets.Scripts.UI
 
             if (_mobileInput != null)
             {
-                _mobileInput.SetVisibility(false);
+                _mobileInput.SetInvisible();
             }
 
             if (!_isCurrentSoundOff)
@@ -37,7 +37,7 @@ namespace Assets.Scripts.UI
         {
             if (_mobileInput != null)
             {
-                _mobileInput.SetVisibility(true);
+                _mobileInput.SetVisible();
             }
 
             if (!_isCurrentSoundOff)

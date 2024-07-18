@@ -1,10 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
 using Assets.Scripts.Constants;
 using Assets.Scripts.EnemyComponents;
-using UnityEngine.UI;
 using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.UI;
-using System;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.Scripts.BuildingSystem.Buildings
 {
@@ -56,16 +56,14 @@ namespace Assets.Scripts.BuildingSystem.Buildings
         {
             if (buttonIndex == UiHash.CoinsButtonIndex && player.Wallet.Coins >= costToBuy)
             {
-                _isIncrease = true;
+                _enemyFactory.IncreaseSpawnAmount();
                 player.Wallet.SpendCoins(costToBuy);
             }
 
             if (buttonIndex == UiHash.AdButtonIndex)
             {
-                _isIncrease = false;
+                _enemyFactory.DecreaceSpawnAmount();
             }
-
-            _enemyFactory.ChangeSpawnAmount(_isIncrease);
         }
 
         private void OnExtraButtonClicked()

@@ -7,6 +7,8 @@ namespace Assets.Scripts.Yandex
 {
     public class SDKInitializer : MonoBehaviour
     {
+        private const string MenuSceneName = "Menu";
+
         private void Awake()
         {
             YandexGamesSdk.CallbackLogging = true;
@@ -22,7 +24,7 @@ namespace Assets.Scripts.Yandex
 
         private void OnInitialized()
         {
-            SceneManager.LoadScene("Menu");
+            SceneManager.LoadScene(MenuSceneName);
         }
     }
 }

@@ -25,6 +25,7 @@ namespace Assets.Scripts.EnemyComponents
         private NavMeshAgent _agent;
         private NavMeshPath _path;
         private Coroutine _deathCoroutine;
+        private WaitForSeconds _deathAnimationDelay;
         private float _deathDuration = 6f;
         private MainBuilding _building;
 
@@ -39,6 +40,7 @@ namespace Assets.Scripts.EnemyComponents
             _animator = GetComponent<Animator>();
             _agent = GetComponent<NavMeshAgent>();
             _unitSFX = GetComponentInChildren<UnitSFX>();
+            _deathAnimationDelay = new WaitForSeconds(_deathDuration);
 
             if (_isChestGuard)
             {
@@ -106,10 +108,10 @@ namespace Assets.Scripts.EnemyComponents
                 StopCoroutine(_deathCoroutine );
             }
 
-            _deathCoroutine = StartCoroutine(Death(_deathDuration));
+            _deathCoroutine = StartCoroutine(Death());
         }
 
-        private IEnumerator Death(float time)
+        private IEnumerator Death()
         {
             Died?.Invoke(this);
             _unitSFX.PlayDeathSound();
@@ -117,7 +119,7 @@ namespace Assets.Scripts.EnemyComponents
             _agent.ResetPath();
             _animator.SetTrigger(AnimatorHash.Death);
 
-            yield return new WaitForSeconds(time);
+            yield return _deathAnimationDelay;
 
             _health = _data.Health;
             HealthValueChanged?.Invoke(_health);
