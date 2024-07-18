@@ -39,6 +39,7 @@ namespace Assets.Scripts.UI
 
         private IEnumerator Fade()
         {
+            //кэш
             yield return new WaitForSeconds(_fadeTime);
 
             Close();

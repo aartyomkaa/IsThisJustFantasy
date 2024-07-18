@@ -5,8 +5,6 @@ namespace Assets.Scripts.PlayerUnits
 {
     internal class SelectedUnitsHandler : MonoBehaviour
     {
-        [SerializeField] private LayerMask _groundMask;
-
         private List<Selectable> _units;
         private List<Selectable> _selectedUnits;
 

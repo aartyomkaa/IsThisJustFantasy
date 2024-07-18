@@ -7,6 +7,10 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
 {
     internal abstract class FSMState
     {
+        //подумать над интерфейсом
+        //или свойство
+
+
         protected FiniteStateMachine FSM;
         protected IFSMControllable Unit;
         protected Data Data;

@@ -4,6 +4,9 @@ namespace Assets.Scripts.PlayerComponents
 {
     internal class PlayerWallet 
     {
+        //Сделать инстантс в классах, которые используют
+
+
         private int _coins = 100;
 
         public event Action<int> CoinsChanged;

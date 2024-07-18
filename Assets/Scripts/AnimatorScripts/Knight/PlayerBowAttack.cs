@@ -6,8 +6,6 @@ namespace Assets.Scripts.AnimatorScripts
 {
     internal class PlayerBowAttack : StateMachineBehaviour
     {
-        [SerializeField] private Player _player;
-
         private PlayerBow _bow;
         private PlayerMovement _movement;
         private Vector3 _rotationOffset = new Vector3(0, 75, 0);

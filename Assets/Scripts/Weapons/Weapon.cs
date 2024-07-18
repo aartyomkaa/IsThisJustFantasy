@@ -5,19 +5,21 @@ namespace Assets.Scripts.Weapons
 {
     internal abstract class Weapon : MonoBehaviour
     {
-        [SerializeField] protected LayerMask EnemyLayerMask;
-        [SerializeField] protected AudioSource AudioSource;
+        [SerializeField] private LayerMask _enemyLayerMask;
+        [SerializeField] private AudioSource _audioSource;
 
         [SerializeField] private float _damage;
         [SerializeField] private float _attackSpeed;
 
-        protected Coroutine AttackCoroutine;
+        private Coroutine AttackCoroutine;
 
         public bool CanAttack { protected set; get; }
 
         public float Damage => _damage;
 
         public float AttackSpeed => _attackSpeed;
+
+        public LayerMask EnemyLayerMask => _enemyLayerMask;
 
         private void OnEnable()
         {
@@ -38,9 +40,10 @@ namespace Assets.Scripts.Weapons
 
         private IEnumerator AttackDelay(float attackSpeed)
         {
-            AudioSource.Play();
+            _audioSource.Play();
             CanAttack = false;
 
+            //кэш
             yield return new WaitForSeconds(attackSpeed);
 
             CanAttack = true;

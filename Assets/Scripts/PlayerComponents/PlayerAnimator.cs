@@ -6,12 +6,14 @@ using Assets.Scripts.Weapons;
 
 namespace Assets.Scripts.PlayerComponents
 {
+    [RequireComponent(typeof(Animator))]
     internal class PlayerAnimator : MonoBehaviour
     {
         private Animator _animator;
         private AnimatorTriggerConfiguration _triggerConfig;
         private AnimatorClipInfo[] _currentClipInfo;
 
+        private int _numerator = 1;
         private float _currentClipLength;
         private float _animationUpdateTime = 0.5f;
 
@@ -67,7 +69,7 @@ namespace Assets.Scripts.PlayerComponents
 
         private float CalculateAnimationSpeed(Weapon weapon)
         {
-            return 1 / (weapon.AttackSpeed / _currentClipLength);
+            return _numerator / (weapon.AttackSpeed / _currentClipLength);
         }
     }
 }

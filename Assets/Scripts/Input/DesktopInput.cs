@@ -44,6 +44,8 @@ namespace Assets.Scripts.PlayerInput
             _worldPointFinder = new WorldPointFinder(_ground);
             _poinerChecker = new PointerSelectableChecker();
 
+
+            //смотри дис
             _inputActions.Player.Attack.performed += ctx => OnAttackInput();
             _inputActions.Player.ChangeWeapon.performed += ctx => OnChangeWeaponInput();
             _inputActions.Player.MoveUnits.performed += ctx => OnMoveUnits();

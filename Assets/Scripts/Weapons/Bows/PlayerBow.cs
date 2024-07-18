@@ -21,10 +21,7 @@ namespace Assets.Scripts.Weapons.Bows
         private IDamageable _closestTarget;
         private bool _haveTarget;
 
-        public Transform Target
-        {
-            get =>  _haveTarget ? _closestTarget.Transform : null;
-        }
+        public Transform Target => _haveTarget ? _closestTarget.Transform : null;
 
         private void Start()
         {

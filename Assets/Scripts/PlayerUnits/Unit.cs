@@ -14,6 +14,10 @@ namespace Assets.Scripts.PlayerUnits
     [RequireComponent(typeof(NavMeshAgent))]
     internal abstract class Unit : Selectable, IDamageable, IFSMControllable, IHealthDisplayable
     {
+        //разделить овтетственность
+        //класс, который всех контролирует
+
+
         [SerializeField] private AudioSource _audioSource;
 
         private UnitData _data;
