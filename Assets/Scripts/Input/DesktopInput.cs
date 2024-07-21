@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
-using Agava.WebUtility;
-using Assets.Scripts.PlayerUnits;
-using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.GameLogic.Utilities;
+using Assets.Scripts.PlayerComponents;
+using Assets.Scripts.PlayerUnits;
+using Agava.WebUtility;
 
 namespace Assets.Scripts.PlayerInput
 {

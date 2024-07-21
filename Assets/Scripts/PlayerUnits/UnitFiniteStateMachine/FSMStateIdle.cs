@@ -11,7 +11,7 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
         private ClosestTargetFinder _targetFinder;
         private IDamageable _target;
 
-        public FSMStateIdle(FiniteStateMachine fsm, IFSMControllable unit, NavMeshAgent navMesh, Animator animator, Data data, UnitSFX unitSFX) 
+        public FSMStateIdle(FiniteStateMachine fsm, IFSMControllable unit, NavMeshAgent navMesh, Animator animator, Data data, UnitSFX unitSFX)
             : base(fsm, unit, navMesh, animator, data, unitSFX)
         {
             _targetFinder = new ClosestTargetFinder(data.AggroRange, data.EnemyLayerMask);
@@ -23,7 +23,7 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
             FSM.SetTarget(null);
         }
 
-        public override void Update() 
+        public override void Update()
         {
             if (_targetFinder.TryFindTarget(Unit.Transform.position, out _target))
             {

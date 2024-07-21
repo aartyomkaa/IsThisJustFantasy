@@ -6,7 +6,7 @@ namespace Assets.Scripts.UI
 {
     internal class LeaderboardView : MonoBehaviour
     {
-        private readonly List<LeaderboardEntryView> _leaderboardEntryViews = new();
+        private readonly List<LeaderboardEntryView> _leaderboardEntryViews = new ();
 
         [SerializeField] private LeaderboardEntryView _playerViewTemplate;
 
@@ -20,8 +20,10 @@ namespace Assets.Scripts.UI
         public void Clear()
         {
             foreach (var entry in _leaderboardEntryViews)
+            {
                 Destroy(entry.gameObject);
-
+            }
+                
             _leaderboardEntryViews.Clear();
         }
     }

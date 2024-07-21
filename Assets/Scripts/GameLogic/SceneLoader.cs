@@ -61,13 +61,13 @@ namespace Assets.Scripts.GameLogic
         {
             if (SceneManager.GetActiveScene().buildIndex + _oneLevelIndex <= _totalScenes)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + _oneLevelIndex, LoadSceneMode.Single); 
-            }  
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + _oneLevelIndex, LoadSceneMode.Single);
+            }
         }
 
         public void RestartCurrentScene()
         {
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name, LoadSceneMode.Single);          
-        }    
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
+        }
     }
 }

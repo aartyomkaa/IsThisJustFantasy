@@ -1,10 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.UI;
 using Assets.Scripts.Constants;
 using Assets.Scripts.EnemyComponents;
-using UnityEngine.UI;
 using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.UI;
-using System;
 
 namespace Assets.Scripts.BuildingSystem.Buildings
 {
@@ -14,10 +14,11 @@ namespace Assets.Scripts.BuildingSystem.Buildings
 
         private EnemyFactory _enemyFactory;
         private bool _isIncrease;
-              
+        
         public event Action<ColliderPanelEventer> BuildWithEventorWasMade;
 
         public Button AdButton => _eventer.AdButton;
+       
         public ColliderPanelEventer EventerToSend => _eventer;
 
         private void Awake()

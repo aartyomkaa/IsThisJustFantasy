@@ -84,7 +84,7 @@ namespace Assets.Scripts.GameLogic
                 _winPanel.SetTextScore(_score.GetLevelScore().ToString());
                 _winPanel.gameObject.SetActive(true);
                 _pauser.Pause();
-            }      
+            }
         }
 
         private void OnContinueLevelButtonPressed()
@@ -114,7 +114,7 @@ namespace Assets.Scripts.GameLogic
 
         private void OnBackButtonPressed()
         {
-            if(_isLastLevelReached == false)
+            if (_isLastLevelReached == false)
             {
                 _nextLevelPanel.gameObject.SetActive(false);
                 _pauser.Resume();
@@ -123,7 +123,7 @@ namespace Assets.Scripts.GameLogic
             {
                 _winPanel.gameObject.SetActive(false);
                 _pauser.Resume();
-            }   
+            }
         }
     }
 }

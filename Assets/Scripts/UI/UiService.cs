@@ -4,7 +4,6 @@ using Assets.Scripts.Audio;
 using Assets.Scripts.GameLogic;
 using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.YandexSDK;
-using Unity.VisualScripting;
 
 namespace Assets.Scripts.UI
 {
@@ -17,7 +16,7 @@ namespace Assets.Scripts.UI
         [SerializeField] private TMP_Text _wavesNumber;
         [SerializeField] private ScorePanel _nextLevelPanel;
         [SerializeField] private ScorePanel _endGamePanel;
-        [SerializeField] private ScorePanel _winGamePanel;      
+        [SerializeField] private ScorePanel _winGamePanel;
 
         private SceneLoader _sceneLoader;
         private AudioMixer _audioMixer;
@@ -25,8 +24,11 @@ namespace Assets.Scripts.UI
         private InterstitialAdShower _interstitialAd;
 
         public ScorePanel NextLevelPanel => _nextLevelPanel;
+        
         public ScorePanel EndGamePanel => _endGamePanel;
+       
         public ScorePanel WinGamePanel => _winGamePanel;
+       
         public PausePanel PausePanel => _pausePanel;
 
         private void OnDisable()
@@ -37,7 +39,7 @@ namespace Assets.Scripts.UI
             UnSignToPanels();
         }
 
-        public void Init(Player player, SceneLoader loader, AudioMixer mixer, Pauser pauser, InterstitialAdShower adShower) 
+        public void Init(Player player, SceneLoader loader, AudioMixer mixer, Pauser pauser, InterstitialAdShower adShower)
         {
             _sceneLoader = loader;
             _player = player;
@@ -52,7 +54,7 @@ namespace Assets.Scripts.UI
             _audioMixer.VolumeValueChanged += _soundToggler.SetCurrentStatus;
 
             _sceneLoader.SignToPausePanelEvents(_pausePanel);
-           
+            
             SignToPanels();
         }
 

@@ -43,7 +43,7 @@ namespace Assets.Scripts.PlayerUnits
             _fsm.SetState<FSMStateIdle>();
         }
 
-        public void Update() 
+        public void Update()
         {
             if (_health <= 0)
                 return;

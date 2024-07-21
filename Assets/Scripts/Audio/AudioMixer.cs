@@ -18,8 +18,8 @@ namespace Assets.Scripts.Audio
         public bool IsMuted => _isMuted;
 
         private void Start()
-        {      
-            SetVolumeValue();  
+        {
+            SetVolumeValue();
         }
 
         private void OnDisable()
@@ -39,18 +39,18 @@ namespace Assets.Scripts.Audio
 
             if (_isMuted)
             {
-                Mute();             
+                Mute();
             }
             else
             {
                 Unmute();
-            } 
+            }
         }
 
         public void Mute()
         {
             _mixer.audioMixer.SetFloat(PlayerConfigs.MusicVolume, PlayerConfigs.MinVolume);
-            PlayerPrefs.SetFloat(PlayerConfigs.MusicVolume,PlayerConfigs.MinVolume);
+            PlayerPrefs.SetFloat(PlayerConfigs.MusicVolume, PlayerConfigs.MinVolume);
             _isMuted = true;
             VolumeValueChanged?.Invoke(_isMuted);
         }

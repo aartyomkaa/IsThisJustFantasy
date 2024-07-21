@@ -1,17 +1,17 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
-using Agava.WebUtility;
 using Assets.Scripts.Audio;
 using Assets.Scripts.BuildingSystem.Buildings;
 using Assets.Scripts.BuildingSystem.System;
-using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.CameraComponents;
 using Assets.Scripts.EnemyComponents;
+using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.PlayerInput;
-using Assets.Scripts.YandexSDK;
 using Assets.Scripts.UI;
 using Assets.Scripts.UI.Tutorial;
+using Assets.Scripts.YandexSDK;
+using Agava.WebUtility;
 
 namespace Assets.Scripts.GameLogic
 {
@@ -44,7 +44,7 @@ namespace Assets.Scripts.GameLogic
             _enemyFactory.FinalWaveCleared += _nextLevelZone.OnAllWavesDefeated;
             _enemyBuilding.EventerToSend.TakeTimer(_interstitialAdTimer);
             _mainBuilding.BuildWithEventorWasMade += OnEventerWasMade;
-            _mainBuilding.Destroyed += _score.OpenEndGamePanel;  
+            _mainBuilding.Destroyed += _score.OpenEndGamePanel;
         }
 
         private void OnDisable()
@@ -123,9 +123,9 @@ namespace Assets.Scripts.GameLogic
             _videoAd.Init(pauser);
             _interstitialAdTimer.Init(_interstitialAd);
 
-            _globalUI.Init(player,_sceneLoader, _audioMixer, pauser, _interstitialAd); 
+            _globalUI.Init(player, _sceneLoader, _audioMixer, pauser, _interstitialAd);
             _score.Init(player, pauser, _sceneLoader, _globalUI.EndGamePanel);
-            _nextLevelZone.Init(_score, _sceneLoader, player, pauser, _globalUI.NextLevelPanel, _globalUI.WinGamePanel); 
+            _nextLevelZone.Init(_score, _sceneLoader, player, pauser, _globalUI.NextLevelPanel, _globalUI.WinGamePanel);
             _enemyFactory.WaveStarted += _globalUI.OnWaveStarted;
             _enemyFactory.WaveSpawnAmountChanged += _globalUI.OnWaveSpawnAmountChanged;
 

@@ -21,9 +21,9 @@ namespace Assets.Scripts.BuildingSystem.Buildings
             Eventer.SecondButtonClicked -= SpawnUnit;
         }
 
-        private void SpawnUnit(Player player, int costToBuy, int buttonIndex)  
-        {  
-            if(buttonIndex == UiHash.CoinsButtonIndex)
+        private void SpawnUnit(Player player, int costToBuy, int buttonIndex)
+        {
+            if (buttonIndex == UiHash.CoinsButtonIndex)
             {
                 if (player.Wallet.Coins >= costToBuy)
                 {
@@ -32,10 +32,10 @@ namespace Assets.Scripts.BuildingSystem.Buildings
                 }
             }
            
-            if(buttonIndex == UiHash.AdButtonIndex)
+            if (buttonIndex == UiHash.AdButtonIndex)
             {
                 _unitsFactory.Spawn();
-            }   
+            }
         }
     }
 }

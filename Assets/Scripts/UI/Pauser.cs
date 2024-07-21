@@ -17,7 +17,7 @@ namespace Assets.Scripts.UI
         }
 
         public void Pause()
-        { 
+        {
             _isCurrentSoundOff = _audioMixer.IsMuted;
 
             if (_mobileInput != null)
@@ -29,7 +29,7 @@ namespace Assets.Scripts.UI
             {
                 _audioMixer.Mute();
             }
-           
+            
             Time.timeScale = 0;
         }
 

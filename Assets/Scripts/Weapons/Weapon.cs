@@ -7,13 +7,12 @@ namespace Assets.Scripts.Weapons
     {
         [SerializeField] protected LayerMask EnemyLayerMask;
         [SerializeField] protected AudioSource AudioSource;
-
         [SerializeField] private float _damage;
         [SerializeField] private float _attackSpeed;
 
         protected Coroutine AttackCoroutine;
 
-        public bool CanAttack { protected set; get; }
+        public bool CanAttack { get; protected set; }
 
         public float Damage => _damage;
 

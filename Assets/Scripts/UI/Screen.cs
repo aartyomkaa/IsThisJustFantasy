@@ -5,11 +5,11 @@ namespace Assets.Scripts.UI
     [RequireComponent(typeof(CanvasGroup))]
     internal abstract class Screen : MonoBehaviour
     {
-       [SerializeField] private CanvasGroup _canvasGroup;
+        [SerializeField] private CanvasGroup _canvasGroup;
 
         private void Start()
         {
-            OnPanelClosed(); 
+            OnPanelClosed();
         }
 
         public virtual void Open()

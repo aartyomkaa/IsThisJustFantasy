@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Agava.YandexGames;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
-using Agava.YandexGames;
 
 namespace Assets.Scripts.UI
 {
@@ -11,6 +11,7 @@ namespace Assets.Scripts.UI
         [SerializeField] private Button _decline;
 
         public event Action Decline;
+       
         public event Action Accept;
 
         private void OnEnable()

@@ -2,7 +2,7 @@
 
 namespace Assets.Scripts.PlayerComponents
 {
-    internal class PlayerWallet 
+    internal class PlayerWallet
     {
         private int _coins = 100;
 
@@ -23,6 +23,6 @@ namespace Assets.Scripts.PlayerComponents
         {
             _coins += amount;
             CoinsChanged?.Invoke(_coins);
-        }   
+        }
     }
 }

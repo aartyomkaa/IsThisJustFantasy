@@ -6,7 +6,7 @@ using Assets.Scripts.BuildingSystem.Buildings;
 
 namespace Assets.Scripts.EnemyComponents
 {
-    internal class EnemyFactory: MonoBehaviour
+    internal class EnemyFactory : MonoBehaviour
     {
         [SerializeField] private EnemySpawnPoint[] _spawnPoints;
         [SerializeField] private Wave[] _waves;
@@ -23,8 +23,11 @@ namespace Assets.Scripts.EnemyComponents
         private int _waveIndex = 0;
 
         public event Action<int> WaveStarted;
+       
         public event Action<int> WaveSpawnAmountChanged;
+       
         public event Action FinalWaveCleared;
+       
         public event Action WaveEnded;
 
         private void Start()
@@ -54,7 +57,7 @@ namespace Assets.Scripts.EnemyComponents
             if (_waveIndex + 1 < _waves.Length && _waves[_waveIndex].SpawnAmount > 1)
             {
                 _waves[_waveIndex].ChangeSpawnAmount(isIncrease);
-            }        
+            }
         }
 
         private void SpawnEnemy(EnemyPool pool, Vector3 position)
@@ -76,13 +79,13 @@ namespace Assets.Scripts.EnemyComponents
                 for (int j = 0; j < wave.MeleeAmount; j++)
                 {
                     SpawnEnemy(_meleePool, _spawnPoints[_spawnPointIndex].transform.position);
-                }     
+                }
 
                 for (int k = 0; k < wave.RangeAmount; k++)
                 {
                     SpawnEnemy(_rangePool, _spawnPoints[_spawnPointIndex].transform.position);
                 }
-                   
+                
                 _spawnPointIndex = (i + 1) % _spawnPoints.Length;
 
                 yield return new WaitForSeconds(wave.SpawnDelay);

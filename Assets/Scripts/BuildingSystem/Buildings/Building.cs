@@ -14,16 +14,18 @@ namespace Assets.Scripts.BuildingSystem
         [SerializeField] private ParticleSystem _particleOfDestroy;
         [SerializeField] private float _strength;
         [SerializeField] private float _valueOfScaleOfParticleOfDestroy;
-        [SerializeField] private Transform _spotOfDestroyEffects;      
+        [SerializeField] private Transform _spotOfDestroyEffects;
 
         private AudioSource _audiosourse;
         private Vector3 _scaleOfParticleOfDestroy;
         private float _startStrength;
 
         public event Action Destroyed;
+       
         public event Action<ColliderPanelEventer> BuildWithEventorWasMade;
 
         public Transform Transform => transform;
+       
         public float Health => _strength;
 
         private void Awake()

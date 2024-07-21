@@ -24,7 +24,7 @@ namespace Assets.Scripts.BuildingSystem.Buildings
             {
                 player.GetComponent<PlayerHealth>().Heal(_valueToHeal);
                 player.Wallet.SpendCoins(costToBuy);
-            }    
+            }
         }
     }
 }

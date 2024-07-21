@@ -12,11 +12,11 @@ namespace Assets.Scripts.UI
 
         private bool _isMuted;
 
-        public event Action <bool> SoundValueChanged;    
+        public event Action<bool> SoundValueChanged;
         
         private void OnEnable()
         {
-            _muteButton.onClick.AddListener(OnMuteButtonPressed); 
+            _muteButton.onClick.AddListener(OnMuteButtonPressed);
         }
 
         private void OnDisable()
@@ -32,7 +32,7 @@ namespace Assets.Scripts.UI
 
         private void SetCurrentImage()
         {
-            if(_isMuted)
+            if (_isMuted)
             {
                 _muteButton.image.sprite = _ckekMarkOff;
             }

@@ -24,20 +24,20 @@ namespace Assets.Scripts.GameLogic
             _pausePanel = pausePanel;
             _videoAd = videoAd;
             _interstitialAd = interstitialAd;
-           
+            
             Application.focusChanged += OnInBackgroundChangeApp;
         }
   
         private void CheckCapableToPause()
         {
-            if(_pausePanel.IsPaused || _videoAd.IsPaused || _interstitialAd.IsPaused)
+            if (_pausePanel.IsPaused || _videoAd.IsPaused || _interstitialAd.IsPaused)
             {
                 _isGameOnPause = true;
             }
             else
             {
                 _isGameOnPause = false;
-            }   
+            }
         }
         
         private void OnInBackgroundChangeApp(bool inApp)

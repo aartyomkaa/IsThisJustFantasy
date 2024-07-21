@@ -15,11 +15,11 @@ namespace Assets.Scripts.UI
             _timeToShow = new WaitForSeconds(_seconds);
         }
 
-        public IEnumerator Show()  
+        public IEnumerator Show()
         {
             _popupPanel.SetActive(true);
 
-            yield return _timeToShow;              
+            yield return _timeToShow;
 
             _popupPanel.SetActive(false);
         }

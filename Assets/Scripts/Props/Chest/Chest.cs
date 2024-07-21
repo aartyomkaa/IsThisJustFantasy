@@ -1,6 +1,6 @@
+using UnityEngine;
 using Assets.Scripts.Constants;
 using Assets.Scripts.PlayerComponents;
-using UnityEngine;
 
 namespace Assets.Scripts.Props.Chest
 {
@@ -9,8 +9,8 @@ namespace Assets.Scripts.Props.Chest
     internal class Chest : MonoBehaviour
     {
         [SerializeField] private int _coins;
-        [SerializeField] ParticleSystem _particleOfGiveCoins;
-        [SerializeField] ParticleSystem _particleOfPosition;
+        [SerializeField] private ParticleSystem _particleOfGiveCoins;
+        [SerializeField] private ParticleSystem _particleOfPosition;
 
         private Animator _animator;
         private AudioSource _audiosourse;
@@ -28,7 +28,7 @@ namespace Assets.Scripts.Props.Chest
             {
                 _animator.SetBool(AnimatorHash.IsPlayerNear, true);
                 Instantiate(_particleOfGiveCoins, transform.position, Quaternion.identity);
-                _audiosourse.Play();    
+                _audiosourse.Play();
                 GiveCoinsToPlayer(player);
                 _particleOfPosition.Stop();
             }

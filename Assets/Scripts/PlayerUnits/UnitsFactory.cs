@@ -11,17 +11,17 @@ namespace Assets.Scripts.PlayerUnits
 
         private UnitsPool _pool;
 
-        private void Start() 
+        private void Start()
         {
             _pool = new UnitsPool(_unitData, transform.position);
             _handler.Init(_pool.MeleePool);
         }
 
-        public void Spawn()  
+        public void Spawn()
         {
             Unit unit = _pool.GetUnit();
             NavMeshAgent agent = unit.GetComponent<NavMeshAgent>();
-            agent.Warp(_spotOfRespawnUnits.transform.position); 
+            agent.Warp(_spotOfRespawnUnits.transform.position);
         }
     }
 }

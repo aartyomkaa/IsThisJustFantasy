@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Agava.YandexGames;
 using Assets.Scripts.Constants;
+using Agava.YandexGames;
 
 namespace Assets.Scripts.GameLogic.Utilities
 {
@@ -13,7 +13,7 @@ namespace Assets.Scripts.GameLogic.Utilities
 
         private Dictionary<int, string> _buildings = new Dictionary<int, string>();
 
-        public ButtonTranslator() 
+        public ButtonTranslator()
         {
 #if UNITY_WEBGL && !UNITY_EDITOR
             SetTranslationDictionary(YandexGamesSdk.Environment.i18n.lang);

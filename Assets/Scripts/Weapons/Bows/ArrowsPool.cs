@@ -11,7 +11,7 @@ namespace Assets.Scripts.Weapons.Bows
         private float _arrowDamage;
         private int _capacity = 2;
 
-        public ArrowsPool(Arrow arrowPrefab, float arrowDamage, LayerMask targetMask) 
+        public ArrowsPool(Arrow arrowPrefab, float arrowDamage, LayerMask targetMask)
         {
             _arrowPrefab = arrowPrefab;
             _arrowDamage = arrowDamage;
@@ -39,8 +39,8 @@ namespace Assets.Scripts.Weapons.Bows
         {
             Arrow[] pool = new Arrow[_capacity];
 
-            for (int i = 0; i < _capacity; i++) 
-            { 
+            for (int i = 0; i < _capacity; i++)
+            {
                 Arrow arrow = GameObject.Instantiate(_arrowPrefab);
                 arrow.Init(_arrowDamage, _mask);
                 arrow.gameObject.SetActive(false);

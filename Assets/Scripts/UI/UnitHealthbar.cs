@@ -23,8 +23,7 @@ namespace Assets.Scripts.UI
 
         private void Update()
         {
-            transform.LookAt(transform.position + Camera.main.transform.rotation * Vector3.back, 
-                Camera.main.transform.rotation * Vector3.up);
+            transform.LookAt(transform.position + Camera.main.transform.rotation * Vector3.back,Camera.main.transform.rotation * Vector3.up);
         }
 
         private void OnDisable()

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Assets.Scripts.Constants;
-using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.GameLogic;
+using Assets.Scripts.PlayerComponents;
 using Agava.YandexGames;
 
 namespace Assets.Scripts.UI
@@ -31,7 +31,7 @@ namespace Assets.Scripts.UI
             _endGamePanel = endGamePanel;
             _endGamePanel.BackButtonPressed += OnMenuButtonPressed;
             _endGamePanel.ContinueButtonPressed += OnRestartButtonPressed;
-           
+            
             _wallet = player.Wallet;
             _health = player.GetComponent<PlayerHealth>();
             _pauser = pauser;
