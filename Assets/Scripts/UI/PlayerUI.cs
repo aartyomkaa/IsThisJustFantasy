@@ -19,6 +19,7 @@ namespace Assets.Scripts.UI
 
         public void SignToPlayerValuesChanges(Player player)
         {
+            _wallet = new PlayerWallet();
             _health = player.GetComponent<PlayerHealth>();
             _attacker = player.GetComponent<PlayerAttacker>();
             _slider.maxValue = _health.Health;
@@ -26,7 +27,6 @@ namespace Assets.Scripts.UI
 
             SetNumberOfLevel(player.CurrentLevel);
 
-            _wallet = player.Wallet;
             _coins.text = _wallet.Coins.ToString();
 
             _attacker.WeaponChanged += _changer.ChangeSprite;
@@ -54,6 +54,7 @@ namespace Assets.Scripts.UI
 
         private void OnCoinsChanged(int coins)
         {
+            Debug.Log(coins);
             _coins.text = coins.ToString();
         }
     }

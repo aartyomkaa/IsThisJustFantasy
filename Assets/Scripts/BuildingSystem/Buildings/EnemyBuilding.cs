@@ -13,7 +13,7 @@ namespace Assets.Scripts.BuildingSystem.Buildings
         [SerializeField] private ColliderPanelEventer _eventer;
 
         private EnemyFactory _enemyFactory;
-        private bool _isIncrease;
+        private PlayerWallet _playerWallet;
               
         public event Action<ColliderPanelEventer> BuildWithEventorWasMade;
 
@@ -23,6 +23,7 @@ namespace Assets.Scripts.BuildingSystem.Buildings
         private void Awake()
         {
             AnnounceOfCreation();
+            _playerWallet = new PlayerWallet();
         }
        
         private void OnEnable()
@@ -54,10 +55,10 @@ namespace Assets.Scripts.BuildingSystem.Buildings
 
         private void OnPrimaryButtonClicked(Player player, int costToBuy, int buttonIndex)
         {
-            if (buttonIndex == UiHash.CoinsButtonIndex && player.Wallet.Coins >= costToBuy)
+            if (buttonIndex == UiHash.CoinsButtonIndex && _playerWallet.Coins >= costToBuy)
             {
                 _enemyFactory.IncreaseSpawnAmount();
-                player.Wallet.SpendCoins(costToBuy);
+                _playerWallet.SpendCoins(costToBuy);
             }
 
             if (buttonIndex == UiHash.AdButtonIndex)

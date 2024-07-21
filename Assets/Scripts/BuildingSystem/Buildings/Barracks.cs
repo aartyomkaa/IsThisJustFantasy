@@ -7,12 +7,18 @@ namespace Assets.Scripts.BuildingSystem.Buildings
     internal class Barracks : Building
     {
         private UnitsFactory _unitsFactory;
+        private PlayerWallet _playerWallet;
 
         private void OnEnable()
         {
             _unitsFactory = GetComponentInChildren<UnitsFactory>();
             Eventer.FirstButtonClicked += SpawnUnit;
             Eventer.SecondButtonClicked += SpawnUnit;
+        }
+
+        private void Start()
+        {
+            _playerWallet = new PlayerWallet();
         }
 
         private void OnDisable()
@@ -25,10 +31,10 @@ namespace Assets.Scripts.BuildingSystem.Buildings
         {  
             if(buttonIndex == UiHash.CoinsButtonIndex)
             {
-                if (player.Wallet.Coins >= costToBuy)
+                if (_playerWallet.Coins >= costToBuy)
                 {
                     _unitsFactory.Spawn();
-                    player.Wallet.SpendCoins(costToBuy);
+                    _playerWallet.SpendCoins(costToBuy);
                 }
             }
            

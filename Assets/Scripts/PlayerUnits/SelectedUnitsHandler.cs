@@ -51,6 +51,9 @@ namespace Assets.Scripts.PlayerUnits
         {
             if (_selectedUnits.Count > 0)
             {
+                Debug.Log(_armyFormation);
+                Debug.Log(position);
+
                 Vector3[] formation = _armyFormation.GetFormationDestination(position, _selectedUnits.Count);
 
                 for (int i = 0; i < _selectedUnits.Count; i++)

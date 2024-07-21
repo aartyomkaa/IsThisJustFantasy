@@ -1,9 +1,9 @@
+using System;
+using System.Collections.Generic;
 using Assets.Scripts.BuildingSystem.Buildings;
 using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.Props.Chest;
 using Assets.Scripts.UI;
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.BuildingSystem.System
@@ -19,7 +19,7 @@ namespace Assets.Scripts.BuildingSystem.System
 
         private BuildingSpawner _buildingSpawner;
         private Transform _playersTransform;
-        private PlayerWallet _playersWallet;
+        private PlayerWallet _playerWallet;
         private int _currentCostToBuild;
         private int _currentBuildPointIndex;
         private bool _canBuild;
@@ -37,6 +37,7 @@ namespace Assets.Scripts.BuildingSystem.System
         private void Start()
         {
             _buildingSpawner = new BuildingSpawner(_tower, _barracks, _resoorceBuilding);
+            _playerWallet = new PlayerWallet();
         }
 
         private void OnDisable()
@@ -50,13 +51,13 @@ namespace Assets.Scripts.BuildingSystem.System
             }         
         }
        
-        private void Build(PlayerWallet wallet)   
+        private void Build()   
         {  
             for (int i = 0; i < _buildPoints.Count; i++)
             {
                 if (_buildPoints[i].SpotToPlaceBuilding != null && _buildPoints[i].IsOccupied == false && _playersTransform == _buildPoints[i].transform)
                 {
-                        if(_buildPoints[i].CostToBuild <= wallet.Coins)
+                        if(_buildPoints[i].CostToBuild <= _playerWallet.Coins)
                         {
                             _buildingSpawner.Spawn(_buildPoints[i].Index, _buildPoints[i].SpotToPlaceBuilding, _chestSpawnPoints);
                             _buildPoints[i].TakeSpot();
@@ -64,8 +65,8 @@ namespace Assets.Scripts.BuildingSystem.System
                              SendEventer();
                             _canBuild = false;
                             _buildPoints[i].DeactivateIconOfBuildPoint();
-                            _builder.ToggleButton(wallet, _currentBuildPointIndex, _currentCostToBuild, _canBuild);
-                            wallet.SpendCoins(_buildPoints[i].CostToBuild);
+                            _builder.ToggleButton(_currentBuildPointIndex, _currentCostToBuild, _canBuild);
+                            _playerWallet.SpendCoins(_buildPoints[i].CostToBuild);
                         }
                 }
             }
@@ -96,7 +97,7 @@ namespace Assets.Scripts.BuildingSystem.System
             }
         }
 
-        private void OnPlayerWentIn(Transform spotOfPlayer, PlayerWallet wallet)  
+        private void OnPlayerWentIn(Transform spotOfPlayer)  
         {
             _playersTransform = spotOfPlayer;
             _canBuild = true;
@@ -108,17 +109,15 @@ namespace Assets.Scripts.BuildingSystem.System
                     _currentCostToBuild = _buildPoints[i].CostToBuild;
                     _currentBuildPointIndex = _buildPoints[i].Index;
 
-                    _playersWallet = wallet;
-                    _builder.ToggleButton(_playersWallet, _currentBuildPointIndex, _currentCostToBuild, _canBuild);    
+                    _builder.ToggleButton(_currentBuildPointIndex, _currentCostToBuild, _canBuild);    
                 }
             }
         }
        
-        private void OnPlayerWentOut(PlayerWallet wallet) 
+        private void OnPlayerWentOut() 
         {
             _canBuild = false;
-            _playersWallet = wallet;
-            _builder.ToggleButton(_playersWallet, _currentBuildPointIndex, _currentCostToBuild, _canBuild);
+            _builder.ToggleButton(_currentBuildPointIndex, _currentCostToBuild, _canBuild);
         }
 
         private void OnBuildWithEventorWasMade(ColliderPanelEventer currentEventer)

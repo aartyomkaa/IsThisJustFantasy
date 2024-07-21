@@ -12,6 +12,7 @@ namespace Assets.Scripts.Weapons
         [SerializeField] private float _attackSpeed;
 
         private Coroutine AttackCoroutine;
+        private WaitForSeconds _attackDelay;
 
         public bool CanAttack { protected set; get; }
 
@@ -24,6 +25,11 @@ namespace Assets.Scripts.Weapons
         private void OnEnable()
         {
             CanAttack = true;
+        }
+
+        private void Start()
+        {
+            _attackDelay = new WaitForSeconds(_attackSpeed);
         }
 
         public virtual void Attack()
@@ -43,8 +49,7 @@ namespace Assets.Scripts.Weapons
             _audioSource.Play();
             CanAttack = false;
 
-            //кэш
-            yield return new WaitForSeconds(attackSpeed);
+            yield return _attackDelay;
 
             CanAttack = true;
         }

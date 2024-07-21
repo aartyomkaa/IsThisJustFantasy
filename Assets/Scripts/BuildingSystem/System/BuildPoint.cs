@@ -11,13 +11,14 @@ namespace Assets.Scripts.BuildingSystem
         [SerializeField] private GameObject _iconOfBuildPoint;
         [SerializeField] private int _costToBuild;
 
+        private PlayerWallet _playerWallet;
         private bool _isOccupied;
         private int speedOfRotateVisualObject = 200;
         private Building _currentBuilding;
         private int _numberToSetRaiseValue = 5;
 
-        public event Action<Transform, PlayerWallet> PlayerWentIn;
-        public event Action<PlayerWallet> PlayerWentOut;
+        public event Action<Transform> PlayerWentIn;
+        public event Action PlayerWentOut;
        
         public Transform SpotToPlaceBuilding => _spotToPlaceBuilding;
         public int Index => _index;
@@ -35,7 +36,7 @@ namespace Assets.Scripts.BuildingSystem
             {
                 if (_isOccupied == false)
                 {
-                    PlayerWentIn?.Invoke(transform, player.Wallet);
+                    PlayerWentIn?.Invoke(transform);
                 }
             }
         }
@@ -44,7 +45,7 @@ namespace Assets.Scripts.BuildingSystem
         {
             if (other != null && other.gameObject.TryGetComponent(out Player player))
             {
-                PlayerWentOut?.Invoke(player.Wallet);
+                PlayerWentOut?.Invoke();
             }
         }
 

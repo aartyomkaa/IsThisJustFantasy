@@ -114,6 +114,9 @@ namespace Assets.Scripts.GameLogic
             throw new System.Exception("What is Device");
 #endif
 
+            DesktopInput input = Instantiate(_desktopInput, transform);
+            input.Init(player);
+
             return null;
         }
 

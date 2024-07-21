@@ -17,7 +17,6 @@ namespace Assets.Scripts.PlayerComponents
         public event Action<int> LevelChanged;
 
         public int CurrentLevel => _currentLevel;
-        public PlayerWallet Wallet => _wallet;
 
         private void Awake()
         {
@@ -25,7 +24,9 @@ namespace Assets.Scripts.PlayerComponents
             PlayerSFX sfx = GetComponentInChildren<PlayerSFX>();
 
             if (PlayerPrefs.GetInt(PlayerConfigs.PlayerLevel) > 0)
+            {
                 _currentLevel = PlayerPrefs.GetInt(PlayerConfigs.PlayerLevel);
+            }
 
 #if !UNITY_WEBGL && UNITY_EDITOR            
             _currentLevel = 0;
@@ -51,6 +52,7 @@ namespace Assets.Scripts.PlayerComponents
             {
                 _currentLevel++;
                 PlayerPrefs.SetInt(PlayerConfigs.PlayerLevel, _currentLevel);
+                _wallet.Reset();
                 LevelChanged?.Invoke(_currentLevel);
             }
         }

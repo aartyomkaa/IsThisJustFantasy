@@ -14,6 +14,8 @@ namespace Assets.Scripts.PlayerUnits
         private void Start() 
         {
             _pool = new UnitsPool(_unitData, transform.position);
+
+            Debug.Log(_handler.GetInstanceID());
             _handler.Init(_pool.MeleePool);
         }
 

@@ -11,6 +11,7 @@ namespace Assets.Scripts.BuildingSystem.Buildings
     {  
         [SerializeField] private Chest _prefabOfChest;
 
+        private PlayerWallet _playerWallet;
         private int _currentIndexOfChestSpawnPoint;
         private int _firstChestSpawnPoint = 0;
         private List<ChestSpawnPoint> _currentSpawnPoints;
@@ -19,6 +20,11 @@ namespace Assets.Scripts.BuildingSystem.Buildings
         {
             Eventer.FirstButtonClicked += OnPrimaryButtonClicked;
             Eventer.SecondButtonClicked += OnPrimaryButtonClicked;
+        }
+
+        private void Start()
+        {
+            _playerWallet = new PlayerWallet();
         }
 
         private void OnDisable()
@@ -31,7 +37,6 @@ namespace Assets.Scripts.BuildingSystem.Buildings
         {
             _currentSpawnPoints = chestSpawnPoints.SpawnPoints;
         }
-    
         
         private void OnPrimaryButtonClicked(Player player, int costToBuy, int buttonIndex)   
         {
@@ -39,10 +44,10 @@ namespace Assets.Scripts.BuildingSystem.Buildings
             {
                 if (buttonIndex == UiHash.CoinsButtonIndex)
                 {
-                    if (player.Wallet.Coins >= costToBuy)
+                    if (_playerWallet.Coins >= costToBuy)
                     {
                         Spawn();
-                        player.Wallet.SpendCoins(costToBuy);
+                        _playerWallet.SpendCoins(costToBuy);
                     }
                 }
 

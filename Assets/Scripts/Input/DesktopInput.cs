@@ -70,6 +70,7 @@ namespace Assets.Scripts.PlayerInput
 
         private void OnMoveUnits(InputAction.CallbackContext context)
         {
+            Debug.Log(_selectedUnitsHandler.GetInstanceID());
             _selectedUnitsHandler.MoveUnits(_worldPointFinder.GetPosition(Input.mousePosition));
         }
     }

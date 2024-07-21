@@ -12,6 +12,7 @@ namespace Assets.Scripts.Props.Chest
         [SerializeField] ParticleSystem _particleOfGiveCoins;
         [SerializeField] ParticleSystem _particleOfPosition;
 
+        private PlayerWallet _playerWallet;
         private Animator _animator;
         private AudioSource _audiosourse;
         private bool _isEmpty = false;
@@ -20,6 +21,7 @@ namespace Assets.Scripts.Props.Chest
         {
             _animator = GetComponent<Animator>();
             _audiosourse = GetComponent<AudioSource>();
+            _playerWallet = new PlayerWallet();
         }
 
         private void OnTriggerEnter(Collider other)
@@ -42,7 +44,7 @@ namespace Assets.Scripts.Props.Chest
         private void GiveCoinsToPlayer(Player player)
         {
             _isEmpty = true;
-            player.Wallet.AddCoins(_coins);
+            _playerWallet.AddCoins(_coins);
         }
     }
 }

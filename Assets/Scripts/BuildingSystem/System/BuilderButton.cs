@@ -14,13 +14,12 @@ namespace Assets.Scripts.BuildingSystem
         [SerializeField] private LeanToken _building;
 
         private ButtonTranslator _translator = new ButtonTranslator();
-        private PlayerWallet _currentPlayersWallet;
         private Vector3 _closeValues = Vector3.zero;
         private Vector3 _openValues = new Vector3(1,1,1);
         private float _changeScaleSpeed = 0.1f;
         private bool _status;
 
-        public event Action<PlayerWallet> BuildButtonClicked;
+        public event Action BuildButtonClicked;
 
         private void OnEnable()
         {
@@ -32,9 +31,8 @@ namespace Assets.Scripts.BuildingSystem
             _build.onClick.RemoveListener(OnBuildButtonClicked);
         }
 
-        public void ToggleButton(PlayerWallet wallet, int builPointIndex, int costToBuy, bool isPlayerIn)
+        public void ToggleButton(int builPointIndex, int costToBuy, bool isPlayerIn)
         {
-            _currentPlayersWallet = wallet;
             _status = isPlayerIn;
 
             if (isPlayerIn)
@@ -74,7 +72,7 @@ namespace Assets.Scripts.BuildingSystem
 
         private void OnBuildButtonClicked()
         {
-            BuildButtonClicked?.Invoke(_currentPlayersWallet);
+            BuildButtonClicked?.Invoke();
         }      
     }
 }

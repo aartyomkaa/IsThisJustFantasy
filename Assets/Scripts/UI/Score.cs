@@ -32,7 +32,7 @@ namespace Assets.Scripts.UI
             _endGamePanel.BackButtonPressed += OnMenuButtonPressed;
             _endGamePanel.ContinueButtonPressed += OnRestartButtonPressed;
            
-            _wallet = player.Wallet;
+            _wallet = new PlayerWallet();
             _health = player.GetComponent<PlayerHealth>();
             _pauser = pauser;
             _sceneLoader = sceneLoader;
