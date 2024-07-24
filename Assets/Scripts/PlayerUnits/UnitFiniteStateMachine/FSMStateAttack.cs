@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.AI;
 using Assets.Scripts.Constants;
 using Assets.Scripts.GameLogic;
 using Assets.Scripts.Audio;
@@ -8,39 +7,48 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
 {
     internal class FSMStateAttack : FSMState
     {
+        private FiniteStateMachine _fsm;
+        private IFSMControllable _unit;
+        private Data _unitData;
+        private UnitSFX _unitSFX;
+        private Animator _animator;
         private float _distance;
         private float _timePast;
 
-        public FSMStateAttack(FiniteStateMachine fsm, IFSMControllable unit, NavMeshAgent navMesh, Animator animator, Data data, UnitSFX unitSFX)
-            : base(fsm, unit, navMesh, animator, data, unitSFX)
+        public FSMStateAttack(FiniteStateMachine fsm, IFSMControllable unit, Animator animator, Data data, UnitSFX unitSFX)
         {
+            _fsm = fsm;
+            _unit = unit;
+            _unitData = data;
+            _unitSFX = unitSFX;
+            _animator = animator;
         }
 
         public override void Update()
         {
-            if (FSM.Target != null && FSM.Target.Health > 0 && FSM.Target.Transform.gameObject.activeSelf)
+            if (_fsm.Target != null && _fsm.Target.Health > 0 && _fsm.Target.Transform.gameObject.activeSelf)
             {
                 if (NeedChaseEnemy())
                 {
-                    FSM.SetState<FSMStateChaseEnemy>();
+                    _fsm.SetState<FSMStateChaseEnemy>();
                 }
                 else
                 {
-                    RotateTowards(FSM.Target.Transform.position);
+                    RotateTowards(_fsm.Target.Transform.position);
                     Attack();
                 }
             }
             else
             {
-                FSM.SetState<FSMStateIdle>();
+                _fsm.SetState<FSMStateIdle>();
             }
         }
 
         private bool NeedChaseEnemy()
         {
-            _distance = Vector3.Distance(Unit.Transform.position, FSM.Target.Transform.position);
+            _distance = Vector3.Distance(_unit.Transform.position, _fsm.Target.Transform.position);
 
-            if (_distance > Data.AttackRange)
+            if (_distance > _unitData.AttackRange)
                 return true;
 
             return false;
@@ -50,12 +58,12 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
         {
             _timePast += Time.deltaTime;
 
-            if (_timePast >= Data.AttackSpeed)
+            if (_timePast >= _unitData.AttackSpeed)
             {
-                Unit.Attack(FSM.Target);
-                UnitSFX.PlayAttackSound();
+                _unit.Attack(_fsm.Target);
+                _unitSFX.PlayAttackSound();
 
-                Animator.SetTrigger(AnimatorHash.Attack);
+                _animator.SetTrigger(AnimatorHash.Attack);
 
                 _timePast = 0;
             }
@@ -63,10 +71,10 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
 
         private void RotateTowards(Vector3 targetPosition)
         {
-            Vector3 directionToTarget = targetPosition - Unit.Transform.position;
+            Vector3 directionToTarget = targetPosition - _unit.Transform.position;
             Quaternion targetRotation = Quaternion.LookRotation(directionToTarget, Vector3.up);
 
-            Unit.Transform.rotation = Quaternion.Slerp(Unit.Transform.rotation, targetRotation, Time.fixedDeltaTime);
+            _unit.Transform.rotation = Quaternion.Slerp(_unit.Transform.rotation, targetRotation, Time.fixedDeltaTime);
         }
     }
 }

@@ -1,34 +1,39 @@
-﻿using UnityEngine;
-using UnityEngine.AI;
-using Assets.Scripts.Audio;
+﻿using Assets.Scripts.Audio;
 using Assets.Scripts.GameLogic;
 using Assets.Scripts.GameLogic.Interfaces;
+using UnityEngine;
 
 namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
 {
     internal class FSMStateIdle : FSMState
     {
+        private FiniteStateMachine _fsm;
+        private IFSMControllable _unit;
+        private UnitSFX _unitSFX;
         private ClosestTargetFinder _targetFinder;
         private IDamageable _target;
 
-        public FSMStateIdle(FiniteStateMachine fsm, IFSMControllable unit, NavMeshAgent navMesh, Animator animator, Data data, UnitSFX unitSFX) 
-            : base(fsm, unit, navMesh, animator, data, unitSFX)
+        public FSMStateIdle(FiniteStateMachine fsm, IFSMControllable unit, Data data, UnitSFX unitSFX)
         {
+            _fsm = fsm;
+            _unitSFX = unitSFX;
+            _unit = unit;
+
             _targetFinder = new ClosestTargetFinder(data.AggroRange, data.EnemyLayerMask);
         }
 
         public override void Enter()
         {
-            UnitSFX.Stop();
-            FSM.SetTarget(null);
+            _unitSFX.Stop();
+            _fsm.SetTarget(null);
         }
 
         public override void Update() 
         {
-            if (_targetFinder.TryFindTarget(Unit.Transform.position, out _target))
+            if (_targetFinder.TryFindTarget(_unit.Transform.position, out _target))
             {
-                FSM.SetTarget(_target);
-                FSM.SetState<FSMStateChaseEnemy>();
+                _fsm.SetTarget(_target);
+                _fsm.SetState<FSMStateChaseEnemy>();
             }
         }
     }

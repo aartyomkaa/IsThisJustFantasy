@@ -35,7 +35,8 @@ namespace Assets.Scripts.EnemyComponents
             for (int i = 0; i < _capacity; i++)
             {
                 Enemy unit = GameObject.Instantiate(data.Prefab, position, Quaternion.identity);
-                unit.Init(data, building);
+                unit.Init(data);
+                unit.GetComponent<EnemyMovement>().InitTarget(building);
                 unit.gameObject.SetActive(false);
                 pool[i] = unit;
             }

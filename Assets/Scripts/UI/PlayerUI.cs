@@ -17,6 +17,13 @@ namespace Assets.Scripts.UI
         private PlayerAttacker _attacker;
         private int _playerLevel;
 
+        private void OnDisable()
+        {
+            _attacker.WeaponChanged -= _changer.ChangeSprite;
+            _health.ValueChanged -= OnHealthChanged;
+            _wallet.CoinsChanged -= OnCoinsChanged;
+        }
+
         public void SignToPlayerValuesChanges(Player player)
         {
             _wallet = new PlayerWallet();
@@ -38,13 +45,6 @@ namespace Assets.Scripts.UI
         {
             _playerLevel = newPlayerLevel;
             _level.text = _playerLevel.ToString();
-        }
-
-        private void OnDisable()
-        {
-            _attacker.WeaponChanged -= _changer.ChangeSprite;
-            _health.ValueChanged -= OnHealthChanged;
-            _wallet.CoinsChanged -= OnCoinsChanged;
         }
 
         private void OnHealthChanged(float health)

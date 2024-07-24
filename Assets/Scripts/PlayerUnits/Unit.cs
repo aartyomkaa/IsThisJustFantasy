@@ -14,21 +14,17 @@ namespace Assets.Scripts.PlayerUnits
     [RequireComponent(typeof(NavMeshAgent))]
     internal abstract class Unit : Selectable, IDamageable, IFSMControllable, IHealthDisplayable
     {
-        //разделить овтетственность
-        //класс, который всех контролирует
-
-
         [SerializeField] private AudioSource _audioSource;
 
-        private UnitData _data;
         private float _health;
-
+        private float _deathDuration = 5f;
         private FiniteStateMachine _fsm;
-        private Animator _animator;
-        private NavMeshAgent _agent;
         private UnitSFX _unitSFX;
         private Coroutine _deathCoroutine;
-        private float _deathDuration = 5f;
+
+        private NavMeshAgent _agent;
+        private Animator _animator;
+        private Data _data;
 
         public event Action<float> HealthValueChanged;
 
@@ -36,16 +32,7 @@ namespace Assets.Scripts.PlayerUnits
 
         public float Health => _health;
 
-        private void Start()
-        {
-            _animator = GetComponent<Animator>();
-            _agent = GetComponent<NavMeshAgent>();
-            _unitSFX = GetComponentInChildren<UnitSFX>();
-
-            _fsm = new FiniteStateMachine(_animator, _agent, this, _data, _unitSFX);
-
-            _fsm.SetState<FSMStateIdle>();
-        }
+        public FiniteStateMachine FSM => _fsm;
 
         public void Update() 
         {
@@ -65,26 +52,30 @@ namespace Assets.Scripts.PlayerUnits
                 Die();
         }
 
-        public void Init(UnitData data)
+        public void Init(Data data)
         {
             _data = data;
             _health = data.Health;
             HealthValueChanged?.Invoke(_health);
+
+            _animator = GetComponent<Animator>();
+            _agent = GetComponent<NavMeshAgent>();
+            _unitSFX = GetComponentInChildren<UnitSFX>();
+
+            _fsm = new FiniteStateMachine(_animator, _agent, this, _data, _unitSFX);
+
+            _fsm.SetState<FSMStateIdle>();
         }
 
-        public void Move(Vector3 position)
+        public virtual void Attack(IDamageable target)
         {
-            _fsm.SetMovePosition(position);
-            _fsm.SetState<FSMStateMove>();
-        }
+            if (_audioSource != null)
+                _audioSource.Play();
 
-        public void Attack(IDamageable target)
-        {
-            _audioSource.Play();
             target.TakeDamage(_data.Damage);
         }
 
-        private void Die()
+        public virtual void Die()
         {
             if (_deathCoroutine != null)
             {

@@ -1,6 +1,6 @@
 ﻿using System;
 using Assets.Scripts.Constants;
-using Agava.YandexGames.Utility;
+using UnityEngine;
 
 namespace Assets.Scripts.PlayerComponents
 {
@@ -15,19 +15,20 @@ namespace Assets.Scripts.PlayerComponents
 
         public void SpendCoins(int amount)
         {
+            _coins = PlayerPrefs.GetInt(PlayerConfigs.Coins);
+
             if (_coins >= amount)
             {
                 _coins -= amount;
                 SaveCoins();
-                CoinsChanged?.Invoke(_coins);
             }
         }
 
         public void AddCoins(int amount)
         {
+            _coins = PlayerPrefs.GetInt(PlayerConfigs.Coins);
             _coins += amount;
             SaveCoins();
-            CoinsChanged?.Invoke(_coins);
         }
 
         public void Reset()
@@ -38,6 +39,7 @@ namespace Assets.Scripts.PlayerComponents
         private void SaveCoins()
         {
             PlayerPrefs.SetInt(PlayerConfigs.Coins, _coins);
+            CoinsChanged?.Invoke(_coins);
         }
     }
 }

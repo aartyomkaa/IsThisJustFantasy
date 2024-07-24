@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Assets.Scripts.BuildingSystem.Buildings;
 using Assets.Scripts.PlayerComponents;
+using Assets.Scripts.PlayerUnits;
 using Assets.Scripts.Props.Chest;
 using Assets.Scripts.UI;
 using UnityEngine;
@@ -34,12 +35,6 @@ namespace Assets.Scripts.BuildingSystem.System
             _builder.BuildButtonClicked += Build;
         }
 
-        private void Start()
-        {
-            _buildingSpawner = new BuildingSpawner(_tower, _barracks, _resoorceBuilding);
-            _playerWallet = new PlayerWallet();
-        }
-
         private void OnDisable()
         {
             UnSignToBuildingsPointEvents();
@@ -50,7 +45,13 @@ namespace Assets.Scripts.BuildingSystem.System
                 _currentBuilding.BuildWithEventorWasMade -= OnBuildWithEventorWasMade;
             }         
         }
-       
+
+        public void Init(SelectedUnitsHandler handler)
+        {
+            _buildingSpawner = new BuildingSpawner(_tower, _barracks, _resoorceBuilding, handler);
+            _playerWallet = new PlayerWallet();
+        }
+
         private void Build()   
         {  
             for (int i = 0; i < _buildPoints.Count; i++)

@@ -7,16 +7,15 @@ namespace Assets.Scripts.PlayerUnits
     {
         [SerializeField] private UnitData _unitData;
         [SerializeField] private Transform _spotOfRespawnUnits;
-        [SerializeField] private SelectedUnitsHandler _handler;
 
+        private SelectedUnitsHandler _handler;
         private UnitsPool _pool;
 
-        private void Start() 
+        public void Init(SelectedUnitsHandler handler) 
         {
             _pool = new UnitsPool(_unitData, transform.position);
-
-            Debug.Log(_handler.GetInstanceID());
-            _handler.Init(_pool.MeleePool);
+            Debug.Log(handler);
+            handler.Init(_pool.MeleePool);
         }
 
         public void Spawn()  

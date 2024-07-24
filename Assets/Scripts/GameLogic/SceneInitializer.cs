@@ -12,6 +12,7 @@ using Assets.Scripts.PlayerInput;
 using Assets.Scripts.YandexSDK;
 using Assets.Scripts.UI;
 using Assets.Scripts.UI.Tutorial;
+using Assets.Scripts.PlayerUnits;
 
 namespace Assets.Scripts.GameLogic
 {
@@ -36,6 +37,8 @@ namespace Assets.Scripts.GameLogic
         [SerializeField] private InterstitialAdTimer _interstitialAdTimer;
         [SerializeField] private Tutorial _tutorial;
 
+        private SelectedUnitsHandler _selectedUnitsHandler;
+
         private void OnEnable()
         {
             SceneManager.sceneLoaded += OnSceneLoaded;
@@ -51,8 +54,8 @@ namespace Assets.Scripts.GameLogic
         {
             SceneManager.sceneLoaded -= OnSceneLoaded;
 
+            _selectedUnitsHandler.Dispose();
             _buildingSystem.EventerWithAdButtonWasMade -= OnEventerWasMade;
-
             _enemyFactory.FinalWaveCleared -= _nextLevelZone.OnAllWavesDefeated;
             _enemyFactory.WaveStarted -= _globalUI.OnWaveStarted;
             _enemyFactory.WaveSpawnAmountChanged -= _globalUI.OnWaveSpawnAmountChanged;
@@ -73,6 +76,8 @@ namespace Assets.Scripts.GameLogic
             MobileInput input = InitializeInput(player);
 
             Pauser pauser = new Pauser(_audioMixer, input);
+
+            _buildingSystem.Init(_selectedUnitsHandler);
 
             InitializeUI(player, pauser);
 
@@ -95,18 +100,21 @@ namespace Assets.Scripts.GameLogic
 
         private MobileInput InitializeInput(Player player)
         {
+            _selectedUnitsHandler = new SelectedUnitsHandler();
+
 #if UNITY_WEBGL && !UNITY_EDITOR
+
             if (Device.IsMobile)
             {
                 MobileInput input = Instantiate(_mobileInput, transform);
-                input.Init(player);
+                input.Init(player, _selectedUnitsHandler);
 
                 return input;
             }
             else
             {
                 DesktopInput input = Instantiate(_desktopInput, transform);
-                input.Init(player);
+                input.Init(player, _selectedUnitsHandler);
 
                 return null;
             }
@@ -115,7 +123,7 @@ namespace Assets.Scripts.GameLogic
 #endif
 
             DesktopInput input = Instantiate(_desktopInput, transform);
-            input.Init(player);
+            input.Init(player, _selectedUnitsHandler);
 
             return null;
         }

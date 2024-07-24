@@ -9,18 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a4cc0a1c13b2094fa304cdafefeb53d, type: 3}
+  m_Script: {fileID: 0}
   m_Name: RangeEnemy
-  m_EditorClassIdentifier: 
-  Name: Enemy Range
+  m_EditorClassIdentifier: Assembly-CSharp:Assets.Scripts.EnemyComponents:EnemyData
+  Name: 
   EnemyLayerMask:
     serializedVersion: 2
     m_Bits: 2048
-  Health: 50
-  Speed: 7
-  Damage: 8
-  AttackSpeed: 2
+  Health: 100
+  Speed: 5
+  Damage: 5
+  AttackSpeed: 1.5
   AttackRange: 8
   AggroRange: 10
-  Prefab: {fileID: 2298066194252024865, guid: 9811ccfee99a748abbc00211019577ab, type: 3}
-  Weapon: {fileID: 0}
+  Prefab: {fileID: 1305780601382970571, guid: 9811ccfee99a748abbc00211019577ab, type: 3}

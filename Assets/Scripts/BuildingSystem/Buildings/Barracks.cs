@@ -16,15 +16,16 @@ namespace Assets.Scripts.BuildingSystem.Buildings
             Eventer.SecondButtonClicked += SpawnUnit;
         }
 
-        private void Start()
-        {
-            _playerWallet = new PlayerWallet();
-        }
-
         private void OnDisable()
         {
             Eventer.FirstButtonClicked -= SpawnUnit;
             Eventer.SecondButtonClicked -= SpawnUnit;
+        }
+
+        public void Init(SelectedUnitsHandler handler)
+        {
+            _playerWallet = new PlayerWallet();
+            _unitsFactory.Init(handler);
         }
 
         private void SpawnUnit(Player player, int costToBuy, int buttonIndex)  

@@ -18,10 +18,10 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
 
         public FiniteStateMachine(Animator animator, NavMeshAgent agent, IFSMControllable unit, Data data, UnitSFX unitSFX)
         {
-            AddState(new FSMStateIdle(this, unit, agent, animator, data, unitSFX));
+            AddState(new FSMStateIdle(this, unit, data, unitSFX));
             AddState(new FSMStateMove(this, unit, agent, animator, data, unitSFX));
-            AddState(new FSMStateChaseEnemy(this, unit, agent, animator, data, unitSFX));
-            AddState(new FSMStateAttack(this, unit, agent, animator, data, unitSFX));
+            AddState(new FSMStateChaseEnemy(this, agent, animator, data, unitSFX));
+            AddState(new FSMStateAttack(this, unit, animator, data, unitSFX));
         }
 
         public void AddState(FSMState state)

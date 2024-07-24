@@ -1,33 +1,24 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Assets.Scripts.GameLogic;
 using UnityEngine;
 
 namespace Assets.Scripts.PlayerUnits
 {
-    internal class SelectedUnitsHandler : MonoBehaviour
+    internal class SelectedUnitsHandler : IDisposable
     {
         private List<Selectable> _units;
         private List<Selectable> _selectedUnits;
 
         private ArmyFormation _armyFormation;
+        private bool _isInitialized;
 
-        private void Start()
+        public void Init(Unit[] units)
         {
             _units = new List<Selectable>();
             _selectedUnits = new List<Selectable>();
             _armyFormation = new ArmyFormation();
-        }
 
-        private void OnDisable()
-        {
-            foreach (Selectable unit in _units)
-            {
-                unit.Selected -= OnSelect;
-                unit.Deselected -= OnDeselct;
-            }
-        }
-
-        public void Init(Unit[] units)
-        {
             foreach (var unit in units)
             {
                 unit.Selected += OnSelect;
@@ -35,6 +26,8 @@ namespace Assets.Scripts.PlayerUnits
 
                 _units.Add(unit);
             }
+
+            _isInitialized = true;
         }
 
         public void OnSelect(Selectable unit)
@@ -49,20 +42,29 @@ namespace Assets.Scripts.PlayerUnits
 
         public void MoveUnits(Vector3 position)
         {
+            if (_isInitialized == false)
+                return;
+
             if (_selectedUnits.Count > 0)
             {
-                Debug.Log(_armyFormation);
-                Debug.Log(position);
-
                 Vector3[] formation = _armyFormation.GetFormationDestination(position, _selectedUnits.Count);
 
                 for (int i = 0; i < _selectedUnits.Count; i++)
                 {
-                    if (_selectedUnits[i] is Unit unit)
+                    if (_selectedUnits[i] is Knight knight)
                     {
-                        unit.Move(formation[i]);
+                        knight.GetComponent<KnightMovement>().Move(formation[i]);
                     }
                 }
+            }
+        }
+
+        public void Dispose()
+        {
+            foreach (Selectable unit in _units)
+            {
+                unit.Selected -= OnSelect;
+                unit.Deselected -= OnDeselct;
             }
         }
     }

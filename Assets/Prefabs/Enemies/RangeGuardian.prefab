@@ -10,31 +10,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 268537361354957356, guid: 9811ccfee99a748abbc00211019577ab, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 342.3703
+      value: -0.29766786
       objectReference: {fileID: 0}
     - target: {fileID: 268537361354957356, guid: 9811ccfee99a748abbc00211019577ab, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.37177277
+      value: 0.00009918213
       objectReference: {fileID: 0}
     - target: {fileID: 268537361354957356, guid: 9811ccfee99a748abbc00211019577ab, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -79.600716
+      value: 6.532707
       objectReference: {fileID: 0}
     - target: {fileID: 268537361354957356, guid: 9811ccfee99a748abbc00211019577ab, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: -0.5625922
       objectReference: {fileID: 0}
     - target: {fileID: 268537361354957356, guid: 9811ccfee99a748abbc00211019577ab, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 268537361354957356, guid: 9811ccfee99a748abbc00211019577ab, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.82673454
       objectReference: {fileID: 0}
     - target: {fileID: 268537361354957356, guid: 9811ccfee99a748abbc00211019577ab, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 268537361354957356, guid: 9811ccfee99a748abbc00211019577ab, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -42,7 +42,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 268537361354957356, guid: 9811ccfee99a748abbc00211019577ab, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -68.471
       objectReference: {fileID: 0}
     - target: {fileID: 268537361354957356, guid: 9811ccfee99a748abbc00211019577ab, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -50,15 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 892685252430481271, guid: 9811ccfee99a748abbc00211019577ab, type: 3}
       propertyPath: m_Name
-      value: EnemyRangeWoodArcher Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 2298066194252024865, guid: 9811ccfee99a748abbc00211019577ab, type: 3}
-      propertyPath: _data
-      value: 
-      objectReference: {fileID: 11400000, guid: 6fd406a9ae2e2964e856d84a7cd02a91, type: 2}
-    - target: {fileID: 2298066194252024865, guid: 9811ccfee99a748abbc00211019577ab, type: 3}
-      propertyPath: _isChestGuard
-      value: 1
+      value: RangeGuardian
       objectReference: {fileID: 0}
     - target: {fileID: 3075733825334334011, guid: 9811ccfee99a748abbc00211019577ab, type: 3}
       propertyPath: m_AnchorMax.x

@@ -5,6 +5,7 @@ namespace Assets.Scripts.PlayerUnits
 {
     internal class Selectable : MonoBehaviour
     {
+        [SerializeField] private bool _isSelectableUnit;
         [SerializeField] private ParticleSystem _ring;
 
         private bool _isSelected;
@@ -15,6 +16,9 @@ namespace Assets.Scripts.PlayerUnits
 
         private void Awake()
         {
+            if (_isSelectableUnit == false)
+                return;
+
             Vector3 offset = new Vector3(transform.position.x, transform.position.y + _offset, transform.position.z);
 
             _ring = Instantiate(_ring, offset, _ring.transform.rotation, transform);
@@ -25,6 +29,9 @@ namespace Assets.Scripts.PlayerUnits
 
         private void OnMouseDown()
         {
+            if (_isSelectableUnit == false)
+                return;
+
             if (_isSelected)
             {
                 _isSelected = false;
@@ -41,6 +48,9 @@ namespace Assets.Scripts.PlayerUnits
 
         private void OnDisable()
         {
+            if (_isSelectableUnit == false)
+                return;
+
             _isSelected = false;
             _ring.Stop();
             Deselected?.Invoke(this);

@@ -14,10 +14,10 @@ namespace Assets.Scripts.PlayerInput
         [SerializeField] private Joystick _joystick;
         [SerializeField] private Button _attack;
         [SerializeField] private Button _changeWeapon;
-        [SerializeField] private SelectedUnitsHandler _selectedUnitsHandler;
         [SerializeField] private LayerMask _ground;
         [SerializeField] private CanvasGroup _canvasGroup;
 
+        private SelectedUnitsHandler _selectedUnitsHandler;
         private PlayerMovement _playerMover;
         private PlayerAttacker _playerAttacker;
         private Vector2 _moveDirection;
@@ -47,10 +47,11 @@ namespace Assets.Scripts.PlayerInput
             _changeWeapon.onClick.RemoveListener(OnChangeWeaponInput);
         }
 
-        public void Init(Player player)
+        public void Init(Player player, SelectedUnitsHandler handler)
         {
             _playerMover = player.GetComponent<PlayerMovement>();
             _playerAttacker = player.GetComponent<PlayerAttacker>();
+            _selectedUnitsHandler = handler;
 
             _worldPointFinder = new WorldPointFinder(_ground);
             _poinerChecker = new PointerSelectableChecker();

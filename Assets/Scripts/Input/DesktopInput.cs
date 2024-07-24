@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using Agava.WebUtility;
 using Assets.Scripts.PlayerUnits;
 using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.GameLogic.Utilities;
@@ -9,9 +8,9 @@ namespace Assets.Scripts.PlayerInput
 {
     internal class DesktopInput : MonoBehaviour
     {
-        [SerializeField] private SelectedUnitsHandler _selectedUnitsHandler;
         [SerializeField] private LayerMask _ground;
 
+        private SelectedUnitsHandler _selectedUnitsHandler;
         private InputActions _inputActions;
         private PlayerMovement _playerMover;
         private PlayerAttacker _playerAttacker;
@@ -32,13 +31,14 @@ namespace Assets.Scripts.PlayerInput
             _inputActions.Disable();
         }
 
-        public void Init(Player player)
+        public void Init(Player player, SelectedUnitsHandler handler)
         {
             _inputActions = new InputActions();
             _inputActions.Enable();
 
             _playerMover = player.GetComponent<PlayerMovement>();
             _playerAttacker = player.GetComponent<PlayerAttacker>();
+            _selectedUnitsHandler = handler;
 
             Cursor.visible = true;
 
@@ -70,7 +70,6 @@ namespace Assets.Scripts.PlayerInput
 
         private void OnMoveUnits(InputAction.CallbackContext context)
         {
-            Debug.Log(_selectedUnitsHandler.GetInstanceID());
             _selectedUnitsHandler.MoveUnits(_worldPointFinder.GetPosition(Input.mousePosition));
         }
     }

@@ -204,7 +204,9 @@ GameObject:
   - component: {fileID: 6469173234968345886}
   - component: {fileID: 5470204108048025447}
   - component: {fileID: 307832826829259144}
-  - component: {fileID: 2298066194252024865}
+  - component: {fileID: 1305780601382970571}
+  - component: {fileID: 8329105717103466693}
+  - component: {fileID: 3166449004330101071}
   m_Layer: 6
   m_Name: EnemyRangeWoodArcher
   m_TagString: Untagged
@@ -273,7 +275,7 @@ NavMeshAgent:
   m_StoppingDistance: 0.1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
-  m_AutoRepath: 1
+  m_AutoRepath: 0
   m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
@@ -328,7 +330,7 @@ CapsuleCollider:
   m_Height: 2.19
   m_Direction: 1
   m_Center: {x: 0, y: 1.0049531, z: 0}
---- !u!114 &2298066194252024865
+--- !u!114 &1305780601382970571
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -337,12 +339,39 @@ MonoBehaviour:
   m_GameObject: {fileID: 892685252430481271}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7ef7bc45fe5144989a7b343728d138f, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a767db911abe394ca1183da58e2e14c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isChestGuard: 0
-  _data: {fileID: 0}
+  _isSelectableUnit: 0
+  _ring: {fileID: 0}
+  _audioSource: {fileID: 0}
   _bow: {fileID: 8252671937131884625}
+--- !u!114 &8329105717103466693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 892685252430481271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eea129b54049fed4789fdec9770572ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyData: {fileID: 11400000, guid: ef41d32873dfe6145a57d9fb31ba3c40, type: 2}
+--- !u!114 &3166449004330101071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 892685252430481271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e09d116c94232354eaecfff196b22aba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isChestGuard: 1
 --- !u!1 &1753461675724688124
 GameObject:
   m_ObjectHideFlags: 0
@@ -1855,6 +1884,10 @@ PrefabInstance:
       objectReference: {fileID: 6224023804092760644}
     - target: {fileID: 3454314672767336819, guid: af0c284f177ab7e40a8d439c8f91585b, type: 3}
       propertyPath: EnemyLayerMask.m_Bits
+      value: 2048
+      objectReference: {fileID: 0}
+    - target: {fileID: 3454314672767336819, guid: af0c284f177ab7e40a8d439c8f91585b, type: 3}
+      propertyPath: _enemyLayerMask.m_Bits
       value: 2048
       objectReference: {fileID: 0}
     - target: {fileID: 4460179070690123453, guid: af0c284f177ab7e40a8d439c8f91585b, type: 3}

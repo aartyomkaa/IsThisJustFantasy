@@ -9,7 +9,7 @@ namespace Assets.Scripts.UI
 
         private void Start()
         {
-            OnPanelClosed(); 
+            OnPanelClosed();
         }
 
         public virtual void Open()
