@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Assets.Scripts.Audio;
+using Assets.Scripts.GameLogic;
+using Assets.Scripts.GameLogic.Interfaces;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using Assets.Scripts.Audio;
-using Assets.Scripts.GameLogic;
-using Assets.Scripts.GameLogic.Interfaces;
 
 namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
 {
@@ -12,9 +12,6 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
     {
         private FSMState _currentState;
         private Dictionary<Type, FSMState> _states = new Dictionary<Type, FSMState>();
-
-        public Vector3 MovePosition { get; private set; }
-        public IDamageable Target { get; private set; }
 
         public FiniteStateMachine(Animator animator, NavMeshAgent agent, IFSMControllable unit, Data data, UnitSFX unitSFX)
         {
@@ -24,12 +21,17 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
             AddState(new FSMStateAttack(this, unit, animator, data, unitSFX));
         }
 
+        public Vector3 MovePosition { get; private set; }
+       
+        public IDamageable Target { get; private set; }
+   
         public void AddState(FSMState state)
         {
             _states.Add(state.GetType(), state);
         }
 
-        public void SetState<T>() where T : FSMState
+        public void SetState<T>() 
+            where T : FSMState
         {
             var type = typeof(T);
 

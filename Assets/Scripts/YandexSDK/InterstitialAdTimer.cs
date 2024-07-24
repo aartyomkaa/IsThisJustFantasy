@@ -7,11 +7,12 @@ namespace Assets.Scripts.YandexSDK
     internal class InterstitialAdTimer : MonoBehaviour
     {
         private InterstitialAdShower _interstitialAd;
-        private WaitForSeconds _cooldown; 
+        private WaitForSeconds _cooldown;
         private bool _isOnCooldown;
         private float _timeToShow = 60.5f;
         
         public event Action<bool> CooldownStarted;
+        
         public event Action<bool> BecomeAvailable;
 
         public bool IsOnCooldown => _isOnCooldown;

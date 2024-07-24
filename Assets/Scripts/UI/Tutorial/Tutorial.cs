@@ -18,7 +18,7 @@ namespace Assets.Scripts.UI.Tutorial
 
         private void OnDisable()
         {
-            foreach(var arrow in _arrows)
+            foreach (var arrow in _arrows)
             {
                 arrow.Collected -= StartTutorialCoroutine;
             }

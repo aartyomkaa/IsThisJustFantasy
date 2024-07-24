@@ -16,8 +16,7 @@ namespace Assets.Scripts.Weapons
         {
             gameObject.SetActive(true);
             transform.position = enemy.Transform.position + Vector3.up * _offset;
-            transform.LookAt(transform.position + Camera.main.transform.rotation * -Vector3.back,
-                      Camera.main.transform.rotation * Vector3.up);
+            transform.LookAt(transform.position + Camera.main.transform.rotation * -Vector3.back,Camera.main.transform.rotation * Vector3.up);
         }
 
         public void UnMarkEnemy()

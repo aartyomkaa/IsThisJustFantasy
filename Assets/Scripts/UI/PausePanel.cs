@@ -15,6 +15,7 @@ namespace Assets.Scripts.UI
         private Pauser _pauser;
 
         public event Action MainMenuButtonClicked;
+        
         public event Action RestartSceneButtonClicked;
 
         public bool IsPaused { get; private set; }
@@ -55,7 +56,7 @@ namespace Assets.Scripts.UI
         }
 
         private void OnOpenButtonClicked()
-        {   
+        {
             _panel.SetActive(true);
             _pauser.Pause();
             IsPaused = true;

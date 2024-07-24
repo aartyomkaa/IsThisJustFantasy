@@ -6,6 +6,6 @@ namespace Assets.Scripts.Props.Chest
     {
         [SerializeField] private int _coinsOfChest;
 
-        public int CoinsOfChest { get { return _coinsOfChest; } }
+        public int CoinsOfChest => _coinsOfChest;
     }
 }

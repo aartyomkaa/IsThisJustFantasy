@@ -23,7 +23,6 @@ namespace Assets.Scripts.UI
             if (entry == null)
                 throw new ArgumentNullException((nameof(entry)));
 
-
             StartCoroutine(DownloadAvatar(entry.player.profilePicture));
             _playerName.text = SetName(entry.player.publicName);
             _rank.text = entry.rank.ToString();
@@ -32,7 +31,7 @@ namespace Assets.Scripts.UI
 
         private IEnumerator DownloadAvatar(string avatarUrl)
         {
-            RemoteImage remoteImage = new(avatarUrl);
+            RemoteImage remoteImage = new (avatarUrl);
             remoteImage.Download();
 
             while (!remoteImage.IsDownloadFinished)

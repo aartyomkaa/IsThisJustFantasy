@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
-using Lean.Localization;
 using Agava.YandexGames;
+using Lean.Localization;
 
 namespace Assets.Scripts.UI
 {
@@ -39,7 +39,7 @@ namespace Assets.Scripts.UI
             }
 
             LeanLocalization.UpdateTranslations();
-#endif  
+#endif
         }
 
         private void OnEnable()

@@ -26,9 +26,9 @@ namespace Assets.Scripts.Weapons
         }
 
         private void OnTriggerEnter(Collider other)
-        {   
+        {
             int mask = 1 << other.gameObject.layer;
-           
+            
             if (other.gameObject.TryGetComponent<IDamageable>(out IDamageable target) && mask == _layerMask)
             {
                 target.TakeDamage(_damage);

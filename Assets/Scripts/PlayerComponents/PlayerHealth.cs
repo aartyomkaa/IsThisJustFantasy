@@ -16,10 +16,13 @@ namespace Assets.Scripts.PlayerComponents
         private WaitForSeconds _recoverTime;
 
         public event Action<float> ValueChanged;
+       
         public event Action Diead;
 
         public Transform Transform => transform;
+       
         public float Health => _value;
+        
         public float MaxHealth => _maxHealth;
 
         public override void Init(PlayerData data, PlayerSFX sfx)

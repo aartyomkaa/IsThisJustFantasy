@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.PlayerComponents
 {
-    internal class PlayerWallet 
+    internal class PlayerWallet
     {
         private int _coins = 100;
         private int _newLevelCoinsAmount = 100;

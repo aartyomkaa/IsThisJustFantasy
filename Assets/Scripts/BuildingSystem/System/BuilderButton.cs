@@ -1,9 +1,9 @@
-using Assets.Scripts.GameLogic.Utilities;
-using Assets.Scripts.PlayerComponents;
-using Lean.Localization;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using Assets.Scripts.GameLogic.Utilities;
+using Assets.Scripts.PlayerComponents;
+using Lean.Localization;
 
 namespace Assets.Scripts.BuildingSystem
 {
@@ -14,12 +14,13 @@ namespace Assets.Scripts.BuildingSystem
         [SerializeField] private LeanToken _building;
 
         private ButtonTranslator _translator = new ButtonTranslator();
+        private PlayerWallet _currentPlayersWallet;
         private Vector3 _closeValues = Vector3.zero;
-        private Vector3 _openValues = new Vector3(1,1,1);
+        private Vector3 _openValues = new Vector3(1, 1, 1);
         private float _changeScaleSpeed = 0.1f;
         private bool _status;
 
-        public event Action BuildButtonClicked;
+        public event Action<PlayerWallet> BuildButtonClicked;
 
         private void OnEnable()
         {
@@ -31,8 +32,9 @@ namespace Assets.Scripts.BuildingSystem
             _build.onClick.RemoveListener(OnBuildButtonClicked);
         }
 
-        public void ToggleButton(int builPointIndex, int costToBuy, bool isPlayerIn)
+        public void ToggleButton(PlayerWallet wallet, int builPointIndex, int costToBuy, bool isPlayerIn)
         {
+            _currentPlayersWallet = wallet;
             _status = isPlayerIn;
 
             if (isPlayerIn)
@@ -54,15 +56,15 @@ namespace Assets.Scripts.BuildingSystem
             _cost.SetValue(costToBuy);
 #endif
         }
-           
+        
         private void Close()
         {
             LeanTween.scale(_build.gameObject, _closeValues, _changeScaleSpeed).setOnComplete(ChangeStatus);
         }
-      
+        
         private void Open()
         {
-            LeanTween.scale(_build.gameObject, _openValues, _changeScaleSpeed); 
+            LeanTween.scale(_build.gameObject, _openValues, _changeScaleSpeed);
         }
 
         private void ChangeStatus()
@@ -72,7 +74,7 @@ namespace Assets.Scripts.BuildingSystem
 
         private void OnBuildButtonClicked()
         {
-            BuildButtonClicked?.Invoke();
-        }      
+            BuildButtonClicked?.Invoke(_currentPlayersWallet);
+        }
     }
 }

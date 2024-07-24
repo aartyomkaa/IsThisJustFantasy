@@ -18,8 +18,7 @@ namespace Assets.Scripts.UI
 
         private void LateUpdate()
         {
-            Vector3 directionToChest = new Vector3
-                (_target.position.x - transform.position.x, 0 , _target.position.z - transform.position.z);
+            Vector3 directionToChest = new Vector3(_target.position.x - transform.position.x, 0, _target.position.z - transform.position.z);
 
             if (Vector3.Distance(_player.position, _target.position) > _maxDistance)
             {

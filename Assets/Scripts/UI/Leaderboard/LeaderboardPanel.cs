@@ -40,7 +40,7 @@ namespace Assets.Scripts.UI
                 int playerAmount = result.entries.Length;
                 playerAmount = Mathf.Clamp(playerAmount, 1, _topPlayers);
 
-                for(int i = 0; i < playerAmount; i++) 
+                for (int i = 0; i < playerAmount; i++)
                 {
                     _leaderboardView.Create(result.entries[i]);
                 }

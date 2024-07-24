@@ -1,18 +1,18 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
-using Lean.Localization;
 using Assets.Scripts.Constants;
 using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.YandexSDK;
+using Lean.Localization;
 
 namespace Assets.Scripts.UI
 {
     internal class ColliderPanelEventer : MonoBehaviour
     {
         [SerializeField] private int _costToBuy;
-        [SerializeField] GameObject _panelToShow;
-        [SerializeField] private Button _firstButton;  
+        [SerializeField] private GameObject _panelToShow;
+        [SerializeField] private Button _firstButton;
         [SerializeField] private Button _adButton;
         [SerializeField] private Button _extraButton;
         [SerializeField] private TutorialPanel _tutorial;
@@ -27,7 +27,9 @@ namespace Assets.Scripts.UI
         private bool _isAdButtonOnCooldown = false;
 
         public event Action<Player, int, int> FirstButtonClicked;
+       
         public event Action<Player, int, int> SecondButtonClicked;
+        
         public event Action ExtraButtonClicked;
 
         public Button AdButton => _adButton;
@@ -90,7 +92,7 @@ namespace Assets.Scripts.UI
                 _extraButton.onClick.RemoveListener(OnExtraButtonClicked);
             }
 
-            Close();  
+            Close();
         }
        
         public void TakeTimer(InterstitialAdTimer timer)
@@ -134,12 +136,12 @@ namespace Assets.Scripts.UI
         {
             ChangeActiveStatus();
             _panelToShow.GetComponent<RectTransform>().LeanSetLocalPosX(transform.position.x + _panelMoveXValue);
-            LeanTween.moveX(_panelToShow.GetComponent<RectTransform>(), - _panelMoveXValue, _changeScaleSpeed);
+            LeanTween.moveX(_panelToShow.GetComponent<RectTransform>(), -_panelMoveXValue, _changeScaleSpeed);
 
             if (PlayerPrefs.GetInt(PlayerConfigs.HasPassedTutorial) == 0)
             {
                 _tutorial.Open();
-            }       
+            }
         }
 
         private void Close()
@@ -150,7 +152,7 @@ namespace Assets.Scripts.UI
             if (PlayerPrefs.GetInt(PlayerConfigs.HasPassedTutorial) == 0)
             {
                 _tutorial.OnPanelClosed();
-            }       
+            }
         }
 
         private void ChangeActiveStatus()

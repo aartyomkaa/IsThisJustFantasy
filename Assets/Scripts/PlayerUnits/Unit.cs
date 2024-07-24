@@ -34,7 +34,7 @@ namespace Assets.Scripts.PlayerUnits
 
         public FiniteStateMachine FSM => _fsm;
 
-        public void Update() 
+        public void Update()
         {
             if (_health <= 0)
                 return;

@@ -1,13 +1,13 @@
+using System.Collections.Generic;
+using UnityEngine;
 using Assets.Scripts.BuildingSystem.Buildings;
 using Assets.Scripts.Constants;
 using Assets.Scripts.Props.Chest;
-using System.Collections.Generic;
-using UnityEngine;
 
 namespace Assets.Scripts.BuildingSystem.System
 {
-    internal class BuildingsPool 
-    {  
+    internal class BuildingsPool
+    {
         private List<Tower> _towerPool;
         private int _countOfTowers = 10;
         private Barracks _barracks;
@@ -35,6 +35,7 @@ namespace Assets.Scripts.BuildingSystem.System
                             return tower;
                         }
                     }
+
                     break;
 
                 case BuildingsHash.BarracksIndex:
@@ -57,6 +58,7 @@ namespace Assets.Scripts.BuildingSystem.System
                        
                         return _resoorceBuilding;
                     }
+
                     break;
             }
             
@@ -70,15 +72,15 @@ namespace Assets.Scripts.BuildingSystem.System
             for (int i = 0; i < _countOfTowers; i++)
             {
                Tower currentTower = GameObject.Instantiate(tower);
-                currentTower.gameObject.SetActive(false);
-                _towerPool.Add(currentTower);   
+               currentTower.gameObject.SetActive(false);
+               _towerPool.Add(currentTower);   
             }
         }
 
         private void CreateBarracks(Barracks barracks)
         {
             _barracks = GameObject.Instantiate(barracks);
-            _barracks.gameObject.SetActive(false);     
+            _barracks.gameObject.SetActive(false);
         }
 
         private void CreateResoorceBuilding(ResoorceBuilding resoorceBuilding)
