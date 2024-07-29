@@ -15,10 +15,17 @@ namespace Assets.Scripts.BuildingSystem.Buildings
         private int _firstChestSpawnPoint = 0;
         private List<ChestSpawnPoint> _currentSpawnPoints;
 
+        private PlayerWallet _wallet;
+
         private void OnEnable()
         {
             Eventer.FirstButtonClicked += OnPrimaryButtonClicked;
             Eventer.SecondButtonClicked += OnPrimaryButtonClicked;
+        }
+
+        private void Start()
+        {
+            _wallet = new PlayerWallet();
         }
 
         private void OnDisable()
@@ -38,10 +45,10 @@ namespace Assets.Scripts.BuildingSystem.Buildings
             {
                 if (buttonIndex == UiHash.CoinsButtonIndex)
                 {
-                    if (player.Wallet.Coins >= costToBuy)
+                    if (_wallet.Coins >= costToBuy)
                     {
                         Spawn();
-                        player.Wallet.SpendCoins(costToBuy);
+                        _wallet.SpendCoins(costToBuy);
                     }
                 }
 
