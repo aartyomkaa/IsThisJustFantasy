@@ -28,7 +28,11 @@ namespace Assets.Scripts.BuildingSystem.Buildings
        
         private void OnEnable()
         {
-            _enemyFactory = GetComponentInChildren<EnemyFactory>();
+            if(GetComponentInChildren<EnemyFactory>() != null)
+            {
+                _enemyFactory = GetComponentInChildren<EnemyFactory>();
+            }
+            
             _enemyFactory.WaveStarted += OnWaveStart;
             _enemyFactory.WaveEnded += OnWaveEnd;
             _eventer.FirstButtonClicked += OnPrimaryButtonClicked;

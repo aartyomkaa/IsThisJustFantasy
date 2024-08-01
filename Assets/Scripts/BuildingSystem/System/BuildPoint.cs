@@ -11,7 +11,6 @@ namespace Assets.Scripts.BuildingSystem
         [SerializeField] private GameObject _iconOfBuildPoint;
         [SerializeField] private int _costToBuild;
 
-        private PlayerWallet _playerWallet;
         private bool _isOccupied;
         private int speedOfRotateVisualObject = 200;
         private Building _currentBuilding;
@@ -65,7 +64,7 @@ namespace Assets.Scripts.BuildingSystem
             _isOccupied = true;
         }
 
-        public void TryToFreeSpotToBuild(Building biulding)
+        public void FreeSpotToBuild(Building biulding)
         {
             _currentBuilding = biulding;
 

@@ -29,8 +29,11 @@ namespace Assets.Scripts.BuildingSystem
         public float Health => _strength;
 
         private void Awake()
-        {
-            _audiosourse = GetComponent<AudioSource>();
+        {      
+            if(GetComponent<AudioSource>() != null)
+            {
+                _audiosourse = GetComponent<AudioSource>();
+            }  
         }
 
         private void Start()
@@ -70,7 +73,8 @@ namespace Assets.Scripts.BuildingSystem
 
         private void SetScaleOfParticleOfDestroy()
         {
-            _scaleOfParticleOfDestroy = new Vector3(_valueOfScaleOfParticleOfDestroy, _valueOfScaleOfParticleOfDestroy, _valueOfScaleOfParticleOfDestroy);
+            _scaleOfParticleOfDestroy = new Vector3(_valueOfScaleOfParticleOfDestroy, 
+                _valueOfScaleOfParticleOfDestroy, _valueOfScaleOfParticleOfDestroy);
             _particleOfDestroy.transform.localScale = _scaleOfParticleOfDestroy;
         }
 

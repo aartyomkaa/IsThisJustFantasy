@@ -50,9 +50,9 @@ namespace Assets.Scripts.Audio
         public void Mute()
         {
             _mixer.audioMixer.SetFloat(PlayerConfigs.MusicVolume, PlayerConfigs.MinVolume);
-            PlayerPrefs.SetFloat(PlayerConfigs.MusicVolume, PlayerConfigs.MinVolume);
+            PlayerPrefs.SetInt(PlayerConfigs.MusicVolume, PlayerConfigs.MinVolume);
             _isMuted = true;
-            VolumeValueChanged?.Invoke(_isMuted);
+            VolumeValueChanged?.Invoke(_isMuted);       
         }
 
         public void Unmute()
@@ -64,10 +64,10 @@ namespace Assets.Scripts.Audio
         }
 
         private void SetVolumeValue()
-        {
-            float value = PlayerPrefs.GetFloat(PlayerConfigs.MusicVolume);
+        {  
+            int value = PlayerPrefs.GetInt(PlayerConfigs.MusicVolume);
 
-            if (value == PlayerConfigs.MinVolume)
+            if (value == PlayerConfigs.MinVolume && _mixer != null)
             {
                 Mute();
             }

@@ -56,13 +56,14 @@ namespace Assets.Scripts.BuildingSystem.System
         {  
             for (int i = 0; i < _buildPoints.Count; i++)
             {
-                if (_buildPoints[i].SpotToPlaceBuilding != null && _buildPoints[i].IsOccupied == false && _playersTransform == _buildPoints[i].transform)
+                if (_buildPoints[i].SpotToPlaceBuilding != null && _buildPoints[i].IsOccupied == false 
+                    && _playersTransform == _buildPoints[i].transform)
                 {
                         if(_buildPoints[i].CostToBuild <= _playerWallet.Coins)
                         {
                             _buildingSpawner.Spawn(_buildPoints[i].Index, _buildPoints[i].SpotToPlaceBuilding, _chestSpawnPoints);
                             _buildPoints[i].TakeSpot();
-                            _buildPoints[i].TryToFreeSpotToBuild(_buildingSpawner.CurrentBuilding);
+                            _buildPoints[i].FreeSpotToBuild(_buildingSpawner.CurrentBuilding);
                              SendEventer();
                             _canBuild = false;
                             _buildPoints[i].DeactivateIconOfBuildPoint();

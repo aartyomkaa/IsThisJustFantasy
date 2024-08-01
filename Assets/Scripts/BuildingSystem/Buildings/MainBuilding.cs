@@ -25,13 +25,16 @@ namespace Assets.Scripts.BuildingSystem.Buildings
 
         private void HealPlayer(Player player, int costToBuy, int buttonIndex)
         {
-            PlayerHealth playerHealth = player.gameObject.GetComponent<PlayerHealth>();
-
-            if (_playerWallet.Coins >= costToBuy && playerHealth.Health < playerHealth.MaxHealth)
+            if(player.gameObject.GetComponent<PlayerHealth>() != null)
             {
-                player.GetComponent<PlayerHealth>().Heal(_valueToHeal);
-                _playerWallet.SpendCoins(costToBuy);
-            }    
+                PlayerHealth playerHealth = player.gameObject.GetComponent<PlayerHealth>();
+
+                if (_playerWallet.Coins >= costToBuy && playerHealth.Health < playerHealth.MaxHealth)
+                {
+                    player.GetComponent<PlayerHealth>().Heal(_valueToHeal);
+                    _playerWallet.SpendCoins(costToBuy);
+                }
+            }     
         }
     }
 }

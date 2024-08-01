@@ -39,7 +39,8 @@ namespace Assets.Scripts.UI
             UnSignToPanels();
         }
 
-        public void Init(Player player, SceneLoader loader, AudioMixer mixer, Pauser pauser, InterstitialAdShower adShower)
+        public void Init(Player player, SceneLoader loader, AudioMixer mixer, 
+            Pauser pauser, InterstitialAdShower adShower)
         {
             _sceneLoader = loader;
             _player = player;

@@ -37,7 +37,8 @@ namespace Assets.Scripts.GameLogic
             UnSignToPanelsEvents();
         }
 
-        public void Init(Score score, SceneLoader sceneLoader, Player player, Pauser pauser, ScorePanel nextLevelPanel, ScorePanel winPanel)
+        public void Init(Score score, SceneLoader sceneLoader, Player player, 
+            Pauser pauser, ScorePanel nextLevelPanel, ScorePanel winPanel)
         {
             _pauser = pauser;
             _nextLevelPanel = nextLevelPanel;

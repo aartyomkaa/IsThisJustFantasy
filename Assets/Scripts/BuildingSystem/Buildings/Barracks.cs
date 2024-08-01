@@ -11,7 +11,11 @@ namespace Assets.Scripts.BuildingSystem.Buildings
 
         private void OnEnable()
         {
-            _unitsFactory = GetComponentInChildren<UnitsFactory>();
+           if(GetComponentInChildren<UnitsFactory>() != null)
+            {
+                _unitsFactory = GetComponentInChildren<UnitsFactory>();
+            }
+           
             Eventer.FirstButtonClicked += SpawnUnit;
             Eventer.SecondButtonClicked += SpawnUnit;
         }

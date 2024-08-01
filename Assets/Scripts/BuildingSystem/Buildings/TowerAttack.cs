@@ -27,7 +27,8 @@ namespace Assets.Scripts.BuildingSystem
 
         private void Update()
         {
-            if (_currentDelay >= _delayOfShoot && _targetFinder.TryFindTarget(transform.position, out IDamageable target))
+            if (_currentDelay >= _delayOfShoot && _targetFinder.TryFindTarget
+                (transform.position, out IDamageable target))
             {
                 if (target.Health > 0)
                     Shoot(target);
