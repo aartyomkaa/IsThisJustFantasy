@@ -1,6 +1,6 @@
 ﻿using System;
 using Assets.Scripts.Constants;
-using Assets.Scripts.EnemyComponents;
+using Assets.Scripts.EnemyComponents.Factory;
 using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.UI;
 using UnityEngine;

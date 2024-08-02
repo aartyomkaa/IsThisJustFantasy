@@ -66,7 +66,10 @@ namespace Assets.Scripts.PlayerComponents
         {
             _currentClipInfo = _animator.GetCurrentAnimatorClipInfo(0);
 
-            _currentClipLength = _currentClipInfo[0].clip.length;
+            if(_currentClipInfo[0].clip != null)
+            {
+                _currentClipLength = _currentClipInfo[0].clip.length;
+            }
         }
 
         private float CalculateAnimationSpeed(Weapon weapon)

@@ -6,9 +6,9 @@ using Assets.Scripts.Audio;
 using Assets.Scripts.Constants;
 using Assets.Scripts.GameLogic;
 using Assets.Scripts.GameLogic.Interfaces;
-using Assets.Scripts.PlayerUnits.UnitFiniteStateMachine;
+using Assets.Scripts.Units.UnitFiniteStateMachine;
 
-namespace Assets.Scripts.PlayerUnits
+namespace Assets.Scripts.Units
 {
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(NavMeshAgent))]

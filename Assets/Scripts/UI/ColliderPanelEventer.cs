@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using Assets.Scripts.Constants;
 using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.YandexSDK;
+using Assets.Scripts.UI.Tutorial;
 using Lean.Localization;
 
 namespace Assets.Scripts.UI

@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using Assets.Scripts.PlayerUnits;
+using Assets.Scripts.Units;
 using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.GameLogic.Utilities;
 using UnityEngine.InputSystem;
@@ -28,6 +28,10 @@ namespace Assets.Scripts.PlayerInput
 
         private void OnDisable()
         {
+            _inputActions.Player.Attack.performed -= OnAttackInput;
+            _inputActions.Player.ChangeWeapon.performed -= OnChangeWeaponInput;
+            _inputActions.Player.MoveUnits.performed -= OnMoveUnits;
+
             _inputActions.Disable();
         }
 

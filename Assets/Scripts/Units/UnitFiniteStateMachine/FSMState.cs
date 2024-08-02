@@ -1,4 +1,4 @@
-﻿namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
+﻿namespace Assets.Scripts.Units.UnitFiniteStateMachine
 {
     internal abstract class FSMState
     {

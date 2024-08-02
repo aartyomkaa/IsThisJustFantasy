@@ -1,7 +1,7 @@
 using UnityEngine;
 using Assets.Scripts.BuildingSystem.Buildings;
 using Assets.Scripts.Props.Chest;
-using Assets.Scripts.PlayerUnits;
+using Assets.Scripts.Units;
 
 namespace Assets.Scripts.BuildingSystem.System
 {

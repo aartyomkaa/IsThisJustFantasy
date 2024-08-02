@@ -1,19 +1,20 @@
 using Assets.Scripts.Constants;
 using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.PlayerUnits;
+using Assets.Scripts.Units;
 
 namespace Assets.Scripts.BuildingSystem.Buildings
 {
     internal class Barracks : Building
     {
-        private UnitsFactory _unitsFactory;
+        private KnightFactory _unitsFactory;
         private PlayerWallet _playerWallet;
 
         private void OnEnable()
         {
-           if(GetComponentInChildren<UnitsFactory>() != null)
+           if(GetComponentInChildren<KnightFactory>() != null)
             {
-                _unitsFactory = GetComponentInChildren<UnitsFactory>();
+                _unitsFactory = GetComponentInChildren<KnightFactory>();
             }
            
             Eventer.FirstButtonClicked += SpawnUnit;

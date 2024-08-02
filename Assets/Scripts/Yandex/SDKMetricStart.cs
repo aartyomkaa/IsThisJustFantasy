@@ -1,7 +1,7 @@
 using UnityEngine;
 using Agava.YandexGames;
 
-namespace Assets.Scripts.Yander
+namespace Assets.Scripts.Yandex
 {
     public class SDKMetricStart : MonoBehaviour
     {

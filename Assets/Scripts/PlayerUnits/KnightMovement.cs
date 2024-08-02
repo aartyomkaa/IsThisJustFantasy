@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
-using Assets.Scripts.PlayerUnits;
-using Assets.Scripts.PlayerUnits.UnitFiniteStateMachine;
+using Assets.Scripts.Units.UnitFiniteStateMachine;
 
-namespace Assets.Scripts.GameLogic
+namespace Assets.Scripts.PlayerUnits
 {
     [RequireComponent(typeof(Knight))]
     internal class KnightMovement : MonoBehaviour

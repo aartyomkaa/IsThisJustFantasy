@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
+namespace Assets.Scripts.Units.UnitFiniteStateMachine
 {
     internal class FiniteStateMachine
     {

@@ -7,6 +7,6 @@ namespace Assets.Scripts.GameLogic
     {
         public Transform Transform { get; }
 
-        public abstract void Attack(IDamageable target);
+        void Attack(IDamageable target);
     }
 }

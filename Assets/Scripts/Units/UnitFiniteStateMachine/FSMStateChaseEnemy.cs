@@ -4,7 +4,7 @@ using Assets.Scripts.Audio;
 using Assets.Scripts.Constants;
 using Assets.Scripts.GameLogic;
 
-namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
+namespace Assets.Scripts.Units.UnitFiniteStateMachine
 {
     internal class FSMStateChaseEnemy : FSMState
     {
@@ -15,7 +15,12 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
         private Data _unitData;
         private NavMeshPath _path;
 
-        public FSMStateChaseEnemy(FiniteStateMachine fsm, NavMeshAgent navMesh, Animator animator, Data data, UnitSFX unitSFX)
+        public FSMStateChaseEnemy(
+            FiniteStateMachine fsm,
+            NavMeshAgent navMesh,
+            Animator animator,
+            Data data,
+            UnitSFX unitSFX)
         {
             _agent = navMesh;
             _unitSFX = unitSFX;

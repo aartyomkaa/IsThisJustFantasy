@@ -8,6 +8,6 @@ namespace Assets.Scripts.GameLogic.Interfaces
 
         public Transform Transform { get; }
 
-        public void TakeDamage(float damage);
+        void TakeDamage(float damage);
     }
 }

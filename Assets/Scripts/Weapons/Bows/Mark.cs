@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Assets.Scripts.GameLogic.Interfaces;
 
-namespace Assets.Scripts.Weapons
+namespace Assets.Scripts.Weapons.Bows
 {
     internal class Mark : MonoBehaviour
     {
@@ -15,8 +15,13 @@ namespace Assets.Scripts.Weapons
         public void MarkEnemy(IDamageable enemy)
         {
             gameObject.SetActive(true);
+
             transform.position = enemy.Transform.position + Vector3.up * _offset;
-            transform.LookAt(transform.position + Camera.main.transform.rotation * -Vector3.back,Camera.main.transform.rotation * Vector3.up);
+
+            Vector3 worldPosition = transform.position + Camera.main.transform.rotation * -Vector3.back;
+            Vector3 worldUp = Camera.main.transform.rotation * Vector3.up;
+
+            transform.LookAt(worldPosition, worldUp);
         }
 
         public void UnMarkEnemy()

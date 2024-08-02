@@ -3,7 +3,7 @@ using UnityEngine;
 using Assets.Scripts.GameLogic.Interfaces;
 using Assets.Scripts.UI;
 
-namespace Assets.Scripts.BuildingSystem
+namespace Assets.Scripts.BuildingSystem.Buildings
 {
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(AudioSource))]

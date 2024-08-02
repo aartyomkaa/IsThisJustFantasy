@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using Assets.Scripts.PlayerUnits;
+using Assets.Scripts.Units;
 
 namespace Assets.Scripts.GameLogic.Utilities
 {

@@ -1,14 +1,15 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Units;
+using UnityEngine;
 
 namespace Assets.Scripts.PlayerUnits
 {
-    internal class UnitsPool
+    internal class KnightPool
     {
         private Unit[] _unitsPool;
 
         private int _capacity = 10;
 
-        public UnitsPool(UnitData data, Vector3 position)
+        public KnightPool(UnitData data, Vector3 position)
         {
             _unitsPool = CreateUnitsPool(data, position);
         }

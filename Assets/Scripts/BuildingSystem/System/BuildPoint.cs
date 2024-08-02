@@ -1,8 +1,9 @@
 using System;
 using UnityEngine;
 using Assets.Scripts.PlayerComponents;
+using Assets.Scripts.BuildingSystem.Buildings;
 
-namespace Assets.Scripts.BuildingSystem
+namespace Assets.Scripts.BuildingSystem.System
 {
     internal class BuildPoint : MonoBehaviour
     {

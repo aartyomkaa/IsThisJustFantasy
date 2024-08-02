@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using Assets.Scripts.GameLogic;
+using Assets.Scripts.GameLogic.Utilities;
 using Assets.Scripts.GameLogic.Interfaces;
 using UnityEngine;
 

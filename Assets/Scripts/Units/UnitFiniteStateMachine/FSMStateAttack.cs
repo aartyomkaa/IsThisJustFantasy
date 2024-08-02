@@ -3,7 +3,7 @@ using Assets.Scripts.Constants;
 using Assets.Scripts.GameLogic;
 using Assets.Scripts.Audio;
 
-namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
+namespace Assets.Scripts.Units.UnitFiniteStateMachine
 {
     internal class FSMStateAttack : FSMState
     {
@@ -15,7 +15,12 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
         private float _distance;
         private float _timePast;
 
-        public FSMStateAttack(FiniteStateMachine fsm, IFSMControllable unit, Animator animator, Data data, UnitSFX unitSFX)
+        public FSMStateAttack(
+            FiniteStateMachine fsm,
+            IFSMControllable unit,
+            Animator animator,
+            Data data,
+            UnitSFX unitSFX)
         {
             _fsm = fsm;
             _unit = unit;

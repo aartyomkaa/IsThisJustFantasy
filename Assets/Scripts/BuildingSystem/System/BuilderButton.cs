@@ -5,7 +5,7 @@ using Assets.Scripts.GameLogic.Utilities;
 using Assets.Scripts.PlayerComponents;
 using Lean.Localization;
 
-namespace Assets.Scripts.BuildingSystem
+namespace Assets.Scripts.BuildingSystem.System
 {
     internal class BuilderButton : MonoBehaviour
     {

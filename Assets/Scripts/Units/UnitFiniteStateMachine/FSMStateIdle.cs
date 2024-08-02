@@ -1,9 +1,9 @@
 ﻿using Assets.Scripts.Audio;
 using Assets.Scripts.GameLogic;
 using Assets.Scripts.GameLogic.Interfaces;
-using UnityEngine;
+using Assets.Scripts.GameLogic.Utilities;
 
-namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
+namespace Assets.Scripts.Units.UnitFiniteStateMachine
 {
     internal class FSMStateIdle : FSMState
     {

@@ -14,11 +14,16 @@ namespace Assets.Scripts.AnimatorScripts
         {
             if (_movement == null || _bow == null)
             {
-                _movement = animator.GetComponent<PlayerMovement>();
-                _bow = animator.GetComponentInChildren<PlayerBow>();
+                if (animator.TryGetComponent(out PlayerMovement movement) &&
+                    animator.GetComponentInChildren<PlayerBow>() != null)
+
+                {
+                    _movement = movement;
+                    _bow = animator.GetComponentInChildren<PlayerBow>();
+                }
             }
 
-            _movement.StopMove();
+            _movement.SlowDown();
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

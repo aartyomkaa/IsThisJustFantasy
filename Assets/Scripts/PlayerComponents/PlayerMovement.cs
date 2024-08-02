@@ -41,7 +41,7 @@ namespace Assets.Scripts.PlayerComponents
             _playerSFX.PlayWalkSound(_data.Speed);
         }
 
-        public void StopMove()
+        public void SlowDown()
         {
             _navMeshAgent.updateRotation = false;
             _isAttacking = true;
@@ -59,7 +59,10 @@ namespace Assets.Scripts.PlayerComponents
             Quaternion targetRotation = Quaternion.LookRotation(directionToTarget, Vector3.up);
             offset = new Vector3(transform.rotation.x, offset.y, transform.rotation.z);
 
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation * Quaternion.Euler(offset), Time.fixedDeltaTime);
+            transform.rotation = Quaternion.Slerp(
+                transform.rotation,
+                targetRotation * Quaternion.Euler(offset),
+                Time.fixedDeltaTime);
         }
 
         public override void Init(PlayerData data, PlayerSFX sfx)

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Assets.Scripts.GameLogic;
+using Assets.Scripts.PlayerUnits;
 using UnityEngine;
 
-namespace Assets.Scripts.PlayerUnits
+namespace Assets.Scripts.Units
 {
     internal class SelectedUnitsHandler : IDisposable
     {

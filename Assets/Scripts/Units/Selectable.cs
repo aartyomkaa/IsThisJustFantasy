@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Assets.Scripts.PlayerUnits
+namespace Assets.Scripts.Units
 {
     internal class Selectable : MonoBehaviour
     {

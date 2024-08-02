@@ -2,7 +2,7 @@
 using UnityEngine;
 using Assets.Scripts.GameLogic.Interfaces;
 
-namespace Assets.Scripts.Weapons
+namespace Assets.Scripts.Weapons.Bows
 {
     [RequireComponent(typeof(AudioSource))]
     internal class Arrow : MonoBehaviour
@@ -29,7 +29,7 @@ namespace Assets.Scripts.Weapons
         {
             int mask = 1 << other.gameObject.layer;
             
-            if (other.gameObject.TryGetComponent<IDamageable>(out IDamageable target) && mask == _layerMask)
+            if (other.gameObject.TryGetComponent(out IDamageable target) && mask == _layerMask)
             {
                 target.TakeDamage(_damage);
                 ParticleSystem hitEffect = Instantiate(_hitEffect, transform.position, Quaternion.identity);
@@ -63,14 +63,21 @@ namespace Assets.Scripts.Weapons
 
         private IEnumerator Flying(Transform target)
         {
-            while (target != null && Vector3.Distance(transform.position, target.position) > 0.1f && target.transform.gameObject.activeSelf)
+            while (target != null && Vector3.Distance(transform.position, target.position) > 0.1f &&
+                target.transform.gameObject.activeSelf)
             {
                 _correctPosition = target.position + _offset;
 
                 Vector3 relativePosition = _correctPosition - transform.position;
 
-                transform.rotation = Quaternion.LookRotation(relativePosition, Vector3.up);
-                transform.position = Vector3.MoveTowards(transform.position, _correctPosition, _speed * Time.fixedDeltaTime);
+                Quaternion rotation = Quaternion.LookRotation(relativePosition, Vector3.up);
+
+                Vector3 position = Vector3.MoveTowards(
+                    transform.position,
+                    _correctPosition,
+                    _speed * Time.fixedDeltaTime);
+
+                transform.SetPositionAndRotation(position, rotation);
 
                 yield return null;
             }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Assets.Scripts.GameLogic
+namespace Assets.Scripts.GameLogic.Interfaces
 {
     internal interface IHealthDisplayable
     {

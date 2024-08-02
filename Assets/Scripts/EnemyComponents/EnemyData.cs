@@ -1,5 +1,4 @@
 ﻿using Assets.Scripts.GameLogic;
-using Assets.Scripts.Weapons;
 using UnityEngine;
 
 namespace Assets.Scripts.EnemyComponents

@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Assets.Scripts.Constants;
 
-namespace Assets.Scripts.UI
+namespace Assets.Scripts.UI.Leaderboard
 {
     internal class LeaderboardPanel : Screen
     {

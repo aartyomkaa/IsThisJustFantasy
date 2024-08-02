@@ -4,7 +4,7 @@ using Assets.Scripts.Audio;
 using Assets.Scripts.Constants;
 using Assets.Scripts.GameLogic;
 
-namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
+namespace Assets.Scripts.Units.UnitFiniteStateMachine
 {
     internal class FSMStateMove : FSMState
     {
@@ -18,7 +18,12 @@ namespace Assets.Scripts.PlayerUnits.UnitFiniteStateMachine
         private Vector3 _roundedTargetPos;
         private NavMeshPath _path;
 
-        public FSMStateMove(FiniteStateMachine fsm, IFSMControllable unit, NavMeshAgent navMesh, Animator animator, Data data, UnitSFX unitSFX)
+        public FSMStateMove(FiniteStateMachine fsm,
+            IFSMControllable unit,
+            NavMeshAgent navMesh,
+            Animator animator,
+            Data data,
+            UnitSFX unitSFX)
         {
             _fsm = fsm;
             _unitSFX = unitSFX;

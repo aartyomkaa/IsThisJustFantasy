@@ -2,7 +2,7 @@
 using UnityEngine;
 using Assets.Scripts.GameLogic.Interfaces;
 
-namespace Assets.Scripts.GameLogic
+namespace Assets.Scripts.GameLogic.Utilities
 {
     internal class ClosestTargetFinder
     {

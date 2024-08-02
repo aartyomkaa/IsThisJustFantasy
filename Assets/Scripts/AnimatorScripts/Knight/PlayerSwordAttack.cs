@@ -12,7 +12,7 @@ namespace Assets.Scripts.AnimatorScripts
             if (_movement == null)
                 _movement = animator.gameObject.GetComponent<PlayerMovement>();
 
-            _movement.StopMove();
+            _movement.SlowDown();
         }
 
         public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

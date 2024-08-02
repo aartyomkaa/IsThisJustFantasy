@@ -2,7 +2,7 @@
 using UnityEngine;
 using Agava.YandexGames;
 
-namespace Assets.Scripts.UI
+namespace Assets.Scripts.UI.Leaderboard
 {
     internal class LeaderboardView : MonoBehaviour
     {

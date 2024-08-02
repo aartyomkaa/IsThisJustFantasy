@@ -7,12 +7,12 @@ using Assets.Scripts.BuildingSystem.Buildings;
 using Assets.Scripts.BuildingSystem.System;
 using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.CameraComponents;
-using Assets.Scripts.EnemyComponents;
+using Assets.Scripts.EnemyComponents.Factory;
 using Assets.Scripts.PlayerInput;
 using Assets.Scripts.YandexSDK;
 using Assets.Scripts.UI;
 using Assets.Scripts.UI.Tutorial;
-using Assets.Scripts.PlayerUnits;
+using Assets.Scripts.Units;
 
 namespace Assets.Scripts.GameLogic
 {

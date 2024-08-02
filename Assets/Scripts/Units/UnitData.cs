@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Assets.Scripts.GameLogic;
 
-namespace Assets.Scripts.PlayerUnits
+namespace Assets.Scripts.Units
 {
     [CreateAssetMenu(fileName = "NewUnit", menuName = "Data/UnitData")]
     internal class UnitData : Data

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Assets.Scripts.BuildingSystem.Buildings;
 
-namespace Assets.Scripts.EnemyComponents
+namespace Assets.Scripts.EnemyComponents.Factory
 {
     internal class EnemyPool
     {

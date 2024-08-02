@@ -1,5 +1,8 @@
 using UnityEngine;
 
-public class EnemyArrowSpawnPoint : MonoBehaviour
+namespace Assets.Scripts.EnemyComponents
 {
+    internal class EnemyArrowSpawnPoint : MonoBehaviour
+    {
+    }
 }

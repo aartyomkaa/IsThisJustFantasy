@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.UI
+namespace Assets.Scripts.UI.Leaderboard
 {
     internal class LoginPanel : Screen
     {

@@ -4,7 +4,7 @@ using Assets.Scripts.BuildingSystem.Buildings;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace Assets.Scripts.EnemyComponents
+namespace Assets.Scripts.EnemyComponents.Factory
 {
     internal class EnemyFactory: MonoBehaviour
     {

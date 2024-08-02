@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 using Assets.Scripts.Constants;
-using Assets.Scripts.PlayerUnits.UnitFiniteStateMachine;
+using Assets.Scripts.Units.UnitFiniteStateMachine;
 using Assets.Scripts.BuildingSystem.Buildings;
 
 namespace Assets.Scripts.EnemyComponents
@@ -46,7 +46,6 @@ namespace Assets.Scripts.EnemyComponents
 
         private void SetDestination(Vector3 position)
         {
-            Debug.Log("1");
             _agent.CalculatePath(position, _path);
             _agent.SetPath(_path);
             _animator.SetBool(AnimatorHash.Moving, true);

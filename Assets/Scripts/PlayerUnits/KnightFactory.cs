@@ -1,18 +1,19 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Units;
+using UnityEngine;
 using UnityEngine.AI;
 
 namespace Assets.Scripts.PlayerUnits
 {
-    internal class UnitsFactory : MonoBehaviour
+    internal class KnightFactory : MonoBehaviour
     {
         [SerializeField] private UnitData _unitData;
         [SerializeField] private Transform _spotOfRespawnUnits;
 
-        private UnitsPool _pool;
+        private KnightPool _pool;
 
         public void Init(SelectedUnitsHandler handler) 
         {
-            _pool = new UnitsPool(_unitData, transform.position);
+            _pool = new KnightPool(_unitData, transform.position);
             handler.Init(_pool.MeleePool);
         }
 

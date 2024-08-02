@@ -15,7 +15,12 @@ namespace Assets.Scripts.PlayerUnits
             int rows = Mathf.CeilToInt(Mathf.Sqrt(numUnits));
             int cols = Mathf.CeilToInt((float)numUnits / rows);
 
-            Vector3 startPos = centerPosition - new Vector3((cols - 1) * _unitSpacing / _offset, 0, (rows - 1) * _unitSpacing / _offset);
+            Vector3 positionVector = new Vector3(
+                (cols - 1) * _unitSpacing / _offset,
+                0,
+                (rows - 1) * _unitSpacing / _offset);
+
+            Vector3 startPos = centerPosition - positionVector;
 
             for (int i = 0; i < numUnits; i++)
             {

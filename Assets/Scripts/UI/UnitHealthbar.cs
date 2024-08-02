@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using Assets.Scripts.GameLogic;
+using Assets.Scripts.GameLogic.Interfaces;
 
 namespace Assets.Scripts.UI
 {
@@ -13,7 +13,7 @@ namespace Assets.Scripts.UI
 
         private void OnEnable()
         {
-            if (_unit.TryGetComponent<IHealthDisplayable>(out IHealthDisplayable unit))
+            if (_unit.TryGetComponent(out IHealthDisplayable unit))
             {
                 _displayable = unit;
 
@@ -23,7 +23,9 @@ namespace Assets.Scripts.UI
 
         private void Update()
         {
-            transform.LookAt(transform.position + Camera.main.transform.rotation * Vector3.back,Camera.main.transform.rotation * Vector3.up);
+            transform.LookAt(
+                transform.position + Camera.main.transform.rotation * Vector3.back,
+                Camera.main.transform.rotation * Vector3.up);
         }
 
         private void OnDisable()

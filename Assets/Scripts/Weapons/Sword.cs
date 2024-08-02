@@ -13,14 +13,19 @@ namespace Assets.Scripts.Weapons
         {
             base.Attack();
 
-            _hitColliders = Physics.BoxCastAll(transform.position, transform.localScale / _sizeScale,
-                transform.forward, Quaternion.identity, _maxDistance, EnemyLayerMask);
+            _hitColliders = Physics.BoxCastAll(
+                transform.position,
+                transform.localScale / _sizeScale,
+                transform.forward,
+                Quaternion.identity,
+                _maxDistance,
+                EnemyLayerMask);
 
             if (_hitColliders.Length > 0)
             {
                 foreach (var hit in _hitColliders)
                 {
-                    if (hit.transform.gameObject.TryGetComponent<IDamageable>(out IDamageable enemy) && enemy.Health > 0)
+                    if (hit.transform.gameObject.TryGetComponent(out IDamageable enemy) && enemy.Health > 0)
                     {
                         enemy.TakeDamage(Damage);
                     }

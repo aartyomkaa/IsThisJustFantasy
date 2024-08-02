@@ -1,5 +1,5 @@
 using System;
-using Assets.Scripts.PlayerUnits;
+using Assets.Scripts.Units;
 
 namespace Assets.Scripts.EnemyComponents
 {

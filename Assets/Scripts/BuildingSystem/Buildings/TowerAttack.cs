@@ -1,10 +1,9 @@
 using UnityEngine;
-using Assets.Scripts.GameLogic;
+using Assets.Scripts.GameLogic.Utilities;
 using Assets.Scripts.GameLogic.Interfaces;
-using Assets.Scripts.Weapons;
 using Assets.Scripts.Weapons.Bows;
 
-namespace Assets.Scripts.BuildingSystem
+namespace Assets.Scripts.BuildingSystem.Buildings
 {
     internal class TowerAttack : MonoBehaviour
     {
