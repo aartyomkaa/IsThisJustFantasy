@@ -12,7 +12,7 @@ namespace Assets.Scripts.UI
         [SerializeField] private TMP_Text _textScore;
 
         public event Action BackButtonPressed;
-       
+
         public event Action ContinueButtonPressed;
 
         private void OnEnable()

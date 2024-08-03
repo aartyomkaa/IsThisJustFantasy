@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using Assets.Scripts.BuildingSystem.Buildings;
+﻿using Assets.Scripts.BuildingSystem.Buildings;
+using UnityEngine;
 
 namespace Assets.Scripts.EnemyComponents.Factory
 {

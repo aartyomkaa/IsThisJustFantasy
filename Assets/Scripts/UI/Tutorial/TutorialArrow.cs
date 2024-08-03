@@ -1,6 +1,6 @@
 ﻿using System;
-using UnityEngine;
 using Assets.Scripts.PlayerComponents;
+using UnityEngine;
 
 namespace Assets.Scripts.UI.Tutorial
 {

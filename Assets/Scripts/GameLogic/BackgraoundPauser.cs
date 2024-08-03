@@ -1,7 +1,7 @@
-﻿using UnityEngine;
-using Assets.Scripts.UI;
+﻿using Assets.Scripts.UI;
 using Assets.Scripts.YandexSDK;
 using Agava.WebUtility;
+using UnityEngine;
 
 namespace Assets.Scripts.GameLogic
 {
@@ -24,10 +24,10 @@ namespace Assets.Scripts.GameLogic
             _pausePanel = pausePanel;
             _videoAd = videoAd;
             _interstitialAd = interstitialAd;
-            
+
             Application.focusChanged += OnInBackgroundChangeApp;
         }
-  
+
         private void CheckCapableToPause()
         {
             if (_pausePanel.IsPaused || _videoAd.IsPaused || _interstitialAd.IsPaused)
@@ -39,7 +39,7 @@ namespace Assets.Scripts.GameLogic
                 _isGameOnPause = false;
             }
         }
-        
+
         private void OnInBackgroundChangeApp(bool inApp)
         {
             CheckCapableToPause();

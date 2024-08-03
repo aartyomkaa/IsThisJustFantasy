@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using Assets.Scripts.GameLogic.Interfaces;
+﻿using Assets.Scripts.GameLogic.Interfaces;
+using UnityEngine;
 
 namespace Assets.Scripts.Weapons
 {

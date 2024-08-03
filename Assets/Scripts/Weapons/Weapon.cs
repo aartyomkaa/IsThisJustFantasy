@@ -14,7 +14,7 @@ namespace Assets.Scripts.Weapons
         private Coroutine AttackCoroutine;
         private WaitForSeconds _attackDelay;
 
-        public bool CanAttack { protected set; get; }
+        public bool CanAttack { get; protected set; }
 
         public float Damage => _damage;
 

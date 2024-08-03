@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using Agava.WebUtility;
+﻿using Agava.WebUtility;
+using UnityEngine;
 
 namespace Assets.Scripts.UI.Tutorial
 {

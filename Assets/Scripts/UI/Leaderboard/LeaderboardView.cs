@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 using Agava.YandexGames;
+using UnityEngine;
 
 namespace Assets.Scripts.UI.Leaderboard
 {
@@ -23,7 +23,7 @@ namespace Assets.Scripts.UI.Leaderboard
             {
                 Destroy(entry.gameObject);
             }
-                
+
             _leaderboardEntryViews.Clear();
         }
     }

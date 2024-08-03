@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections;
+using Agava.YandexGames;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using Agava.YandexGames;
 
 namespace Assets.Scripts.UI.Leaderboard
 {
@@ -21,7 +21,7 @@ namespace Assets.Scripts.UI.Leaderboard
         public void SetData(LeaderboardEntryResponse entry)
         {
             if (entry == null)
-                throw new ArgumentNullException((nameof(entry)));
+                throw new ArgumentNullException(nameof(entry));
 
             StartCoroutine(DownloadAvatar(entry.player.profilePicture));
             _playerName.text = SetName(entry.player.publicName);

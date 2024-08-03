@@ -1,7 +1,7 @@
 ﻿using System;
+using Assets.Scripts.Constants;
 using UnityEngine;
 using UnityEngine.UI;
-using Assets.Scripts.Constants;
 
 namespace Assets.Scripts.UI.Leaderboard
 {

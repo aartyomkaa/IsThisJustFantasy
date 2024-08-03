@@ -6,7 +6,7 @@
         public const int MaxVolume = 0;
         public const int ActiveLevel = 1;
         public const int DeActiveLevel = 0;
-       
+
         public static string PlayerLevel = "PlayerLevel";
         public static string HasPassedTutorial = "HasPassedTutorial";
         public static string MusicVolume = "MasterVolume";

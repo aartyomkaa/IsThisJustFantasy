@@ -1,8 +1,8 @@
-﻿using UnityEngine;
-using UnityEngine.AI;
+﻿using Assets.Scripts.BuildingSystem.Buildings;
 using Assets.Scripts.Constants;
 using Assets.Scripts.Units.UnitFiniteStateMachine;
-using Assets.Scripts.BuildingSystem.Buildings;
+using UnityEngine;
+using UnityEngine.AI;
 
 namespace Assets.Scripts.EnemyComponents
 {

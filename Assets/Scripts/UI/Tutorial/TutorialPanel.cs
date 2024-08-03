@@ -11,14 +11,14 @@ namespace Assets.Scripts.UI.Tutorial
         private float _fadeTime = 15f;
         private WaitForSeconds _suspender;
 
+        private void Awake()
+        {
+            _suspender = new WaitForSeconds(_fadeTime);
+        }
+
         private void OnEnable()
         {
             transform.rotation = Rotation;
-        }
-
-        private void Start()
-        {
-            _suspender = new WaitForSeconds(_fadeTime);
         }
 
         private void OnDisable()

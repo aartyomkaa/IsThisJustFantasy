@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
+using Assets.Scripts.UI;
 using UnityEngine;
 using UnityEngine.UI;
-using Assets.Scripts.UI;
 
 namespace Assets.Scripts.YandexSDK
 {

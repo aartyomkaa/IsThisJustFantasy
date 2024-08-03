@@ -1,6 +1,6 @@
 ﻿using System;
-using UnityEngine;
 using Assets.Scripts.GameLogic.Interfaces;
+using UnityEngine;
 
 namespace Assets.Scripts.GameLogic.Utilities
 {

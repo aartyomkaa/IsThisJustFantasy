@@ -1,7 +1,7 @@
-﻿using UnityEngine;
-using Assets.Scripts.Units;
+﻿using Assets.Scripts.GameLogic.Utilities;
 using Assets.Scripts.PlayerComponents;
-using Assets.Scripts.GameLogic.Utilities;
+using Assets.Scripts.Units;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Assets.Scripts.PlayerInput

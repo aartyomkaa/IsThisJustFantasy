@@ -6,6 +6,8 @@ namespace Assets.Scripts.Units
     [CreateAssetMenu(fileName = "NewUnit", menuName = "Data/UnitData")]
     internal class UnitData : Data
     {
-        public Unit Prefab;
+        [SerializeField] private Unit _prefab;
+
+        public Unit Prefab => _prefab;
     }
 }

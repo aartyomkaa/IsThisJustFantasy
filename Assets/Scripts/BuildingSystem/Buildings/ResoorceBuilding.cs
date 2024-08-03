@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using UnityEngine;
-using Random = UnityEngine.Random;
 using Assets.Scripts.Constants;
 using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.Props.Chest;
+using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Assets.Scripts.BuildingSystem.Buildings
 {
@@ -15,18 +15,7 @@ namespace Assets.Scripts.BuildingSystem.Buildings
         private int _firstChestSpawnPoint = 0;
         private List<ChestSpawnPoint> _currentSpawnPoints;
 
-        private PlayerWallet _wallet;
-
-        private void OnEnable()
-        {
-            Eventer.FirstButtonClicked += OnPrimaryButtonClicked;
-            Eventer.SecondButtonClicked += OnPrimaryButtonClicked;
-        }
-
-        private void Start()
-        {
-            _wallet = new PlayerWallet();
-        }
+        private PlayerWallet _wallet = new PlayerWallet();
 
         private void OnDisable()
         {
@@ -38,8 +27,14 @@ namespace Assets.Scripts.BuildingSystem.Buildings
         {
             _currentSpawnPoints = chestSpawnPoints.SpawnPoints;
         }
-    
-        private void OnPrimaryButtonClicked(Player player, int costToBuy, int buttonIndex)   
+
+        public override void SubscribeToEventer()
+        {
+            Eventer.FirstButtonClicked += OnPrimaryButtonClicked;
+            Eventer.SecondButtonClicked += OnPrimaryButtonClicked;
+        }
+
+        private void OnPrimaryButtonClicked(Player player, int costToBuy, int buttonIndex)
         {
             if (_currentSpawnPoints.Count != 0)
             {

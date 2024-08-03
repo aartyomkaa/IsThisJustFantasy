@@ -13,7 +13,7 @@ namespace Assets.Scripts.UI
         private bool _isMuted;
 
         public event Action<bool> SoundValueChanged;
-        
+
         private void OnEnable()
         {
             _muteButton.onClick.AddListener(OnMuteButtonPressed);

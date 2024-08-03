@@ -1,6 +1,6 @@
-using UnityEngine;
 using Assets.Scripts.Constants;
 using Assets.Scripts.PlayerComponents;
+using UnityEngine;
 
 namespace Assets.Scripts.Props.Chest
 {

@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using Assets.Scripts.Units.UnitFiniteStateMachine;
+﻿using Assets.Scripts.Units.UnitFiniteStateMachine;
+using UnityEngine;
 
 namespace Assets.Scripts.PlayerUnits
 {

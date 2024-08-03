@@ -1,9 +1,9 @@
-using UnityEngine;
-using TMPro;
 using Assets.Scripts.Audio;
 using Assets.Scripts.GameLogic;
 using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.YandexSDK;
+using TMPro;
+using UnityEngine;
 
 namespace Assets.Scripts.UI
 {
@@ -24,11 +24,11 @@ namespace Assets.Scripts.UI
         private InterstitialAdShower _interstitialAd;
 
         public ScorePanel NextLevelPanel => _nextLevelPanel;
-        
+
         public ScorePanel EndGamePanel => _endGamePanel;
-       
+
         public ScorePanel WinGamePanel => _winGamePanel;
-       
+
         public PausePanel PausePanel => _pausePanel;
 
         private void OnDisable()

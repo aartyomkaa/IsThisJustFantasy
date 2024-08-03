@@ -1,6 +1,6 @@
-﻿using UnityEngine;
+﻿using Agava.YandexGames;
+using UnityEngine;
 using UnityEngine.UI;
-using Agava.YandexGames;
 
 namespace Assets.Scripts.UI.Leaderboard
 {

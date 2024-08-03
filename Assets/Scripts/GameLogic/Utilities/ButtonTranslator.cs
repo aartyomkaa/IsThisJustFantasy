@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Assets.Scripts.Constants;
 using Agava.YandexGames;
+using Assets.Scripts.Constants;
 
 namespace Assets.Scripts.GameLogic.Utilities
 {

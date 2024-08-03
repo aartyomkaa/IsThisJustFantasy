@@ -5,7 +5,7 @@ namespace Assets.Scripts.CameraComponents
     internal class TargetFollower : MonoBehaviour
     {
         [Header("Position")]
-        
+
         [SerializeField] private float _offsetPositionY;
         [SerializeField] private float _offsetPositionX;
         [SerializeField] private float _offsetPositionZ;
@@ -19,7 +19,7 @@ namespace Assets.Scripts.CameraComponents
         private Transform _target;
 
         private int _quaternionWValue = 15;
-       
+
         private void LateUpdate()
         {
             SetPosition();

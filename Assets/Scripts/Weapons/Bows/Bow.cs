@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using Assets.Scripts.GameLogic.Interfaces;
+﻿using Assets.Scripts.GameLogic.Interfaces;
+using UnityEngine;
 
 namespace Assets.Scripts.Weapons.Bows
 {
@@ -10,7 +10,7 @@ namespace Assets.Scripts.Weapons.Bows
 
         private ArrowsPool _pool;
 
-        private void Start()
+        private void Awake()
         {
             _pool = new ArrowsPool(_arrowPrefab, Damage, EnemyLayerMask);
         }

@@ -1,6 +1,6 @@
-﻿using UnityEngine;
-using Assets.Scripts.PlayerComponents;
+﻿using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.Weapons.Bows;
+using UnityEngine;
 
 namespace Assets.Scripts.AnimatorScripts
 {

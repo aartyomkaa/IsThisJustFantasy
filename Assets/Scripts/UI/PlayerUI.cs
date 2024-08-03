@@ -1,7 +1,7 @@
+using Assets.Scripts.PlayerComponents;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using Assets.Scripts.PlayerComponents;
 
 namespace Assets.Scripts.UI
 {

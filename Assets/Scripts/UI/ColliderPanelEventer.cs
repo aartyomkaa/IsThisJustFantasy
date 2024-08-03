@@ -1,11 +1,11 @@
 using System;
-using UnityEngine;
-using UnityEngine.UI;
 using Assets.Scripts.Constants;
 using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.YandexSDK;
 using Assets.Scripts.UI.Tutorial;
 using Lean.Localization;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.Scripts.UI
 {
@@ -28,7 +28,7 @@ namespace Assets.Scripts.UI
         private bool _isAdButtonOnCooldown = false;
 
         public event Action<Player, int, int> FirstButtonClicked;
-       
+
         public event Action<Player, int, int> SecondButtonClicked;
         
         public event Action ExtraButtonClicked;
@@ -54,7 +54,7 @@ namespace Assets.Scripts.UI
         {
             _cost.SetValue(_costToBuy);
         }
-             
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.TryGetComponent(out Player player))
@@ -95,7 +95,7 @@ namespace Assets.Scripts.UI
 
             Close();
         }
-       
+
         public void TakeTimer(InterstitialAdTimer timer)
         {
             _timer = timer;
@@ -132,7 +132,7 @@ namespace Assets.Scripts.UI
         {
             _isAdButtonOnCooldown = isOnCooldown;
         }
-        
+
         private void Open()
         {
             ChangeActiveStatus();

@@ -1,5 +1,5 @@
-using UnityEngine;
 using Assets.Scripts.PlayerComponents;
+using UnityEngine;
 
 namespace Assets.Scripts.AnimatorScripts
 {

@@ -28,7 +28,7 @@ namespace Assets.Scripts.Units.UnitFiniteStateMachine
             _fsm.SetTarget(null);
         }
 
-        public override void Update() 
+        public override void Update()
         {
             if (_targetFinder.TryFindTarget(_unit.Transform.position, out _target))
             {

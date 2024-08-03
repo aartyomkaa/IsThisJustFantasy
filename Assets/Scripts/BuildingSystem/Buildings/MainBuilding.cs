@@ -4,23 +4,18 @@ namespace Assets.Scripts.BuildingSystem.Buildings
 {
     internal class MainBuilding : Building
     {
-        private PlayerWallet _playerWallet;
+        private PlayerWallet _playerWallet = new PlayerWallet();
 
         private int _valueToHeal = 50;
-
-        private void OnEnable()
-        {
-            Eventer.FirstButtonClicked += HealPlayer;
-        }
-
-        private void Start()
-        {
-            _playerWallet = new PlayerWallet();
-        }
 
         private void OnDisable()
         {
             Eventer.FirstButtonClicked -= HealPlayer;
+        }
+
+        public override void SubscribeToEventer()
+        {
+            Eventer.FirstButtonClicked += HealPlayer;
         }
 
         private void HealPlayer(Player player, int costToBuy, int buttonIndex)
@@ -34,7 +29,7 @@ namespace Assets.Scripts.BuildingSystem.Buildings
                     player.GetComponent<PlayerHealth>().Heal(_valueToHeal);
                     _playerWallet.SpendCoins(costToBuy);
                 }
-            }     
+            }
         }
     }
 }

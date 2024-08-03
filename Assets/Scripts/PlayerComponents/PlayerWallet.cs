@@ -8,7 +8,7 @@ namespace Assets.Scripts.PlayerComponents
     {
         private int _coins = 100;
         private int _newLevelCoinsAmount = 100;
-        
+
         public event Action<int> CoinsChanged;
 
         public int Coins => _coins;

@@ -1,9 +1,9 @@
 using System;
-using UnityEngine;
-using UnityEngine.UI;
 using Assets.Scripts.GameLogic.Utilities;
 using Assets.Scripts.PlayerComponents;
 using Lean.Localization;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.Scripts.BuildingSystem.System
 {
@@ -54,12 +54,12 @@ namespace Assets.Scripts.BuildingSystem.System
             _cost.SetValue(costToBuy);
 #endif
         }
-        
+
         private void Close()
         {
             LeanTween.scale(_build.gameObject, _closeValues, _changeScaleSpeed).setOnComplete(ChangeStatus);
         }
-        
+
         private void Open()
         {
             LeanTween.scale(_build.gameObject, _openValues, _changeScaleSpeed);

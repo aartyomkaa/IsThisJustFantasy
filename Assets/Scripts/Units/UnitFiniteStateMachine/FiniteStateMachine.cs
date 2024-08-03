@@ -1,8 +1,8 @@
-﻿using Assets.Scripts.Audio;
+﻿using System;
+using System.Collections.Generic;
+using Assets.Scripts.Audio;
 using Assets.Scripts.GameLogic;
 using Assets.Scripts.GameLogic.Interfaces;
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -22,15 +22,15 @@ namespace Assets.Scripts.Units.UnitFiniteStateMachine
         }
 
         public Vector3 MovePosition { get; private set; }
-       
+
         public IDamageable Target { get; private set; }
-   
+
         public void AddState(FSMState state)
         {
             _states.Add(state.GetType(), state);
         }
 
-        public void SetState<T>() 
+        public void SetState<T>()
             where T : FSMState
         {
             var type = typeof(T);

@@ -1,6 +1,6 @@
-using UnityEngine;
 using Assets.Scripts.Audio;
 using Assets.Scripts.PlayerInput;
+using UnityEngine;
 
 namespace Assets.Scripts.UI
 {
@@ -29,7 +29,7 @@ namespace Assets.Scripts.UI
             {
                 _audioMixer.Mute();
             }
-            
+
             Time.timeScale = 0;
         }
 

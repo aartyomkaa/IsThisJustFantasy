@@ -25,14 +25,14 @@ namespace Assets.Scripts.BuildingSystem.Buildings
             AnnounceOfCreation();
             _playerWallet = new PlayerWallet();
         }
-       
+
         private void OnEnable()
         {
             if(GetComponentInChildren<EnemyFactory>() != null)
             {
                 _enemyFactory = GetComponentInChildren<EnemyFactory>();
             }
-            
+
             _enemyFactory.WaveStarted += OnWaveStart;
             _enemyFactory.WaveEnded += OnWaveEnd;
             _eventer.FirstButtonClicked += OnPrimaryButtonClicked;

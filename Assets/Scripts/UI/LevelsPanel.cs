@@ -1,7 +1,7 @@
-using UnityEngine;
+using System.Collections.Generic;
 using Assets.Scripts.Constants;
 using Assets.Scripts.GameLogic;
-using System.Collections.Generic;
+using UnityEngine;
 
 namespace Assets.Scripts.UI
 {
@@ -32,7 +32,7 @@ namespace Assets.Scripts.UI
                 _lastAvailableLevel = PlayerPrefs.GetInt(SceneNames.LastAvailableLevel);
             }
         }
-        
+
         private void ActiveAvailableLevels()
         {
             for (int i = 0; i < _lastAvailableLevel; i++)

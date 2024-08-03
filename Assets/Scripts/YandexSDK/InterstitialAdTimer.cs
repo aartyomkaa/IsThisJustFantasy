@@ -10,9 +10,9 @@ namespace Assets.Scripts.YandexSDK
         private WaitForSeconds _cooldown;
         private bool _isOnCooldown;
         private float _timeToShow = 60.5f;
-        
+
         public event Action<bool> CooldownStarted;
-        
+
         public event Action<bool> BecomeAvailable;
 
         public bool IsOnCooldown => _isOnCooldown;

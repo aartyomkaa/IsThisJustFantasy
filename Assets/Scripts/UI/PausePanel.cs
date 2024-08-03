@@ -15,7 +15,7 @@ namespace Assets.Scripts.UI
         private Pauser _pauser;
 
         public event Action MainMenuButtonClicked;
-        
+
         public event Action RestartSceneButtonClicked;
 
         public bool IsPaused { get; private set; }

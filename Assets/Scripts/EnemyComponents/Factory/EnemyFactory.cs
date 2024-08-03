@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 namespace Assets.Scripts.EnemyComponents.Factory
 {
-    internal class EnemyFactory: MonoBehaviour
+    internal class EnemyFactory : MonoBehaviour
     {
         [SerializeField] private EnemySpawnPoint[] _spawnPoints;
         [SerializeField] private Wave[] _waves;
@@ -32,7 +32,7 @@ namespace Assets.Scripts.EnemyComponents.Factory
             _meleePool = new EnemyPool(_melee, _building, transform.position);
             _rangePool = new EnemyPool(_range, _building, transform.position);
         }
-     
+
         public void StartWave()
         {
             if (_waves.Length > _waveIndex)
@@ -54,7 +54,7 @@ namespace Assets.Scripts.EnemyComponents.Factory
             if (_waveIndex + 1 < _waves.Length && _waves[_waveIndex].SpawnAmount > 1)
             {
                 _waves[_waveIndex].IncreaseSpawnAmount();
-            }        
+            }
         }
 
         public void DecreaceSpawnAmount()
@@ -84,13 +84,13 @@ namespace Assets.Scripts.EnemyComponents.Factory
                 for (int j = 0; j < wave.MeleeAmount; j++)
                 {
                     SpawnEnemy(_meleePool, _spawnPoints[_spawnPointIndex].transform.position);
-                }     
+                }
 
                 for (int k = 0; k < wave.RangeAmount; k++)
                 {
                     SpawnEnemy(_rangePool, _spawnPoints[_spawnPointIndex].transform.position);
                 }
-                   
+
                 _spawnPointIndex = (i + 1) % _spawnPoints.Length;
 
                 yield return new WaitForSeconds(wave.SpawnDelay);

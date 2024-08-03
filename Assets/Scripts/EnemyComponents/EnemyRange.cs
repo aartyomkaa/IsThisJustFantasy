@@ -1,6 +1,6 @@
-using UnityEngine;
 using Assets.Scripts.GameLogic.Interfaces;
 using Assets.Scripts.Weapons.Bows;
+using UnityEngine;
 
 namespace Assets.Scripts.EnemyComponents
 {

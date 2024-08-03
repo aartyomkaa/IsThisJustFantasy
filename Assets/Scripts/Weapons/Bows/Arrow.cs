@@ -1,6 +1,6 @@
 ﻿using System.Collections;
-using UnityEngine;
 using Assets.Scripts.GameLogic.Interfaces;
+using UnityEngine;
 
 namespace Assets.Scripts.Weapons.Bows
 {
@@ -28,7 +28,7 @@ namespace Assets.Scripts.Weapons.Bows
         private void OnTriggerEnter(Collider other)
         {
             int mask = 1 << other.gameObject.layer;
-            
+
             if (other.gameObject.TryGetComponent(out IDamageable target) && mask == _layerMask)
             {
                 target.TakeDamage(_damage);

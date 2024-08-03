@@ -1,8 +1,8 @@
 ﻿using System;
-using UnityEngine;
-using UnityEngine.Audio;
 using Assets.Scripts.Constants;
 using Assets.Scripts.UI;
+using UnityEngine;
+using UnityEngine.Audio;
 
 namespace Assets.Scripts.Audio
 {
@@ -52,7 +52,7 @@ namespace Assets.Scripts.Audio
             _mixer.audioMixer.SetFloat(PlayerConfigs.MusicVolume, PlayerConfigs.MinVolume);
             PlayerPrefs.SetInt(PlayerConfigs.MusicVolume, PlayerConfigs.MinVolume);
             _isMuted = true;
-            VolumeValueChanged?.Invoke(_isMuted);       
+            VolumeValueChanged?.Invoke(_isMuted);
         }
 
         public void Unmute()
@@ -64,7 +64,7 @@ namespace Assets.Scripts.Audio
         }
 
         private void SetVolumeValue()
-        {  
+        {
             int value = PlayerPrefs.GetInt(PlayerConfigs.MusicVolume);
 
             if (value == PlayerConfigs.MinVolume && _mixer != null)

@@ -1,7 +1,7 @@
-﻿using UnityEngine;
-using Assets.Scripts.Constants;
+﻿using Assets.Scripts.Constants;
 using Assets.Scripts.GameLogic;
 using Assets.Scripts.Audio;
+using UnityEngine;
 
 namespace Assets.Scripts.Units.UnitFiniteStateMachine
 {

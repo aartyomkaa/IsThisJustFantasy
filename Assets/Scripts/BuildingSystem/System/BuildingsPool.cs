@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using UnityEngine;
 using Assets.Scripts.BuildingSystem.Buildings;
 using Assets.Scripts.Constants;
 using Assets.Scripts.Props.Chest;
+using UnityEngine;
 
 namespace Assets.Scripts.BuildingSystem.System
 {
@@ -43,7 +43,7 @@ namespace Assets.Scripts.BuildingSystem.System
                     if (_barracks.gameObject.activeSelf == false)
                     {
                         _barracks.gameObject.SetActive(true);
-                        
+
                         return _barracks;
                     }
 
@@ -55,13 +55,13 @@ namespace Assets.Scripts.BuildingSystem.System
                     {
                         _resoorceBuilding.gameObject.SetActive(true);
                         _resoorceBuilding.SetChestsSpawnPoints(chestSpawnPoints);
-                       
+
                         return _resoorceBuilding;
                     }
 
                     break;
             }
-            
+
             return null;
         }
 
@@ -73,7 +73,7 @@ namespace Assets.Scripts.BuildingSystem.System
             {
                Tower currentTower = GameObject.Instantiate(tower);
                currentTower.gameObject.SetActive(false);
-               _towerPool.Add(currentTower);   
+               _towerPool.Add(currentTower);
             }
         }
 

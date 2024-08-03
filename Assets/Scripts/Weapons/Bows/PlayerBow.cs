@@ -25,7 +25,7 @@ namespace Assets.Scripts.Weapons.Bows
 
         public Transform Target => _haveTarget ? _closestTarget.Transform : null;
 
-        private void Start()
+        private void Awake()
         {
             _closestTargetFinder = new ClosestTargetFinder(_radius, EnemyLayerMask);
             _pool = new ArrowsPool(_arrowPrefab, Damage, EnemyLayerMask);

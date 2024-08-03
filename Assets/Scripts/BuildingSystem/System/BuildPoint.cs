@@ -1,7 +1,7 @@
 using System;
-using UnityEngine;
-using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.BuildingSystem.Buildings;
+using Assets.Scripts.PlayerComponents;
+using UnityEngine;
 
 namespace Assets.Scripts.BuildingSystem.System
 {
@@ -19,13 +19,13 @@ namespace Assets.Scripts.BuildingSystem.System
 
         public event Action<Transform> PlayerWentIn;
         public event Action PlayerWentOut;
-       
+
         public Transform SpotToPlaceBuilding => _spotToPlaceBuilding;
-       
+
         public int Index => _index;
-       
+
         public bool IsOccupied => _isOccupied;
-        
+
         public int CostToBuild => _costToBuild;
 
         private void Update()
@@ -74,7 +74,7 @@ namespace Assets.Scripts.BuildingSystem.System
                 _currentBuilding.Destroyed += FreeSpotToBuild;
             }
         }
-     
+
         public void ActiveIconOfBuildPoint()
         {
             _iconOfBuildPoint.SetActive(true);

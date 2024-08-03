@@ -11,17 +11,17 @@ namespace Assets.Scripts.PlayerUnits
 
         private KnightPool _pool;
 
-        public void Init(SelectedUnitsHandler handler) 
+        public void Init(SelectedUnitsHandler handler)
         {
             _pool = new KnightPool(_unitData, transform.position);
             handler.Init(_pool.MeleePool);
         }
 
-        public void Spawn()  
+        public void Spawn()
         {
             Unit unit = _pool.GetUnit();
             NavMeshAgent agent = unit.GetComponent<NavMeshAgent>();
-            agent.Warp(_spotOfRespawnUnits.transform.position); 
+            agent.Warp(_spotOfRespawnUnits.transform.position);
         }
     }
 }
