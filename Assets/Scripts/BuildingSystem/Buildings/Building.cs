@@ -87,8 +87,11 @@ namespace Assets.Scripts.BuildingSystem.Buildings
 
         private void SetScaleOfParticleOfDestroy()
         {
-            _scaleOfParticleOfDestroy = new Vector3(_valueOfScaleOfParticleOfDestroy, 
-                _valueOfScaleOfParticleOfDestroy, _valueOfScaleOfParticleOfDestroy);
+            _scaleOfParticleOfDestroy = new Vector3(
+                _valueOfScaleOfParticleOfDestroy, 
+                _valueOfScaleOfParticleOfDestroy, 
+                _valueOfScaleOfParticleOfDestroy);
+            
             _particleOfDestroy.transform.localScale = _scaleOfParticleOfDestroy;
         }
 
