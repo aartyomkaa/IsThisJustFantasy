@@ -136,8 +136,12 @@ namespace Assets.Scripts.UI
         private void Open()
         {
             ChangeActiveStatus();
-            _panelToShow.GetComponent<RectTransform>().LeanSetLocalPosX(transform.position.x + _panelMoveXValue);
-            LeanTween.moveX(_panelToShow.GetComponent<RectTransform>(), -_panelMoveXValue, _changeScaleSpeed);
+            _panelToShow.GetComponent<RectTransform>().LeanSetLocalPosX(
+                transform.position.x + _panelMoveXValue);
+            LeanTween.moveX(
+                _panelToShow.GetComponent<RectTransform>(),
+                -_panelMoveXValue,
+                _changeScaleSpeed);
 
             if (PlayerPrefs.GetInt(PlayerConfigs.HasPassedTutorial) == 0)
             {
@@ -148,7 +152,9 @@ namespace Assets.Scripts.UI
         private void Close()
         {
             _isActive = false;
-            LeanTween.moveX(_panelToShow.GetComponent<RectTransform>(), _panelMoveXValue, 
+            LeanTween.moveX(
+                _panelToShow.GetComponent<RectTransform>(), 
+                _panelMoveXValue, 
                 _changeScaleSpeed).setOnComplete(ChangeActiveStatus);
 
             if (PlayerPrefs.GetInt(PlayerConfigs.HasPassedTutorial) == 0)

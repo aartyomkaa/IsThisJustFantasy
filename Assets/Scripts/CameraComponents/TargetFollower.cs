@@ -33,8 +33,10 @@ namespace Assets.Scripts.CameraComponents
 
         private void SetPosition()
         {
-            transform.position = new Vector3(_target.transform.position.x + _offsetPositionX, 
-                _target.transform.position.y + _offsetPositionY, _target.transform.position.z + _offsetPositionZ);
+            transform.position = new Vector3(
+                _target.transform.position.x + _offsetPositionX, 
+                _target.transform.position.y + _offsetPositionY, 
+                _target.transform.position.z + _offsetPositionZ);
         }
 
         private void SetRotation()
