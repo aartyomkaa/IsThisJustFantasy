@@ -1,3 +1,4 @@
+using System;
 using Assets.Scripts.PlayerComponents;
 
 namespace Assets.Scripts.BuildingSystem.Buildings
@@ -20,15 +21,13 @@ namespace Assets.Scripts.BuildingSystem.Buildings
 
         private void HealPlayer(Player player, int costToBuy, int buttonIndex)
         {
-            if(player.gameObject.GetComponent<PlayerHealth>() != null)
-            {
-                PlayerHealth playerHealth = player.gameObject.GetComponent<PlayerHealth>();
+            PlayerHealth playerHealth = player.gameObject.GetComponent<PlayerHealth>() ??
+                throw new NullReferenceException("playerHealth is null");
 
-                if (_playerWallet.Coins >= costToBuy && playerHealth.Health < playerHealth.MaxHealth)
-                {
-                    player.GetComponent<PlayerHealth>().Heal(_valueToHeal);
-                    _playerWallet.SpendCoins(costToBuy);
-                }
+            if (_playerWallet.Coins >= costToBuy && playerHealth.Health < playerHealth.MaxHealth)
+            {
+                player.GetComponent<PlayerHealth>().Heal(_valueToHeal);
+                _playerWallet.SpendCoins(costToBuy);
             }
         }
     }

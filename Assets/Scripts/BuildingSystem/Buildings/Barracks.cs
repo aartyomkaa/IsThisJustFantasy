@@ -1,3 +1,4 @@
+using System;
 using Assets.Scripts.Constants;
 using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.PlayerUnits;
@@ -18,10 +19,10 @@ namespace Assets.Scripts.BuildingSystem.Buildings
 
         public void Init(SelectedUnitsHandler handler)
         {
-            if (GetComponentInChildren<KnightFactory>() != null)
-            {
-                _unitsFactory = GetComponentInChildren<KnightFactory>();
-            }
+            _unitsFactory = GetComponentInChildren<KnightFactory>();
+
+            if (_unitsFactory == null)
+                throw new NullReferenceException("_unitsFactory is null");
 
             _playerWallet = new PlayerWallet();
             _unitsFactory.Init(handler);

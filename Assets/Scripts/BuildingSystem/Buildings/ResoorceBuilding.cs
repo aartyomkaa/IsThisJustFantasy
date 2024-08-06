@@ -59,13 +59,13 @@ namespace Assets.Scripts.BuildingSystem.Buildings
         {
             int lastChestSpawnPoint = _currentSpawnPoints.Count;
             _currentIndexOfChestSpawnPoint = Random.Range(
-                _firstChestSpawnPoint, 
+                _firstChestSpawnPoint,
                 lastChestSpawnPoint);
-           
+
             Chest chestToSpawn = Instantiate(
-                _prefabOfChest, 
+                _prefabOfChest,
                 _currentSpawnPoints[_currentIndexOfChestSpawnPoint].transform);
-            
+
             chestToSpawn.SetCountOfCoins(_currentSpawnPoints[_currentIndexOfChestSpawnPoint].CoinsOfChest);
             _currentSpawnPoints.RemoveAt(_currentIndexOfChestSpawnPoint);
         }

@@ -66,7 +66,7 @@ namespace Assets.Scripts.PlayerInput
                 _playerAttacker.Attack();
             }
         }
-        
+
         private void OnChangeWeaponInput(InputAction.CallbackContext context)
         {
             _playerAttacker.ChangeWeapon();

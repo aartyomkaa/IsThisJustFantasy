@@ -10,7 +10,10 @@ namespace Assets.Scripts.BuildingSystem.System
         private BuildingsPool _buildingsPool;
         private SelectedUnitsHandler _selectedUnitsHandler;
 
-        public BuildingSpawner(Tower tower, Barracks barracks, ResoorceBuilding resoorceBuilding,
+        public BuildingSpawner(
+            Tower tower,
+            Barracks barracks,
+            ResoorceBuilding resoorceBuilding,
             SelectedUnitsHandler handler)
         {
             _selectedUnitsHandler = handler;
@@ -19,7 +22,9 @@ namespace Assets.Scripts.BuildingSystem.System
 
         public Building CurrentBuilding { get; private set; }
 
-        public void Spawn(int spawnPointIndex, Transform spawnPointTransform,
+        public void Spawn(
+            int spawnPointIndex,
+            Transform spawnPointTransform,
             ChestSpawnerPointsContainer chestSpawnPoints)
         {
             CurrentBuilding = _buildingsPool.GetBuilding(spawnPointIndex, chestSpawnPoints);

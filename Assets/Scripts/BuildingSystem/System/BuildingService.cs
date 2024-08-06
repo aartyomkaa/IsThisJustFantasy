@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using Assets.Scripts.BuildingSystem.Buildings;
 using Assets.Scripts.PlayerComponents;
-using Assets.Scripts.Units;
 using Assets.Scripts.Props.Chest;
+using Assets.Scripts.Units;
 using Assets.Scripts.UI;
 using UnityEngine;
 
@@ -68,11 +68,12 @@ namespace Assets.Scripts.BuildingSystem.System
 
                             _buildPoints[i].TakeSpot();
                             _buildPoints[i].FreeSpotToBuild(_buildingSpawner.CurrentBuilding);
-                             SendEventer();
                             _canBuild = false;
                             _buildPoints[i].DeactivateIconOfBuildPoint();
                             _builder.ToggleButton(_currentBuildPointIndex, _currentCostToBuild, _canBuild);
                             _playerWallet.SpendCoins(_buildPoints[i].CostToBuild);
+
+                            SendEventer();
                         }
                 }
             }

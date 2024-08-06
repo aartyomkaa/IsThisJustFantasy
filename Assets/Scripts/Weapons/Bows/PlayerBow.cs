@@ -1,6 +1,6 @@
 ﻿using System.Collections;
-using Assets.Scripts.GameLogic.Utilities;
 using Assets.Scripts.GameLogic.Interfaces;
+using Assets.Scripts.GameLogic.Utilities;
 using UnityEngine;
 
 namespace Assets.Scripts.Weapons.Bows

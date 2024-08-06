@@ -34,14 +34,18 @@ namespace Assets.Scripts.CameraComponents
         private void SetPosition()
         {
             transform.position = new Vector3(
-                _target.transform.position.x + _offsetPositionX, 
-                _target.transform.position.y + _offsetPositionY, 
+                _target.transform.position.x + _offsetPositionX,
+                _target.transform.position.y + _offsetPositionY,
                 _target.transform.position.z + _offsetPositionZ);
         }
 
         private void SetRotation()
         {
-            transform.rotation = new Quaternion(_offsetRotationX, _offsetRotationY, _offsetRotationZ, _quaternionWValue);
+            transform.rotation = new Quaternion(
+                _offsetRotationX,
+                _offsetRotationY,
+                _offsetRotationZ,
+                _quaternionWValue);
         }
     }
 }

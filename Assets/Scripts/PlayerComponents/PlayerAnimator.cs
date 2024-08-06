@@ -66,7 +66,7 @@ namespace Assets.Scripts.PlayerComponents
         {
             _currentClipInfo = _animator.GetCurrentAnimatorClipInfo(0);
 
-            if(_currentClipInfo[0].clip != null)
+            if (_currentClipInfo[0].clip != null)
             {
                 _currentClipLength = _currentClipInfo[0].clip.length;
             }

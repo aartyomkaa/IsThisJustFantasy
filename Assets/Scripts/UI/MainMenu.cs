@@ -1,5 +1,5 @@
-using Assets.Scripts.UI.Leaderboard;
 using Agava.YandexGames;
+using Assets.Scripts.UI.Leaderboard;
 using Lean.Localization;
 using UnityEngine;
 using UnityEngine.UI;

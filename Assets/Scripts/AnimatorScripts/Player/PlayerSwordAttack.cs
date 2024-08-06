@@ -1,7 +1,7 @@
 using Assets.Scripts.PlayerComponents;
 using UnityEngine;
 
-namespace Assets.Scripts.AnimatorScripts
+namespace Assets.Scripts.AnimatorScripts.Player
 {
     internal class PlayerSwordAttack : StateMachineBehaviour
     {
@@ -11,8 +11,8 @@ namespace Assets.Scripts.AnimatorScripts
         {
             if (_movement == null)
                 _movement = animator.gameObject.GetComponent<PlayerMovement>();
-
-            _movement.SlowDown();
+            else
+                _movement.SlowDown();
         }
 
         public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

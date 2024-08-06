@@ -40,10 +40,10 @@ namespace Assets.Scripts.UI
         }
 
         public void Init(
-            Player player, 
-            SceneLoader loader, 
-            AudioMixer mixer, 
-            Pauser pauser, 
+            Player player,
+            SceneLoader loader,
+            AudioMixer mixer,
+            Pauser pauser,
             InterstitialAdShower adShower)
         {
             _sceneLoader = loader;
@@ -59,7 +59,7 @@ namespace Assets.Scripts.UI
             _audioMixer.VolumeValueChanged += _soundToggler.SetCurrentStatus;
 
             _sceneLoader.SignToPausePanelEvents(_pausePanel);
-            
+
             SignToPanels();
         }
 

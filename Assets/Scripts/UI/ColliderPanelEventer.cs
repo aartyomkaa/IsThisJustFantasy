@@ -1,8 +1,8 @@
 using System;
 using Assets.Scripts.Constants;
 using Assets.Scripts.PlayerComponents;
-using Assets.Scripts.YandexSDK;
 using Assets.Scripts.UI.Tutorial;
+using Assets.Scripts.YandexSDK;
 using Lean.Localization;
 using UnityEngine;
 using UnityEngine.UI;
@@ -30,7 +30,7 @@ namespace Assets.Scripts.UI
         public event Action<Player, int, int> FirstButtonClicked;
 
         public event Action<Player, int, int> SecondButtonClicked;
-        
+
         public event Action ExtraButtonClicked;
 
         public Button AdButton => _adButton;
@@ -153,8 +153,8 @@ namespace Assets.Scripts.UI
         {
             _isActive = false;
             LeanTween.moveX(
-                _panelToShow.GetComponent<RectTransform>(), 
-                _panelMoveXValue, 
+                _panelToShow.GetComponent<RectTransform>(),
+                _panelMoveXValue,
                 _changeScaleSpeed).setOnComplete(ChangeActiveStatus);
 
             if (PlayerPrefs.GetInt(PlayerConfigs.HasPassedTutorial) == 0)

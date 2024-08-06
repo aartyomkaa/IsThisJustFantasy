@@ -2,7 +2,7 @@
 using Assets.Scripts.Weapons.Bows;
 using UnityEngine;
 
-namespace Assets.Scripts.AnimatorScripts
+namespace Assets.Scripts.AnimatorScripts.Player
 {
     internal class PlayerBowAttack : StateMachineBehaviour
     {
@@ -16,14 +16,16 @@ namespace Assets.Scripts.AnimatorScripts
             {
                 if (animator.TryGetComponent(out PlayerMovement movement) &&
                     animator.GetComponentInChildren<PlayerBow>() != null)
-
                 {
                     _movement = movement;
                     _bow = animator.GetComponentInChildren<PlayerBow>();
                 }
             }
 
-            _movement.SlowDown();
+            if (_movement != null)
+            {
+                _movement.SlowDown();
+            }
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

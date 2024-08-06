@@ -1,6 +1,7 @@
-﻿using Assets.Scripts.Constants;
+﻿using Assets.Scripts.Audio;
+using Assets.Scripts.Constants;
 using Assets.Scripts.GameLogic;
-using Assets.Scripts.Audio;
+using Assets.Scripts.GameLogic.Interfaces;
 using UnityEngine;
 
 namespace Assets.Scripts.Units.UnitFiniteStateMachine
@@ -31,7 +32,8 @@ namespace Assets.Scripts.Units.UnitFiniteStateMachine
 
         public override void Update()
         {
-            if (_fsm.Target != null && _fsm.Target.Health > 0 && _fsm.Target.Transform.gameObject.activeSelf)
+            if (_fsm.Target != null && _fsm.Target.Health > 0 &&
+                _fsm.Target.Transform.gameObject.activeSelf)
             {
                 if (NeedChaseEnemy())
                 {
@@ -79,7 +81,11 @@ namespace Assets.Scripts.Units.UnitFiniteStateMachine
             Vector3 directionToTarget = targetPosition - _unit.Transform.position;
             Quaternion targetRotation = Quaternion.LookRotation(directionToTarget, Vector3.up);
 
-            _unit.Transform.rotation = Quaternion.Slerp(_unit.Transform.rotation, targetRotation, Time.fixedDeltaTime);
+            _unit.Transform.rotation =
+                Quaternion.Slerp(
+                _unit.Transform.rotation,
+                targetRotation,
+                Time.fixedDeltaTime);
         }
     }
 }

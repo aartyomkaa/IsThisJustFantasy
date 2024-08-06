@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections;
-using UnityEngine;
-using UnityEngine.AI;
 using Assets.Scripts.Audio;
 using Assets.Scripts.Constants;
 using Assets.Scripts.GameLogic;
 using Assets.Scripts.GameLogic.Interfaces;
 using Assets.Scripts.Units.UnitFiniteStateMachine;
+using UnityEngine;
+using UnityEngine.AI;
 
 namespace Assets.Scripts.Units
 {

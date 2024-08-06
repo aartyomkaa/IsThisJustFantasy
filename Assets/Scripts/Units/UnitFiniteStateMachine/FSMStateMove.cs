@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Audio;
 using Assets.Scripts.Constants;
 using Assets.Scripts.GameLogic;
+using Assets.Scripts.GameLogic.Interfaces;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -18,7 +19,8 @@ namespace Assets.Scripts.Units.UnitFiniteStateMachine
         private Vector3 _roundedTargetPos;
         private NavMeshPath _path;
 
-        public FSMStateMove(FiniteStateMachine fsm,
+        public FSMStateMove(
+            FiniteStateMachine fsm,
             IFSMControllable unit,
             NavMeshAgent navMesh,
             Animator animator,
@@ -58,8 +60,15 @@ namespace Assets.Scripts.Units.UnitFiniteStateMachine
 
         private bool HasArriveDestination(Vector3 position, Vector3 targetPosition)
         {
-            _roundedUnitPos = new Vector3(Mathf.RoundToInt(position.x), Mathf.RoundToInt(position.y), Mathf.RoundToInt(position.z));
-            _roundedTargetPos = new Vector3(Mathf.RoundToInt(targetPosition.x), Mathf.RoundToInt(targetPosition.y), Mathf.RoundToInt(targetPosition.z));
+            _roundedUnitPos = new Vector3(
+                Mathf.RoundToInt(position.x),
+                Mathf.RoundToInt(position.y),
+                Mathf.RoundToInt(position.z));
+
+            _roundedTargetPos = new Vector3(
+                Mathf.RoundToInt(targetPosition.x),
+                Mathf.RoundToInt(targetPosition.y),
+                Mathf.RoundToInt(targetPosition.z));
 
             return _roundedUnitPos == _roundedTargetPos;
         }

@@ -26,13 +26,13 @@ namespace Assets.Scripts.Audio
         {
             _soundToggler.SoundValueChanged -= OnSoundValueChanged;
         }
-     
+
         public void SignSoundValuesChanges(SoundToggler soundToggler)
         {
             _soundToggler = soundToggler;
             _soundToggler.SoundValueChanged += OnSoundValueChanged;
         }
-     
+
         public void OnSoundValueChanged(bool isMuted)
         {
             _isMuted = isMuted;

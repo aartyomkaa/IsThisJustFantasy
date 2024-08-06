@@ -2,6 +2,7 @@
 using Assets.Scripts.Constants;
 using Assets.Scripts.EnemyComponents.Factory;
 using Assets.Scripts.PlayerComponents;
+using Assets.Scripts.PlayerUnits;
 using Assets.Scripts.UI;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,7 +15,7 @@ namespace Assets.Scripts.BuildingSystem.Buildings
 
         private EnemyFactory _enemyFactory;
         private PlayerWallet _playerWallet;
-              
+
         public event Action<ColliderPanelEventer> BuildWithEventorWasMade;
 
         public Button AdButton => _eventer.AdButton;
@@ -28,10 +29,10 @@ namespace Assets.Scripts.BuildingSystem.Buildings
 
         private void OnEnable()
         {
-            if(GetComponentInChildren<EnemyFactory>() != null)
-            {
-                _enemyFactory = GetComponentInChildren<EnemyFactory>();
-            }
+            _enemyFactory = GetComponentInChildren<EnemyFactory>();
+
+            if (_enemyFactory == null)
+                throw new NullReferenceException("_enemyFactory is null");
 
             _enemyFactory.WaveStarted += OnWaveStart;
             _enemyFactory.WaveEnded += OnWaveEnd;

@@ -38,11 +38,11 @@ namespace Assets.Scripts.GameLogic
         }
 
         public void Init(
-            Score score, 
-            SceneLoader sceneLoader, 
-            Player player, 
-            Pauser pauser, 
-            ScorePanel nextLevelPanel, 
+            Score score,
+            SceneLoader sceneLoader,
+            Player player,
+            Pauser pauser,
+            ScorePanel nextLevelPanel,
             ScorePanel winPanel)
         {
             _pauser = pauser;

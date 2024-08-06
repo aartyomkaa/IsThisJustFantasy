@@ -1,7 +1,7 @@
 ﻿using Assets.Scripts.GameLogic.Utilities;
 using Assets.Scripts.PlayerComponents;
-using Assets.Scripts.Units;
 using Assets.Scripts.UI;
+using Assets.Scripts.Units;
 using Agava.WebUtility;
 using Agava.YandexGames;
 using UnityEngine;

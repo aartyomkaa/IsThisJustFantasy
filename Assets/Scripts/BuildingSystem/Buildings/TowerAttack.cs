@@ -1,5 +1,5 @@
-using Assets.Scripts.GameLogic.Utilities;
 using Assets.Scripts.GameLogic.Interfaces;
+using Assets.Scripts.GameLogic.Utilities;
 using Assets.Scripts.Weapons.Bows;
 using UnityEngine;
 
@@ -26,8 +26,8 @@ namespace Assets.Scripts.BuildingSystem.Buildings
 
         private void Update()
         {
-            if (_currentDelay >= _delayOfShoot && _targetFinder.TryFindTarget
-                (transform.position, out IDamageable target))
+            if (_currentDelay >= _delayOfShoot &&
+                _targetFinder.TryFindTarget(transform.position, out IDamageable target))
             {
                 if (target.Health > 0)
                     Shoot(target);

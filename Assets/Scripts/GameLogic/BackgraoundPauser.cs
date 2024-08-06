@@ -1,5 +1,5 @@
-﻿using Assets.Scripts.UI;
-using Assets.Scripts.YandexSDK;
+﻿using Assets.Scripts.YandexSDK;
+using Assets.Scripts.UI;
 using Agava.WebUtility;
 using UnityEngine;
 

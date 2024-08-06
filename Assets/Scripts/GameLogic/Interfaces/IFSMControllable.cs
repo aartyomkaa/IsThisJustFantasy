@@ -1,7 +1,6 @@
-﻿using Assets.Scripts.GameLogic.Interfaces;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets.Scripts.GameLogic
+namespace Assets.Scripts.GameLogic.Interfaces
 {
     internal interface IFSMControllable
     {

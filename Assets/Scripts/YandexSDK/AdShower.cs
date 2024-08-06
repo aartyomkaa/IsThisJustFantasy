@@ -32,8 +32,7 @@ namespace Assets.Scripts.YandexSDK
         {
             Resume();
 
-            foreach (Button button in _buttonsToDeactivate)
-                button.interactable = true;
+            EnableButtons();
         }
 
         protected void OnCloseCallBack(bool wasShown)
@@ -43,14 +42,19 @@ namespace Assets.Scripts.YandexSDK
             if (wasShown == false)
                 return;
 
-            foreach (Button button in _buttonsToDeactivate)
-                button.interactable = true;
+            EnableButtons();
         }
 
         private void Resume()
         {
             _pauser.Resume();
             IsPaused = false;
+        }
+
+        private void EnableButtons()
+        {
+            foreach (Button button in _buttonsToDeactivate)
+                button.interactable = true;
         }
     }
 }
