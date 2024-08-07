@@ -1,6 +1,6 @@
-﻿using Assets.Scripts.YandexSDK;
+﻿using Agava.WebUtility;
 using Assets.Scripts.UI;
-using Agava.WebUtility;
+using Assets.Scripts.YandexSDK;
 using UnityEngine;
 
 namespace Assets.Scripts.GameLogic

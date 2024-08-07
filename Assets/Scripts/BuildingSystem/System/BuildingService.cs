@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using Assets.Scripts.BuildingSystem.Buildings;
 using Assets.Scripts.PlayerComponents;
 using Assets.Scripts.Props.Chest;
-using Assets.Scripts.Units;
 using Assets.Scripts.UI;
+using Assets.Scripts.Units;
 using UnityEngine;
 
 namespace Assets.Scripts.BuildingSystem.System
